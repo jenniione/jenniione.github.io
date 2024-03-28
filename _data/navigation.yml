@@ -1,0 +1,49 @@
+header:
+  - titles:
+      # @start locale config
+      en      : &EN       Study Note
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      ko      : &KO       스터디 노트
+      ko-KR   : *KO
+      # @end locale config
+    url: 2024/03/26/random_variables_en.html
+
+  - titles:
+      # @start locale config
+      en      : &EN       About
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      ko      : &KO       소개
+      ko-KR   : *KO
+      # @end locale config
+    url: /about.html
+
+study-ko:
+  - title:      언어
+    children:   
+      - title:  English(EN)
+        url:    2024/03/26/random_variables_en.html
+  - title:      확률/통계 기초
+    children:   
+      - title:  확률 분포
+        url:    2024/03/26/random_variables_ko.html 
+      - title:  이항 분포
+        url:    2024/03/27/binomial_distribution_ko.html
+
+study-en:
+  - title:      Language
+    children:   
+      - title:  한국어(KR)
+        url:    2024/03/26/random_variables_ko.html
+  - title:      Probability & Statistics Basics
+    children:   
+      - title:  Random Variables
+        url:    2024/03/26/random_variables_en.html
+      - title:  Biomial Distribution
+        url:    2024/03/26/binomial_distribution_en.html
+
