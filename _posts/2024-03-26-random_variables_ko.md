@@ -26,7 +26,7 @@ mathjax_autoNumber: true
 <br/>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/random_variables/water_glass.png">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/random_variables/water_glass.jpeg">
 </p>
 
 <br/>'물이 얼마나 담겨 있을까?'라는 질문에 답을 하기 위해 우리는 <u>'부피'를 정의하고 측정</u>한다. 3차원 입체라는 어떠한 집합에 '부피'라는 크기를 부여하게 된다면, 이는 그 <u>집합에 '크기'라는 개념을 부여하는 것</u>이 된다. 이를 수학에서 **측도(Measure)**라고 한다. 측도론은 크기, 면적, 부피 등의 일반화한 측도(Measure)의 개념을 다루는 분야로, 집합과 함수의 크기를 측정하고 분석하는 이론이다. 이 이론은 특히 확률론과 함수해석학에서 중요한 역할을 하는데, 우리가 확률을 공부하면서 자꾸만 집합을 마주치는 이유이기도 하다. **중요한 것은, 우리가 이야기하는 '확률'이 바로 이러한 크기라는 속성을 나타내는 '측도'라는 것이다.** 따라서 측도론에 기반하여 확률을 이해할 수 있어서야 비로소 그 정의를 이해할 수 있다.
