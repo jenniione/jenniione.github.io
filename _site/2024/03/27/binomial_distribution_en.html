@@ -1,11 +1,10 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html><html lang="ko">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Home - JenDS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Binomial Distribution - JenDS</title>
 
-<meta name="description" content="JenDS by Jenny Won
-">
-<link rel="canonical" href="http://localhost:4000/"><link rel="alternate" type="application/rss+xml" title="JenDS" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="Before diving into the binomial distribution, let’s briefly summarize the Bernoulli distribution and explore its relationship with the binomial distribution....">
+<link rel="canonical" href="http://localhost:4000/2024/03/27/binomial_distribution_en.html"><link rel="alternate" type="application/rss+xml" title="JenDS" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
@@ -257,7 +256,18 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport cell cell--auto">
+      <div class="layout--page layout--page--sidebar clearfix js-page-root">
+  <div class="page__mask d-print-none js-page-mask js-sidebar-hide"></div>
+  <div class="page__viewport">
+    <div class="page__actions d-print-none">
+      <div class="button button--circle button--lg box-shadow-2 sidebar-button js-sidebar-show">
+        <i class="fas fa-bars icon--show"></i>
+      </div>
+    </div>
+
+    <div class="grid page__grid">
+
+      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Language</li><li class="toc-h2"><a href="/2024/03/26/random_variables_ko.html">한국어(KR)</a></li><li class="toc-h1">Probability & Statistics Basics</li><li class="toc-h2"><a href="/2024/03/26/random_variables_en.html">Random Variables</a></li><li class="toc-h2 active"><a href="/2024/03/27/binomial_distribution_en.html">Biomial Distribution</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -292,79 +302,251 @@ fill="#000000" stroke="none">
 </svg>
 <a title="JenDS by Jenny Won
 " href="/">JenDS</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
-        <ul><li class="navigation__item"><a href="/2024/03/26/random_variables_en.html">Study Note</a></li><li class="navigation__item"><a href="/about.html">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+        <ul><li class="navigation__item"><a href="/2024/03/26/random_variables_en.html">스터디 노트</a></li><li class="navigation__item"><a href="/about.html">소개</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
       </nav></div>
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>Home</h1></header><meta itemprop="headline" content="Home"><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2024/03/28/geometric_distribution_ko.html"><h2 itemprop="headline" class="item__header">기하 분포</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">이항 분포에 대한 개념을 잘 이해했다면 기하 분포를 그리 어려운 개념은 아니다.
-이항 분포가 베르누이 시행에 따른 ‘성공’을 관찰하는 분포라면, 기하 분포는 ‘성공할 때까지의 시행횟수’ 혹은 ‘성공할 때까지의 실패 횟수’ 의 분포이다.
-
-기하 분포의 정의
-정의(1)   기하 분포(Geometric Distribution)은 이항 분포와 같이 여러번의 베르누이 시행에서 처음 성공이 나타날 때까지의 시행 횟수 횟수를 모델링한 확률 분포이다.
-정의(2)   기하 분포(Geometric Distribution)은 이항 분포와 같이 여러번의 베르누이 시행에서 첫 번째 성공이 나타날 때까지의 (실패)시행 횟수를 모델링한 확률...</div><p><a href="/2024/03/28/geometric_distribution_ko.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=%ED%86%B5%EA%B3%84%ED%95%99">통계학</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 28, 2024</span>
-            </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-03-28T00:00:00+09:00">
-    <meta itemprop="keywords" content="통계학"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2024/03/27/binomial_distribution_ko.html"><h2 itemprop="headline" class="item__header">이항 분포</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">이항 분포에 앞서, 베르누이 분포에 대해 간략히 정리하고, 이항 분포와 베르누이 분포가 어떤 관계가 있는지 알아보자.
-베르누이 분포
-확률 실험의 결과가 성공 혹은 실패로 나타나는 실험을 베르누이 실험(Bernoulli Experiment)라고 한다. 그리고 성공 확률이 \(p\)로 고정된 베르누이 실험에서 성공의 횟수를 나타내는 확률 분포가 바로 베르누이 분포이다. 즉, 베르누이 분포는 확률 변수의 값이 성공 혹은 실패로 나타나는 확률 분포이며, 그 결과가 성공 혹은 실패, 두 값 중 하나만 가지므로 베르누이 확률 변수는 이산 확률 변수라고 할 수 있다.
-
-\[x  \{ \text{success, fail} \} ...</div><p><a href="/2024/03/27/binomial_distribution_ko.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=%ED%86%B5%EA%B3%84%ED%95%99">통계학</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 27, 2024</span>
-            </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-03-27T00:00:00+09:00">
-    <meta itemprop="keywords" content="통계학"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2024/03/27/binomial_distribution_en.html"><h2 itemprop="headline" class="item__header">Binomial Distribution</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">Before diving into the binomial distribution, let’s briefly summarize the Bernoulli distribution and explore its relationship with the binomial distribution.
-
-Bernoulli Distribution
-A Bernoulli experiment refers to a probability experiment where the outcome can either be a success or a failure. The probability distribution that represents the nu...</div><p><a href="/2024/03/27/binomial_distribution_en.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Binomial Distribution</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Github에서 확인하기"
+            href="https://github.com/jenniione/jenniione.github.io/tree/master/_posts/2024-03-27-binomial_distribution_en.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Binomial Distribution"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive.html?tag=Statistics">Statistics</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 27, 2024</span>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2024년 03월 27일</span>
             </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-03-27T00:00:00+09:00">
-    <meta itemprop="keywords" content="Statistics"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2024/03/26/random_variables_ko.html"><h2 itemprop="headline" class="item__header">확률 변수</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">확률 변수를 쉽게 설명하자면 무작위적인 시행(Random Process)에 따른 결과를 숫자로 연결하는 것이라고 이해할 수 있다. 가장 일반적인  예로 동전 던지기가 있다. 임의로 동전을 5번 던져서 나온 앞면의 합계는 확률 변수라고 할 수 있다. 동전을 5번 던지는 행위가 무작위 시행이라는 것을 이해하기 어렵지 않은, 꽤나 직관적인 개념이다. 그렇다면 이러한 결과를 수치로 연결한다는 것은 어떤 의미가 있을까?
+    <meta itemprop="keywords" content="Statistics"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
-이를 이해하기 위해 수학의 입장에서 ‘크기 혹은 규모’에 대해서 이야기 해보려고 한다. 주사위 던지기와 같은 무작위적 시행의 결과는 불확실성을 갖는다. 이러한 ‘얼마나’라는 불확실성의 크기를 수학적으로 표...</div><p><a href="/2024/03/26/random_variables_ko.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=%ED%86%B5%EA%B3%84%ED%95%99">통계학</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 26, 2024</span>
-            </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-03-26T00:00:00+09:00">
-    <meta itemprop="keywords" content="통계학"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2024/03/26/random_variables_en.html"><h2 itemprop="headline" class="item__header">Probability Distribution</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">A simple explanation of a random variable is that it connects the outcome of a random preocess to a number. A common example is flipping a coin. Flipping a coin 5 times at random and the total number of heads obtained can be considered a random variable. Understanding that flipping a coin 5 times is a random process is not difficult, making it a...</div><p><a href="/2024/03/26/random_variables_en.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=Stastistics">Stastistics</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 26, 2024</span>
-            </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-03-26T00:00:00+09:00">
-    <meta itemprop="keywords" content="Stastistics"></div>
-      </article></div>
-</div><div class="layout--home"></div>
-<script>/*(function () {
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p>Before diving into the binomial distribution, let’s briefly summarize the Bernoulli distribution and explore its relationship with the binomial distribution.</p>
 
-})();*/
+<h2 id="bernoulli-distribution">Bernoulli Distribution</h2>
+<p>A Bernoulli experiment refers to a probability experiment where the outcome can either be a success or a failure. The probability distribution that represents the number of successes in a Bernoulli experiment, with a fixed success probability \(p\), is known as the <strong>Bernoulli distribution</strong>. Therefore, the Bernoulli distribution is a probability distribution where the value of the random variable is either a success or a failure. Since <strong>the outcome can only be one of two values, success or failure</strong>, a Bernoulli random variable is classified as a <strong>discrete random variable</strong>.</p>
+
+<p>one where the outcome can either be a success or a failure. The probability distribution that accounts for the number of successes in a Bernoulli experiment, with a fixed probability of success \(p\), is the Bernoulli distribution.</p>
+
+\[x  \{ \text{success, fail} \} \rightarrow \{0, 1\}\]
+
+\[\begin{equation}
+\begin{aligned}
+&amp; P(x=0) = 1-p \\
+&amp; P(x=1) = p \\ \end{aligned}
+\end{equation}\]
+
+<p>If the random variable \(X\) follows a Bernoulli distribution, it can be expressed as follows:</p>
+
+\[\begin{equation} 
+ \begin{aligned} 
+&amp; x \sim \text{Bern}(p)
+\end{aligned}   
+\end{equation}\]
+
+<p>And its Probability Mass Function (PMF) can be represented by the following formula:</p>
+
+\[\begin{split}
+\begin{align}
+\text{Bern}(x; p) = 
+\begin{cases} 
+p   &amp; \text{if }x=1, \\
+1-p &amp; \text{if }x=0
+\end{cases}
+\tag{8.2.2}
+\end{align}
+\end{split}\]
+
+<p>It is important to note that the Bernoulli distribution focuses on observational data from the result of <strong>a single trial</strong>, emphasizing the <strong>probability of success \(p\)</strong>. This aspect explains how the binomial distribution differs from the Bernoulli distribution.</p>
+
+<h2 id="definition-of-binomial-distribution">Definition of Binomial Distribution</h2>
+<p class="info"><strong>Definition</strong>   The Binomial Distribution models the number of successes in a fixed number \(n\) of repeated Bernoulli trials, each with the same success probability \(p\).</p>
+
+<p>The binomial distribution is the probability distribution obtained by repeating a Bernoulli trial \(n\) times. In other words, <strong>the binomial distribution is an extension of the Bernoulli trial</strong>. It models the probability distribution of the number of successes in \(n\) repeated Bernoulli trials, not just a single Bernoulli trial. 
+For example, consider the example of flipping a coin. When you perform a single coin toss with the probability of getting heads being \(p=1/2\); the outcome follows a Bernoulli distribution. However, if the same coin is flipped 10 times, and the number of times heads appears is observed, this scenario follows a binomial distribution. The key here is that during the 10 flips, <strong>each flip is independent, and the probability of success for each trial remains constant at \(p\)</strong> (as is the case with a fixed \(p\) in a Bernoulli trial).</p>
+
+<p>The binomial distribution can be expressed as follows,
+\(\begin{equation} 
+ \begin{aligned} 
+x \sim \text{Bin}(n,p)
+\end{aligned}   
+\end{equation}\)</p>
+
+<p>ans its Probability Mass Function (PMF) is defined as follows.</p>
+
+\[\begin{equation} 
+P_X(x) = \ _{n}C_{x} p^k (1-p)^{n-x} \quad \text{ for } x =0,1,\cdots,n
+\end{equation}\]
+
+<h2 id="real-insights-into-the-binomial-distribution">Real Insights into the Binomial Distribution</h2>
+<h3 id="example-of-flipping-a-coin-10-times">Example of Flipping a Coin 10 Times</h3>
+
+<p>To grasp the Probability Mass Function, let’s calculate the probability of outcomes in the scenario of flipping a coin 10 times.
+Consider a success as the coin landing on heads, and let \(x\) be the number of successes. Thus, \(x=0,1,2,⋯,10\), representing the scenarios where the coin lands on heads 0 times, 1 time, 2 times, … up to 10 times. Let’s consider the probability when \(x=2\), that is, the probability of the coin landing on heads 2 times in 10 flips.</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/coin k=2.png" />
+</p>
+
+<p>As illustrated, each independent event of the coin landing on heads 2 times out of 10 flips has a probability of \((\frac{1}{2})^2(1-\frac{1}{2})^{8}\). This can occur in \(_{10}C_{2}\) different ways. The calculation is as follows:</p>
+
+\[_{10}C_{2}\left(\frac{1}{2}\right)^2 \left(1-\frac{1}{2}\right)^{8} = 0.0439\]
+
+<p>Using the same method, calculating the probabilities for all values of \(x\) yields the following results:</p>
+
+\[x=0 ;  \frac{10!}{1!\cdot9!}
+\left(\frac{1}{2}\right)^0 \left(1-\frac{1}{2}\right)^{10} = 0.0010\]
+
+\[x=1 ;  \frac{10!}{1!\cdot9!}
+\left(\frac{1}{2}\right)^1 \left(1-\frac{1}{2}\right)^{9} = 0.0098\]
+
+\[x=2 ; \frac{10!}{2! 8!}\left(\frac{1}{2}\right)^2 \left(1-\frac{1}{2}\right)^{8} = 0.0439\]
+
+<center>⋮</center>
+
+\[x=10 ; \frac{10!}{10! 0!}\left(\frac{1}{2}\right)^{10} \left(1-\frac{1}{2}\right)^{0} = 0.0010\]
+
+<p>If represented as a histogram, it would appear as follows.</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/coin distribution.png" />
+</p>
+
+<h3 id="an-intuitive-look-at-binomial-distribution">An Intuitive Look at Binomial Distribution</h3>
+
+<p>The binomial distribution is used to calculate the probability of obtaining certain outcomes from repeating a probabilistic event, like flipping a coin, that has two possible results, multiple times.</p>
+
+<p>To understand how it can be applied in practice for a more intuitive comprehension, let’s look into scenarios where the binomial distribution is considered.</p>
+
+<ul>
+  <li>Example 1<br />
+Suppose a marketing team sends emails to 1,000 customers individually. Based on previous experience, let’s assume the probability of receiving a reply is 0.5. What then is the probability of receiving replies from 50 customers out of the 1,000 emails sent?</li>
+</ul>
+
+<p>This is a simple problem of calculating the binomial distribution probability \(P_X(50)\) with \(n=1,000\), \(p=0.5\). The binomial distribution fundamentally <strong>utilizes the number of trials and the fixed probability of success</strong> to calculate the <strong>probability of success occurring</strong>.</p>
+
+<p>Furthermore, the concept of the binomial distribution can be utilized in conducting A/B tests. Consider the example below.</p>
+
+<ul>
+  <li>Example 2<br />
+Let’s assume an A/B test is conducted to compare the effectiveness of two designs (A and B) in increasing the click-through rate on a website. Suppose design B was shown to 1,000 visitors to the website, and 150 clicked on it. We want to assess whether the click-through rate for design B is statistically significantly different from a 10% click-through rate for design A.</li>
+</ul>
+
+<p>Assuming the independence of each visitor’s click action, the action of clicking by each website visitor results in a binomial outcome of click (success) or no click (failure). With the success probability \(p\) set to 10%, the number of trials \(n\) to 1,000, and the number of successes to 150, we can perform a binomial test.</p>
+
+<h2 id="mean-and-variance-of-binomial-distribution">Mean and Variance of Binomial Distribution</h2>
+<p>For a random variable \(X\) following a binomial distribution with a total number of trials \(n\) and a success probability \(p\),</p>
+
+<p>the mean are</p>
+
+\[E(X) = np\]
+
+<p>and the variance are</p>
+
+\[Var(X) = np(1-p)\]
+
+<p>The proofs for each are as follows:</p>
+
+<p>\(\begin{split}
+\begin{align}
+\begin{aligned}
+\text{E}[X] 
+&amp;= \sum_{x_i \in \Omega} x_i p(x_i) \\
+&amp;= 1 \cdot \mu + 0 \cdot (1 - \mu) \\
+&amp;= \mu
+\end{aligned}
+\end{align}
+\end{split}\)
+<br /></p>
+
+\[\begin{split}
+\begin{align}
+\begin{aligned}
+\text{Var}[X] 
+&amp;= \sum_{x_i \in \Omega} (x_i - \mu)^2 p(x_i) \\
+&amp;= (1 - \mu)^2 \cdot \mu + (0 - \mu)^2 \cdot (1 - \mu) \\
+&amp;= \mu(1-\mu)
+\end{aligned}
+\end{align}
+\end{split}\]
+
+<h2 id="the-normal-approximation-to-the-binomial-distribution">The Normal Approximation to the Binomial Distribution</h2>
+<p>As we adjust the parameters of the binomial distribution, let’s explore the various shapes it can exhibit. There are numerous simulatiors accessible online for this purpose, such as the “Parameters of the Binomial Distribution” simulation by shanlee on GeoGebra.
+What transformation does the binomial distribution undergo as \(n\), the number of trials, continues to increase?</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/binomial distribution to normal distribution.png" />
+</p>
+
+<p>When conducting 50 coin flips, one can observe that the resulting distribution resembles the <strong>bell shape</strong> of a normal distribution. However, by operating the simulation directly, it’s discernible that this approximation is <strong>only feasible when the values of \(n\) and \(p\) are not extreme</strong>. If \(n\) is too small, or if \(n\) is sufficiently large but \(p\) is too small or too large, the shape deviates significantly from that of a normal distribution.</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/small n.png" />
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/small p.png" />
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/huge p.png" />
+</p>
+
+<p>Mathetically, if the number of trials \(n\) in a binomial distribution is sufficiently large such that \(np≥5\) and \(np(1−p)≥5\), then the binomial distribution can be approximated by a normal distribution with mean \(np\) and variance \(np(1−p)\). This can be intuitively understood through simulation. Directly operating the simulation reveals that the approximation to a normal distribution becomes <strong>more accurate as \(n\) increases, and as \(p\) is not too close to 0 or 1 but closer to 0.5</strong>.</p>
+
+<p>How many hits might a baseball player with a .300 batting average get in 100 at-bats? How many people might actually die if 100 people were infected with a disease with a 30% mortality rate? Many real-world events can be said to follow a binomial distribution. If the normal distribution can represent an approximation of the binomial distribution, then the normal distribution can also describe many events.</p>
+
+<p><br /><br />
+<strong>References</strong></p>
+
+<p><a href="https://www.geogebra.org/m/hMuamz5w">Binomial Distribution Image Generator(Michael Borcherds)</a><br />
+<a href="https://www.geogebra.org/m/hGkW4vwJ">Parameters of the Binomial Distribution(shanlee)</a><br />
+<a href="https://datascienceschool.net/02%20mathematics/08.02%20%EB%B2%A0%EB%A5%B4%EB%88%84%EC%9D%B4%EB%B6%84%ED%8F%AC%EC%99%80%20%EC%9D%B4%ED%95%AD%EB%B6%84%ED%8F%AC.html">데이터 사이언스 스쿨</a><br />
+<a href="https://bookdown.org/mathemedicine/Stat_book/normal-distribution.html#-1">기초통계 개념정리(김진섭)</a><br /></p>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-03-27T00:00:00+09:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+<div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml">구독하기</a></div>
+</div><div class="article__license"><div class="license">
+    <p>이 글의 저작권은 <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a> 라이센스를 따릅니다.
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">
+        <img alt="Attribution-NonCommercial 4.0 International" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+      </a>
+    </p>
+  </div></div></footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>이전</span><a href="/2024/03/26/random_variables_en.html">Random Variables</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
 </script>
-
-
-
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
@@ -385,7 +567,7 @@ A Bernoulli experiment refers to a probability experiment where the outcome can 
   </div>
 </footer>
 </div></div>
-    </div><script>(function() {
+    </div></div></div><script>(function() {
   var SOURCES = window.TEXT_VARIABLES.sources;
   window.Lazyload.js(SOURCES.jquery, function() {
     var $body = $('body'), $window = $(window);
@@ -537,7 +719,7 @@ A Bernoulli experiment refers to a probability experiment where the outcome can 
 })();
 </script><div class="search search--dark">
   <div class="main">
-    <div class="search__header">Search</div>
+    <div class="search__header">검색</div>
     <div class="search-bar">
       <div class="search-box js-search-box">
         <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
@@ -547,7 +729,7 @@ A Bernoulli experiment refers to a probability experiment where the outcome can 
         </div>
       </div>
       <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
-        Cancel</button>
+        취소</button>
     </div>
     <div class="search-result js-search-result"></div>
   </div>
@@ -902,6 +1084,98 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $pageMask = $('.js-page-mask');
+    var $pageRoot = $('.js-page-root');
+    var $sidebarShow = $('.js-sidebar-show');
+    var $sidebarHide = $('.js-sidebar-hide');
+
+    function freeze(e) {
+      if (e.target === $pageMask[0]) {
+        e.preventDefault();
+      }
+    }
+    function stopBodyScrolling(bool) {
+      if (bool === true) {
+        window.addEventListener('touchmove', freeze, { passive: false });
+      } else {
+        window.removeEventListener('touchmove', freeze, { passive: false });
+      }
+    }
+
+    $sidebarShow.on('click', function() {
+      stopBodyScrolling(true); $pageRoot.addClass('show-sidebar');
+    });
+    $sidebarHide.on('click', function() {
+      stopBodyScrolling(false); $pageRoot.removeClass('show-sidebar');
+    });
+  });
+})();
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]

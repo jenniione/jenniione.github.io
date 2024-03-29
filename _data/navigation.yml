@@ -34,6 +34,8 @@ study-ko:
         url:    2024/03/26/random_variables_ko.html 
       - title:  이항 분포
         url:    2024/03/27/binomial_distribution_ko.html
+      - title:  기하 분포
+        url:    2024/03/28/geometric_distribution_ko.html
 
 study-en:
   - title:      Language
@@ -45,5 +47,5 @@ study-en:
       - title:  Random Variables
         url:    2024/03/26/random_variables_en.html
       - title:  Biomial Distribution
-        url:    2024/03/26/binomial_distribution_en.html
+        url:    2024/03/27/binomial_distribution_en.html
 

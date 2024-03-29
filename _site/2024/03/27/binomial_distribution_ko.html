@@ -267,7 +267,7 @@
 
     <div class="grid page__grid">
 
-      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">언어</li><li class="toc-h2"><a href="/2024/03/26/random_variables_en.html">English(EN)</a></li><li class="toc-h1">확률/통계 기초</li><li class="toc-h2"><a href="/2024/03/26/random_variables_ko.html">확률 분포</a></li><li class="toc-h2 active"><a href="/2024/03/27/binomial_distribution_ko.html">이항 분포</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">언어</li><li class="toc-h2"><a href="/2024/03/26/random_variables_en.html">English(EN)</a></li><li class="toc-h1">확률/통계 기초</li><li class="toc-h2"><a href="/2024/03/26/random_variables_ko.html">확률 분포</a></li><li class="toc-h2 active"><a href="/2024/03/27/binomial_distribution_ko.html">이항 분포</a></li><li class="toc-h2"><a href="/2024/03/28/geometric_distribution_ko.html">기하 분포</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -363,7 +363,7 @@ p   &amp; \text{if }x=1, \\
 <p class="info"><strong>정의</strong>   이항 분포(Binomial Distribution)은 동일한 확률 \(p\) 로 성공하는 베르누이 시행을 고정된 수 \(n\) 번을 반복할 때의 성공 횟수를 모델링하는 확률 분포이다.</p>
 
 <p>이항 분포는 베르누이 시행을 \(n\)번 반복하여 얻게된 확률 분포이다. 다시말해, <strong>이항분포는 베르누이 시행의 확장</strong>이라고 할 수 있다. 단 한 번의 베르누이 시행이 아닌, \(n\)번의 반복된 베르누이 시행에서 성공 횟수에 대한 확률 분포를 모델링한 것이 바로 이항 분포이다.
-동전 던지기의 예를 들어보자. 앞면이 나올 확률이 \(p=1/2\)이라 했을 때, 그 결과는 베르누이 분포를 따르게 된다. 하지만 동일한 동전을 10번 던지고 앞면이 나온 횟수를 관찰하는 경우, 이 시나리오는 이항 분포를 따르게 된다. 여기서 핵심은 10번 던지는 동안 <strong>각각의 던지기가 독립적이며, 각 시행의 성공 확률은 \(p\) 로 동일해야 한다</strong>는 점이다.(원래 베르누이 시행의 성공확률은 고정된 \(p\)를 갖는다.)</p>
+동전 던지기의 예를 들어보자. 앞면이 나올 확률이 \(p=1/2\)인 동전 던지기를 한번 시행 했을때, 그 결과는 베르누이 분포를 따르게 된다. 하지만 동일한 동전을 10번 던지고 앞면이 나온 횟수를 관찰하는 경우, 이 시나리오는 이항 분포를 따르게 된다. 여기서 핵심은 10번 던지는 동안 <strong>각각의 던지기가 독립적이며, 각 시행의 성공 확률은 \(p\) 로 동일해야 한다</strong>는 점이다.(원래 베르누이 시행의 성공확률은 고정된 \(p\)를 갖는다.)</p>
 
 <p>이항 분포는 다음과 같이 표현할 수 있으며,</p>
 
@@ -373,7 +373,7 @@ x \sim \text{Bin}(n,p)
 \end{aligned}   
 \end{equation}\]
 
-<p>이항 분포의 <strong>확률 밀도 함수(PMF)</strong>는 다음과 같이 정의된다.</p>
+<p>이항 분포의 확률 밀도 함수(PMF)는 다음과 같이 정의된다.</p>
 
 \[\begin{equation} 
 P_X(x) = \ _{n}C_{x} p^k (1-p)^{n-x} \quad \text{ for } x =0,1,\cdots,n
@@ -388,9 +388,9 @@ P_X(x) = \ _{n}C_{x} p^k (1-p)^{n-x} \quad \text{ for } x =0,1,\cdots,
   <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/coin k=2.png" />
 </p>
 
-<p>그림과 같이 각각의 독립된 \((\frac{1}{2})^2\cdot(1-\frac{1}{2})^{8}\)의 확률이 \( _{10}C_{2}\)의 경우의 수로 출현할 수 있다. 이것은 다음과 같이 계산된다.</p>
+<p>그림과 같이 각각의 독립된 \((\frac{1}{2})^2(1-\frac{1}{2})^{8}\)의 확률이 \( _{10}C_{2}\)의 경우의 수로 출현할 수 있다. 이것은 다음과 같이 계산된다.</p>
 
-\[_{10}C_{2}\left(\frac{1}{2}\right)^2\cdot \left(1-\frac{1}{2}\right)^{8} = 0.0439\]
+\[_{10}C_{2}\left(\frac{1}{2}\right)^2 \left(1-\frac{1}{2}\right)^{8} = 0.0439\]
 
 <p>같은 방법으로, 모든 x에 대해서 그 확률을 계산해 보면 다음과 같다.</p>
 
@@ -400,7 +400,7 @@ P_X(x) = \ _{n}C_{x} p^k (1-p)^{n-x} \quad \text{ for } x =0,1,\cdots,
 \[x=1 ;  \frac{10!}{1!\cdot9!}
 \left(\frac{1}{2}\right)^1 \left(1-\frac{1}{2}\right)^{9} = 0.0098\]
 
-\[x=2 ; \frac{10!}{2! 8!}\left(\frac{1}{2}\right)^2\cdot \left(1-\frac{1}{2}\right)^{8} = 0.0439\]
+\[x=2 ; \frac{10!}{2! 8!}\left(\frac{1}{2}\right)^2 \left(1-\frac{1}{2}\right)^{8} = 0.0439\]
 
 <center>⋮</center>
 
@@ -478,7 +478,7 @@ n이 계속 증가한다면, 즉 시행을 많이 한다면 이항 분포는 어
   <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/binomial distribution to normal distribution.png" />
 </p>
 
-<p>종모양의 정규 분포와 유사한 형태를 띄는 것을 확인할 수 있다. 하지만 $n$ 과 $p$ 의 값이 극단적이지 않은 경우에만 가능하다. $n$ 이 너무 작거나, $n$ 이 충분히 크지만 $p$ 가 너무 작거나 클 경우 정규 분포의 모양과 많이 벗어나는 것을 확인 할 수 있다.</p>
+<p>50번의 동전 던지기를 시행했을 때 <strong>종모양(bell shape)</strong>의 정규 분포와 유사한 형태를 띄는 것을 확인할 수 있다. 하지만 시뮬레이션을 직접 작동해보면, <strong>$n$ 과 $p$ 의 값이 극단적이지 않은 경우에만 가능</strong>하다는 것을 알 수 있다. $n$ 이 너무 작거나, $n$ 이 충분히 크지만 $p$ 가 너무 작거나 클 경우 정규 분포의 모양과 많이 벗어나게 된다.</p>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/small n.png" />
@@ -492,15 +492,15 @@ n이 계속 증가한다면, 즉 시행을 많이 한다면 이항 분포는 어
   <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/huge p.png" />
 </p>
 
-<p>이항 분포의 $n$ 이 충분히 커서 $np&gt;=5$, $np(1-p)&gt;=5$ 조건을 만족하면, 이항 분포의 평균이 $np$, 분산이 $np(1-p)$ 인 정규 분포에 근사할 수 있다고 한다. 이런 규칙은 대략적인 지침이고 실제로는 앞선 시뮬레이션에서와 같이 $n$ 이 클수록, $p$ 가 0이나 1에 가깝지 않고, 0.5에 가까울수록 정규 분포로의 근사가 더욱 정확해지는 것을 볼 수 있다.</p>
+<p>수학적으로 이항 분포의 $n$ 이 충분히 커서 $np&gt;=5$, $np(1-p)&gt;=5$ 조건을 만족하면, 이항 분포의 평균이 $np$, 분산이 $np(1-p)$ 인 정규 분포에 근사할 수 있다고 한다. 이는 실제로 시뮬레이션을 통해 직관적으로 이해할 수 있다. 시뮬레이션을 직접 작동해 보면, <strong>$n$ 이 클수록, $p$ 가 0이나 1에 가깝지 않고, 0.5에 가까울수록 정규 분포로의 근사가 더욱 정확</strong>해지는 것을 확인할 수 있다.</p>
 
 <p>타율 3할인 타자가 100번 타석에 들어서면 안타를 얼마나 칠까? 사망률이 30%인 감염병에 100명이 걸렸을 때 실제로 얼마나 사망할까? 등 실제 많은 사건들 이항 분포를 따른다고 할 수 있다. 정규 분포가 이항 분포의 근사값으로 표현된다면 정규 분포 역시 많은 사건을 설명할 수 있는 분포가 될 것이다.</p>
 
 <p><br /><br />
 <strong>참조</strong></p>
 
-<p><a href="https://www.geogebra.org/m/hMuamz5w">Binomial Distribution Image Generator(Michael Borcherds)</a>)<br />
-<a href="https://www.geogebra.org/m/hGkW4vwJ">Parameters of the Binomial Distribution(shanlee)</a>)<br />
+<p><a href="https://www.geogebra.org/m/hMuamz5w">Binomial Distribution Image Generator(Michael Borcherds)</a><br />
+<a href="https://www.geogebra.org/m/hGkW4vwJ">Parameters of the Binomial Distribution(shanlee)</a><br />
 <a href="https://datascienceschool.net/02%20mathematics/08.02%20%EB%B2%A0%EB%A5%B4%EB%88%84%EC%9D%B4%EB%B6%84%ED%8F%AC%EC%99%80%20%EC%9D%B4%ED%95%AD%EB%B6%84%ED%8F%AC.html">데이터 사이언스 스쿨</a><br />
 <a href="https://bookdown.org/mathemedicine/Stat_book/normal-distribution.html#-1">기초통계 개념정리(김진섭)</a><br /></p>
 </div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-03-27T00:00:00+09:00"><!-- start custom article footer snippet -->
@@ -514,7 +514,7 @@ n이 계속 증가한다면, 즉 시행을 많이 한다면 이항 분포는 어
       </a>
     </p>
   </div></div></footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>이전</span><a href="/2024/03/26/random_variables_ko.html">확률 분포</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>이전</span><a href="/2024/03/26/random_variables_ko.html">확률 분포</a></div><div class="next"><span>다음</span><a href="/2024/03/28/geometric_distribution_ko.html">기하 분포</a></div></div></div>
 
 </div>
 

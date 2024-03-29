@@ -1,11 +1,10 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html><html lang="ko">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Home - JenDS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>기하 분포 - JenDS</title>
 
-<meta name="description" content="JenDS by Jenny Won
-">
-<link rel="canonical" href="http://localhost:4000/"><link rel="alternate" type="application/rss+xml" title="JenDS" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="이항 분포에 대한 개념을 잘 이해했다면 기하 분포를 그리 어려운 개념은 아니다.이항 분포가 베르누이 시행에 따른 ‘성공’을 관찰하는 분포라면, 기하 분포는 ‘성공할 때까지의 시행횟수’ 혹은 ‘성공할 때까지의 실패 횟수’ 의 분포이다.기하 분포의 정의정의(1)   기하 분포(Geom...">
+<link rel="canonical" href="http://localhost:4000/2024/03/28/geometric_distribution_ko.html"><link rel="alternate" type="application/rss+xml" title="JenDS" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
@@ -257,7 +256,18 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport cell cell--auto">
+      <div class="layout--page layout--page--sidebar clearfix js-page-root">
+  <div class="page__mask d-print-none js-page-mask js-sidebar-hide"></div>
+  <div class="page__viewport">
+    <div class="page__actions d-print-none">
+      <div class="button button--circle button--lg box-shadow-2 sidebar-button js-sidebar-show">
+        <i class="fas fa-bars icon--show"></i>
+      </div>
+    </div>
+
+    <div class="grid page__grid">
+
+      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">언어</li><li class="toc-h2"><a href="/2024/03/26/random_variables_en.html">English(EN)</a></li><li class="toc-h1">확률/통계 기초</li><li class="toc-h2"><a href="/2024/03/26/random_variables_ko.html">확률 분포</a></li><li class="toc-h2"><a href="/2024/03/27/binomial_distribution_ko.html">이항 분포</a></li><li class="toc-h2 active"><a href="/2024/03/28/geometric_distribution_ko.html">기하 분포</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -292,79 +302,115 @@ fill="#000000" stroke="none">
 </svg>
 <a title="JenDS by Jenny Won
 " href="/">JenDS</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
-        <ul><li class="navigation__item"><a href="/2024/03/26/random_variables_en.html">Study Note</a></li><li class="navigation__item"><a href="/about.html">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+        <ul><li class="navigation__item"><a href="/2024/03/26/random_variables_en.html">스터디 노트</a></li><li class="navigation__item"><a href="/about.html">소개</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
       </nav></div>
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>Home</h1></header><meta itemprop="headline" content="Home"><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2024/03/28/geometric_distribution_ko.html"><h2 itemprop="headline" class="item__header">기하 분포</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">이항 분포에 대한 개념을 잘 이해했다면 기하 분포를 그리 어려운 개념은 아니다.
-이항 분포가 베르누이 시행에 따른 ‘성공’을 관찰하는 분포라면, 기하 분포는 ‘성공할 때까지의 시행횟수’ 혹은 ‘성공할 때까지의 실패 횟수’ 의 분포이다.
-
-기하 분포의 정의
-정의(1)   기하 분포(Geometric Distribution)은 이항 분포와 같이 여러번의 베르누이 시행에서 처음 성공이 나타날 때까지의 시행 횟수 횟수를 모델링한 확률 분포이다.
-정의(2)   기하 분포(Geometric Distribution)은 이항 분포와 같이 여러번의 베르누이 시행에서 첫 번째 성공이 나타날 때까지의 (실패)시행 횟수를 모델링한 확률...</div><p><a href="/2024/03/28/geometric_distribution_ko.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>기하 분포</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Github에서 확인하기"
+            href="https://github.com/jenniione/jenniione.github.io/tree/master/_posts/2024-03-28-geometric_distribution_ko.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="기하 분포"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive.html?tag=%ED%86%B5%EA%B3%84%ED%95%99">통계학</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 28, 2024</span>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2024년 03월 28일</span>
             </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-03-28T00:00:00+09:00">
-    <meta itemprop="keywords" content="통계학"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2024/03/27/binomial_distribution_ko.html"><h2 itemprop="headline" class="item__header">이항 분포</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">이항 분포에 앞서, 베르누이 분포에 대해 간략히 정리하고, 이항 분포와 베르누이 분포가 어떤 관계가 있는지 알아보자.
-베르누이 분포
-확률 실험의 결과가 성공 혹은 실패로 나타나는 실험을 베르누이 실험(Bernoulli Experiment)라고 한다. 그리고 성공 확률이 \(p\)로 고정된 베르누이 실험에서 성공의 횟수를 나타내는 확률 분포가 바로 베르누이 분포이다. 즉, 베르누이 분포는 확률 변수의 값이 성공 혹은 실패로 나타나는 확률 분포이며, 그 결과가 성공 혹은 실패, 두 값 중 하나만 가지므로 베르누이 확률 변수는 이산 확률 변수라고 할 수 있다.
+    <meta itemprop="keywords" content="통계학"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
-\[x  \{ \text{success, fail} \} ...</div><p><a href="/2024/03/27/binomial_distribution_ko.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=%ED%86%B5%EA%B3%84%ED%95%99">통계학</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 27, 2024</span>
-            </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-03-27T00:00:00+09:00">
-    <meta itemprop="keywords" content="통계학"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2024/03/27/binomial_distribution_en.html"><h2 itemprop="headline" class="item__header">Binomial Distribution</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">Before diving into the binomial distribution, let’s briefly summarize the Bernoulli distribution and explore its relationship with the binomial distribution.
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p><a href="https://jenniione.github.io/2024/03/27/binomial_distribution_ko.html">이항 분포</a>에 대한 개념을 잘 이해했다면 기하 분포를 그리 어려운 개념은 아니다.
+이항 분포가 베르누이 시행에 따른 ‘성공’을 관찰하는 분포라면, 기하 분포는 <strong>‘성공할 때까지의 시행횟수’</strong> 혹은 <strong>‘성공할 때까지의 실패 횟수’</strong> 의 분포이다.</p>
 
-Bernoulli Distribution
-A Bernoulli experiment refers to a probability experiment where the outcome can either be a success or a failure. The probability distribution that represents the nu...</div><p><a href="/2024/03/27/binomial_distribution_en.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=Statistics">Statistics</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 27, 2024</span>
-            </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-03-27T00:00:00+09:00">
-    <meta itemprop="keywords" content="Statistics"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2024/03/26/random_variables_ko.html"><h2 itemprop="headline" class="item__header">확률 변수</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">확률 변수를 쉽게 설명하자면 무작위적인 시행(Random Process)에 따른 결과를 숫자로 연결하는 것이라고 이해할 수 있다. 가장 일반적인  예로 동전 던지기가 있다. 임의로 동전을 5번 던져서 나온 앞면의 합계는 확률 변수라고 할 수 있다. 동전을 5번 던지는 행위가 무작위 시행이라는 것을 이해하기 어렵지 않은, 꽤나 직관적인 개념이다. 그렇다면 이러한 결과를 수치로 연결한다는 것은 어떤 의미가 있을까?
+<h2 id="기하-분포의-정의">기하 분포의 정의</h2>
+<p class="info"><strong>정의(1)</strong>   기하 분포(Geometric Distribution)은 이항 분포와 같이 여러번의 베르누이 시행에서 처음 성공이 나타날 때까지의 시행 횟수 횟수를 모델링한 확률 분포이다.</p>
+<p class="info"><strong>정의(2)</strong>   기하 분포(Geometric Distribution)은 이항 분포와 같이 여러번의 베르누이 시행에서 첫 번째 성공이 나타날 때까지의 (실패)시행 횟수를 모델링한 확률 분포이다.</p>
 
-이를 이해하기 위해 수학의 입장에서 ‘크기 혹은 규모’에 대해서 이야기 해보려고 한다. 주사위 던지기와 같은 무작위적 시행의 결과는 불확실성을 갖는다. 이러한 ‘얼마나’라는 불확실성의 크기를 수학적으로 표...</div><p><a href="/2024/03/26/random_variables_ko.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=%ED%86%B5%EA%B3%84%ED%95%99">통계학</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 26, 2024</span>
-            </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-03-26T00:00:00+09:00">
-    <meta itemprop="keywords" content="통계학"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2024/03/26/random_variables_en.html"><h2 itemprop="headline" class="item__header">Probability Distribution</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">A simple explanation of a random variable is that it connects the outcome of a random preocess to a number. A common example is flipping a coin. Flipping a coin 5 times at random and the total number of heads obtained can be considered a random variable. Understanding that flipping a coin 5 times is a random process is not difficult, making it a...</div><p><a href="/2024/03/26/random_variables_en.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=Stastistics">Stastistics</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 26, 2024</span>
-            </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-03-26T00:00:00+09:00">
-    <meta itemprop="keywords" content="Stastistics"></div>
-      </article></div>
-</div><div class="layout--home"></div>
-<script>/*(function () {
+<p>기하 분포는 성공하기까지의 시도 횟수를 모델링하는 데 사용되며, 이에 대한 두 가지 정의가 있다. 이 두 정의의 주요 차이는 성공을 달성하기까지의 시도 횟수에 대한 계산 방법에 있다. 정의 (1)는 첫 성공이 포함된 전체 시도 횟수를 사용하는 반면, 정의 (2)는 첫 성공을 달성하기 전까지의 시도 횟수만을 고려한다.</p>
 
-})();*/
+<p>동전 던지기를 예로 들면, 성공을 앞면이 나오는 경우로 정의할 때, ‘뒷면-뒷면-뒷면-앞면’이라는 결과가 나왔다고 가정하자. 이 상황에서 정의 (1)은 성공까지의 시도 횟수 $X$는 $4$가 된다. 반면에 정의 (2)를 적용하면, 첫 성공을 달성하기 전까지의 시도 횟수, 즉 3이 X의 값으로 사용된다. 이렇게 두 정의는 성공을 포함하는지 여부에 따라 1만큼의 차이를 보이며, 이는 기하 분포를 해석할 때 중요한 고려 사항이 된다.</p>
+
+<p>기하 분포는 다음과 같이 표기하며,</p>
+
+\[\begin{equation} 
+ \begin{aligned} 
+x \sim \text{Geom}(p)
+\end{aligned}   
+\end{equation}\]
+
+<p>그 확률 질량 함수(PMF)는 다음과 같다.</p>
+
+\[\begin{equation} 
+\boxed{ \begin{aligned} 
+P(x) = (1-p)^{k-1} p \quad \text{ for } k =1,2,\cdots
+\end{aligned} }  
+\end{equation}\]
+
+<p>## 
+확률 밀도 함수를 이해하기 위해, 10번의 동전 던지기 예시를 다시 보자. ‘성공’이라는 앞면이 나올 때까지 시행 횟수는 \(X=x\)라고 하자. \(x=3\)일 때, 그 확률은 (실패 확률) $\cdot$ (실패 확률) $\cdot$ (성공 확률), 즉 \((1-\frac{1}{2})^2(\frac{1}{2})=0.125\)이 된다.</p>
+
+<h2 id="기하-분포의-무기억성">기하 분포의 무기억성</h2>
+<p>기하 분포의 특징에는 무기억성이 있다. 수학적으로는 다음과 같이 표현할 수 있다.</p>
+
+\[P(X &gt; s + t | X &gt; s) = P(X &gt; t)\]
+
+<p>이것은 과거의 결과가 미래의 확률에 영향을 주지 않는다는 것을 의미한다. 동전 던지기를 통해 이미 6번의 뒷면이 나왔다고 하여도, 다음 동전 던지기의 앞면이 나올 확률은 여전히 \(1/2\)이다. 또한 7번째 던지기에서 이전에 6번을 던졌다는 사실은 영향을 미치지 않는다. 다시 처음부터 시작해도 첫 성공까지의 기대 시도 횟수는 변하지 않는다는 것이다.</p>
+
+<p>이러한 기하 분포의 무기억성은 네트워크 트래픽 분석, 대기열 이론 등에 유용하게 활용될 수 있다. 웹 서버 요청이 도착하는 시간 간격이 기하 분포를 따른다고 가정할 때, 이미 어느 정도 시간이 지났다 하여도 다음 요청이 도착할 때까지의 기대 시간은 변하지 않는다. 이는 대기  시간, 시스템의 처리량, 자원 할당 전략을 최적화하는데 중요한 역할을 한다.</p>
+
+<h2 id="직관적-기하-분포">직관적 기하 분포</h2>
+<p>기하 분포는 ‘성공’이 발생할 때까지 기다리는 관찰에 따른 결과이다. 이러한 특징은 웹사이트에서 사용자가 처음으로 구매를 하는데 필요한 페이지 방문 횟수, 즉, 실패 횟수를 분석하거나, 어떤 제품이나 서비스가 특정 기간 동안 실패하지 않고 지속될 확률을 계산하는 데에도 사용될 수 있다. 또한 A/B테스팅에서 특정 전략이 성공을 보이기까지의 시도 횟수를 분석하고 그 적략의 효율성을 평가할 수도 있다.</p>
+
+<p><br /><br />
+<strong>참조</strong></p>
+
+<p><a href="https://www.geogebra.org/m/twbv2tmk">binomial and geometric distribution(pthao_nguyen, Zoran)</a></p>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-03-28T00:00:00+09:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+<div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml">구독하기</a></div>
+</div><div class="article__license"><div class="license">
+    <p>이 글의 저작권은 <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a> 라이센스를 따릅니다.
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">
+        <img alt="Attribution-NonCommercial 4.0 International" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+      </a>
+    </p>
+  </div></div></footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>이전</span><a href="/2024/03/27/binomial_distribution_ko.html">이항 분포</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
 </script>
-
-
-
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
@@ -385,7 +431,7 @@ A Bernoulli experiment refers to a probability experiment where the outcome can 
   </div>
 </footer>
 </div></div>
-    </div><script>(function() {
+    </div></div></div><script>(function() {
   var SOURCES = window.TEXT_VARIABLES.sources;
   window.Lazyload.js(SOURCES.jquery, function() {
     var $body = $('body'), $window = $(window);
@@ -537,7 +583,7 @@ A Bernoulli experiment refers to a probability experiment where the outcome can 
 })();
 </script><div class="search search--dark">
   <div class="main">
-    <div class="search__header">Search</div>
+    <div class="search__header">검색</div>
     <div class="search-bar">
       <div class="search-box js-search-box">
         <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
@@ -547,7 +593,7 @@ A Bernoulli experiment refers to a probability experiment where the outcome can 
         </div>
       </div>
       <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
-        Cancel</button>
+        취소</button>
     </div>
     <div class="search-result js-search-result"></div>
   </div>
@@ -902,6 +948,98 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $pageMask = $('.js-page-mask');
+    var $pageRoot = $('.js-page-root');
+    var $sidebarShow = $('.js-sidebar-show');
+    var $sidebarHide = $('.js-sidebar-hide');
+
+    function freeze(e) {
+      if (e.target === $pageMask[0]) {
+        e.preventDefault();
+      }
+    }
+    function stopBodyScrolling(bool) {
+      if (bool === true) {
+        window.addEventListener('touchmove', freeze, { passive: false });
+      } else {
+        window.removeEventListener('touchmove', freeze, { passive: false });
+      }
+    }
+
+    $sidebarShow.on('click', function() {
+      stopBodyScrolling(true); $pageRoot.addClass('show-sidebar');
+    });
+    $sidebarHide.on('click', function() {
+      stopBodyScrolling(false); $pageRoot.removeClass('show-sidebar');
+    });
+  });
+})();
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]

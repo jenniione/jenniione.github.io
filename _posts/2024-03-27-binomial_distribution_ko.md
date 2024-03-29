@@ -58,7 +58,7 @@ $$
 {:.info}
 
 이항 분포는 베르누이 시행을 $$n$$번 반복하여 얻게된 확률 분포이다. 다시말해, **이항분포는 베르누이 시행의 확장**이라고 할 수 있다. 단 한 번의 베르누이 시행이 아닌, $$n$$번의 반복된 베르누이 시행에서 성공 횟수에 대한 확률 분포를 모델링한 것이 바로 이항 분포이다.
-동전 던지기의 예를 들어보자. 앞면이 나올 확률이 $$p=1/2$$이라 했을 때, 그 결과는 베르누이 분포를 따르게 된다. 하지만 동일한 동전을 10번 던지고 앞면이 나온 횟수를 관찰하는 경우, 이 시나리오는 이항 분포를 따르게 된다. 여기서 핵심은 10번 던지는 동안 **각각의 던지기가 독립적이며, 각 시행의 성공 확률은 $$p$$ 로 동일해야 한다**는 점이다.(원래 베르누이 시행의 성공확률은 고정된 $$p$$를 갖는다.)
+동전 던지기의 예를 들어보자. 앞면이 나올 확률이 $$p=1/2$$인 동전 던지기를 한번 시행 했을때, 그 결과는 베르누이 분포를 따르게 된다. 하지만 동일한 동전을 10번 던지고 앞면이 나온 횟수를 관찰하는 경우, 이 시나리오는 이항 분포를 따르게 된다. 여기서 핵심은 10번 던지는 동안 **각각의 던지기가 독립적이며, 각 시행의 성공 확률은 $$p$$ 로 동일해야 한다**는 점이다.(원래 베르누이 시행의 성공확률은 고정된 $$p$$를 갖는다.)
 
 이항 분포는 다음과 같이 표현할 수 있으며,
 
@@ -70,7 +70,7 @@ x \sim \text{Bin}(n,p)
 \end{equation}
 $$
 
-이항 분포의 **확률 밀도 함수(PMF)**는 다음과 같이 정의된다.
+이항 분포의 확률 밀도 함수(PMF)는 다음과 같이 정의된다.
 
 $$
 \begin{equation} 
@@ -87,10 +87,10 @@ $$
   <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/coin k=2.png">
 </p>
 
-그림과 같이 각각의 독립된 $$(\frac{1}{2})^2\cdot(1-\frac{1}{2})^{8}$$의 확률이 $$ _{10}C_{2}$$의 경우의 수로 출현할 수 있다. 이것은 다음과 같이 계산된다.
+그림과 같이 각각의 독립된 $$(\frac{1}{2})^2(1-\frac{1}{2})^{8}$$의 확률이 $$ _{10}C_{2}$$의 경우의 수로 출현할 수 있다. 이것은 다음과 같이 계산된다.
 
 $$
-_{10}C_{2}\left(\frac{1}{2}\right)^2\cdot \left(1-\frac{1}{2}\right)^{8} = 0.0439
+_{10}C_{2}\left(\frac{1}{2}\right)^2 \left(1-\frac{1}{2}\right)^{8} = 0.0439
 $$
 
 같은 방법으로, 모든 x에 대해서 그 확률을 계산해 보면 다음과 같다.
@@ -106,7 +106,7 @@ x=1 ;  \frac{10!}{1!\cdot9!}
 $$
 
 $$
-x=2 ; \frac{10!}{2! 8!}\left(\frac{1}{2}\right)^2\cdot \left(1-\frac{1}{2}\right)^{8} = 0.0439
+x=2 ; \frac{10!}{2! 8!}\left(\frac{1}{2}\right)^2 \left(1-\frac{1}{2}\right)^{8} = 0.0439
 $$
 
 <center>⋮</center>
@@ -210,7 +210,7 @@ n이 계속 증가한다면, 즉 시행을 많이 한다면 이항 분포는 어
 <br/><br/>
 **참조**
 
-[Binomial Distribution Image Generator(Michael Borcherds)](https://www.geogebra.org/m/hMuamz5w))<br/>
-[Parameters of the Binomial Distribution(shanlee)](https://www.geogebra.org/m/hGkW4vwJ))<br/>
+[Binomial Distribution Image Generator(Michael Borcherds)](https://www.geogebra.org/m/hMuamz5w)<br/>
+[Parameters of the Binomial Distribution(shanlee)](https://www.geogebra.org/m/hGkW4vwJ)<br/>
 [데이터 사이언스 스쿨](https://datascienceschool.net/02%20mathematics/08.02%20%EB%B2%A0%EB%A5%B4%EB%88%84%EC%9D%B4%EB%B6%84%ED%8F%AC%EC%99%80%20%EC%9D%B4%ED%95%AD%EB%B6%84%ED%8F%AC.html)<br/>
 [기초통계 개념정리(김진섭)](https://bookdown.org/mathemedicine/Stat_book/normal-distribution.html#-1)<br/>
