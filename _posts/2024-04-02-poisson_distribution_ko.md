@@ -12,7 +12,7 @@ mathjax_autoNumber: true
 ---
 
 <p align="center">
-  <img class="image image--md" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/Simeon Denis Poisson.png"/>
+  <img class="image image--md" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/poisson_distribution/Simeon Denis Poisson.jpg"/>
 </p>
 
 프랑스의 수학자 Siméon Denis Poisson는 이산 확률 분포의 한 형태로 포아송 분포를 처음 소개하였다. 이후 1898년 폴란드계 수학자 Ladislaus Bortkiewicz가 프로이센 군대의 군인들이 말차기로 우연히 죽는 빈도를 포아송 분포로 잘 모델링해 보임으로써 포아송 분포의 실제 적용이 이루어졌다.
@@ -22,7 +22,7 @@ mathjax_autoNumber: true
 앞서 [이항 분포의 시뮬레이션](https://jenniione.github.io/2024/03/27/binomial_distribution_ko.html#%EC%9D%B4%ED%95%AD-%EB%B6%84%ED%8F%AC%EC%9D%98-%EC%A0%95%EA%B7%9C-%EB%B6%84%ED%8F%AC-%EA%B7%BC%EC%82%AC)을 통해, 다양한 경우의 이항 분포 형태를 확인할 수 있었다. 그 중 극단적인 n(시행횟수), p(성공확률)의 값에 대한 이항 분포는 정규 분포로의 근사와는 다른 독특한 분포 형태를 취했다. 특히 **시행 횟수인 n이 충분히 큼에도 불구하고 성공 확률 p값이 지나치게 작을 경우**, 다음과 같은 분포를 보인다는 것을 보았다.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/small p.png">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/poisson_distribution/small p.png">
 </p>
 
 이러한 사건은 사실 이항 분포로 설명되는 대부분의 사건들과는 다른 특별한 케이스로, 이항 분포로 설명하기에 최적화되었다고 말하기 어렵다. 포아송 분포는 이러한 특별한 사건을 집중적으로 설명하기 위해 소개된 분포라고 할 수 있다. 포아송 분포가 다루는 사건에 대해 보다 자세히 살펴보자.
