@@ -216,7 +216,6 @@ How many hits might a baseball player with a .300 batting average get in 100 at-
 <br/><br/>
 **References**
 
-[Binomial Distribution Image Generator(Michael Borcherds)](https://www.geogebra.org/m/hMuamz5w)<br/>
 [Parameters of the Binomial Distribution(shanlee)](https://www.geogebra.org/m/hGkW4vwJ)<br/>
 [데이터 사이언스 스쿨](https://datascienceschool.net/02%20mathematics/08.02%20%EB%B2%A0%EB%A5%B4%EB%88%84%EC%9D%B4%EB%B6%84%ED%8F%AC%EC%99%80%20%EC%9D%B4%ED%95%AD%EB%B6%84%ED%8F%AC.html)<br/>
 [기초통계 개념정리(김진섭)](https://bookdown.org/mathemedicine/Stat_book/normal-distribution.html#-1)<br/>

@@ -70,7 +70,7 @@ x \sim \text{Bin}(n,p)
 \end{equation}
 $$
 
-이항 분포의 확률 밀도 함수(PMF)는 다음과 같이 정의된다.
+이항 분포의 확률 질량 함수(PMF)는 다음과 같이 정의된다.
 
 $$
 \begin{equation} 
@@ -210,7 +210,6 @@ n이 계속 증가한다면, 즉 시행을 많이 한다면 이항 분포는 어
 <br/><br/>
 **참조**
 
-[Binomial Distribution Image Generator(Michael Borcherds)](https://www.geogebra.org/m/hMuamz5w)<br/>
 [Parameters of the Binomial Distribution(shanlee)](https://www.geogebra.org/m/hGkW4vwJ)<br/>
 [데이터 사이언스 스쿨](https://datascienceschool.net/02%20mathematics/08.02%20%EB%B2%A0%EB%A5%B4%EB%88%84%EC%9D%B4%EB%B6%84%ED%8F%AC%EC%99%80%20%EC%9D%B4%ED%95%AD%EB%B6%84%ED%8F%AC.html)<br/>
 [기초통계 개념정리(김진섭)](https://bookdown.org/mathemedicine/Stat_book/normal-distribution.html#-1)<br/>
