@@ -139,7 +139,7 @@ $$
 포아송 분포의 파라미터는 $$\lambda$$ 하나이다. 그렇다면 $$\lambda$$ 값이 변함에 따라 포아송 분포는 어떻게 변화하는 지 살펴보자.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/poison_distribution/poisson_distribution.png">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/poisson_distribution/poisson_distribution.png">
 </p>
 
 위 그래프는 $$\lambda = 1$$로, 그 값이 매우 작을 때, 대부분의 확률이 0 또는 1로 집중되어 있다는 것을 보여준다.
