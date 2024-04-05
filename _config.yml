@@ -201,7 +201,7 @@ exclude:
   - /test
   - /vendor
 
-collections_dir: post
+collections_dir: docs
 collections:
   study:
     output: true
@@ -223,12 +223,13 @@ defaults:
       show_edit_on_github: true
       show_subscribe: true
       pageview: true
-- scope:
-      path: ""
-      type: article
-    values:
-      nav_key: article
-      show_date: false
+
+  - scope:
+        path: ""
+        type: article
+      values:
+        nav_key: article
+        show_date: false
 
 ## => Plugins
 ##############################
