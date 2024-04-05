@@ -1,11 +1,10 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html><html lang="ko">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Article - JenDS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>포아송 분포 - JenDS</title>
 
-<meta name="description" content="JenDS by Jenny Won
-">
-<link rel="canonical" href="http://localhost:4000/article.html"><link rel="alternate" type="application/rss+xml" title="JenDS" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="프랑스의 수학자 Siméon Denis Poisson는 이산 확률 분포의 한 형태로 포아송 분포를 처음 소개하였다. 이후 1898년 폴란드계 수학자 Ladislaus Bortkiewicz가 프로이센 군대의 군인들이 말차기로 우연히 죽는 빈도를 포아송 분포로 잘 모델링해 보임으로써 ...">
+<link rel="canonical" href="http://localhost:4000/2024/04/02/poisson_distribution_ko.html"><link rel="alternate" type="application/rss+xml" title="JenDS" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
@@ -257,7 +256,18 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport cell cell--auto">
+      <div class="layout--page layout--page--sidebar clearfix js-page-root">
+  <div class="page__mask d-print-none js-page-mask js-sidebar-hide"></div>
+  <div class="page__viewport">
+    <div class="page__actions d-print-none">
+      <div class="button button--circle button--lg box-shadow-2 sidebar-button js-sidebar-show">
+        <i class="fas fa-bars icon--show"></i>
+      </div>
+    </div>
+
+    <div class="grid page__grid">
+
+      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">언어</li><li class="toc-h2"><a href="/2024/03/26/random_variables_en.html">English(EN)</a></li><li class="toc-h1">확률/통계 기초</li><li class="toc-h2"><a href="/2024/03/26/random_variables_ko.html">확률 분포</a></li><li class="toc-h2"><a href="/2024/03/27/binomial_distribution_ko.html">이항 분포</a></li><li class="toc-h2"><a href="/2024/03/28/geometric_distribution_ko.html">기하 분포</a></li><li class="toc-h2 active"><a href="/2024/04/02/poisson_distribution_ko.html">포아송 분포</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -292,27 +302,180 @@ fill="#000000" stroke="none">
 </svg>
 <a title="JenDS by Jenny Won
 " href="/">JenDS</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
-        <ul><li class="navigation__item"><a href="/2024/03/26/random_variables_en.html">Study Note</a></li><li class="navigation__item navigation__item--active"><a href="/article.html">Article</a></li><li class="navigation__item"><a href="/about.html">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+        <ul><li class="navigation__item"><a href="/2024/03/26/random_variables_en.html">스터디 노트</a></li><li class="navigation__item"><a href="/article.html">아티클</a></li><li class="navigation__item"><a href="/about.html">소개</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
       </nav></div>
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><div class="article__header"><header><h1>Article</h1></header></div><meta itemprop="headline" content="Article"><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item"><div class="item__content">
-          <header><a href="/article/Python.html"><h2 itemprop="headline" class="item__header">Python</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody"></div><p><a href="/article/Python.html">Read more</a></p></div><div class="article__info clearfix"><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 05, 2024</span>
-            </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-04-05T20:46:40+09:00"></div>
-      </article></div>
-</div><div class="article__content">
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>포아송 분포</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Github에서 확인하기"
+            href="https://github.com/jenniione/jenniione.github.io/tree/master/_posts/2024-04-02-poisson_distribution_ko.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="포아송 분포"><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=%ED%86%B5%EA%B3%84%ED%95%99">통계학</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2024년 04월 02일</span>
+            </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-04-02T00:00:00+09:00">
+    <meta itemprop="keywords" content="통계학"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
-  <hr />
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p align="center">
+  <img class="image image--md" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/poisson_distribution/Simeon Denis Poisson.jpg" />
+</p>
+
+<p>프랑스의 수학자 Siméon Denis Poisson는 이산 확률 분포의 한 형태로 포아송 분포를 처음 소개하였다. 이후 1898년 폴란드계 수학자 Ladislaus Bortkiewicz가 프로이센 군대의 군인들이 말차기로 우연히 죽는 빈도를 포아송 분포로 잘 모델링해 보임으로써 포아송 분포의 실제 적용이 이루어졌다.</p>
+
+<h2 id="이항-분포의-포아송-분포로의-전환">이항 분포의 포아송 분포로의 전환</h2>
+<h3 id="포아송-케이스">포아송 케이스</h3>
+<p>앞서 <a href="https://jenniione.github.io/2024/03/27/binomial_distribution_ko.html#%EC%9D%B4%ED%95%AD-%EB%B6%84%ED%8F%AC%EC%9D%98-%EC%A0%95%EA%B7%9C-%EB%B6%84%ED%8F%AC-%EA%B7%BC%EC%82%AC">이항 분포의 시뮬레이션</a>을 통해, 다양한 경우의 이항 분포 형태를 확인할 수 있었다. 그 중 극단적인 n(시행횟수), p(성공확률)의 값에 대한 이항 분포는 정규 분포로의 근사와는 다른 독특한 분포 형태를 취했다. 특히 <strong>시행 횟수인 n이 충분히 큼에도 불구하고 성공 확률 p값이 지나치게 작을 경우</strong>, 다음과 같은 분포를 보인다는 것을 보았다.</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/small p.png" />
+</p>
+
+<p>이러한 사건은 사실 이항 분포로 설명되는 대부분의 사건들과는 다른 특별한 케이스로, 이항 분포로 설명하기에 최적화되었다고 말하기 어렵다. 포아송 분포는 이러한 특별한 사건을 집중적으로 설명하기 위해 소개된 분포라고 할 수 있다. 포아송 분포가 다루는 사건에 대해 보다 자세히 살펴보자.</p>
+
+<h3 id="포아송-케이스에-대한-이항-분포의-한계">포아송 케이스에 대한 이항 분포의 한계</h3>
+<p>포아송 분포의 실제 적용에 기여한  Ladislaus Bortkiewicz의 ‘프로이센 군대의 군인들이 말차기로 우연히 죽는 빈도’ 문제를 생각해 보자. 어느날 프로이센의 군대를 관찰하던 중 군인들이 말차기로 우연히 죽는다는 것을 발견했다. 20년동안 매년 10명 정도의 군인이 말에 치여 사망하는 것 같다. 한해에 5명의 군인만이 말에 차여 사망할 확률을 알 수 있을까?
+이 문제를 해결하기 위해 군인이 죽는지(성공)를 관찰하는 이항 분포만을 고려한다고 가정해 보자. 동전 던지기처럼 군인의 죽음을 관찰하는 n번의 시행이 이루어진다고 했을 때, n을 설정한다는 것은 꽤나 모호하다. 그럼에도 1년을 한번의 시행으로 쳐서 20번의 시행이 이루어졌다고 접근하여도 10명 군인이 1년째에 모두 나타거나, 2년째, …, 20년째에 한번에 나타나는 확률을 구하지 않는 이상 이항 분포의 활용은 꽤나 어려워 보인다. 이는 매년 평균적으로 10명이 죽는다고 해도, 시간을 기준으로 관찰시 <strong>매년 죽은 군인 수라는 사건 발생의 무작위성 때문</strong>이다.</p>
+
+<h3 id="포아송-분포로의-접근과-유도">포아송 분포로의 접근과 유도</h3>
+<p>우리는 이 문제를 해결하기 위해 n과 p라는 이항분포의 파라미터에서 벗어나서, ‘매년 10명’이라는 새로운 파라미터로 문제를 접근할 필요가 있다. 이를 \(\lambda\) 라고 하자. 즉 <u>$\lambda$ 는 단위 시간/공간 당 평균 발생 횟수</u>가 된다. 이는 이항 분포의 맥락에서 일종의 기댓값으로 \(\lambda = np\) 가 된다. ‘평균 10년’이라는 일정한 \(\lambda\) 이 주어졌을 때, 시간(시행)의 연속성을 적용하여 \(n\) 을 무한대로 보내면 \(p\) 는 0으로 접근한다고 볼 수 있다.</p>
+
+\[\lim_{n\rightarrow \infty}p=\lim_{n\rightarrow \infty}\frac{\lambda}{n} = 0\]
+
+<p>그럼, 이항 분포의 확률 밀도 함수에 이를 적용하여 그 극한값을 도출해 보자.</p>
+
+\[\lim_{n \to \infty} B(k; n, p)\]
+
+\[= \lim_{n \to \infty}  { {n}\choose{k} }  p^k(1-p)^{n-k}\]
+
+\[= \lim_{n \to \infty}  \dfrac{n!}{k!(n-k)!}(\dfrac{\lambda}{n})^k  (1-\dfrac{\lambda}{n})^{n-k}\]
+
+\[= \lim_{n \to \infty}  {\left[  \dfrac{n!}{(n-k)!  n^k} \right]}  \left[  \dfrac{\lambda^k}{k!}  (1-\dfrac{\lambda}{n})^{n}  \right]  {\left[  (1-\dfrac{\lambda}{n})^{-k}\right]}\]
+
+\[= \lim_{n \to \infty}  {\left[  \dfrac{n(n-1)\dotsb(n-(k-1))}{n^k} \right]}  \left[  \dfrac{\lambda^k}{k!}  (1-\dfrac{\lambda}{n})^{n}  \right]  {\left[  (1-\dfrac{\lambda}{n})^{-k}\right]}\]
+
+\[= 1\left[  \dfrac{\lambda^k}{k!}  e^{-\lambda}\right] 1\]
+
+\[= (\frac{\lambda^k}{k!})e^{-\lambda}\\\]
+
+<p>따라서,</p>
+
+<ul>
+  <li>(6) : \(n\) 이 무한대로 갈때, \(k\)는 상대적으로 작은 상수이므로 위와 같은 극한값이 계산된다.</li>
+</ul>
+
+\[Pr(K=k) = (\frac{\lambda^k}{k!})e^{-\lambda}\]
+
+<p>결국 우리는 고정된 \(lambda\)가 주어졌을 때, n을 무한대로 보내는 이항 분포의 확률 밀도 함수를 도출해 냄으로써, 이항 분포의 파라미터로 설명하기 어려운 사건을 \(lambda\)라는 새로운 파라미터 하나로써 표현할 수 있게 되었다.</p>
+
+<h2 id="포아송-분포의-정의">포아송 분포의 정의</h2>
+<p class="info"><strong>정의</strong>   포아송(Poisson Distribution)은 단위 시간 또는 공간에서 발생하는 사건의 수를 모델링하는 확률 분포이다.</p>
+
+<p>확률 변수 \(x\)가 포아송 분포를 따르는 경우 다음과 같이 표기하며,</p>
+
+\[\begin{aligned} 
+x \sim \text{Pois}(\lambda)
+\end{aligned}\]
+
+<p>그 확률 질량 함수는 다음과 같다.</p>
+
+\[\begin{aligned} 
+P(x) = \frac{\lambda^{k} e^{-\lambda}}{k!} \quad \text{ for } k =0,1,2,\cdots
+\end{aligned}\]
+
+<h2 id="직관적-포아송-분포">직관적 포아송 분포</h2>
+<p>포아송 분포는 특정 시간 간격이나 공간에서 발생하는 드문 사건의 횟수를 모델링하는 사용된다. 다시 말해, <strong>시행 횟수가 굉장히 크지만 드물게 발생할 확률을 가진 이항적 사건에서, 평균값이 주어졌을 때, 특정 값이 발생할 확률을 효과적으로 계산</strong>할 수 있도록 한다. 이러한 확률 계산은 어떤 상황에서 중요하게 활용될 수 있을까?</p>
+
+<ul>
+  <li>예시 1<br />
+어떤 도시에서 $A$라는 질병이 <u>평균적으로 한 달에 2회</u> 발생한다. 보건 당국은 자원 할당과 질병 대응 준비를 위해 다음 달에 이 질병이 <u>발생하지 않을</u> 수 있을지 알고 싶다.</li>
+</ul>
+
+\[Pr(K=0)\]
+
+\[= \frac{e^{-2} \times 2^0} {0!}\]
+
+\[= 0.1353\]
+
+<p>질병이 평균적으로 관찰되는 수치를 기반해 보았을 때, <u>다음 달에 이 질병이 발생하지 않을 확률은 13%</u>라고 할 수 있다.</p>
+
+<ul>
+  <li>예시 2<br />
+이커머스 웹사이트가 특정 마케팅 캠페인이나 이벤트가 없는 일반적인 날을 기준으로 <u>평균적으로 하루 200건</u>의 주문을 처리한다. 운영팀은 예상 주문량에 따라 배송 준비나 고객 서비스 인력을 조정하는 등 효율적인 관리를 수행하기 위해, 현재 어느 정도의 주문 처리 능력을 보유하고 있는 것인지 알고 싶다. 정확히 &lt;/u&gt;250건&lt;/u&gt;을 처리할 수 있는 확률은 어떻게 될까?</li>
+</ul>
+
+\[P(X=250) = \frac{e^{-200} \times 200^{250}}{250!} = 0.000077\]
+
+<p>이는 웹사이트 운영에 있어서 <u>특정 일의 주문량이 예상치를 초과할 확률이 얼마나 낮은지</u>를 보여준다. 특별히 높은 주문량을 처리할 준비를 해야할 날이 드물다는 정보를 통해, 재고, 배송, 고객 서비스 등의 자원 배치를 효과적으로 계획할 수 있다.</p>
+
+<p>이처럼 포아송 분포는 다양한 상황에서 중요한 정보를 해석하는 데 활용될 수 있다.</p>
+
+<h2 id="포아송-분포의-시뮬레이션">포아송 분포의 시뮬레이션</h2>
+<p>포아송 분포의 파라미터는 \(\lambda\) 하나이다. 그렇다면 \(\lambda\) 값이 변함에 따라 포아송 분포는 어떻게 변화하는 지 살펴보자.</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/poisson_distribution/poisson_distribution.png" />
+</p>
+
+<p>위 그래프는 \(\lambda = 1\)로, 그 값이 매우 작을 때, 대부분의 확률이 0 또는 1로 집중되어 있다는 것을 보여준다.</p>
+
+<p>또한 \(\lambda = 10\), \(\lambda = 30\) 일 때를 보면, <strong>\(\lambda\)값이 커질 수록, 사건 발생 확률이 더 넓고 고르게 분포하며 그래프의 모양이 정규분포에 근사</strong>할 수 있음을 시각적으로 보여준다.</p>
+
+<p>실제로 포아송 분포는 <strong>\(\lambda\) 가 커지면 정규분포 \(N(\lambda, \lambda^{2})\) 에 근사</strong>한다.</p>
+
+<p><br /><br />
+<strong>참조</strong></p>
+
+<p><a href="https://ko.wikipedia.org/wiki/%ED%91%B8%EC%95%84%EC%86%A1_%EB%B6%84%ED%8F%AC">Wikipedia, Poisson Distribution</a><br />
+<a href="https://angeloyeo.github.io/2021/04/26/Poisson_distribution.html">Angelo’s Math Notes(Angelo)</a></p>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-04-02T00:00:00+09:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+<div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml">구독하기</a></div>
+</div><div class="article__license"><div class="license">
+    <p>이 글의 저작권은 <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a> 라이센스를 따릅니다.
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">
+        <img alt="Attribution-NonCommercial 4.0 International" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+      </a>
+    </p>
+  </div></div></footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>이전</span><a href="/2024/03/28/geometric_distribution_ko.html">기하 분포</a></div></div></div>
 
 </div>
 
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+</script>
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
@@ -333,7 +496,7 @@ fill="#000000" stroke="none">
   </div>
 </footer>
 </div></div>
-    </div><script>(function() {
+    </div></div></div><script>(function() {
   var SOURCES = window.TEXT_VARIABLES.sources;
   window.Lazyload.js(SOURCES.jquery, function() {
     var $body = $('body'), $window = $(window);
@@ -485,7 +648,7 @@ fill="#000000" stroke="none">
 })();
 </script><div class="search search--dark">
   <div class="main">
-    <div class="search__header">Search</div>
+    <div class="search__header">검색</div>
     <div class="search-bar">
       <div class="search-box js-search-box">
         <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
@@ -495,7 +658,7 @@ fill="#000000" stroke="none">
         </div>
       </div>
       <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
-        Cancel</button>
+        취소</button>
     </div>
     <div class="search-result js-search-result"></div>
   </div>
@@ -850,6 +1013,98 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $pageMask = $('.js-page-mask');
+    var $pageRoot = $('.js-page-root');
+    var $sidebarShow = $('.js-sidebar-show');
+    var $sidebarHide = $('.js-sidebar-hide');
+
+    function freeze(e) {
+      if (e.target === $pageMask[0]) {
+        e.preventDefault();
+      }
+    }
+    function stopBodyScrolling(bool) {
+      if (bool === true) {
+        window.addEventListener('touchmove', freeze, { passive: false });
+      } else {
+        window.removeEventListener('touchmove', freeze, { passive: false });
+      }
+    }
+
+    $sidebarShow.on('click', function() {
+      stopBodyScrolling(true); $pageRoot.addClass('show-sidebar');
+    });
+    $sidebarHide.on('click', function() {
+      stopBodyScrolling(false); $pageRoot.removeClass('show-sidebar');
+    });
+  });
+})();
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]

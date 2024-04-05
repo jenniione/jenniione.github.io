@@ -1,11 +1,10 @@
 <!DOCTYPE html><html lang="en">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Article - JenDS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Probability Distribution - JenDS</title>
 
-<meta name="description" content="JenDS by Jenny Won
-">
-<link rel="canonical" href="http://localhost:4000/article.html"><link rel="alternate" type="application/rss+xml" title="JenDS" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="A simple explanation of a random variable is that it connects the outcome of a random preocess to a number. A common example is flipping a coin. Flipping a c...">
+<link rel="canonical" href="http://localhost:4000/2024/03/26/random_variables_en.html"><link rel="alternate" type="application/rss+xml" title="JenDS" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
@@ -257,7 +256,18 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport cell cell--auto">
+      <div class="layout--page layout--page--sidebar clearfix js-page-root">
+  <div class="page__mask d-print-none js-page-mask js-sidebar-hide"></div>
+  <div class="page__viewport">
+    <div class="page__actions d-print-none">
+      <div class="button button--circle button--lg box-shadow-2 sidebar-button js-sidebar-show">
+        <i class="fas fa-bars icon--show"></i>
+      </div>
+    </div>
+
+    <div class="grid page__grid">
+
+      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Language</li><li class="toc-h2"><a href="/2024/03/26/random_variables_ko.html">한국어(KR)</a></li><li class="toc-h1">Probability & Statistics Basics</li><li class="toc-h2 active"><a href="/2024/03/26/random_variables_en.html">Random Variables</a></li><li class="toc-h2"><a href="/2024/03/27/binomial_distribution_en.html">Biomial Distribution</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -292,27 +302,174 @@ fill="#000000" stroke="none">
 </svg>
 <a title="JenDS by Jenny Won
 " href="/">JenDS</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
-        <ul><li class="navigation__item"><a href="/2024/03/26/random_variables_en.html">Study Note</a></li><li class="navigation__item navigation__item--active"><a href="/article.html">Article</a></li><li class="navigation__item"><a href="/about.html">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+        <ul><li class="navigation__item navigation__item--active"><a href="/2024/03/26/random_variables_en.html">Study Note</a></li><li class="navigation__item"><a href="/article.html">Article</a></li><li class="navigation__item"><a href="/about.html">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
       </nav></div>
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><div class="article__header"><header><h1>Article</h1></header></div><meta itemprop="headline" content="Article"><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item"><div class="item__content">
-          <header><a href="/article/Python.html"><h2 itemprop="headline" class="item__header">Python</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody"></div><p><a href="/article/Python.html">Read more</a></p></div><div class="article__info clearfix"><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 05, 2024</span>
-            </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-04-05T20:46:40+09:00"></div>
-      </article></div>
-</div><div class="article__content">
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Probability Distribution</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Edit on Github"
+            href="https://github.com/jenniione/jenniione.github.io/tree/master/_posts/2024-03-26-random_variables_en.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Probability Distribution"><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=Stastistics">Stastistics</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 26, 2024</span>
+            </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-03-26T00:00:00+09:00">
+    <meta itemprop="keywords" content="Stastistics"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
-  <hr />
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p>A simple explanation of a random variable is that it connects <strong><u>the outcome</u> of <u>a random preocess</u> to a number</strong>. A common example is flipping a coin. Flipping a coin 5 times at random and the total number of heads obtained can be considered a random variable. Understanding that flipping a coin 5 times is a random process is not difficult, making it an intuitive concept. So, what does it mean to connect such results to a number?</p>
+
+<p>To understand this, let’s discuss ‘magnitude or scale’ from a mathematical perspective. The outcome of random processes, like rolling dice, carries uncertainty. Can we mathematically express the ‘how much’ of this uncertainty? If the outcome is expressed numerically, it would allow for the most intuitive interpretation. What if it could even be operated on?… From this approach, we can appreciate the value of defining a random variable. In fact, this level of understanding might be sufficient. However, for those who wish to delve deeper into academic study, we can explore the concept of a random variable more mathematically.</p>
+
+<p><br /></p>
+<h2 id="mathematical-approach">Mathematical Approach</h2>
+<p>To delve into the concept of a random variable as defined in probability theory, it’s necessary to start with some foundational concepts. Although this requires a deep mathematical understanding, I will attempt to approach it in as intuitive a manner as possible. Let’s approach the mathematical definition of a random variable step by step</p>
+
+<h3 id="measure-theory">Measure Theory</h3>
+<p>To grasp the concept of measure, let’s first imagine <strong>“a scenario where a cap is filled with water”.</strong></p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/random_variables/water_glass.jpeg" />
+</p>
+
+<p><br />To answer the question “How much water is in the cup?”, we <u>define and measure 'volume'</u>. If we assign a ‘volume’ to a certain set, such as a three-dimentional object, it means we are <u>assigning a concept of 'size' to that set</u>. This concept is referred to as <strong>measure</strong> in mathematics. Measure theory deals with the generalized concept of measure, including size, area, volume, etc., and is a theory that measures and analyzes the size of sets and functions. This theory plays a crucial role, especially in probability theory and functional analysis, which explains why we frequently encounter sets in our study of probability. <strong>What’s important to note is that the ‘probability’ we discuss prepresents this concept of size as a ‘measure’.</strong> Therefore, we can only truly understand the definition of probability based on measure theory.</p>
+
+<p><br /></p>
+<h3 id="probability">Probability</h3>
+<p>When we conduct an experiment to obtain results from a certain phenomenon, we achieve what are called realization. This term ‘realization’ might feel unfamiliar. If you think of it as the outcome which is the result of the experiment, it becomes easier to understand. Now, let’s delve into the concept of probability based on measure theory through the example of rolling dice, which is a type of random experiment.</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/random_variables/definition_random_variable_1.png" />
+</p>
+
+<p><br /> 
+In the sample space \(\Omega = \{1,2,3,4,5,6\}\), to mathematically discuss the magnitude of the event (\(\mathcal{F}\)) where a die lands on 2, we utilize a measure called probability, denoted by \(Pr(\cdot)\). Through this definition, we articulate that the probability of the event where the die shows a 2 is \(Pr(2) = \frac{1}{6}\).</p>
+
+\[\begin{equation} 
+\begin{aligned} 
+&amp; Pr(1) = Pr(2) = Pr(3) = Pr(4) = Pr(5) = Pr(6) = 1/6
+\end{aligned} 
+\end{equation}\]
+
+<p>In other words, <strong>“probability is a measure for the realization from a random experiment”</strong>, and by using the measure known as probability $Pr(\cdot)$$, we can obtain the measured realization of the size of elements within the space.</p>
+
+<h3 id="sigma-field-mathcalb">\(\sigma\)-field \(\mathcal{B}\)</h3>
+<p>To define probability without contradictions by introducing the concept of measure, it’s necessary to precisely define the objects of measurement. This is where the \(\sigma\)-field comes in. A \(\sigma\)-field is defined as a collection of sets that satisfies certain conditions.</p>
+
+<p>(i) $\emptyset \in \mathcal{B}$  <br />
+(ii) $A \in \mathcal{B} \Rightarrow A^c \in \mathcal{B}$ <br />
+(iii) $A_i \in \mathcal{B} \Rightarrow \cup_{i=1}^{\infty}A_i \in \mathcal{B}$ <br /></p>
+
+<p>(i) It includes the non-empty set, (ii) the complement, and (iii) is closed under countable unions and intersections of sets \(S\), defined as a collection of subsets. Given such a collection of sets, we can define a measurable space, which allows for the consistent definition of measure and probability.</p>
+
+<p><br /></p>
+<ul>
+  <li><strong>Measure</strong><br />
+A measure \(\mu\) is a type of set function in a measurable space \((U, \mathcal{B})\) that assigns elements in \([0,\infty]\) to elements of the \(\sigma\)-field.
+\begin{equation} 
+\begin{aligned} 
+\mu : \mathcal{B} \rightarrow [0, \infty]
+\end{aligned} 
+\end{equation}
+    <ul>
+      <li>\(\mu(\emptyset) = 0\): The measure of the empty set is 0.<br /></li>
+      <li>For any sequence of mutually exclusive sets \(A_j\), \(A_j\), the measure of their union is equal to the sum of their measures : \(\mu(\cup_{i=1}^{\infty} A_i) = \sum_{i=1}^{\infty} \mu(A_i)\).</li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+<ul>
+  <li><strong>Probability</strong><br />
+Probability refers to a normalized measure on the extire set \(U\) such that \(\mu(U)=1\), indicating that the measure satisfies the condition of the total measure of the sample space being 1.</li>
+</ul>
+
+<p>Probability can be described as a measure where the total probability across the entire sample space equals 1.</p>
+
+<hr />
+
+<h3 id="definition-of-a-random-variable">Definition of a Random Variable</h3>
+<p>Noew, it’s time to examine the definition of a random variable.</p>
+
+<p>**Definition   A random variable \(x\) is a function defined on the sample space \(\Omega\). This function serves to transform an element of the probability space \((\Omega, \mathcal{F}, P)\) into an element of the Boral measurable space \((\mathbb{R}, \mathcal{B})\)</p>
+
+<p>Here, the space created by the set of real numbers is referred to as the BOrel measurable space, and the associated \(\sigma\)-field in this context is termed the Borel set.</p>
+
+<details>
+<summary>Borel Measurable Space</summary>
+<div>
+
+    <p><strong>Borel Measurable Space</strong>: Consists of the set of real numbers \(\mathbb{R}\) and the Borel \(\sigma\) algebra \(\mathcall{B}\). The Borel \(\sigma\)-algebra includes open intervals on the real line and encompasses all sets that can be generated from these intervals. Essentially, this makes it possible to measure events in the commonly dealt with real number space.</p>
+
+  </div>
+</details>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/random_variables/definition_random_variable_2.png" />
+</p>
+
+<ul>
+  <li>\(\Omega\) : Known as the Space, this represents the entire set of possible elements or outcomes.</li>
+  <li>\(\mathcal{F}\) : Signifies the subsets of the sample space, referred to as Events.</li>
+  <li>\(Pr\) : Acts as the operator that performs measurement, assigning probabilites to elements of the sample space.</li>
+</ul>
+
+<p>Through these complex concepts, we conclude that a random variable is essentially a function that transforms an element of the sample space into a real number. By defining this, we become interested in practically applying the probability of a random variable \(x\), denoted as \(Pr(x)\)</p>
+
+<h2 id="types-of-random-variables">Types of Random Variables</h2>
+
+<p>Random variables are broadly classified into discrete and continuous types. A random variable that can take on either a finite number of values or a countably infinite number of values, such as the outcome of rolling a dice or baseball game socres, is called a <strong>discrete random variables</strong>. The Probability Mass Function(PMF) of a discrete random variable can assign a clear probability to each value. On the other hand, a random variable that can take values in a continuous range, such as temperature, stock prices, duration, speed, or measurements of an object’s length, is called a <strong>continuous random variable</strong>. Although the Probability Density Function(PDF) of a continuous random variable cannot assign a probability to each specific value, it can express the probability over a range of values.</p>
+
+<p>Discrete probability distributions include, notably, the binomial distribution, Poisson distribution, and geometric distribution, while continuous probability distributions include the normal distribution, uniform distribution, and exponential distribution. The following outlines the relations among various probability distributions.</p>
+
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-03-26T00:00:00+09:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+<div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml">Subscribe</a></div>
+</div><div class="article__license"><div class="license">
+    <p>This work is licensed under a <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a> license.
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">
+        <img alt="Attribution-NonCommercial 4.0 International" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+      </a>
+    </p>
+  </div></div></footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2024/03/26/random_variables_ko.html">한국어(KR)</a></div><div class="next"><span>NEXT</span><a href="/2024/03/27/binomial_distribution_en.html">Biomial Distribution</a></div></div></div>
 
 </div>
 
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+</script>
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
@@ -333,7 +490,7 @@ fill="#000000" stroke="none">
   </div>
 </footer>
 </div></div>
-    </div><script>(function() {
+    </div></div></div><script>(function() {
   var SOURCES = window.TEXT_VARIABLES.sources;
   window.Lazyload.js(SOURCES.jquery, function() {
     var $body = $('body'), $window = $(window);
@@ -850,6 +1007,98 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $pageMask = $('.js-page-mask');
+    var $pageRoot = $('.js-page-root');
+    var $sidebarShow = $('.js-sidebar-show');
+    var $sidebarHide = $('.js-sidebar-hide');
+
+    function freeze(e) {
+      if (e.target === $pageMask[0]) {
+        e.preventDefault();
+      }
+    }
+    function stopBodyScrolling(bool) {
+      if (bool === true) {
+        window.addEventListener('touchmove', freeze, { passive: false });
+      } else {
+        window.removeEventListener('touchmove', freeze, { passive: false });
+      }
+    }
+
+    $sidebarShow.on('click', function() {
+      stopBodyScrolling(true); $pageRoot.addClass('show-sidebar');
+    });
+    $sidebarHide.on('click', function() {
+      stopBodyScrolling(false); $pageRoot.removeClass('show-sidebar');
+    });
+  });
+})();
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]

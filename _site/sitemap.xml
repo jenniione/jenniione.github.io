@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://localhost:4000/article/single.html</loc>
-<lastmod>2024-04-05T20:37:31+09:00</lastmod>
+<loc>http://localhost:4000/article/Python.html</loc>
+<lastmod>2024-04-05T20:46:40+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/study/2024-03-26-random_variables_en.html</loc>
+<loc>http://localhost:4000/2024/03/26/random_variables_en.html</loc>
 <lastmod>2024-03-26T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/study/2024-03-26-random_variables_ko.html</loc>
+<loc>http://localhost:4000/2024/03/26/random_variables_ko.html</loc>
 <lastmod>2024-03-26T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/2024/03/27/binomial_distribution_en.html</loc>
+<lastmod>2024-03-27T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/2024/03/27/binomial_distribution_ko.html</loc>
+<lastmod>2024-03-27T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/2024/03/28/geometric_distribution_ko.html</loc>
+<lastmod>2024-03-28T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/2024/04/02/poisson_distribution_ko.html</loc>
+<lastmod>2024-04-02T00:00:00+09:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/about.html</loc>
