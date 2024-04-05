@@ -224,13 +224,6 @@ defaults:
       show_subscribe: true
       pageview: true
 
-  - scope:
-        path: ""
-        type: article
-      values:
-        nav_key: article
-        show_date: false
-
 ## => Plugins
 ##############################
 plugins:
