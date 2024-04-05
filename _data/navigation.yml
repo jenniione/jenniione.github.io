@@ -9,7 +9,7 @@ header:
       ko      : &KO       스터디 노트
       ko-KR   : *KO
       # @end locale config
-    url: 2024/03/26/random_variables_en.html
+    url: /2024/03/26/random_variables_en.html
 
   - titles:
       # @start locale config

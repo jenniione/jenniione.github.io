@@ -201,9 +201,9 @@ exclude:
   - /test
   - /vendor
 
-collections_dir: docs
+
 collections:
-  study:
+  post:
     output: true
   article:
     output: true
@@ -223,6 +223,7 @@ defaults:
       show_edit_on_github: true
       show_subscribe: true
       pageview: true
+
 
 ## => Plugins
 ##############################
