@@ -201,6 +201,15 @@ exclude:
   - /test
   - /vendor
 
+collections_dir: post
+collections:
+  study:
+    output: true
+  article:
+    output: true
+  project:
+    output: true
+
 defaults:
   - scope:
       path: ""
@@ -214,7 +223,12 @@ defaults:
       show_edit_on_github: true
       show_subscribe: true
       pageview: true
-
+- scope:
+      path: ""
+      type: article
+    values:
+      nav_key: article
+      show_date: false
 
 ## => Plugins
 ##############################
