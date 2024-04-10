@@ -63,6 +63,10 @@ study-ko:
         url:    2024/03/28/geometric_distribution_ko.html
       - title:  포아송 분포
         url:    2024/04/02/poisson_distribution_ko.html
+      - title:  정규 분포
+        url:    2024/04/06/normal_distribution_ko.html
+      - title:  포아송 분포
+        url:    2024/04/10/chi_squared_distribution_ko.html
 
 study-en:
   - title:      Language
