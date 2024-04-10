@@ -5,7 +5,7 @@ sidebar:
 aside:
   toc: true
 key: 20240327
-tags: Stastistics
+tags: Statistics
 lang: en
 ---
 
@@ -108,3 +108,9 @@ Random variables are broadly classified into discrete and continuous types. A ra
 
 Discrete probability distributions include, notably, the binomial distribution, Poisson distribution, and geometric distribution, while continuous probability distributions include the normal distribution, uniform distribution, and exponential distribution. The following outlines the relations among various probability distributions.
 
+<br/><br/>
+**Reference**
+
+[Probability and Statistics for Data Science (Carlos Fernandez-Granda)](https://cims.nyu.edu/~cfgranda/pages/stuff/probability_stats_for_DS.pdf)<br/>
+[ALIDA (Gyubeom Edward Im)](https://alida.tistory.com/84)<br/>
+[Types of Probability Distributions (Jagandeep Singh)](https://jagan-singhh.medium.com/types-of-probability-distributions-9333d18ed817)

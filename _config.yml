@@ -201,12 +201,7 @@ exclude:
   - /test
   - /vendor
 
-
 collections:
-  post:
-    output: true
-  article:
-    output: true
   project:
     output: true
 

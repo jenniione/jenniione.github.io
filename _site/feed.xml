@@ -1,5 +1,242 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-04-05T20:46:40+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JenDS</title><subtitle>JenDS by Jenny Won
-</subtitle><author><name>Jenny Won (Dajeong Won)</name></author><entry xml:lang="ko"><title type="html">포아송 분포</title><link href="http://localhost:4000/2024/04/02/poisson_distribution_ko.html" rel="alternate" type="text/html" title="포아송 분포" /><published>2024-04-02T00:00:00+09:00</published><updated>2024-04-02T00:00:00+09:00</updated><id>http://localhost:4000/2024/04/02/poisson_distribution_ko</id><content type="html" xml:base="http://localhost:4000/2024/04/02/poisson_distribution_ko.html"><![CDATA[<p align="center">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-04-10T20:59:32+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JenDS</title><subtitle>JenDS by Jenny Won
+</subtitle><author><name>Jenny Won (Dajeong Won)</name></author><entry xml:lang="ko"><title type="html">카이제곱 분포</title><link href="http://localhost:4000/2024/04/10/chi_squared_distribution_ko.html" rel="alternate" type="text/html" title="카이제곱 분포" /><published>2024-04-10T00:00:00+09:00</published><updated>2024-04-10T00:00:00+09:00</updated><id>http://localhost:4000/2024/04/10/chi_squared_distribution_ko</id><content type="html" xml:base="http://localhost:4000/2024/04/10/chi_squared_distribution_ko.html"><![CDATA[<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_wiki.png" />
+</p>
+
+<h2 id="카이제곱-분포의-정의">카이제곱 분포의 정의</h2>
+<p>카이제곱 분포(Chi-Squared Distribution)은 $k$개의 서로 독립이며, 표준 정규 분포를 따르는 확률 변수 $X_1,\cdots, X_k$ 에 대하여, 각각의 확률 변수를 제곱한 다음 합하여 얻어지는 확률변수</p>
+
+\[Q = \sum_{i=1}^{k} X_i^2\]
+
+<p>의 분포이다. 즉, $Q \sim X_k^{2}$ 이다.</p>
+
+<p>이때, $k$를 자유도라고 하며, 카이제곱 분포의 단일 파라미터가 된다.</p>
+
+<p>자유도가 $k$인 카이제곱 분포의 확률 밀도 함수(PDF)는 다음과 같다.</p>
+
+\[f(x; k) = \frac{1}{2^{k/2}\Gamma(k/2)} x^{(k/2)-1} e^{-x/2}\]
+
+<ul>
+  <li>$(\Gamma(k/2))$ 는 감마 함수로, $(k/2)$ 의 인자(factorial)에 대한 일반화된 형태이다.</li>
+</ul>
+
+<h2 id="카이제곱-분포의-활용">카이제곱 분포의 활용</h2>
+<p>일반적으로 통계에서 제곱의 합을 구하는 행위는 오차나 편차를 분석할 때 유용하다. 카이제곱 분포가 오차나 편차를 다루는 방식에서 어떻게 작용하는지 생각해 보자. 이를 위해서는 앞선 <a href="https://jenniione.github.io/2024/04/06/normal_distribution_ko.html">정규분포와 중심 극한 정리</a>에 대한 이해가 선행되어야 한다.</p>
+
+<p>예를 들어, 우리가 관찰하려는 확률 변수 $X$가 실험적 측정이나 관측에서 발생한 어떠한 오차 혹은 편차라고 생각해보자. 오차나 편차는 수많은 미세한 요인들의 합으로 이해할 수 있다. 그럼 측정 오차가 여러 독립적인 원인에 의해 발생했다면, 그 합으로 이루어진 오차 $Y$ 는 중심 극한 정리에 의해 정규 분포에 근사한다. 물론, 표준 정규 분포로 스케일링이 가능하다.</p>
+
+<p>카이제곱 분포는 표준 정규 분포된 독립 변수 $Y$ (오차) 들의 제곱 합의 분포를 보려는 시도이다. (제곱은 오차의 방향을 무시, 크기만을 고려하기 위함.)
+이때, 만약 자유도가 3개 라면, 표준 정규 분포에서 3개의 변수를 뽑아 제곱하여 합한다.</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/normal_to_chi.png" />
+</p>
+
+<p>이러한 과정을 굉장히 많이 반복하여 분포를 확인하면 다음과 같다.</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_ex.png" />
+</p>
+
+<p>그럼 이 분포가 의미하는 것은 무엇일까? 오차의 합이 10이 나오는 확률은 0.05가 되지 않는다. 실제로 관측되거나 예상되는 값과 오차의 합이 나올 수 있는 확률을 비교함으로써 관측된 값이 우연에 의한 것인지, 혹은 유의미한 것인지를 판단할 수 있다는 것이다.</p>
+
+<p><br /><br />
+<strong>참조</strong></p>]]></content><author><name>Jenny Won (Dajeong Won)</name></author><category term="통계학" /><summary type="html"><![CDATA[카이제곱 분포의 정의 카이제곱 분포(Chi-Squared Distribution)은 $k$개의 서로 독립이며, 표준 정규 분포를 따르는 확률 변수 $X_1,\cdots, X_k$ 에 대하여, 각각의 확률 변수를 제곱한 다음 합하여 얻어지는 확률변수 \[Q = \sum_{i=1}^{k} X_i^2\] 의 분포이다. 즉, $Q \sim X_k^{2}$ 이다. 이때, $k$를 자유도라고 하며, 카이제곱 분포의 단일 파라미터가 된다. 자유도가 $k$인 카이제곱 분포의 확률 밀도 함수(PDF)는 다음과 같다. \[f(x; k) = \frac{1}{2^{k/2}\Gamma(k/2)} x^{(k/2)-1} e^{-x/2}\] $(\Gamma(k/2))$ 는 감마 함수로, $(k/2)$ 의 인자(factorial)에 대한 일반화된 형태이다. 카이제곱 분포의 활용 일반적으로 통계에서 제곱의 합을 구하는 행위는 오차나 편차를 분석할 때 유용하다. 카이제곱 분포가 오차나 편차를 다루는 방식에서 어떻게 작용하는지 생각해 보자. 이를 위해서는 앞선 정규분포와 중심 극한 정리에 대한 이해가 선행되어야 한다. 예를 들어, 우리가 관찰하려는 확률 변수 $X$가 실험적 측정이나 관측에서 발생한 어떠한 오차 혹은 편차라고 생각해보자. 오차나 편차는 수많은 미세한 요인들의 합으로 이해할 수 있다. 그럼 측정 오차가 여러 독립적인 원인에 의해 발생했다면, 그 합으로 이루어진 오차 $Y$ 는 중심 극한 정리에 의해 정규 분포에 근사한다. 물론, 표준 정규 분포로 스케일링이 가능하다. 카이제곱 분포는 표준 정규 분포된 독립 변수 $Y$ (오차) 들의 제곱 합의 분포를 보려는 시도이다. (제곱은 오차의 방향을 무시, 크기만을 고려하기 위함.) 이때, 만약 자유도가 3개 라면, 표준 정규 분포에서 3개의 변수를 뽑아 제곱하여 합한다. 이러한 과정을 굉장히 많이 반복하여 분포를 확인하면 다음과 같다. 그럼 이 분포가 의미하는 것은 무엇일까? 오차의 합이 10이 나오는 확률은 0.05가 되지 않는다. 실제로 관측되거나 예상되는 값과 오차의 합이 나올 수 있는 확률을 비교함으로써 관측된 값이 우연에 의한 것인지, 혹은 유의미한 것인지를 판단할 수 있다는 것이다. 참조]]></summary></entry><entry xml:lang="ko"><title type="html">정규 분포와 중심 극한 정리</title><link href="http://localhost:4000/2024/04/06/normal_distribution_ko.html" rel="alternate" type="text/html" title="정규 분포와 중심 극한 정리" /><published>2024-04-06T00:00:00+09:00</published><updated>2024-04-06T00:00:00+09:00</updated><id>http://localhost:4000/2024/04/06/normal_distribution_ko</id><content type="html" xml:base="http://localhost:4000/2024/04/06/normal_distribution_ko.html"><![CDATA[<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/normal_distribution_cover.png" />
+</p>
+
+<p>많은 통계적 검정과 모델링 방법론은 정규 분포를 가정으로 한다. 카이제곱분포, t-분포, F-분포 등 통계학에서 다뤄지는 중요한 분포들 역시 정규분포과 깊은 연관이 있으며, 이로 부터 파생되거나 그 성질을 활용하니, 정규 분포가 없는 통계학은 상상하기 어려울 지경이다.</p>
+
+<h2 id="정규-분포의-발견">정규 분포의 발견</h2>
+<p>정규 분포는 가우스 분포 혹은 라플라스 분포라고도 불린다. 혹은 종모양이라고 해서 Bell Curve라고도 하는데, 여기서는 정규 분포(Normal Distribution)이라고 하겠다. 사실 이름이 어떻든 중요한 것은 당시대의 수학자들이 각자의 연구 과정에서 정규 분포를 관찰했다는 것이고, 이것이 이러한 분포를 정의할 필요성을 주었다는 사실이다. 간단하게 몇몇 수학자의 정규 분포의 발견을 보자.</p>
+
+<p>정규 분포는 <u>'이항 분포의 근사'</u>로서 <strong>Abraham de Moivre</strong>에 의해 처음 발표되었다고 한다.</p>
+
+<p align="center">
+  <img class="image image--md" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/Abraham_de_moivre.jpg" />
+</p>
+
+<p>Abraham de Moivres(드무아브르)는 이항 분포의 n이 아주 큰 경우 어떤 식에 가까워질 지를 연구하던 중, 다음과 같은 근사식을 찾았는데, 실제로 n이 100을 넘을 정도로 크지 않은 값이여도 비교적 잘 성립한다는 것을 발견했다.</p>
+
+\[_{n}C_{k} p^k q^{n-k} \approx {\frac{1}{\sqrt{2 \pi npq}} e}^{-\frac{(k-np)^2}{2npq}}\]
+
+<p>이후 <strong>Johann Carl Friedrich Gauss</strong>(가우스)는 참값과 관측값 사이의 오차를 탐구하던 중 <u>오차들의 분포가 정규 분포를 이룬다</u>는 것을 발견했다.</p>
+
+<p align="center">
+  <img class="image image--md" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/Carl_Friedrich_Gauss.jpeg" />
+</p>
+
+<p>그는 관측치로 부터 참값을 추적하는 연구 중, 참값과 관측값의 차이인 오차들이 대칭성을 가진 특정한 분포를 나타낸다는 것을 알았다. 연구 진행을 위해 이 오차들의 분포를 정의할 필요가 있다고 판단하여 이 분포를 정의하게 되었다.</p>
+
+<h2 id="정규-분포의-정의">정규 분포의 정의</h2>
+<p>정규 분포는 <strong>평균 $\mu$ 와 표준편차 $\sigma$ 두 가지 파라미터</strong>로 완전히 정의된다.</p>
+
+<p>정규 분포는 다음과 같이 표현할 수 있고,</p>
+
+\[X\sim N(\mu ,{ \sigma  }^{ 2 })\]
+
+<p>연속 확률 변수 $X에 대해 다음과 같은 확률 밀도 함수는(PDF)를 따른다.</p>
+
+\[\begin{equation}
+\begin{aligned}
+f(x; \mu, \sigma) = \frac{1}{\sqrt{2\pi \cdot \sigma^{2}}} e^{-\frac{1}{2} \left(\frac{x-\mu}{\sigma}\right)^{2}}
+\end{aligned}
+\end{equation}\]
+
+<h2 id="정규-분포의-시뮬레이션">정규 분포의 시뮬레이션</h2>
+<p>정규 분포는 평균을 기준으로 좌우 대칭적 분포를 띈다. 정규 분포의 평균값이 변함에 따라 어떻게 분포가 이동하는 지 보자.</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/normal_distribution_simulation_mean.png" />
+</p>
+
+<p>또, 분산은 분포가 평균을 기준으로 퍼진 정도를 나타낸다. 분산이 클 수록 넓게 퍼지고, 분산이 작을 수락 뾰족한 형태를 띈다.</p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/normal_distribution_simulation_var.png" />
+</p>
+
+<h2 id="중심-극한-정리central-limit-theorem-clt">중심 극한 정리(Central Limit Theorem, CLT)</h2>
+<p>사실 이번 포스트는 정규 분포를 빙자한 중심 극한 정리라고 해도 무방하다.</p>
+
+<p>그만큼 중심 극한 정리는 정규 분포와 떼놓고 말하기 어렵기도 하고, 단순히 ‘봐봐, 정규 분포가 되지’라고 설명하고 넘어가기에는 중심 극한 정리가 정규 분포를 얼마나 중요하게 만들고 있는지 설명하는데 부족함이 크다고 생각한다.</p>
+
+<p>또, 이 정리를 마치 ‘어떤 분포든 그 시행을 무수히 하면 정규 분포가 되는 이론’이라고 오해하는 경우도 간혹 있어, 여기서 자세히 공부해 보려고 한다. (쉽게 설명하려는 의도로 같은 의미로 ‘샘플’과 ‘표본’, ‘동일한 분포’와 ‘고정된 분포’라는 표현을 혼용해서 사용하니 참고 바란다.)</p>
+
+<p class="info"><strong>정의</strong>   중심 극한 정리(CLT:Central Limit Theorem)는 다음과 같이 정의된다. 고정된 분포를 가진 집단에서, 독립적인 무작위 샘플링을 시행했을 때, 샘플의 크기(샘플링의 규모)가 클수록 그 <u>샘플의 평균들의 분포(혹은 그 합)는 정규분포를 따른다</u>.</p>
+
+<p>자, 하나 하나 그 의미를 따져보자.</p>
+
+<ul>
+  <li>고정된 분포를 가진 집단 : 그 분포의 형태는 상관없지만 전혀 다른 분포를 가진 집단에서 샘플링이 되어서는 안된다. 다시 말해, <strong>모집단이 어떠한 특정 분포를 따르더라도 그 모집단에 대해 중심 극한 정리는 유효</strong>하다.</li>
+  <li>독립적인 무작위 샘플링 : 말 그대로 하나 하나의 샘플링이 서로 독립적이며 무작위로 발생해야 한다.</li>
+  <li>샘플링의 크기가 크다면 : 흔히 이를 샘플링의 횟수를 많이 하면이라고 오해하기 쉽다. 하지만 정확히는 <strong>‘한 회에 발생하는 샘플링의 규모가 클수록’</strong>을 의미한다.</li>
+  <li>평균들의 분포가 정규분포를 따른다 : ‘샘플링의 횟수가 많다면 분포가 정규 분포가 된다’라고 오해할 때 간과하기 쉬운 포인트가 <strong>‘평균들의 분포가’</strong> 정규 분포를 따른다는 것이다. 이는 각각의 샘플링에서 얻은 평균들의 분포가 정규 분포를 따른다는 것을 의미한다.</li>
+</ul>
+
+<p>종합하여, <strong><u>어떤 특정 분포를 따르는 모집단이더라도, 그 모집단에서 독립적이고 무작위적인 방식으로 샘플을 추출한다면, 더 큰 규모의 샘플에서 추출하는 방식일수록, 각각의 샘플들로 부터 얻은 평균들의 분포가 정규 분포를 따르게 된다</u></strong>는 것이다.</p>
+
+<h3 id="중심-극한-정리의-직관적-이해">중심 극한 정리의 직관적 이해</h3>
+<p>어떤 모집단으로부터 얻은 여러 샘플들에서 평균들을 모았다고 생각해 보자. 한번에 뽑는 샘플의 요소가 많아질 수록 샘플에서 얻은 평균들은 모집단의 특성을 더 잘 반영하게 될 것이다. 이것을 직관적으로 이해하는 것은 어려운 일이 아니다.</p>
+
+<p>쉬운 예로 여론 조사를 떠올려보자. 우리는 무작위로 뽑은 100명의 집단 보다 1,000명의 집단에서 실시한 여론조사가 국민의 의견을 더 잘 반영한다고 한다. 혹은 믿을만 하다고도 한다. (신뢰성에 대한 이야기 역시 할 이야기가 많지만 우선은 넘어가도록 한다.) 왜 그렇게 생각할까? 더 큰 규모에서 샘플링이 시도된다면 모집단의 특성을 더 잘 나타낼 것이라는 것을 우린 직감적으로 이해할 수 있다. 특히, <u>모집단의 '평균'이라는 특성은 샘플의 규모가 크면 클수록 샘플의 평균에서 더 잘 나타나고, 샘플의 평균들은 모집단의 평균으로 수렴</u>하려고 할 것이다.</p>
+
+<p>관점을 살짝 틀어보기 위해 <strong>극단적인 상황</strong>을 가정해 보자. 모집단 만큼이나 큰 샘플에서 평균을 얻는다고 생각해 보자. 아마 여러차례 샘플링을 시도하여 평균을 구한다면, 그 값은 웬만하면 모집단의 평균처럼 나올 것이다. 물론 정확히 모집단의 평균이 아닌 값들도 관찰될 되겠지만, <u>작은 오차는 빈번하게 발생할 수 있어도 큰 오차는 드물게 발생</u>할 것이다. 이것은 다음과 같이 해석될 수 있다. <strong>더 큰 샘플링을 시도할 수록 샘플들의 평균은 모집단의 평균을 더 정확히 추정</strong>하며, 추적의 과정에서 발생하는 오차들이 큰 오차보다는 작은 오차들이 나타나는 형태로 나름 대칭성을 갖고 분포한다는 것이다.</p>
+
+<p>이렇게 생각해보니 중심 극한 정리가 “당연한 거 아니야?”라고 말할 수 있을 만큼 이해할 법 하다.</p>
+
+<p><strong>‘오차’</strong>라는 이야기를 했는데, 사실 가우스도 참값과 관측값으로 부터의 오차를 탐구하다 이 오차들이 정규 분포의 형태를 띈다는 것을 확인하고 이 분포를 정의하게 된 것이니 정규 분포가 앞으로 어떻게 활용될 수 있는지 짐작해 볼 수 있겠다.</p>
+
+<h3 id="수학적-고찰">수학적 고찰</h3>
+<p>앞서 이해한 중심 극한 정리를 수학적 관점에서 다시 정의하자면 다음과 같다.</p>
+
+<p class="info"><strong>정의</strong>   중심극한정리(central limit theorem)은 무작위로 추출된 표본의 크기가 커질수록 표본 평균의 분포는 모집단의 분포 모양과는 관계없이 정규분포 가까워진다는 정리이다. 임의의 분포를 갖는 확률변수 \(x_1, x_2, \cdots, x_n\) 들이 서로 독립이면서 동일한 분포를 갖고 있다고 하자(=i.i.d).이들의 평균을 \(\mathbb{E}(x_i) = \mu\), 분산을 \(\text{var}(x_i)=\sigma^2\) 라고 했을 때 \(\mathbf{x} = [x_1, x_2, \cdots, x_n]^{\intercal}\) 은 \(n\) 이 커질수록 다음과 같은 표준정규분포로 수렴하게 된다.&lt;/u&gt;.</p>
+
+\[\begin{equation} 
+\begin{aligned}
+\frac{\mathbf{x}- n\mu}{\sigma \sqrt{n}} \sim \mathcal{N}(0,1)
+ \end{aligned}
+\end{equation}\]
+
+<h4 id="중심-극한-정리의-증명">중심 극한 정리의 증명</h4>
+<p>중심 극한 정리의 증명 방법에는 여러가지 버전이 존재한다. 초기 형태였던 라플라스에 의한 방법은 이항 분포의 정규 분포 근사에 초점이 맞춰져 있고, 현재가 가장 활발히 활용되는 방식은 모멘트 생성 함수의 성질을 이용하는 린데베르그-레비의 중심 극한 정리이다. 이번 섹션에서는 특성 함수와 합성곱을 활용하여 전통적인 방법 보다 직관적인 접근 방법으로 접근해 보려고 한다.</p>
+
+<p class="warning"><strong>명제</strong>   독립적이고 동일하게 분포된(i.i.d.) 무작위 변수들의 ‘합’이, 적절하게 정규화될 때, 정규 분포에 수렴한다.</p>
+
+<ul>
+  <li><strong>확률 변수의 합성곱 정의</strong><br />
+우선, 합성곱이라는 개념을 어떻게 확률변수에 어떻게 적용되는 지 살펴보자.</li>
+</ul>
+
+<p>두 개의 확률 변수 $X$, $Y$이 서로 독립이라고 하자. 그러면 새로운 확률 변수 $Z = X + Y$에 대한 확률은 다음과 같이 정의할 수 있다.</p>
+
+\[P(Z) = \sum_{k=-\infty}^{\infty}{P(X)P(Y)}\]
+
+<p>이 부분이 잘 이해가 되지 않는다면, $X$를 동전 던지기의 앞면이 나올 사건, $Y$를 주사위 던지기의 짝수가 나올 사건, $Z$를 동전과 주사위를 던졌을 때 앞면과 짝수가 나올 사건이라고 했을떄, Z의 확률을 구하기 위해, $X$, $Y$의 확률의 곱을 계산하고 있는 자신의 모습을 떠올려보자. 또, 이러한 내용을 전문적으로 아주 잘 설명하고 있는 <a href="https://colah.github.io/posts/2014-07-Understanding-Convolutions/">이 블로그</a>를 방문해 보길 추천한다.</p>
+
+<p>$X$, $Y$의 확률 밀도 함수를 각각 $f(x)$, $g(x)$라고 하면, $Z = X + Y$의 확률 밀도 함수 $(f*g)(z)$ 는 다음과 같은 함수의 합성곱으로 표현될 수 있다.</p>
+
+\[(f*g)(z) = \int_{-\infty}^{\infty}f(z-y)g(y)dy = \int_{-\infty}^{\infty}g(z-x)f(x)dx\]
+
+<p>합이 곱으로 변환된다는 점에 주목하자. 이러한 성질을 확률 변수의 특성 함수를 정의함으로써 활용하고자 한다.</p>
+
+<ul>
+  <li><strong>확률 변수의 특성 함수 정의</strong></li>
+</ul>
+
+<p>임의의 확률 밀도 함수 $f_X(x)$에 대한 특성 함수는 다음과 같이 정의한다. (t는 실수)</p>
+
+\[\phi_X(t) = E[e^{itX}] = \int_{-\infty}^{\infty}e^{jtx}f_X(x)dx\]
+
+<p>이러한 특성 함수의 정의에서 다음과 같은 성질로 복소수 지수 함수 $e^{itX}$의 절대값은 항상 1이다.</p>
+
+\[|e^{itx}| = |\cos(tx) + i\sin(tx)| =  \sqrt{\cos^2(tx) + \sin^2(tx)} = 1\]
+
+<p>이러한 특성 함수 정의는 라플라스 변환, 확률 생선 함수, 혹은 모멘트 생성 함수와 같은 다른 변환들과 비교했을 때, 모든 확률 분포에 대해 적분이 존재한다는 매우 큰 장점을 갖는다.</p>
+
+<ul>
+  <li><strong>맥클로린 급수 전개</strong></li>
+</ul>
+
+<p>앞선 특성 함수 정의에서 $$e^{jtx}$ 는 맥클로린 급수 전개를 이용해 다음과 같이 전개할 수 있다.</p>
+
+\[e^{jtx}=\sum_{k=1}^{\infty}\frac{(jtx)^k}{k!}=1+jtx+\frac{(jtx)^2}{2!}+\frac{(jtx)^3}{3!}+\cdots = 1+jtx+\frac{(jtx)^2}{2!}+O(t^2)\]
+
+<p>$O(t^2)$ 은 네 번째 항부터 마지막까지의 항을 뭉뚱그려 쓴 것이다. 이것을 특성 함수 전개에 적용하면,</p>
+
+\[\phi_X(t) = \int_{-\infty}^{\infty}e^{jtx}f_Y(t)dy=\int_{-\infty}^{\infty}\left\{1+jtx-\frac{t^2}{2}x^2+O(t^2)\right\}f_X(x)dy\notag\]
+
+\[=\int_{-\infty}^{\infty}f_X(x)dy + \int_{-\infty}^{\infty}xf_X(x)dy - \frac{t^2}{2}\int_{-\infty}^{\infty}x^2f_X(x)dy+O(t^2)\notag\]
+
+\[=1+jtE\left[x\right]-\frac{t^2}{2}E\left[x^2\right]+O(t^2)\]
+
+<p>이 된다.</p>
+
+<ul>
+  <li><strong>정규화된 확률 변수 $Z_i$의 특성 함수</strong></li>
+</ul>
+
+<p>자, 확률 변수 $X$를 평균이 0($E(x)=0$)이고, 분산이 1(Var[x]=1)로 정규화한 새로운 확률 변수 $Z_i = \frac{X_i - \mu}{\sigma}$에 대한 특성 함수를 보려고 한다. 앞서 특성 함수의 전개를 봤듯이, $Z_i$에 대한 특성 함수는 다음과 같이 정리된다.</p>
+
+\[\phi_Z(t) = E\left[e^{jtz}\right]=\int_{-\infty}^{\infty}e^{jtz}f_Z(z)dx\]
+
+\[=1+jtE\left[z\right]-\frac{t^2}{2}E\left[z^2\right]+O(t^2)\]
+
+\[= 1+0-\frac{t^2}{2}+O(t^2)\]
+
+\[= 1-\frac{t^2}{2}+O(t^2)\]
+
+<ul>
+  <li><strong>$n$개의 $Z_i$의 합에 대한 특성 함수</strong>
+$n$개의 독립적인 확률변수 $Z_i$의 합 $S_n = \sum_{i=1}^{n} Z_i = Z_1 + Z_2 + \cdots + Z_n$에 대한 특성 함수는, 합성곱의 성질을 이용하여 다음과 같이 나타낼 수 있다.</li>
+</ul>
+
+\[\phi_{S_n}(t) = \left( \phi_{Z}(t) \right)^n\]
+
+<p>앞선 정규화된 $Z$의 특성 함수 전개를 적용하면,</p>
+
+\[\phi_{S_n}(t) = \left( \phi_{Z}(t) \right)^n = [1-\frac{t^2}{2N}+O\left(\frac{t^2}{N}\right)]^N\]
+
+<p>이 된다. 여기서, $n$을 무한대로 보내면 $O(\frac{t^2}{N})$이 $\frac{t^2}{2N}$ 보다 빠르게 0에 수렴하므로, 그 극한값은 다음과 같이 수렴한다는 것을 알 수 있다.</p>
+
+\[\lim_{N\rightarrow \infty}\phi_{S_N}(t) = \lim_{N\rightarrow\infty}\left[1-\frac{t^2}{2N}\right]^N=e^{-t^2/2}\]
+
+<h2 id="정규-분포의-중요성">정규 분포의 중요성</h2>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/central limit theorem.webp" />
+</p>
+
+<p>샘플링 기법에 기반한 추론적 통계에서, 표본 평균들의 분포를 이해하는 것은 모평균을 추적함에 있어 중요하다. 그런데 중심 극한 정리에 따르면 충분히 큰 샘플에서 샘플링이 이루어 졌을 때, 모평균에 대해 전혀 알지 못해도, 이 표본 평균들의 분포가 정규 분포로 수렴한다. 일반적으로 많은 상황에서 우리는 제한된 관측치를 가지고 모집단을 추정해 본다. 이때, 관측치들을 일정하게 샘플링해 얻은 평균값들의 분포를 통해 모집단의 분포를 추정하려는 시도는, 우리가 정규 분포를 필연적으로, 꽤나 자주 마주하게 만들 것이다.</p>
+
+<p><br /><br />
+<strong>참조</strong><br />
+<a href="https://en.wikipedia.org/wiki/Abraham_de_Moivre">Wikipedia(Abraham de Moivre)</a><br />
+<a href="https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss">Wikipedia(Johann Carl Friedrich Gaus)</a><br />
+<a href="https://integratedmlai.com/normal-distribution-an-introductory-guide-to-pdf-and-cdf/">Normal Distribution: An Introductory Guide to PDF and CDF(Teena Mary)</a><br />
+<a href="https://recipesds.tistory.com/entry/%EA%B0%80%EC%9A%B0%EC%8B%9C%EC%95%88Gaussian-%EC%A0%95%EA%B7%9C%EB%B6%84%ED%8F%ACNormal-Distribution-%EB%84%88%EB%9E%80-%EB%B6%84%ED%8F%AC-%EC%A0%95%EB%A7%90">가우시안(Gaussian)-정규분포(Normal Distribution).너란 분포 정말(친절한 데이터 사이언스 강좌)</a><br />
+<a href="https://medium.com/@amanatulla1606/python-implementation-of-central-limit-theorem-exploring-sample-data-to-infer-population-595e39e0c98e">“Python Implementation of Central Limit Theorem: Exploring Sample Data to Infer Population Parameters”(Amanatullah)</a><br />
+<a href="https://colah.github.io/posts/2014-07-Understanding-Convolutions/">Understanding Convolutions(colah’s blog)</a><br />
+<a href="https://sas.uwaterloo.ca/~dlmcleis/s901/chapt6.pdf">Characteristic Functions and the Central Limit Theorem(University of Waterloo)</a><br /></p>]]></content><author><name>Jenny Won (Dajeong Won)</name></author><category term="통계학" /><summary type="html"><![CDATA[많은 통계적 검정과 모델링 방법론은 정규 분포를 가정으로 한다. 카이제곱분포, t-분포, F-분포 등 통계학에서 다뤄지는 중요한 분포들 역시 정규분포과 깊은 연관이 있으며, 이로 부터 파생되거나 그 성질을 활용하니, 정규 분포가 없는 통계학은 상상하기 어려울 지경이다. 정규 분포의 발견 정규 분포는 가우스 분포 혹은 라플라스 분포라고도 불린다. 혹은 종모양이라고 해서 Bell Curve라고도 하는데, 여기서는 정규 분포(Normal Distribution)이라고 하겠다. 사실 이름이 어떻든 중요한 것은 당시대의 수학자들이 각자의 연구 과정에서 정규 분포를 관찰했다는 것이고, 이것이 이러한 분포를 정의할 필요성을 주었다는 사실이다. 간단하게 몇몇 수학자의 정규 분포의 발견을 보자. 정규 분포는 '이항 분포의 근사'로서 Abraham de Moivre에 의해 처음 발표되었다고 한다. Abraham de Moivres(드무아브르)는 이항 분포의 n이 아주 큰 경우 어떤 식에 가까워질 지를 연구하던 중, 다음과 같은 근사식을 찾았는데, 실제로 n이 100을 넘을 정도로 크지 않은 값이여도 비교적 잘 성립한다는 것을 발견했다. \[_{n}C_{k} p^k q^{n-k} \approx {\frac{1}{\sqrt{2 \pi npq}} e}^{-\frac{(k-np)^2}{2npq}}\] 이후 Johann Carl Friedrich Gauss(가우스)는 참값과 관측값 사이의 오차를 탐구하던 중 오차들의 분포가 정규 분포를 이룬다는 것을 발견했다. 그는 관측치로 부터 참값을 추적하는 연구 중, 참값과 관측값의 차이인 오차들이 대칭성을 가진 특정한 분포를 나타낸다는 것을 알았다. 연구 진행을 위해 이 오차들의 분포를 정의할 필요가 있다고 판단하여 이 분포를 정의하게 되었다. 정규 분포의 정의 정규 분포는 평균 $\mu$ 와 표준편차 $\sigma$ 두 가지 파라미터로 완전히 정의된다. 정규 분포는 다음과 같이 표현할 수 있고, \[X\sim N(\mu ,{ \sigma }^{ 2 })\] 연속 확률 변수 $X에 대해 다음과 같은 확률 밀도 함수는(PDF)를 따른다. \[\begin{equation} \begin{aligned} f(x; \mu, \sigma) = \frac{1}{\sqrt{2\pi \cdot \sigma^{2}}} e^{-\frac{1}{2} \left(\frac{x-\mu}{\sigma}\right)^{2}} \end{aligned} \end{equation}\] 정규 분포의 시뮬레이션 정규 분포는 평균을 기준으로 좌우 대칭적 분포를 띈다. 정규 분포의 평균값이 변함에 따라 어떻게 분포가 이동하는 지 보자. 또, 분산은 분포가 평균을 기준으로 퍼진 정도를 나타낸다. 분산이 클 수록 넓게 퍼지고, 분산이 작을 수락 뾰족한 형태를 띈다. 중심 극한 정리(Central Limit Theorem, CLT) 사실 이번 포스트는 정규 분포를 빙자한 중심 극한 정리라고 해도 무방하다. 그만큼 중심 극한 정리는 정규 분포와 떼놓고 말하기 어렵기도 하고, 단순히 ‘봐봐, 정규 분포가 되지’라고 설명하고 넘어가기에는 중심 극한 정리가 정규 분포를 얼마나 중요하게 만들고 있는지 설명하는데 부족함이 크다고 생각한다. 또, 이 정리를 마치 ‘어떤 분포든 그 시행을 무수히 하면 정규 분포가 되는 이론’이라고 오해하는 경우도 간혹 있어, 여기서 자세히 공부해 보려고 한다. (쉽게 설명하려는 의도로 같은 의미로 ‘샘플’과 ‘표본’, ‘동일한 분포’와 ‘고정된 분포’라는 표현을 혼용해서 사용하니 참고 바란다.) 정의   중심 극한 정리(CLT:Central Limit Theorem)는 다음과 같이 정의된다. 고정된 분포를 가진 집단에서, 독립적인 무작위 샘플링을 시행했을 때, 샘플의 크기(샘플링의 규모)가 클수록 그 샘플의 평균들의 분포(혹은 그 합)는 정규분포를 따른다. 자, 하나 하나 그 의미를 따져보자. 고정된 분포를 가진 집단 : 그 분포의 형태는 상관없지만 전혀 다른 분포를 가진 집단에서 샘플링이 되어서는 안된다. 다시 말해, 모집단이 어떠한 특정 분포를 따르더라도 그 모집단에 대해 중심 극한 정리는 유효하다. 독립적인 무작위 샘플링 : 말 그대로 하나 하나의 샘플링이 서로 독립적이며 무작위로 발생해야 한다. 샘플링의 크기가 크다면 : 흔히 이를 샘플링의 횟수를 많이 하면이라고 오해하기 쉽다. 하지만 정확히는 ‘한 회에 발생하는 샘플링의 규모가 클수록’을 의미한다. 평균들의 분포가 정규분포를 따른다 : ‘샘플링의 횟수가 많다면 분포가 정규 분포가 된다’라고 오해할 때 간과하기 쉬운 포인트가 ‘평균들의 분포가’ 정규 분포를 따른다는 것이다. 이는 각각의 샘플링에서 얻은 평균들의 분포가 정규 분포를 따른다는 것을 의미한다. 종합하여, 어떤 특정 분포를 따르는 모집단이더라도, 그 모집단에서 독립적이고 무작위적인 방식으로 샘플을 추출한다면, 더 큰 규모의 샘플에서 추출하는 방식일수록, 각각의 샘플들로 부터 얻은 평균들의 분포가 정규 분포를 따르게 된다는 것이다. 중심 극한 정리의 직관적 이해 어떤 모집단으로부터 얻은 여러 샘플들에서 평균들을 모았다고 생각해 보자. 한번에 뽑는 샘플의 요소가 많아질 수록 샘플에서 얻은 평균들은 모집단의 특성을 더 잘 반영하게 될 것이다. 이것을 직관적으로 이해하는 것은 어려운 일이 아니다. 쉬운 예로 여론 조사를 떠올려보자. 우리는 무작위로 뽑은 100명의 집단 보다 1,000명의 집단에서 실시한 여론조사가 국민의 의견을 더 잘 반영한다고 한다. 혹은 믿을만 하다고도 한다. (신뢰성에 대한 이야기 역시 할 이야기가 많지만 우선은 넘어가도록 한다.) 왜 그렇게 생각할까? 더 큰 규모에서 샘플링이 시도된다면 모집단의 특성을 더 잘 나타낼 것이라는 것을 우린 직감적으로 이해할 수 있다. 특히, 모집단의 '평균'이라는 특성은 샘플의 규모가 크면 클수록 샘플의 평균에서 더 잘 나타나고, 샘플의 평균들은 모집단의 평균으로 수렴하려고 할 것이다. 관점을 살짝 틀어보기 위해 극단적인 상황을 가정해 보자. 모집단 만큼이나 큰 샘플에서 평균을 얻는다고 생각해 보자. 아마 여러차례 샘플링을 시도하여 평균을 구한다면, 그 값은 웬만하면 모집단의 평균처럼 나올 것이다. 물론 정확히 모집단의 평균이 아닌 값들도 관찰될 되겠지만, 작은 오차는 빈번하게 발생할 수 있어도 큰 오차는 드물게 발생할 것이다. 이것은 다음과 같이 해석될 수 있다. 더 큰 샘플링을 시도할 수록 샘플들의 평균은 모집단의 평균을 더 정확히 추정하며, 추적의 과정에서 발생하는 오차들이 큰 오차보다는 작은 오차들이 나타나는 형태로 나름 대칭성을 갖고 분포한다는 것이다. 이렇게 생각해보니 중심 극한 정리가 “당연한 거 아니야?”라고 말할 수 있을 만큼 이해할 법 하다. ‘오차’라는 이야기를 했는데, 사실 가우스도 참값과 관측값으로 부터의 오차를 탐구하다 이 오차들이 정규 분포의 형태를 띈다는 것을 확인하고 이 분포를 정의하게 된 것이니 정규 분포가 앞으로 어떻게 활용될 수 있는지 짐작해 볼 수 있겠다. 수학적 고찰 앞서 이해한 중심 극한 정리를 수학적 관점에서 다시 정의하자면 다음과 같다. 정의   중심극한정리(central limit theorem)은 무작위로 추출된 표본의 크기가 커질수록 표본 평균의 분포는 모집단의 분포 모양과는 관계없이 정규분포 가까워진다는 정리이다. 임의의 분포를 갖는 확률변수 \(x_1, x_2, \cdots, x_n\) 들이 서로 독립이면서 동일한 분포를 갖고 있다고 하자(=i.i.d).이들의 평균을 \(\mathbb{E}(x_i) = \mu\), 분산을 \(\text{var}(x_i)=\sigma^2\) 라고 했을 때 \(\mathbf{x} = [x_1, x_2, \cdots, x_n]^{\intercal}\) 은 \(n\) 이 커질수록 다음과 같은 표준정규분포로 수렴하게 된다.&lt;/u&gt;. \[\begin{equation}  \begin{aligned} \frac{\mathbf{x}- n\mu}{\sigma \sqrt{n}} \sim \mathcal{N}(0,1)  \end{aligned} \end{equation}\] 중심 극한 정리의 증명 중심 극한 정리의 증명 방법에는 여러가지 버전이 존재한다. 초기 형태였던 라플라스에 의한 방법은 이항 분포의 정규 분포 근사에 초점이 맞춰져 있고, 현재가 가장 활발히 활용되는 방식은 모멘트 생성 함수의 성질을 이용하는 린데베르그-레비의 중심 극한 정리이다. 이번 섹션에서는 특성 함수와 합성곱을 활용하여 전통적인 방법 보다 직관적인 접근 방법으로 접근해 보려고 한다. 명제   독립적이고 동일하게 분포된(i.i.d.) 무작위 변수들의 ‘합’이, 적절하게 정규화될 때, 정규 분포에 수렴한다. 확률 변수의 합성곱 정의 우선, 합성곱이라는 개념을 어떻게 확률변수에 어떻게 적용되는 지 살펴보자. 두 개의 확률 변수 $X$, $Y$이 서로 독립이라고 하자. 그러면 새로운 확률 변수 $Z = X + Y$에 대한 확률은 다음과 같이 정의할 수 있다. \[P(Z) = \sum_{k=-\infty}^{\infty}{P(X)P(Y)}\] 이 부분이 잘 이해가 되지 않는다면, $X$를 동전 던지기의 앞면이 나올 사건, $Y$를 주사위 던지기의 짝수가 나올 사건, $Z$를 동전과 주사위를 던졌을 때 앞면과 짝수가 나올 사건이라고 했을떄, Z의 확률을 구하기 위해, $X$, $Y$의 확률의 곱을 계산하고 있는 자신의 모습을 떠올려보자. 또, 이러한 내용을 전문적으로 아주 잘 설명하고 있는 이 블로그를 방문해 보길 추천한다. $X$, $Y$의 확률 밀도 함수를 각각 $f(x)$, $g(x)$라고 하면, $Z = X + Y$의 확률 밀도 함수 $(f*g)(z)$ 는 다음과 같은 함수의 합성곱으로 표현될 수 있다. \[(f*g)(z) = \int_{-\infty}^{\infty}f(z-y)g(y)dy = \int_{-\infty}^{\infty}g(z-x)f(x)dx\] 합이 곱으로 변환된다는 점에 주목하자. 이러한 성질을 확률 변수의 특성 함수를 정의함으로써 활용하고자 한다. 확률 변수의 특성 함수 정의 임의의 확률 밀도 함수 $f_X(x)$에 대한 특성 함수는 다음과 같이 정의한다. (t는 실수) \[\phi_X(t) = E[e^{itX}] = \int_{-\infty}^{\infty}e^{jtx}f_X(x)dx\] 이러한 특성 함수의 정의에서 다음과 같은 성질로 복소수 지수 함수 $e^{itX}$의 절대값은 항상 1이다. \[|e^{itx}| = |\cos(tx) + i\sin(tx)| = \sqrt{\cos^2(tx) + \sin^2(tx)} = 1\] 이러한 특성 함수 정의는 라플라스 변환, 확률 생선 함수, 혹은 모멘트 생성 함수와 같은 다른 변환들과 비교했을 때, 모든 확률 분포에 대해 적분이 존재한다는 매우 큰 장점을 갖는다. 맥클로린 급수 전개 앞선 특성 함수 정의에서 $$e^{jtx}$ 는 맥클로린 급수 전개를 이용해 다음과 같이 전개할 수 있다. \[e^{jtx}=\sum_{k=1}^{\infty}\frac{(jtx)^k}{k!}=1+jtx+\frac{(jtx)^2}{2!}+\frac{(jtx)^3}{3!}+\cdots = 1+jtx+\frac{(jtx)^2}{2!}+O(t^2)\] $O(t^2)$ 은 네 번째 항부터 마지막까지의 항을 뭉뚱그려 쓴 것이다. 이것을 특성 함수 전개에 적용하면, \[\phi_X(t) = \int_{-\infty}^{\infty}e^{jtx}f_Y(t)dy=\int_{-\infty}^{\infty}\left\{1+jtx-\frac{t^2}{2}x^2+O(t^2)\right\}f_X(x)dy\notag\] \[=\int_{-\infty}^{\infty}f_X(x)dy + \int_{-\infty}^{\infty}xf_X(x)dy - \frac{t^2}{2}\int_{-\infty}^{\infty}x^2f_X(x)dy+O(t^2)\notag\] \[=1+jtE\left[x\right]-\frac{t^2}{2}E\left[x^2\right]+O(t^2)\] 이 된다. 정규화된 확률 변수 $Z_i$의 특성 함수 자, 확률 변수 $X$를 평균이 0($E(x)=0$)이고, 분산이 1(Var[x]=1)로 정규화한 새로운 확률 변수 $Z_i = \frac{X_i - \mu}{\sigma}$에 대한 특성 함수를 보려고 한다. 앞서 특성 함수의 전개를 봤듯이, $Z_i$에 대한 특성 함수는 다음과 같이 정리된다. \[\phi_Z(t) = E\left[e^{jtz}\right]=\int_{-\infty}^{\infty}e^{jtz}f_Z(z)dx\] \[=1+jtE\left[z\right]-\frac{t^2}{2}E\left[z^2\right]+O(t^2)\] \[= 1+0-\frac{t^2}{2}+O(t^2)\] \[= 1-\frac{t^2}{2}+O(t^2)\] $n$개의 $Z_i$의 합에 대한 특성 함수 $n$개의 독립적인 확률변수 $Z_i$의 합 $S_n = \sum_{i=1}^{n} Z_i = Z_1 + Z_2 + \cdots + Z_n$에 대한 특성 함수는, 합성곱의 성질을 이용하여 다음과 같이 나타낼 수 있다. \[\phi_{S_n}(t) = \left( \phi_{Z}(t) \right)^n\] 앞선 정규화된 $Z$의 특성 함수 전개를 적용하면, \[\phi_{S_n}(t) = \left( \phi_{Z}(t) \right)^n = [1-\frac{t^2}{2N}+O\left(\frac{t^2}{N}\right)]^N\] 이 된다. 여기서, $n$을 무한대로 보내면 $O(\frac{t^2}{N})$이 $\frac{t^2}{2N}$ 보다 빠르게 0에 수렴하므로, 그 극한값은 다음과 같이 수렴한다는 것을 알 수 있다. \[\lim_{N\rightarrow \infty}\phi_{S_N}(t) = \lim_{N\rightarrow\infty}\left[1-\frac{t^2}{2N}\right]^N=e^{-t^2/2}\] 정규 분포의 중요성 샘플링 기법에 기반한 추론적 통계에서, 표본 평균들의 분포를 이해하는 것은 모평균을 추적함에 있어 중요하다. 그런데 중심 극한 정리에 따르면 충분히 큰 샘플에서 샘플링이 이루어 졌을 때, 모평균에 대해 전혀 알지 못해도, 이 표본 평균들의 분포가 정규 분포로 수렴한다. 일반적으로 많은 상황에서 우리는 제한된 관측치를 가지고 모집단을 추정해 본다. 이때, 관측치들을 일정하게 샘플링해 얻은 평균값들의 분포를 통해 모집단의 분포를 추정하려는 시도는, 우리가 정규 분포를 필연적으로, 꽤나 자주 마주하게 만들 것이다. 참조 Wikipedia(Abraham de Moivre) Wikipedia(Johann Carl Friedrich Gaus) Normal Distribution: An Introductory Guide to PDF and CDF(Teena Mary) 가우시안(Gaussian)-정규분포(Normal Distribution).너란 분포 정말(친절한 데이터 사이언스 강좌) “Python Implementation of Central Limit Theorem: Exploring Sample Data to Infer Population Parameters”(Amanatullah) Understanding Convolutions(colah’s blog) Characteristic Functions and the Central Limit Theorem(University of Waterloo)]]></summary></entry><entry xml:lang="ko"><title type="html">포아송 분포</title><link href="http://localhost:4000/2024/04/02/poisson_distribution_ko.html" rel="alternate" type="text/html" title="포아송 분포" /><published>2024-04-02T00:00:00+09:00</published><updated>2024-04-02T00:00:00+09:00</updated><id>http://localhost:4000/2024/04/02/poisson_distribution_ko</id><content type="html" xml:base="http://localhost:4000/2024/04/02/poisson_distribution_ko.html"><![CDATA[<p align="center">
   <img class="image image--md" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/poisson_distribution/Simeon Denis Poisson.jpg" />
 </p>
 
@@ -613,7 +850,14 @@ Probability refers to a normalized measure on the extire set \(U\) such that \(\
 
 <p>Random variables are broadly classified into discrete and continuous types. A random variable that can take on either a finite number of values or a countably infinite number of values, such as the outcome of rolling a dice or baseball game socres, is called a <strong>discrete random variables</strong>. The Probability Mass Function(PMF) of a discrete random variable can assign a clear probability to each value. On the other hand, a random variable that can take values in a continuous range, such as temperature, stock prices, duration, speed, or measurements of an object’s length, is called a <strong>continuous random variable</strong>. Although the Probability Density Function(PDF) of a continuous random variable cannot assign a probability to each specific value, it can express the probability over a range of values.</p>
 
-<p>Discrete probability distributions include, notably, the binomial distribution, Poisson distribution, and geometric distribution, while continuous probability distributions include the normal distribution, uniform distribution, and exponential distribution. The following outlines the relations among various probability distributions.</p>]]></content><author><name>Jenny Won (Dajeong Won)</name></author><category term="Stastistics" /><summary type="html"><![CDATA[A simple explanation of a random variable is that it connects the outcome of a random preocess to a number. A common example is flipping a coin. Flipping a coin 5 times at random and the total number of heads obtained can be considered a random variable. Understanding that flipping a coin 5 times is a random process is not difficult, making it an intuitive concept. So, what does it mean to connect such results to a number? To understand this, let’s discuss ‘magnitude or scale’ from a mathematical perspective. The outcome of random processes, like rolling dice, carries uncertainty. Can we mathematically express the ‘how much’ of this uncertainty? If the outcome is expressed numerically, it would allow for the most intuitive interpretation. What if it could even be operated on?… From this approach, we can appreciate the value of defining a random variable. In fact, this level of understanding might be sufficient. However, for those who wish to delve deeper into academic study, we can explore the concept of a random variable more mathematically. Mathematical Approach To delve into the concept of a random variable as defined in probability theory, it’s necessary to start with some foundational concepts. Although this requires a deep mathematical understanding, I will attempt to approach it in as intuitive a manner as possible. Let’s approach the mathematical definition of a random variable step by step Measure Theory To grasp the concept of measure, let’s first imagine “a scenario where a cap is filled with water”. To answer the question “How much water is in the cup?”, we define and measure 'volume'. If we assign a ‘volume’ to a certain set, such as a three-dimentional object, it means we are assigning a concept of 'size' to that set. This concept is referred to as measure in mathematics. Measure theory deals with the generalized concept of measure, including size, area, volume, etc., and is a theory that measures and analyzes the size of sets and functions. This theory plays a crucial role, especially in probability theory and functional analysis, which explains why we frequently encounter sets in our study of probability. What’s important to note is that the ‘probability’ we discuss prepresents this concept of size as a ‘measure’. Therefore, we can only truly understand the definition of probability based on measure theory. Probability When we conduct an experiment to obtain results from a certain phenomenon, we achieve what are called realization. This term ‘realization’ might feel unfamiliar. If you think of it as the outcome which is the result of the experiment, it becomes easier to understand. Now, let’s delve into the concept of probability based on measure theory through the example of rolling dice, which is a type of random experiment. In the sample space \(\Omega = \{1,2,3,4,5,6\}\), to mathematically discuss the magnitude of the event (\(\mathcal{F}\)) where a die lands on 2, we utilize a measure called probability, denoted by \(Pr(\cdot)\). Through this definition, we articulate that the probability of the event where the die shows a 2 is \(Pr(2) = \frac{1}{6}\). \[\begin{equation}  \begin{aligned}  &amp; Pr(1) = Pr(2) = Pr(3) = Pr(4) = Pr(5) = Pr(6) = 1/6 \end{aligned}  \end{equation}\] In other words, “probability is a measure for the realization from a random experiment”, and by using the measure known as probability $Pr(\cdot)$$, we can obtain the measured realization of the size of elements within the space. \(\sigma\)-field \(\mathcal{B}\) To define probability without contradictions by introducing the concept of measure, it’s necessary to precisely define the objects of measurement. This is where the \(\sigma\)-field comes in. A \(\sigma\)-field is defined as a collection of sets that satisfies certain conditions. (i) $\emptyset \in \mathcal{B}$ (ii) $A \in \mathcal{B} \Rightarrow A^c \in \mathcal{B}$ (iii) $A_i \in \mathcal{B} \Rightarrow \cup_{i=1}^{\infty}A_i \in \mathcal{B}$ (i) It includes the non-empty set, (ii) the complement, and (iii) is closed under countable unions and intersections of sets \(S\), defined as a collection of subsets. Given such a collection of sets, we can define a measurable space, which allows for the consistent definition of measure and probability. Measure A measure \(\mu\) is a type of set function in a measurable space \((U, \mathcal{B})\) that assigns elements in \([0,\infty]\) to elements of the \(\sigma\)-field. \begin{equation}  \begin{aligned}  \mu : \mathcal{B} \rightarrow [0, \infty] \end{aligned}  \end{equation} \(\mu(\emptyset) = 0\): The measure of the empty set is 0. For any sequence of mutually exclusive sets \(A_j\), \(A_j\), the measure of their union is equal to the sum of their measures : \(\mu(\cup_{i=1}^{\infty} A_i) = \sum_{i=1}^{\infty} \mu(A_i)\). Probability Probability refers to a normalized measure on the extire set \(U\) such that \(\mu(U)=1\), indicating that the measure satisfies the condition of the total measure of the sample space being 1. Probability can be described as a measure where the total probability across the entire sample space equals 1. Definition of a Random Variable Noew, it’s time to examine the definition of a random variable. **Definition   A random variable \(x\) is a function defined on the sample space \(\Omega\). This function serves to transform an element of the probability space \((\Omega, \mathcal{F}, P)\) into an element of the Boral measurable space \((\mathbb{R}, \mathcal{B})\) Here, the space created by the set of real numbers is referred to as the BOrel measurable space, and the associated \(\sigma\)-field in this context is termed the Borel set. Borel Measurable Space Borel Measurable Space: Consists of the set of real numbers \(\mathbb{R}\) and the Borel \(\sigma\) algebra \(\mathcall{B}\). The Borel \(\sigma\)-algebra includes open intervals on the real line and encompasses all sets that can be generated from these intervals. Essentially, this makes it possible to measure events in the commonly dealt with real number space. \(\Omega\) : Known as the Space, this represents the entire set of possible elements or outcomes. \(\mathcal{F}\) : Signifies the subsets of the sample space, referred to as Events. \(Pr\) : Acts as the operator that performs measurement, assigning probabilites to elements of the sample space. Through these complex concepts, we conclude that a random variable is essentially a function that transforms an element of the sample space into a real number. By defining this, we become interested in practically applying the probability of a random variable \(x\), denoted as \(Pr(x)\) Types of Random Variables Random variables are broadly classified into discrete and continuous types. A random variable that can take on either a finite number of values or a countably infinite number of values, such as the outcome of rolling a dice or baseball game socres, is called a discrete random variables. The Probability Mass Function(PMF) of a discrete random variable can assign a clear probability to each value. On the other hand, a random variable that can take values in a continuous range, such as temperature, stock prices, duration, speed, or measurements of an object’s length, is called a continuous random variable. Although the Probability Density Function(PDF) of a continuous random variable cannot assign a probability to each specific value, it can express the probability over a range of values. Discrete probability distributions include, notably, the binomial distribution, Poisson distribution, and geometric distribution, while continuous probability distributions include the normal distribution, uniform distribution, and exponential distribution. The following outlines the relations among various probability distributions.]]></summary></entry><entry xml:lang="ko"><title type="html">확률 변수</title><link href="http://localhost:4000/2024/03/26/random_variables_ko.html" rel="alternate" type="text/html" title="확률 변수" /><published>2024-03-26T00:00:00+09:00</published><updated>2024-03-26T00:00:00+09:00</updated><id>http://localhost:4000/2024/03/26/random_variables_ko</id><content type="html" xml:base="http://localhost:4000/2024/03/26/random_variables_ko.html"><![CDATA[<p>확률 변수를 쉽게 설명하자면 <strong><u>무작위적인 시행(Random Process)</u>에 따른 <u>결과를 숫자로 연결</u>하는 것</strong>이라고 이해할 수 있다. 가장 일반적인  예로 동전 던지기가 있다. <u>임의로 동전을 5번 던져서</u> 나온 <u>앞면의 합계</u>는 확률 변수라고 할 수 있다. 동전을 5번 던지는 행위가 무작위 시행이라는 것을 이해하기 어렵지 않은, 꽤나 직관적인 개념이다. 그렇다면 이러한 결과를 수치로 연결한다는 것은 어떤 의미가 있을까?</p>
+<p>Discrete probability distributions include, notably, the binomial distribution, Poisson distribution, and geometric distribution, while continuous probability distributions include the normal distribution, uniform distribution, and exponential distribution. The following outlines the relations among various probability distributions.</p>
+
+<p><br /><br />
+<strong>Reference</strong></p>
+
+<p><a href="https://cims.nyu.edu/~cfgranda/pages/stuff/probability_stats_for_DS.pdf">Probability and Statistics for Data Science (Carlos Fernandez-Granda)</a><br />
+<a href="https://alida.tistory.com/84">ALIDA (Gyubeom Edward Im)</a><br />
+<a href="https://jagan-singhh.medium.com/types-of-probability-distributions-9333d18ed817">Types of Probability Distributions (Jagandeep Singh)</a></p>]]></content><author><name>Jenny Won (Dajeong Won)</name></author><category term="Statistics" /><summary type="html"><![CDATA[A simple explanation of a random variable is that it connects the outcome of a random preocess to a number. A common example is flipping a coin. Flipping a coin 5 times at random and the total number of heads obtained can be considered a random variable. Understanding that flipping a coin 5 times is a random process is not difficult, making it an intuitive concept. So, what does it mean to connect such results to a number? To understand this, let’s discuss ‘magnitude or scale’ from a mathematical perspective. The outcome of random processes, like rolling dice, carries uncertainty. Can we mathematically express the ‘how much’ of this uncertainty? If the outcome is expressed numerically, it would allow for the most intuitive interpretation. What if it could even be operated on?… From this approach, we can appreciate the value of defining a random variable. In fact, this level of understanding might be sufficient. However, for those who wish to delve deeper into academic study, we can explore the concept of a random variable more mathematically. Mathematical Approach To delve into the concept of a random variable as defined in probability theory, it’s necessary to start with some foundational concepts. Although this requires a deep mathematical understanding, I will attempt to approach it in as intuitive a manner as possible. Let’s approach the mathematical definition of a random variable step by step Measure Theory To grasp the concept of measure, let’s first imagine “a scenario where a cap is filled with water”. To answer the question “How much water is in the cup?”, we define and measure 'volume'. If we assign a ‘volume’ to a certain set, such as a three-dimentional object, it means we are assigning a concept of 'size' to that set. This concept is referred to as measure in mathematics. Measure theory deals with the generalized concept of measure, including size, area, volume, etc., and is a theory that measures and analyzes the size of sets and functions. This theory plays a crucial role, especially in probability theory and functional analysis, which explains why we frequently encounter sets in our study of probability. What’s important to note is that the ‘probability’ we discuss prepresents this concept of size as a ‘measure’. Therefore, we can only truly understand the definition of probability based on measure theory. Probability When we conduct an experiment to obtain results from a certain phenomenon, we achieve what are called realization. This term ‘realization’ might feel unfamiliar. If you think of it as the outcome which is the result of the experiment, it becomes easier to understand. Now, let’s delve into the concept of probability based on measure theory through the example of rolling dice, which is a type of random experiment. In the sample space \(\Omega = \{1,2,3,4,5,6\}\), to mathematically discuss the magnitude of the event (\(\mathcal{F}\)) where a die lands on 2, we utilize a measure called probability, denoted by \(Pr(\cdot)\). Through this definition, we articulate that the probability of the event where the die shows a 2 is \(Pr(2) = \frac{1}{6}\). \[\begin{equation}  \begin{aligned}  &amp; Pr(1) = Pr(2) = Pr(3) = Pr(4) = Pr(5) = Pr(6) = 1/6 \end{aligned}  \end{equation}\] In other words, “probability is a measure for the realization from a random experiment”, and by using the measure known as probability $Pr(\cdot)$$, we can obtain the measured realization of the size of elements within the space. \(\sigma\)-field \(\mathcal{B}\) To define probability without contradictions by introducing the concept of measure, it’s necessary to precisely define the objects of measurement. This is where the \(\sigma\)-field comes in. A \(\sigma\)-field is defined as a collection of sets that satisfies certain conditions. (i) $\emptyset \in \mathcal{B}$ (ii) $A \in \mathcal{B} \Rightarrow A^c \in \mathcal{B}$ (iii) $A_i \in \mathcal{B} \Rightarrow \cup_{i=1}^{\infty}A_i \in \mathcal{B}$ (i) It includes the non-empty set, (ii) the complement, and (iii) is closed under countable unions and intersections of sets \(S\), defined as a collection of subsets. Given such a collection of sets, we can define a measurable space, which allows for the consistent definition of measure and probability. Measure A measure \(\mu\) is a type of set function in a measurable space \((U, \mathcal{B})\) that assigns elements in \([0,\infty]\) to elements of the \(\sigma\)-field. \begin{equation}  \begin{aligned}  \mu : \mathcal{B} \rightarrow [0, \infty] \end{aligned}  \end{equation} \(\mu(\emptyset) = 0\): The measure of the empty set is 0. For any sequence of mutually exclusive sets \(A_j\), \(A_j\), the measure of their union is equal to the sum of their measures : \(\mu(\cup_{i=1}^{\infty} A_i) = \sum_{i=1}^{\infty} \mu(A_i)\). Probability Probability refers to a normalized measure on the extire set \(U\) such that \(\mu(U)=1\), indicating that the measure satisfies the condition of the total measure of the sample space being 1. Probability can be described as a measure where the total probability across the entire sample space equals 1. Definition of a Random Variable Noew, it’s time to examine the definition of a random variable. **Definition   A random variable \(x\) is a function defined on the sample space \(\Omega\). This function serves to transform an element of the probability space \((\Omega, \mathcal{F}, P)\) into an element of the Boral measurable space \((\mathbb{R}, \mathcal{B})\) Here, the space created by the set of real numbers is referred to as the BOrel measurable space, and the associated \(\sigma\)-field in this context is termed the Borel set. Borel Measurable Space Borel Measurable Space: Consists of the set of real numbers \(\mathbb{R}\) and the Borel \(\sigma\) algebra \(\mathcall{B}\). The Borel \(\sigma\)-algebra includes open intervals on the real line and encompasses all sets that can be generated from these intervals. Essentially, this makes it possible to measure events in the commonly dealt with real number space. \(\Omega\) : Known as the Space, this represents the entire set of possible elements or outcomes. \(\mathcal{F}\) : Signifies the subsets of the sample space, referred to as Events. \(Pr\) : Acts as the operator that performs measurement, assigning probabilites to elements of the sample space. Through these complex concepts, we conclude that a random variable is essentially a function that transforms an element of the sample space into a real number. By defining this, we become interested in practically applying the probability of a random variable \(x\), denoted as \(Pr(x)\) Types of Random Variables Random variables are broadly classified into discrete and continuous types. A random variable that can take on either a finite number of values or a countably infinite number of values, such as the outcome of rolling a dice or baseball game socres, is called a discrete random variables. The Probability Mass Function(PMF) of a discrete random variable can assign a clear probability to each value. On the other hand, a random variable that can take values in a continuous range, such as temperature, stock prices, duration, speed, or measurements of an object’s length, is called a continuous random variable. Although the Probability Density Function(PDF) of a continuous random variable cannot assign a probability to each specific value, it can express the probability over a range of values. Discrete probability distributions include, notably, the binomial distribution, Poisson distribution, and geometric distribution, while continuous probability distributions include the normal distribution, uniform distribution, and exponential distribution. The following outlines the relations among various probability distributions. Reference Probability and Statistics for Data Science (Carlos Fernandez-Granda) ALIDA (Gyubeom Edward Im) Types of Probability Distributions (Jagandeep Singh)]]></summary></entry><entry xml:lang="ko"><title type="html">확률 변수</title><link href="http://localhost:4000/2024/03/26/random_variables_ko.html" rel="alternate" type="text/html" title="확률 변수" /><published>2024-03-26T00:00:00+09:00</published><updated>2024-03-26T00:00:00+09:00</updated><id>http://localhost:4000/2024/03/26/random_variables_ko</id><content type="html" xml:base="http://localhost:4000/2024/03/26/random_variables_ko.html"><![CDATA[<p>확률 변수를 쉽게 설명하자면 <strong><u>무작위적인 시행(Random Process)</u>에 따른 <u>결과를 숫자로 연결</u>하는 것</strong>이라고 이해할 수 있다. 가장 일반적인  예로 동전 던지기가 있다. <u>임의로 동전을 5번 던져서</u> 나온 <u>앞면의 합계</u>는 확률 변수라고 할 수 있다. 동전을 5번 던지는 행위가 무작위 시행이라는 것을 이해하기 어렵지 않은, 꽤나 직관적인 개념이다. 그렇다면 이러한 결과를 수치로 연결한다는 것은 어떤 의미가 있을까?</p>
 
 <p>이를 이해하기 위해 수학의 입장에서 ‘크기 혹은 규모’에 대해서 이야기 해보려고 한다. 주사위 던지기와 같은 무작위적 시행의 결과는 <strong>불확실성</strong>을 갖는다. 이러한 ‘얼마나’라는 불확실성의 크기를 수학적으로 표현할 수 있을까? 물론 그 결과가 수치로써 표현된다면 가장 직관적인 해석이 가능할 것이다. 심지어 연산도 가능하다면?… 이러한 접근에서 확률 변수를 정의하는 것의 가치를 이해해 볼 수 있다. 사실 이 정도의 이해만으로도 충분할 수 있다. 하지만 보다 학문적 공부를 진행해보고자 확률 변수의 개념을 수학적으로 탐색해 보고자 한다.</p>
 
@@ -731,6 +975,6 @@ Probability refers to a normalized measure on the extire set \(U\) such that \(\
 <p><br /><br />
 <strong>참조</strong></p>
 
-<p>Probability and Statistics for Data Science (Carlos Fernandez-Granda)<br />
+<p><a href="https://cims.nyu.edu/~cfgranda/pages/stuff/probability_stats_for_DS.pdf">Probability and Statistics for Data Science (Carlos Fernandez-Granda)</a><br />
 <a href="https://alida.tistory.com/84">ALIDA (Gyubeom Edward Im)</a><br />
 <a href="https://jagan-singhh.medium.com/types-of-probability-distributions-9333d18ed817">Types of Probability Distributions (Jagandeep Singh)</a></p>]]></content><author><name>Jenny Won (Dajeong Won)</name></author><category term="통계학" /><summary type="html"><![CDATA[확률 변수를 쉽게 설명하자면 무작위적인 시행(Random Process)에 따른 결과를 숫자로 연결하는 것이라고 이해할 수 있다. 가장 일반적인 예로 동전 던지기가 있다. 임의로 동전을 5번 던져서 나온 앞면의 합계는 확률 변수라고 할 수 있다. 동전을 5번 던지는 행위가 무작위 시행이라는 것을 이해하기 어렵지 않은, 꽤나 직관적인 개념이다. 그렇다면 이러한 결과를 수치로 연결한다는 것은 어떤 의미가 있을까? 이를 이해하기 위해 수학의 입장에서 ‘크기 혹은 규모’에 대해서 이야기 해보려고 한다. 주사위 던지기와 같은 무작위적 시행의 결과는 불확실성을 갖는다. 이러한 ‘얼마나’라는 불확실성의 크기를 수학적으로 표현할 수 있을까? 물론 그 결과가 수치로써 표현된다면 가장 직관적인 해석이 가능할 것이다. 심지어 연산도 가능하다면?… 이러한 접근에서 확률 변수를 정의하는 것의 가치를 이해해 볼 수 있다. 사실 이 정도의 이해만으로도 충분할 수 있다. 하지만 보다 학문적 공부를 진행해보고자 확률 변수의 개념을 수학적으로 탐색해 보고자 한다. 수학적 접근 확률론에서 정의하는 확률 변수를 이해하기 위해서는 선행되어야 할 개념들이 있다. 수학적으로 꽤나 심도있는 이해를 요구하지만 가능하다면 직관적으로 이해해 보려고 한다. 차근차근 확률 변수의 수학적 정의에 접근해보자. 측도론(Measure Theory) 측도(Measure)라는 개념을 먼저 이해하기 위해 ‘컵에 물이 담겨져 있는 상황’을 가정해보자. ‘물이 얼마나 담겨 있을까?’라는 질문에 답을 하기 위해 우리는 '부피'를 정의하고 측정한다. 3차원 입체라는 어떠한 집합에 ‘부피’라는 크기를 부여하게 된다면, 이는 그 집합에 '크기'라는 개념을 부여하는 것이 된다. 이를 수학에서 측도(Measure)라고 한다. 측도론은 크기, 면적, 부피 등의 일반화한 측도(Measure)의 개념을 다루는 분야로, 집합과 함수의 크기를 측정하고 분석하는 이론이다. 이 이론은 특히 확률론과 함수해석학에서 중요한 역할을 하는데, 우리가 확률을 공부하면서 자꾸만 집합을 마주치는 이유이기도 하다. 중요한 것은, 우리가 이야기하는 ‘확률’이 바로 이러한 크기라는 속성을 나타내는 ‘측도’라는 것이다. 따라서 측도론에 기반하여 확률을 이해할 수 있어서야 비로소 그 정의를 이해할 수 있다. 확률(Probability) 우리는 어떠한 현상으로부터 결과를 얻기 위해 실험(experiment)을 하고, 실현값(outcome)을 얻을 수 있다. 실현값이라는 단어가 다소 생소하게 느껴질 수 있다. 이는 결과값 즉, outcome이라고 생각한다면 이해가 쉬워진다. 자, 그럼 주사위 던지기라는 확률 실험(Random Experiment)을 통해 측도론에 기반한 확률의 개념을 이해해 보자. 표본공간 \(\Omega=\{1,2,3,4,5,6\}\) 에서 주사위의 눈이 2가 나오는 사건(Event, \(\mathcal{F}\))의 크기를 수학적으로 말하기 위해, 우리는 확률 \(Pr(\cdot)\) 라는 측도를 사용할 수 있다. 그리고 이를 정의함으로써 \(Pr(2) = 1/6\) 와 같은 실현값(outcome)을 얻을 수 있게 된다. \[\begin{equation}  \begin{aligned}  &amp; Pr(1) = Pr(2) = Pr(3) = Pr(4) = Pr(5) = Pr(6) = 1/6 \end{aligned}  \end{equation}\] 다시말해, ‘확률’은 이러한 확률 실험(Random Experiment)의 실현값(Realization)에 대한 측도(Masure)이며, 우리는 확률 \(Pr(\cdot)\)이라는 측도를 사용하여 공간 내 원소의 크기를 측정한 실현값(Realization)을 얻을 수 있다. \(\sigma\)-field \(\mathcal{B}\) 이렇게 측도라는 개념을 도입하여 확률을 모순없이 정의하기 위해서는 측정 대상을 엄밀히 정의하는 과정이 필요한데, 그러한 측정대상을 정의하는 것이 바로 \(\sigma\)-field이다. \(\sigma\)-field는 다음과 같이 정의되는 집합들의 모입이다. (i) $\emptyset \in \mathcal{B}$ (ii) $A \in \mathcal{B} \Rightarrow A^c \in \mathcal{B}$ (iii) $A_i \in \mathcal{B} \Rightarrow \cup_{i=1}^{\infty}A_i \in \mathcal{B}$ (i)공집합이 아니면서, (ii)여집합, 그리고 (iii) 셀 수 있는 합집합, 교집합에 대하여 닫혀있는 집합 \(S\)의 부분집합의 모임이라고 정의된다. 이러한 집합의 모입이 주어졌을 때, 측정할 수 있는 공간, 즉 가측공간(Measurable Space)를 정의할 수 있고, 측도와 확률을 모순없이 정의할 수 있다. 측도(Measure) 측도\(\mu\)란 가측공간 \((U, \mathcal{B})\)에서 \(\sigma\)-field의 원소를 사용하여 \([0,\infty]\)의 값을 반환하는 일종의 집합 합수(set function)이다. \begin{equation}  \begin{aligned}  \mu : \mathcal{B} \rightarrow [0, \infty] \end{aligned}  \end{equation} \(\mu(\emptyset) = 0\): 공집합에 대한 측도응 0이다. 서로소 집합들 \(A_j\), \(A_j\) 들에 대하여 \(\mu(\cup_{i=1}^{\infty} A_i) = \sum_{i=1}^{\infty} \mu(A_i)\)이 성립한다. 확률(Probability) 확률(Probability)이란 전체집합 \(U\)에 대하여 \(\mu(U)=1\)의 크기를 만족하도록 정규화된 측도(Nomarlized Measure)를 의미한다. 확률은 전체 표본공간에 대한 확률의 총량이 1인 측도라고 할 수 있다. 확률 변수의 정의 이제 확률 변수의 정의를 살펴볼 시간이다. 정의   확률 변수 \(x\)는 표본공간 \(\Omega\) 에 정의된 함수를 의미한다. 이 함수는 확률공간\((\Omega, \mathcal{F}, P)\) 의 하나의 원소를 Borel 가측공간 \((\mathbb{R}, \mathcal{B})\) 의 원소로 변환하는 역할을 수행한다. 여기서, 실수들의 집합으로 만들어진 공간을 Borel 가측공간(Mesurable Space)라고 하며, 이 때 \(\sigma\)-field를 Borel set이라고 한다. Borel 가측공간 Borel 가측공간 (Borel Measurable Space): 실수 집합 \(\mathbb{R}\) 과 Borel 시그마-대수 \(\mathcal{B}\) 로 구성된다. Borel 시그마-대수는 실수선 위에서 열린 구간을 포함하고, 이로부터 생성될 수 있는 모든 집합의 컬렉션이다. 이것은 기본적으로 우리가 흔히 다루는 실수 세계의 사건들을 측정 가능하게 한다. \(\Omega\) : 표본공간(Sample Space)라고 하며, 나올 수 있는 원소들의 전체 집합(Set)을 의미한다 \(\mathcal{F}\) : 표본공간의 부분집합을 의미하며 사건(Event)이라고 부른다. \(Pr\) : 측도(Measure)를 수행하는 연산자로써 표본공간의 원소에 확률을 부여하는 역할한다. 꽤나 어려운 개념들을 거쳐왔지만 결론적으로 확률 변수란 표본공간의 하나의 원소를 실수값으로 변환해주는 함수이다. 또한 이를 정의함으로써 우리는 실직절으로 확률 변수$x$의 확률인 $Pr(x)$의 활용에 관심을 갖게 된다. 확률 변수의 유형 확률 변수는 크게 이산형 확률 변수와 연속형 확률 변수로 분류된다. 주사위 던지기, 야구경기 점수와 같이 유한하거나 셀 수 있는 무한한 값을 가지는 확률 변수를 이산확률변수라고 한다. 이산확률변수의 확률밀도함수(Probability Mass Function, PMF)은 각 값에 대한 명확한 확률을 할당할 수 있다. 반면에 온도, 주식 가격, 기간, 속력, 물체의 길이 측정 등 연속적인 범위의 값을 가는 확률 변수를 연속확률변수라 한다. 연속확률변수의 확률밀도함수(Probability Mass Function, PMF)는 각 값에 대한 확률을 표현할 수는 없지만, 범위에 대한 확률을 표현할 수 있다. 이산확률분포에는 대표적으로 이항분포, 포아송분포, 기하분포 등이 있으며, 연속확률분포에는 정규분포, 균일분포, 지수분포 등이 있다. 다음은 다양한 확률분포 간의 관계를 나타낸다. 참조 Probability and Statistics for Data Science (Carlos Fernandez-Granda) ALIDA (Gyubeom Edward Im) Types of Probability Distributions (Jagandeep Singh)]]></summary></entry></feed>

@@ -292,7 +292,7 @@ fill="#000000" stroke="none">
 </svg>
 <a title="JenDS by Jenny Won
 " href="/">JenDS</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
-        <ul><li class="navigation__item"><a href="/2024/03/26/random_variables_en.html">Study Note</a></li><li class="navigation__item"><a href="/article.html">Article</a></li><li class="navigation__item"><a href="/about.html">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+        <ul><li class="navigation__item"><a href="/2024/03/26/random_variables_en.html">Study Note</a></li><li class="navigation__item"><a href="/project.html">Project</a></li><li class="navigation__item"><a href="https://medium.com/@jen052430s">Medium</a></li><li class="navigation__item"><a href="/about.html">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
       </nav></div>
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
@@ -303,6 +303,36 @@ fill="#000000" stroke="none">
 
 <!-- end custom main top snippet -->
 <article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>Home</h1></header><meta itemprop="headline" content="Home"><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/2024/04/10/chi_squared_distribution_ko.html"><h2 itemprop="headline" class="item__header">카이제곱 분포</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">카이제곱 분포의 정의
+카이제곱 분포(Chi-Squared Distribution)은 $k$개의 서로 독립이며, 표준 정규 분포를 따르는 확률 변수 $X_1,\cdots, X_k$ 에 대하여, 각각의 확률 변수를 제곱한 다음 합하여 얻어지는 확률변수
+
+\[Q = \sum_{i=1}^{k} X_i^2\]
+
+의 분포이다. 즉, $Q \sim X_k^{2}$ 이다.
+
+이때, $k$를 자유도라고 하며, 카이제곱 분포의 단일 파라미터가 된다.
+
+자유도가 $k$인 카이제곱 분포의 확률 밀도 함수(PDF)는 다음과 같다.
+
+\[f(x; k) = \frac{1}{2^{k/2}\Gamma(k/2)} x^{(k/2)-1} e^{-x/...</div><p><a href="/2024/04/10/chi_squared_distribution_ko.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=%ED%86%B5%EA%B3%84%ED%95%99">통계학</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 10, 2024</span>
+            </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-04-10T00:00:00+09:00">
+    <meta itemprop="keywords" content="통계학"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/2024/04/06/normal_distribution_ko.html"><h2 itemprop="headline" class="item__header">정규 분포와 중심 극한 정리</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">많은 통계적 검정과 모델링 방법론은 정규 분포를 가정으로 한다. 카이제곱분포, t-분포, F-분포 등 통계학에서 다뤄지는 중요한 분포들 역시 정규분포과 깊은 연관이 있으며, 이로 부터 파생되거나 그 성질을 활용하니, 정규 분포가 없는 통계학은 상상하기 어려울 지경이다.
+
+정규 분포의 발견
+정규 분포는 가우스 분포 혹은 라플라스 분포라고도 불린다. 혹은 종모양이라고 해서 Bell Curve라고도 하는데, 여기서는 정규 분포(Normal Distribution)이라고 하겠다. 사실 이름이 어떻든 중요한 것은 당시대의 수학자들이 각자의 연구 과정에서 정규 분포를 관찰했다는 것이고, 이것이 이러한 분포를 정의할 필요성을 ...</div><p><a href="/2024/04/06/normal_distribution_ko.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=%ED%86%B5%EA%B3%84%ED%95%99">통계학</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 06, 2024</span>
+            </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-04-06T00:00:00+09:00">
+    <meta itemprop="keywords" content="통계학"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
           <header><a href="/2024/04/02/poisson_distribution_ko.html"><h2 itemprop="headline" class="item__header">포아송 분포</h2></a></header>
           <div class="item__description"><div class="article__content" itemprop="description articleBody">프랑스의 수학자 Siméon Denis Poisson는 이산 확률 분포의 한 형태로 포아송 분포를 처음 소개하였다. 이후 1898년 폴란드계 수학자 Ladislaus Bortkiewicz가 프로이센 군대의 군인들이 말차기로 우연히 죽는 빈도를 포아송 분포로 잘 모델링해 보임으로써 포아송 분포의 실제 적용이 이루어졌다.
 
@@ -364,16 +394,84 @@ A Bernoulli experiment refers to a probability experiment where the outcome can 
           <header><a href="/2024/03/26/random_variables_en.html"><h2 itemprop="headline" class="item__header">Probability Distribution</h2></a></header>
           <div class="item__description"><div class="article__content" itemprop="description articleBody">A simple explanation of a random variable is that it connects the outcome of a random preocess to a number. A common example is flipping a coin. Flipping a coin 5 times at random and the total number of heads obtained can be considered a random variable. Understanding that flipping a coin 5 times is a random process is not difficult, making it a...</div><p><a href="/2024/03/26/random_variables_en.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=Stastistics">Stastistics</a>
+                href="/archive.html?tag=Statistics">Statistics</a>
             </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 26, 2024</span>
             </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-03-26T00:00:00+09:00">
-    <meta itemprop="keywords" content="Stastistics"></div>
+    <meta itemprop="keywords" content="Statistics"></div>
       </article></div>
 </div><div class="layout--home"></div>
 <script>/*(function () {
 
 })();*/
 </script>
+
+<div class="collections">
+  
+    
+    <div class="collection">
+      <h2>Posts</h2>
+      
+        <div class="item">
+          <h3><a href="/2024/03/26/random_variables_en.html">Probability Distribution</a></h3>
+          <p>A simple explanation of a random variable is that it connects the outcome of a random preocess to a number....</p>
+        </div>
+      
+        <div class="item">
+          <h3><a href="/2024/03/26/random_variables_ko.html">확률 변수</a></h3>
+          <p>확률 변수를 쉽게 설명하자면 무작위적인 시행(Random Process)에 따른 결과를 숫자로 연결하는 것이라고 이해할 수 있다. 가장 일반적인 예로 동전 던지기가...</p>
+        </div>
+      
+        <div class="item">
+          <h3><a href="/2024/03/27/binomial_distribution_en.html">Binomial Distribution</a></h3>
+          <p>Before diving into the binomial distribution, let’s briefly summarize the Bernoulli distribution and explore its relationship with the binomial distribution....</p>
+        </div>
+      
+        <div class="item">
+          <h3><a href="/2024/03/27/binomial_distribution_ko.html">이항 분포</a></h3>
+          <p>이항 분포에 앞서, 베르누이 분포에 대해 간략히 정리하고, 이항 분포와 베르누이 분포가 어떤 관계가 있는지 알아보자. 베르누이 분포 확률 실험의...</p>
+        </div>
+      
+        <div class="item">
+          <h3><a href="/2024/03/28/geometric_distribution_ko.html">기하 분포</a></h3>
+          <p>이항 분포에 대한 개념을 잘 이해했다면 기하 분포를 그리 어려운 개념은 아니다. 이항 분포가 베르누이 시행에 따른 ‘성공’을 관찰하는 분포라면,...</p>
+        </div>
+      
+        <div class="item">
+          <h3><a href="/2024/04/02/poisson_distribution_ko.html">포아송 분포</a></h3>
+          <p>프랑스의 수학자 Siméon Denis Poisson는 이산 확률 분포의 한 형태로 포아송 분포를 처음 소개하였다. 이후 1898년 폴란드계 수학자 Ladislaus Bortkiewicz가...</p>
+        </div>
+      
+        <div class="item">
+          <h3><a href="/2024/04/06/normal_distribution_ko.html">정규 분포와 중심 극한 정리</a></h3>
+          <p>많은 통계적 검정과 모델링 방법론은 정규 분포를 가정으로 한다. 카이제곱분포, t-분포, F-분포 등 통계학에서 다뤄지는 중요한 분포들 역시 정규분포과 깊은...</p>
+        </div>
+      
+        <div class="item">
+          <h3><a href="/2024/04/10/chi_squared_distribution_ko.html">카이제곱 분포</a></h3>
+          <p>카이제곱 분포의 정의 카이제곱 분포(Chi-Squared Distribution)은 $k$개의 서로 독립이며, 표준 정규 분포를 따르는 확률 변수 $X_1,\cdots, X_k$ 에 대하여, 각각의...</p>
+        </div>
+      
+    </div>
+  
+    
+    <div class="collection">
+      <h2>Project</h2>
+      
+        <div class="item">
+          <h3><a href="/project/python/en.html">Python</a></h3>
+          <p>Currently being worked on
+</p>
+        </div>
+      
+        <div class="item">
+          <h3><a href="/project/python.html">파이썬</a></h3>
+          <p>페이지 테스트 중 입니다.
+</p>
+        </div>
+      
+    </div>
+  
+</div>
 
 
 

@@ -127,6 +127,6 @@ $$
 <br/><br/>
 **참조**
 
-Probability and Statistics for Data Science (Carlos Fernandez-Granda)<br/>
+[Probability and Statistics for Data Science (Carlos Fernandez-Granda)](https://cims.nyu.edu/~cfgranda/pages/stuff/probability_stats_for_DS.pdf)<br/>
 [ALIDA (Gyubeom Edward Im)](https://alida.tistory.com/84)<br/>
 [Types of Probability Distributions (Jagandeep Singh)](https://jagan-singhh.medium.com/types-of-probability-distributions-9333d18ed817)

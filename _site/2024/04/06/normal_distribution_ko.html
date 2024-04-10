@@ -1,0 +1,1219 @@
+<!DOCTYPE html><html lang="ko">
+  <head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>정규 분포와 중심 극한 정리 - JenDS</title>
+
+<meta name="description" content="많은 통계적 검정과 모델링 방법론은 정규 분포를 가정으로 한다. 카이제곱분포, t-분포, F-분포 등 통계학에서 다뤄지는 중요한 분포들 역시 정규분포과 깊은 연관이 있으며, 이로 부터 파생되거나 그 성질을 활용하니, 정규 분포가 없는 통계학은 상상하기 어려울 지경이다.정규 분포의 ...">
+<link rel="canonical" href="http://localhost:4000/2024/04/06/normal_distribution_ko.html"><link rel="alternate" type="application/rss+xml" title="JenDS" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+<link rel="manifest" href="/assets/site.webmanifest">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- end favicons snippet --><link rel="stylesheet" href="/assets/css/main.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css" ><!-- start custom head snippets -->
+
+<!-- end custom head snippets -->
+<script>(function() {
+  window.isArray = function(val) {
+    return Object.prototype.toString.call(val) === '[object Array]';
+  };
+  window.isString = function(val) {
+    return typeof val === 'string';
+  };
+
+  window.hasEvent = function(event) {
+    return 'on'.concat(event) in window.document;
+  };
+
+  window.isOverallScroller = function(node) {
+    return node === document.documentElement || node === document.body || node === window;
+  };
+
+  window.isFormElement = function(node) {
+    var tagName = node.tagName;
+    return tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA';
+  };
+
+  window.pageLoad = (function () {
+    var loaded = false, cbs = [];
+    window.addEventListener('load', function () {
+      var i;
+      loaded = true;
+      if (cbs.length > 0) {
+        for (i = 0; i < cbs.length; i++) {
+          cbs[i]();
+        }
+      }
+    });
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  })();
+})();
+(function() {
+  window.throttle = function(func, wait) {
+    var args, result, thisArg, timeoutId, lastCalled = 0;
+
+    function trailingCall() {
+      lastCalled = new Date;
+      timeoutId = null;
+      result = func.apply(thisArg, args);
+    }
+    return function() {
+      var now = new Date,
+        remaining = wait - (now - lastCalled);
+
+      args = arguments;
+      thisArg = this;
+
+      if (remaining <= 0) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+        lastCalled = now;
+        result = func.apply(thisArg, args);
+      } else if (!timeoutId) {
+        timeoutId = setTimeout(trailingCall, remaining);
+      }
+      return result;
+    };
+  };
+})();
+(function() {
+  var Set = (function() {
+    var add = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (data[i] === item) {
+          return;
+        }
+      }
+      this.size ++;
+      data.push(item);
+      return data;
+    };
+
+    var Set = function(data) {
+      this.size = 0;
+      this._data = [];
+      var i;
+      if (data.length > 0) {
+        for (i = 0; i < data.length; i++) {
+          add.call(this, data[i]);
+        }
+      }
+    };
+    Set.prototype.add = add;
+    Set.prototype.get = function(index) { return this._data[index]; };
+    Set.prototype.has = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (this.get(i) === item) {
+          return true;
+        }
+      }
+      return false;
+    };
+    Set.prototype.is = function(map) {
+      if (map._data.length !== this._data.length) { return false; }
+      var i, j, flag, tData = this._data, mData = map._data;
+      for (i = 0; i < tData.length; i++) {
+        for (flag = false, j = 0; j < mData.length; j++) {
+          if (tData[i] === mData[j]) {
+            flag = true;
+            break;
+          }
+        }
+        if (!flag) { return false; }
+      }
+      return true;
+    };
+    Set.prototype.values = function() {
+      return this._data;
+    };
+    return Set;
+  })();
+
+  window.Lazyload = (function(doc) {
+    var queue = {js: [], css: []}, sources = {js: {}, css: {}}, context = this;
+    var createNode = function(name, attrs) {
+      var node = doc.createElement(name), attr;
+      for (attr in attrs) {
+        if (attrs.hasOwnProperty(attr)) {
+          node.setAttribute(attr, attrs[attr]);
+        }
+      }
+      return node;
+    };
+    var end = function(type, url) {
+      var s, q, qi, cbs, i, j, cur, val, flag;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        s[url] = true;
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (cur.urls.has(url)) {
+            qi = cur, val = qi.urls.values();
+            qi && (cbs = qi.callbacks);
+            for (flag = true, j = 0; j < val.length; j++) {
+              cur = val[j];
+              if (!s[cur]) {
+                flag = false;
+              }
+            }
+            if (flag && cbs && cbs.length > 0) {
+              for (j = 0; j < cbs.length; j++) {
+                cbs[j].call(context);
+              }
+              qi.load = true;
+            }
+          }
+        }
+      }
+    };
+    var load = function(type, urls, callback) {
+      var s, q, qi, node, i, cur,
+        _urls = typeof urls === 'string' ? new Set([urls]) : new Set(urls), val, url;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (_urls.is(cur.urls)) {
+            qi = cur;
+            break;
+          }
+        }
+        val = _urls.values();
+        if (qi) {
+          callback && (qi.load || qi.callbacks.push(callback));
+          callback && (qi.load && callback());
+        } else {
+          q.push({
+            urls: _urls,
+            callbacks: callback ? [callback] : [],
+            load: false
+          });
+          for (i = 0; i < val.length; i++) {
+            node = null, url = val[i];
+            if (s[url] === undefined) {
+              (type === 'js' ) && (node = createNode('script', { src: url }));
+              (type === 'css') && (node = createNode('link', { rel: 'stylesheet', href: url }));
+              if (node) {
+                node.onload = (function(type, url) {
+                  return function() {
+                    end(type, url);
+                  };
+                })(type, url);
+                (doc.head || doc.body).appendChild(node);
+                s[url] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+    return {
+      js: function(url, callback) {
+        load('js', url, callback);
+      },
+      css: function(url, callback) {
+        load('css', url, callback);
+      }
+    };
+  })(this.document);
+})();
+</script><script>
+  (function() {
+    var TEXT_VARIABLES = {
+      version: '2.2.6',
+      sources: {
+        font_awesome: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css',
+        jquery: 'https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js',
+        leancloud_js_sdk: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js',
+        chart: 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js',
+        gitalk: {
+          js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js',
+          css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
+        },
+        valine: 'https://unpkg.com/valine/dist/Valine.min.js',
+        mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
+        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+      },
+      site: {
+        toc: {
+          selectors: 'h1,h2,h3'
+        }
+      },
+      paths: {
+        search_js: '/assets/search.js'
+      }
+    };
+    window.TEXT_VARIABLES = TEXT_VARIABLES;
+  })();
+</script>
+</head>
+  <body>
+    <div class="root" data-is-touch="false">
+      <div class="layout--page layout--page--sidebar clearfix js-page-root">
+  <div class="page__mask d-print-none js-page-mask js-sidebar-hide"></div>
+  <div class="page__viewport">
+    <div class="page__actions d-print-none">
+      <div class="button button--circle button--lg box-shadow-2 sidebar-button js-sidebar-show">
+        <i class="fas fa-bars icon--show"></i>
+      </div>
+    </div>
+
+    <div class="grid page__grid">
+
+      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">언어</li><li class="toc-h2"><a href="/2024/03/26/random_variables_en.html">English(EN)</a></li><li class="toc-h1">확률/통계 기초</li><li class="toc-h2"><a href="/2024/03/26/random_variables_ko.html">확률 분포</a></li><li class="toc-h2"><a href="/2024/03/27/binomial_distribution_ko.html">이항 분포</a></li><li class="toc-h2"><a href="/2024/03/28/geometric_distribution_ko.html">기하 분포</a></li><li class="toc-h2"><a href="/2024/04/02/poisson_distribution_ko.html">포아송 분포</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+
+      <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
+      <div class="header__title">
+        <div class="header__brand"><?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+fill="#000000" stroke="none">
+<path d="M3162 4870 c-73 -43 -130 -80 -125 -83 110 -65 533 -307 540 -309 16
+-5 285 154 276 163 -20 19 -531 309 -544 308 -8 0 -74 -36 -147 -79z"/>
+<path d="M2993 4458 c4 -145 7 -772 7 -1394 l0 -1131 270 -157 c148 -86 272
+-156 275 -156 3 0 5 627 5 1394 l0 1393 -270 157 c-148 86 -274 156 -281 156
+-9 0 -11 -60 -6 -262z"/>
+<path d="M3751 4483 l-134 -77 6 -1437 c6 -1343 5 -1438 -11 -1452 -9 -8 -267
+-159 -572 -334 -909 -523 -881 -507 -899 -496 -14 9 -16 54 -19 397 -1 212 -6
+386 -10 385 -4 0 -68 -35 -142 -78 l-135 -79 4 -568 c2 -313 5 -570 6 -572 2
+-2 167 91 367 207 199 115 662 383 1028 594 l665 383 3 1200 c3 1167 -4 2004
+-17 2004 -3 -1 -66 -35 -140 -77z"/>
+<path d="M1400 1789 c-69 -39 -131 -76 -138 -83 -10 -9 44 -45 255 -167 147
+-84 272 -154 279 -154 15 0 274 148 274 157 0 5 -533 318 -542 318 -2 0 -59
+-32 -128 -71z"/>
+<path d="M2570 1640 l-375 -217 2 -313 c1 -172 4 -314 6 -316 4 -4 1283 730
+1300 746 10 9 18 3 -295 184 -130 75 -242 136 -250 135 -7 -1 -182 -99 -388
+-219z"/>
+<path d="M1210 1058 l0 -573 266 -155 c146 -85 269 -156 274 -158 6 -2 10 212
+10 570 l0 573 -217 125 c-119 69 -243 140 -275 158 l-58 34 0 -574z"/>
+</g>
+</svg>
+<a title="JenDS by Jenny Won
+" href="/">JenDS</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
+        <ul><li class="navigation__item"><a href="/2024/03/26/random_variables_en.html">스터디 노트</a></li><li class="navigation__item"><a href="/project.html">프로젝트</a></li><li class="navigation__item"><a href="https://medium.com/@jen052430s">아티클</a></li><li class="navigation__item"><a href="/about.html">소개</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+      </nav></div>
+  </header>
+</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
+
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
+
+              <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
+
+<!-- end custom main top snippet -->
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>정규 분포와 중심 극한 정리</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Github에서 확인하기"
+            href="https://github.com/jenniione/jenniione.github.io/tree/master/_posts/2024-04-06-normal_distribution_ko.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="정규 분포와 중심 극한 정리"><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=%ED%86%B5%EA%B3%84%ED%95%99">통계학</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2024년 04월 06일</span>
+            </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-04-06T00:00:00+09:00">
+    <meta itemprop="keywords" content="통계학"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/normal_distribution_cover.png" />
+</p>
+
+<p>많은 통계적 검정과 모델링 방법론은 정규 분포를 가정으로 한다. 카이제곱분포, t-분포, F-분포 등 통계학에서 다뤄지는 중요한 분포들 역시 정규분포과 깊은 연관이 있으며, 이로 부터 파생되거나 그 성질을 활용하니, 정규 분포가 없는 통계학은 상상하기 어려울 지경이다.</p>
+
+<h2 id="정규-분포의-발견">정규 분포의 발견</h2>
+<p>정규 분포는 가우스 분포 혹은 라플라스 분포라고도 불린다. 혹은 종모양이라고 해서 Bell Curve라고도 하는데, 여기서는 정규 분포(Normal Distribution)이라고 하겠다. 사실 이름이 어떻든 중요한 것은 당시대의 수학자들이 각자의 연구 과정에서 정규 분포를 관찰했다는 것이고, 이것이 이러한 분포를 정의할 필요성을 주었다는 사실이다. 간단하게 몇몇 수학자의 정규 분포의 발견을 보자.</p>
+
+<p>정규 분포는 <u>'이항 분포의 근사'</u>로서 <strong>Abraham de Moivre</strong>에 의해 처음 발표되었다고 한다.</p>
+
+<p align="center">
+  <img class="image image--md" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/Abraham_de_moivre.jpg" />
+</p>
+
+<p>Abraham de Moivres(드무아브르)는 이항 분포의 n이 아주 큰 경우 어떤 식에 가까워질 지를 연구하던 중, 다음과 같은 근사식을 찾았는데, 실제로 n이 100을 넘을 정도로 크지 않은 값이여도 비교적 잘 성립한다는 것을 발견했다.</p>
+
+\[_{n}C_{k} p^k q^{n-k} \approx {\frac{1}{\sqrt{2 \pi npq}} e}^{-\frac{(k-np)^2}{2npq}}\]
+
+<p>이후 <strong>Johann Carl Friedrich Gauss</strong>(가우스)는 참값과 관측값 사이의 오차를 탐구하던 중 <u>오차들의 분포가 정규 분포를 이룬다</u>는 것을 발견했다.</p>
+
+<p align="center">
+  <img class="image image--md" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/Carl_Friedrich_Gauss.jpeg" />
+</p>
+
+<p>그는 관측치로 부터 참값을 추적하는 연구 중, 참값과 관측값의 차이인 오차들이 대칭성을 가진 특정한 분포를 나타낸다는 것을 알았다. 연구 진행을 위해 이 오차들의 분포를 정의할 필요가 있다고 판단하여 이 분포를 정의하게 되었다.</p>
+
+<h2 id="정규-분포의-정의">정규 분포의 정의</h2>
+<p>정규 분포는 <strong>평균 $\mu$ 와 표준편차 $\sigma$ 두 가지 파라미터</strong>로 완전히 정의된다.</p>
+
+<p>정규 분포는 다음과 같이 표현할 수 있고,</p>
+
+\[X\sim N(\mu ,{ \sigma  }^{ 2 })\]
+
+<p>연속 확률 변수 $X에 대해 다음과 같은 확률 밀도 함수는(PDF)를 따른다.</p>
+
+\[\begin{equation}
+\begin{aligned}
+f(x; \mu, \sigma) = \frac{1}{\sqrt{2\pi \cdot \sigma^{2}}} e^{-\frac{1}{2} \left(\frac{x-\mu}{\sigma}\right)^{2}}
+\end{aligned}
+\end{equation}\]
+
+<h2 id="정규-분포의-시뮬레이션">정규 분포의 시뮬레이션</h2>
+<p>정규 분포는 평균을 기준으로 좌우 대칭적 분포를 띈다. 정규 분포의 평균값이 변함에 따라 어떻게 분포가 이동하는 지 보자.</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/normal_distribution_simulation_mean.png" />
+</p>
+
+<p>또, 분산은 분포가 평균을 기준으로 퍼진 정도를 나타낸다. 분산이 클 수록 넓게 퍼지고, 분산이 작을 수락 뾰족한 형태를 띈다.</p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/normal_distribution_simulation_var.png" />
+</p>
+
+<h2 id="중심-극한-정리central-limit-theorem-clt">중심 극한 정리(Central Limit Theorem, CLT)</h2>
+<p>사실 이번 포스트는 정규 분포를 빙자한 중심 극한 정리라고 해도 무방하다.</p>
+
+<p>그만큼 중심 극한 정리는 정규 분포와 떼놓고 말하기 어렵기도 하고, 단순히 ‘봐봐, 정규 분포가 되지’라고 설명하고 넘어가기에는 중심 극한 정리가 정규 분포를 얼마나 중요하게 만들고 있는지 설명하는데 부족함이 크다고 생각한다.</p>
+
+<p>또, 이 정리를 마치 ‘어떤 분포든 그 시행을 무수히 하면 정규 분포가 되는 이론’이라고 오해하는 경우도 간혹 있어, 여기서 자세히 공부해 보려고 한다. (쉽게 설명하려는 의도로 같은 의미로 ‘샘플’과 ‘표본’, ‘동일한 분포’와 ‘고정된 분포’라는 표현을 혼용해서 사용하니 참고 바란다.)</p>
+
+<p class="info"><strong>정의</strong>   중심 극한 정리(CLT:Central Limit Theorem)는 다음과 같이 정의된다. 고정된 분포를 가진 집단에서, 독립적인 무작위 샘플링을 시행했을 때, 샘플의 크기(샘플링의 규모)가 클수록 그 <u>샘플의 평균들의 분포(혹은 그 합)는 정규분포를 따른다</u>.</p>
+
+<p>자, 하나 하나 그 의미를 따져보자.</p>
+
+<ul>
+  <li>고정된 분포를 가진 집단 : 그 분포의 형태는 상관없지만 전혀 다른 분포를 가진 집단에서 샘플링이 되어서는 안된다. 다시 말해, <strong>모집단이 어떠한 특정 분포를 따르더라도 그 모집단에 대해 중심 극한 정리는 유효</strong>하다.</li>
+  <li>독립적인 무작위 샘플링 : 말 그대로 하나 하나의 샘플링이 서로 독립적이며 무작위로 발생해야 한다.</li>
+  <li>샘플링의 크기가 크다면 : 흔히 이를 샘플링의 횟수를 많이 하면이라고 오해하기 쉽다. 하지만 정확히는 <strong>‘한 회에 발생하는 샘플링의 규모가 클수록’</strong>을 의미한다.</li>
+  <li>평균들의 분포가 정규분포를 따른다 : ‘샘플링의 횟수가 많다면 분포가 정규 분포가 된다’라고 오해할 때 간과하기 쉬운 포인트가 <strong>‘평균들의 분포가’</strong> 정규 분포를 따른다는 것이다. 이는 각각의 샘플링에서 얻은 평균들의 분포가 정규 분포를 따른다는 것을 의미한다.</li>
+</ul>
+
+<p>종합하여, <strong><u>어떤 특정 분포를 따르는 모집단이더라도, 그 모집단에서 독립적이고 무작위적인 방식으로 샘플을 추출한다면, 더 큰 규모의 샘플에서 추출하는 방식일수록, 각각의 샘플들로 부터 얻은 평균들의 분포가 정규 분포를 따르게 된다</u></strong>는 것이다.</p>
+
+<h3 id="중심-극한-정리의-직관적-이해">중심 극한 정리의 직관적 이해</h3>
+<p>어떤 모집단으로부터 얻은 여러 샘플들에서 평균들을 모았다고 생각해 보자. 한번에 뽑는 샘플의 요소가 많아질 수록 샘플에서 얻은 평균들은 모집단의 특성을 더 잘 반영하게 될 것이다. 이것을 직관적으로 이해하는 것은 어려운 일이 아니다.</p>
+
+<p>쉬운 예로 여론 조사를 떠올려보자. 우리는 무작위로 뽑은 100명의 집단 보다 1,000명의 집단에서 실시한 여론조사가 국민의 의견을 더 잘 반영한다고 한다. 혹은 믿을만 하다고도 한다. (신뢰성에 대한 이야기 역시 할 이야기가 많지만 우선은 넘어가도록 한다.) 왜 그렇게 생각할까? 더 큰 규모에서 샘플링이 시도된다면 모집단의 특성을 더 잘 나타낼 것이라는 것을 우린 직감적으로 이해할 수 있다. 특히, <u>모집단의 '평균'이라는 특성은 샘플의 규모가 크면 클수록 샘플의 평균에서 더 잘 나타나고, 샘플의 평균들은 모집단의 평균으로 수렴</u>하려고 할 것이다.</p>
+
+<p>관점을 살짝 틀어보기 위해 <strong>극단적인 상황</strong>을 가정해 보자. 모집단 만큼이나 큰 샘플에서 평균을 얻는다고 생각해 보자. 아마 여러차례 샘플링을 시도하여 평균을 구한다면, 그 값은 웬만하면 모집단의 평균처럼 나올 것이다. 물론 정확히 모집단의 평균이 아닌 값들도 관찰될 되겠지만, <u>작은 오차는 빈번하게 발생할 수 있어도 큰 오차는 드물게 발생</u>할 것이다. 이것은 다음과 같이 해석될 수 있다. <strong>더 큰 샘플링을 시도할 수록 샘플들의 평균은 모집단의 평균을 더 정확히 추정</strong>하며, 추적의 과정에서 발생하는 오차들이 큰 오차보다는 작은 오차들이 나타나는 형태로 나름 대칭성을 갖고 분포한다는 것이다.</p>
+
+<p>이렇게 생각해보니 중심 극한 정리가 “당연한 거 아니야?”라고 말할 수 있을 만큼 이해할 법 하다.</p>
+
+<p><strong>‘오차’</strong>라는 이야기를 했는데, 사실 가우스도 참값과 관측값으로 부터의 오차를 탐구하다 이 오차들이 정규 분포의 형태를 띈다는 것을 확인하고 이 분포를 정의하게 된 것이니 정규 분포가 앞으로 어떻게 활용될 수 있는지 짐작해 볼 수 있겠다.</p>
+
+<h3 id="수학적-고찰">수학적 고찰</h3>
+<p>앞서 이해한 중심 극한 정리를 수학적 관점에서 다시 정의하자면 다음과 같다.</p>
+
+<p class="info"><strong>정의</strong>   중심극한정리(central limit theorem)은 무작위로 추출된 표본의 크기가 커질수록 표본 평균의 분포는 모집단의 분포 모양과는 관계없이 정규분포 가까워진다는 정리이다. 임의의 분포를 갖는 확률변수 \(x_1, x_2, \cdots, x_n\) 들이 서로 독립이면서 동일한 분포를 갖고 있다고 하자(=i.i.d).이들의 평균을 \(\mathbb{E}(x_i) = \mu\), 분산을 \(\text{var}(x_i)=\sigma^2\) 라고 했을 때 \(\mathbf{x} = [x_1, x_2, \cdots, x_n]^{\intercal}\) 은 \(n\) 이 커질수록 다음과 같은 표준정규분포로 수렴하게 된다.&lt;/u&gt;.</p>
+
+\[\begin{equation} 
+\begin{aligned}
+\frac{\mathbf{x}- n\mu}{\sigma \sqrt{n}} \sim \mathcal{N}(0,1)
+ \end{aligned}
+\end{equation}\]
+
+<h4 id="중심-극한-정리의-증명">중심 극한 정리의 증명</h4>
+<p>중심 극한 정리의 증명 방법에는 여러가지 버전이 존재한다. 초기 형태였던 라플라스에 의한 방법은 이항 분포의 정규 분포 근사에 초점이 맞춰져 있고, 현재가 가장 활발히 활용되는 방식은 모멘트 생성 함수의 성질을 이용하는 린데베르그-레비의 중심 극한 정리이다. 이번 섹션에서는 특성 함수와 합성곱을 활용하여 전통적인 방법 보다 직관적인 접근 방법으로 접근해 보려고 한다.</p>
+
+<p class="warning"><strong>명제</strong>   독립적이고 동일하게 분포된(i.i.d.) 무작위 변수들의 ‘합’이, 적절하게 정규화될 때, 정규 분포에 수렴한다.</p>
+
+<ul>
+  <li><strong>확률 변수의 합성곱 정의</strong><br />
+우선, 합성곱이라는 개념을 어떻게 확률변수에 어떻게 적용되는 지 살펴보자.</li>
+</ul>
+
+<p>두 개의 확률 변수 $X$, $Y$이 서로 독립이라고 하자. 그러면 새로운 확률 변수 $Z = X + Y$에 대한 확률은 다음과 같이 정의할 수 있다.</p>
+
+\[P(Z) = \sum_{k=-\infty}^{\infty}{P(X)P(Y)}\]
+
+<p>이 부분이 잘 이해가 되지 않는다면, $X$를 동전 던지기의 앞면이 나올 사건, $Y$를 주사위 던지기의 짝수가 나올 사건, $Z$를 동전과 주사위를 던졌을 때 앞면과 짝수가 나올 사건이라고 했을떄, Z의 확률을 구하기 위해, $X$, $Y$의 확률의 곱을 계산하고 있는 자신의 모습을 떠올려보자. 또, 이러한 내용을 전문적으로 아주 잘 설명하고 있는 <a href="https://colah.github.io/posts/2014-07-Understanding-Convolutions/">이 블로그</a>를 방문해 보길 추천한다.</p>
+
+<p>$X$, $Y$의 확률 밀도 함수를 각각 $f(x)$, $g(x)$라고 하면, $Z = X + Y$의 확률 밀도 함수 $(f*g)(z)$ 는 다음과 같은 함수의 합성곱으로 표현될 수 있다.</p>
+
+\[(f*g)(z) = \int_{-\infty}^{\infty}f(z-y)g(y)dy = \int_{-\infty}^{\infty}g(z-x)f(x)dx\]
+
+<p>합이 곱으로 변환된다는 점에 주목하자. 이러한 성질을 확률 변수의 특성 함수를 정의함으로써 활용하고자 한다.</p>
+
+<ul>
+  <li><strong>확률 변수의 특성 함수 정의</strong></li>
+</ul>
+
+<p>임의의 확률 밀도 함수 $f_X(x)$에 대한 특성 함수는 다음과 같이 정의한다. (t는 실수)</p>
+
+\[\phi_X(t) = E[e^{itX}] = \int_{-\infty}^{\infty}e^{jtx}f_X(x)dx\]
+
+<p>이러한 특성 함수의 정의에서 다음과 같은 성질로 복소수 지수 함수 $e^{itX}$의 절대값은 항상 1이다.</p>
+
+\[|e^{itx}| = |\cos(tx) + i\sin(tx)| =  \sqrt{\cos^2(tx) + \sin^2(tx)} = 1\]
+
+<p>이러한 특성 함수 정의는 라플라스 변환, 확률 생선 함수, 혹은 모멘트 생성 함수와 같은 다른 변환들과 비교했을 때, 모든 확률 분포에 대해 적분이 존재한다는 매우 큰 장점을 갖는다.</p>
+
+<ul>
+  <li><strong>맥클로린 급수 전개</strong></li>
+</ul>
+
+<p>앞선 특성 함수 정의에서 $$e^{jtx}$ 는 맥클로린 급수 전개를 이용해 다음과 같이 전개할 수 있다.</p>
+
+\[e^{jtx}=\sum_{k=1}^{\infty}\frac{(jtx)^k}{k!}=1+jtx+\frac{(jtx)^2}{2!}+\frac{(jtx)^3}{3!}+\cdots = 1+jtx+\frac{(jtx)^2}{2!}+O(t^2)\]
+
+<p>$O(t^2)$ 은 네 번째 항부터 마지막까지의 항을 뭉뚱그려 쓴 것이다. 이것을 특성 함수 전개에 적용하면,</p>
+
+\[\phi_X(t) = \int_{-\infty}^{\infty}e^{jtx}f_Y(t)dy=\int_{-\infty}^{\infty}\left\{1+jtx-\frac{t^2}{2}x^2+O(t^2)\right\}f_X(x)dy\notag\]
+
+\[=\int_{-\infty}^{\infty}f_X(x)dy + \int_{-\infty}^{\infty}xf_X(x)dy - \frac{t^2}{2}\int_{-\infty}^{\infty}x^2f_X(x)dy+O(t^2)\notag\]
+
+\[=1+jtE\left[x\right]-\frac{t^2}{2}E\left[x^2\right]+O(t^2)\]
+
+<p>이 된다.</p>
+
+<ul>
+  <li><strong>정규화된 확률 변수 $Z_i$의 특성 함수</strong></li>
+</ul>
+
+<p>자, 확률 변수 $X$를 평균이 0($E(x)=0$)이고, 분산이 1(Var[x]=1)로 정규화한 새로운 확률 변수 $Z_i = \frac{X_i - \mu}{\sigma}$에 대한 특성 함수를 보려고 한다. 앞서 특성 함수의 전개를 봤듯이, $Z_i$에 대한 특성 함수는 다음과 같이 정리된다.</p>
+
+\[\phi_Z(t) = E\left[e^{jtz}\right]=\int_{-\infty}^{\infty}e^{jtz}f_Z(z)dx\]
+
+\[=1+jtE\left[z\right]-\frac{t^2}{2}E\left[z^2\right]+O(t^2)\]
+
+\[= 1+0-\frac{t^2}{2}+O(t^2)\]
+
+\[= 1-\frac{t^2}{2}+O(t^2)\]
+
+<ul>
+  <li><strong>$n$개의 $Z_i$의 합에 대한 특성 함수</strong>
+$n$개의 독립적인 확률변수 $Z_i$의 합 $S_n = \sum_{i=1}^{n} Z_i = Z_1 + Z_2 + \cdots + Z_n$에 대한 특성 함수는, 합성곱의 성질을 이용하여 다음과 같이 나타낼 수 있다.</li>
+</ul>
+
+\[\phi_{S_n}(t) = \left( \phi_{Z}(t) \right)^n\]
+
+<p>앞선 정규화된 $Z$의 특성 함수 전개를 적용하면,</p>
+
+\[\phi_{S_n}(t) = \left( \phi_{Z}(t) \right)^n = [1-\frac{t^2}{2N}+O\left(\frac{t^2}{N}\right)]^N\]
+
+<p>이 된다. 여기서, $n$을 무한대로 보내면 $O(\frac{t^2}{N})$이 $\frac{t^2}{2N}$ 보다 빠르게 0에 수렴하므로, 그 극한값은 다음과 같이 수렴한다는 것을 알 수 있다.</p>
+
+\[\lim_{N\rightarrow \infty}\phi_{S_N}(t) = \lim_{N\rightarrow\infty}\left[1-\frac{t^2}{2N}\right]^N=e^{-t^2/2}\]
+
+<h2 id="정규-분포의-중요성">정규 분포의 중요성</h2>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/central limit theorem.webp" />
+</p>
+
+<p>샘플링 기법에 기반한 추론적 통계에서, 표본 평균들의 분포를 이해하는 것은 모평균을 추적함에 있어 중요하다. 그런데 중심 극한 정리에 따르면 충분히 큰 샘플에서 샘플링이 이루어 졌을 때, 모평균에 대해 전혀 알지 못해도, 이 표본 평균들의 분포가 정규 분포로 수렴한다. 일반적으로 많은 상황에서 우리는 제한된 관측치를 가지고 모집단을 추정해 본다. 이때, 관측치들을 일정하게 샘플링해 얻은 평균값들의 분포를 통해 모집단의 분포를 추정하려는 시도는, 우리가 정규 분포를 필연적으로, 꽤나 자주 마주하게 만들 것이다.</p>
+
+<p><br /><br />
+<strong>참조</strong><br />
+<a href="https://en.wikipedia.org/wiki/Abraham_de_Moivre">Wikipedia(Abraham de Moivre)</a><br />
+<a href="https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss">Wikipedia(Johann Carl Friedrich Gaus)</a><br />
+<a href="https://integratedmlai.com/normal-distribution-an-introductory-guide-to-pdf-and-cdf/">Normal Distribution: An Introductory Guide to PDF and CDF(Teena Mary)</a><br />
+<a href="https://recipesds.tistory.com/entry/%EA%B0%80%EC%9A%B0%EC%8B%9C%EC%95%88Gaussian-%EC%A0%95%EA%B7%9C%EB%B6%84%ED%8F%ACNormal-Distribution-%EB%84%88%EB%9E%80-%EB%B6%84%ED%8F%AC-%EC%A0%95%EB%A7%90">가우시안(Gaussian)-정규분포(Normal Distribution).너란 분포 정말(친절한 데이터 사이언스 강좌)</a><br />
+<a href="https://medium.com/@amanatulla1606/python-implementation-of-central-limit-theorem-exploring-sample-data-to-infer-population-595e39e0c98e">“Python Implementation of Central Limit Theorem: Exploring Sample Data to Infer Population Parameters”(Amanatullah)</a><br />
+<a href="https://colah.github.io/posts/2014-07-Understanding-Convolutions/">Understanding Convolutions(colah’s blog)</a><br />
+<a href="https://sas.uwaterloo.ca/~dlmcleis/s901/chapt6.pdf">Characteristic Functions and the Central Limit Theorem(University of Waterloo)</a><br /></p>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-04-06T00:00:00+09:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+<div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml">구독하기</a></div>
+</div><div class="article__license"><div class="license">
+    <p>이 글의 저작권은 <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a> 라이센스를 따릅니다.
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">
+        <img alt="Attribution-NonCommercial 4.0 International" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+      </a>
+    </p>
+  </div></div></footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>이전</span><a href="/2024/04/02/poisson_distribution_ko.html">포아송 분포</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+</script>
+</div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
+
+<!-- end custom main bottom snippet -->
+</div>
+            </div></div></div><div class="page__footer d-print-none">
+<footer class="footer py-4 js-page-footer">
+  <div class="main"><div itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jenny Won (Dajeong Won)"><meta itemprop="url" content="/"><meta itemprop="description" content="Data Scientist"><div class="footer__author-links"><div class="author-links">
+  <ul class="menu menu--nowrap menu--inline"></ul>
+</div>
+</div>
+    </div><div class="site-info mt-2">
+      <div>© JenDS 2021,
+        Powered by <a title="Jekyll is a simple, blog-aware, static site generator." href="http://jekyllrb.com/">Jekyll</a> & <a
+        title="TeXt is a super customizable Jekyll theme." href="https://github.com/kitian616/jekyll-TeXt-theme">TeXt Theme</a>.
+      </div>
+    </div>
+  </div>
+</footer>
+</div></div>
+    </div></div></div><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $body = $('body'), $window = $(window);
+    var $pageRoot = $('.js-page-root'), $pageMain = $('.js-page-main');
+    var activeCount = 0;
+    function modal(options) {
+      var $root = this, visible, onChange, hideWhenWindowScroll = false;
+      var scrollTop;
+      function setOptions(options) {
+        var _options = options || {};
+        visible = _options.initialVisible === undefined ? false : show;
+        onChange = _options.onChange;
+        hideWhenWindowScroll = _options.hideWhenWindowScroll;
+      }
+      function init() {
+        setState(visible);
+      }
+      function setState(isShow) {
+        if (isShow === visible) {
+          return;
+        }
+        visible = isShow;
+        if (visible) {
+          activeCount++;
+          scrollTop = $(window).scrollTop() || $pageMain.scrollTop();
+          $root.addClass('modal--show');
+          $pageMain.scrollTop(scrollTop);
+          activeCount === 1 && ($pageRoot.addClass('show-modal'), $body.addClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.on('scroll', hide);
+          $window.on('keyup', handleKeyup);
+        } else {
+          activeCount > 0 && activeCount--;
+          $root.removeClass('modal--show');
+          $window.scrollTop(scrollTop);
+          activeCount === 0 && ($pageRoot.removeClass('show-modal'), $body.removeClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.off('scroll', hide);
+          $window.off('keyup', handleKeyup);
+        }
+        onChange && onChange(visible);
+      }
+      function show() {
+        setState(true);
+      }
+      function hide() {
+        setState(false);
+      }
+      function handleKeyup(e) {
+        // Char Code: 27  ESC
+        if (e.which ===  27) {
+          hide();
+        }
+      }
+      setOptions(options);
+      init();
+      return {
+        show: show,
+        hide: hide,
+        $el: $root
+      };
+    }
+    $.fn.modal = modal;
+  });
+})();
+</script><div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal"><script>
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    // search panel
+    var search = (window.search || (window.search = {}));
+    var useDefaultSearchBox = window.useDefaultSearchBox === undefined ?
+      true : window.useDefaultSearchBox ;
+
+    var $searchModal = $('.js-page-search-modal');
+    var $searchToggle = $('.js-search-toggle');
+    var searchModal = $searchModal.modal({ onChange: handleModalChange, hideWhenWindowScroll: true });
+    var modalVisible = false;
+    search.searchModal = searchModal;
+
+    var $searchBox = null;
+    var $searchInput = null;
+    var $searchClear = null;
+
+    function getModalVisible() {
+      return modalVisible;
+    }
+    search.getModalVisible = getModalVisible;
+
+    function handleModalChange(visible) {
+      modalVisible = visible;
+      if (visible) {
+        search.onShow && search.onShow();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].focus();
+      } else {
+        search.onShow && search.onHide();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].blur();
+        setTimeout(function() {
+          useDefaultSearchBox && ($searchInput.val(''), $searchBox.removeClass('not-empty'));
+          search.clear && search.clear();
+          window.pageAsideAffix && window.pageAsideAffix.refresh();
+        }, 400);
+      }
+    }
+
+    $searchToggle.on('click', function() {
+      modalVisible ? searchModal.hide() : searchModal.show();
+    });
+    // Char Code: 83  S, 191 /
+    $(window).on('keyup', function(e) {
+      if (!modalVisible && !window.isFormElement(e.target || e.srcElement) && (e.which === 83 || e.which === 191)) {
+        modalVisible || searchModal.show();
+      }
+    });
+
+    if (useDefaultSearchBox) {
+      $searchBox = $('.js-search-box');
+      $searchInput = $searchBox.children('input');
+      $searchClear = $searchBox.children('.js-icon-clear');
+      search.getSearchInput = function() {
+        return $searchInput.get(0);
+      };
+      search.getVal = function() {
+        return $searchInput.val();
+      };
+      search.setVal = function(val) {
+        $searchInput.val(val);
+      };
+
+      $searchInput.on('focus', function() {
+        $(this).addClass('focus');
+      });
+      $searchInput.on('blur', function() {
+        $(this).removeClass('focus');
+      });
+      $searchInput.on('input', window.throttle(function() {
+        var val = $(this).val();
+        if (val === '' || typeof val !== 'string') {
+          search.clear && search.clear();
+        } else {
+          $searchBox.addClass('not-empty');
+          search.onInputNotEmpty && search.onInputNotEmpty(val);
+        }
+      }, 400));
+      $searchClear.on('click', function() {
+        $searchInput.val(''); $searchBox.removeClass('not-empty');
+        search.clear && search.clear();
+      });
+    }
+  });
+})();
+</script><div class="search search--dark">
+  <div class="main">
+    <div class="search__header">검색</div>
+    <div class="search-bar">
+      <div class="search-box js-search-box">
+        <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
+        <input type="text" />
+        <div class="search-box__icon-clear js-icon-clear">
+          <a><i class="fas fa-times"></i></a>
+        </div>
+      </div>
+      <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
+        취소</button>
+    </div>
+    <div class="search-result js-search-result"></div>
+  </div>
+</div>
+<script>var SOURCES = window.TEXT_VARIABLES.sources;
+var PAHTS = window.TEXT_VARIABLES.paths;
+window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
+  var search = (window.search || (window.search = {}));
+  var searchData = window.TEXT_SEARCH_DATA || {};
+
+  function memorize(f) {
+    var cache = {};
+    return function () {
+      var key = Array.prototype.join.call(arguments, ',');
+      if (key in cache) return cache[key];
+      else return cache[key] = f.apply(this, arguments);
+    };
+  }
+
+  /// search
+  function searchByQuery(query) {
+    var i, j, key, keys, cur, _title, result = {};
+    keys = Object.keys(searchData);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      for (j = 0; j < searchData[key].length; j++) {
+        cur = searchData[key][j], _title = cur.title;
+        if ((result[key] === undefined || result[key] && result[key].length < 4 )
+          && _title.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+          if (result[key] === undefined) {
+            result[key] = [];
+          }
+          result[key].push(cur);
+        }
+      }
+    }
+    return result;
+  }
+
+  var renderHeader = memorize(function(header) {
+    return $('<p class="search-result__header">' + header + '</p>');
+  });
+
+  var renderItem = function(index, title, url) {
+    return $('<li class="search-result__item" data-index="' + index + '"><a class="button" href="' + url + '">' + title + '</a></li>');
+  };
+
+  function render(data) {
+    if (!data) { return null; }
+    var $root = $('<ul></ul>'), i, j, key, keys, cur, itemIndex = 0;
+    keys = Object.keys(data);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      $root.append(renderHeader(key));
+      for (j = 0; j < data[key].length; j++) {
+        cur = data[key][j];
+        $root.append(renderItem(itemIndex++, cur.title, cur.url));
+      }
+    }
+    return $root;
+  }
+
+  // search box
+  var $result = $('.js-search-result'), $resultItems;
+  var lastActiveIndex, activeIndex;
+
+  function clear() {
+    $result.html(null);
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+  }
+  function onInputNotEmpty(val) {
+    $result.html(render(searchByQuery(val)));
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+    $resultItems.eq(0).addClass('active');
+  }
+
+  search.clear = clear;
+  search.onInputNotEmpty = onInputNotEmpty;
+
+  function updateResultItems() {
+    lastActiveIndex >= 0 && $resultItems.eq(lastActiveIndex).removeClass('active');
+    activeIndex >= 0 && $resultItems.eq(activeIndex).addClass('active');
+  }
+
+  function moveActiveIndex(direction) {
+    var itemsCount = $resultItems ? $resultItems.length : 0;
+    if (itemsCount > 1) {
+      lastActiveIndex = activeIndex;
+      if (direction === 'up') {
+        activeIndex = (activeIndex - 1 + itemsCount) % itemsCount;
+      } else if (direction === 'down') {
+        activeIndex = (activeIndex + 1 + itemsCount) % itemsCount;
+      }
+      updateResultItems();
+    }
+  }
+
+  // Char Code: 13  Enter, 37  ⬅, 38  ⬆, 39  ➡, 40  ⬇
+  $(window).on('keyup', function(e) {
+    var modalVisible = search.getModalVisible && search.getModalVisible();
+    if (modalVisible) {
+      if (e.which === 38) {
+        modalVisible && moveActiveIndex('up');
+      } else if (e.which === 40) {
+        modalVisible && moveActiveIndex('down');
+      } else if (e.which === 13) {
+        modalVisible && $resultItems && activeIndex >= 0 && $resultItems.eq(activeIndex).children('a')[0].click();
+      }
+    }
+  });
+
+  $result.on('mouseover', '.search-result__item > a', function() {
+    var itemIndex = $(this).parent().data('index');
+    itemIndex >= 0 && (lastActiveIndex = activeIndex, activeIndex = itemIndex, updateResultItems());
+  });
+});
+</script>
+</div></div>
+
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function scrollToAnchor(anchor, duration, callback) {
+      var $root = this;
+      $root.animate({ scrollTop: $(anchor).position().top }, duration, function() {
+        window.history.replaceState(null, '', window.location.href.split('#')[0] + anchor);
+        callback && callback();
+      });
+    }
+    $.fn.scrollToAnchor = scrollToAnchor;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function affix(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroll,
+        offsetBottom = 0, scrollTarget = window, scroll = window.document, disabled = false, isOverallScroller = true,
+        rootTop, rootLeft, rootHeight, scrollBottom, rootBottomTop,
+        hasInit = false, curState;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.offsetBottom && (offsetBottom = _options.offsetBottom);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroll && (scroll = _options.scroll);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $scrollTarget = $(scrollTarget);
+        isOverallScroller = window.isOverallScroller($scrollTarget[0]);
+        $scroll = $(scroll);
+      }
+      function preCalc() {
+        top();
+        rootHeight = $root.outerHeight();
+        rootTop = $root.offset().top + (isOverallScroller ? 0 :  $scrollTarget.scrollTop());
+        rootLeft = $root.offset().left;
+      }
+      function calc(needPreCalc) {
+        needPreCalc && preCalc();
+        scrollBottom = $scroll.outerHeight() - offsetBottom - rootHeight;
+        rootBottomTop = scrollBottom - rootTop;
+      }
+      function top() {
+        if (curState !== 'top') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: 0
+          });
+          curState = 'top';
+        }
+      }
+      function fixed() {
+        if (curState !== 'fixed') {
+          $root.addClass('fixed').css({
+            left: rootLeft + 'px',
+            top: 0
+          });
+          curState = 'fixed';
+        }
+      }
+      function bottom() {
+        if (curState !== 'bottom') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: rootBottomTop + 'px'
+          });
+          curState = 'bottom';
+        }
+      }
+      function setState() {
+        var scrollTop = $scrollTarget.scrollTop();
+        if (scrollTop >= rootTop && scrollTop <= scrollBottom) {
+          fixed();
+        } else if (scrollTop < rootTop) {
+          top();
+        } else {
+          bottom();
+        }
+      }
+      function init() {
+        if(!hasInit) {
+          var interval, timeout;
+          calc(true); setState();
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState();
+          });
+          $window.on('resize', function() {
+            disabled || (calc(true), setState());
+          });
+          hasInit = true;
+        }
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions,
+        refresh: function() {
+          calc(true, { animation: false }); setState();
+        }
+      };
+    }
+    $.fn.affix = affix;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function toc(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroller, $tocUl = $('<ul class="toc toc--ellipsis"></ul>'), $tocLi, $headings, $activeLast, $activeCur,
+        selectors = 'h1,h2,h3', container = 'body', scrollTarget = window, scroller = 'html, body', disabled = false,
+        headingsPos, scrolling = false, hasRendered = false, hasInit = false;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.selectors && (selectors = _options.selectors);
+        _options.container && (container = _options.container);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroller && (scroller = _options.scroller);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $headings = $(container).find(selectors).filter('[id]');
+        $scrollTarget = $(scrollTarget);
+        $scroller = $(scroller);
+      }
+      function calc() {
+        headingsPos = [];
+        $headings.each(function() {
+          headingsPos.push(Math.floor($(this).position().top));
+        });
+      }
+      function setState(element, disabled) {
+        var scrollTop = $scrollTarget.scrollTop(), i;
+        if (disabled || !headingsPos || headingsPos.length < 1) { return; }
+        if (element) {
+          $activeCur = element;
+        } else {
+          for (i = 0; i < headingsPos.length; i++) {
+            if (scrollTop >= headingsPos[i]) {
+              $activeCur = $tocLi.eq(i);
+            } else {
+              $activeCur || ($activeCur = $tocLi.eq(i));
+              break;
+            }
+          }
+        }
+        $activeLast && $activeLast.removeClass('active');
+        ($activeLast = $activeCur).addClass('active');
+      }
+      function render() {
+        if(!hasRendered) {
+          $root.append($tocUl);
+          $headings.each(function() {
+            var $this = $(this);
+            $tocUl.append($('<li></li>').addClass('toc-' + $this.prop('tagName').toLowerCase())
+              .append($('<a></a>').text($this.text()).attr('href', '#' + $this.prop('id'))));
+          });
+          $tocLi = $tocUl.children('li');
+          $tocUl.on('click', 'a', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            scrolling = true;
+            setState($this.parent());
+            $scroller.scrollToAnchor($this.attr('href'), 400, function() {
+              scrolling = false;
+            });
+          });
+        }
+        hasRendered = true;
+      }
+      function init() {
+        var interval, timeout;
+        if(!hasInit) {
+          render(); calc(); setState(null, scrolling);
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState(null, scrolling);
+          });
+          $window.on('resize', window.throttle(function() {
+            if (!disabled) {
+              render(); calc(); setState(null, scrolling);
+            }
+          }, 100));
+        }
+        hasInit = true;
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions
+      };
+    }
+    $.fn.toc = toc;
+  });
+})();
+/*(function () {
+
+})();*/
+</script><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $pageMask = $('.js-page-mask');
+    var $pageRoot = $('.js-page-root');
+    var $sidebarShow = $('.js-sidebar-show');
+    var $sidebarHide = $('.js-sidebar-hide');
+
+    function freeze(e) {
+      if (e.target === $pageMask[0]) {
+        e.preventDefault();
+      }
+    }
+    function stopBodyScrolling(bool) {
+      if (bool === true) {
+        window.addEventListener('touchmove', freeze, { passive: false });
+      } else {
+        window.removeEventListener('touchmove', freeze, { passive: false });
+      }
+    }
+
+    $sidebarShow.on('click', function() {
+      stopBodyScrolling(true); $pageRoot.addClass('show-sidebar');
+    });
+    $sidebarHide.on('click', function() {
+      stopBodyScrolling(false); $pageRoot.removeClass('show-sidebar');
+    });
+  });
+})();
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
+</script><script type="text/x-mathjax-config">
+	var _config = { tex2jax: {
+		inlineMath: [['$','$'], ['\\(','\\)']]
+	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
+</script>
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script>
+  window.Lazyload.js('https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js', function() {
+    mermaid.initialize({
+      startOnLoad: true
+    });
+    mermaid.init(undefined, '.language-mermaid');
+  });
+</script>
+
+    </div>
+    <script>(function () {
+  var $root = document.getElementsByClassName('root')[0];
+  if (window.hasEvent('touchstart')) {
+    $root.dataset.isTouch = true;
+    document.addEventListener('touchstart', function(){}, false);
+  }
+})();
+</script>
+  </body>
+</html>
+

@@ -13,7 +13,19 @@ header:
 
   - titles:
       # @start locale config
-      en      : &EN       Article
+      en      : &EN       Project
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      ko      : &KO       프로젝트
+      ko-KR   : *KO
+      # @end locale config
+    url: /project.html
+
+  - titles:
+      # @start locale config
+      en      : &EN       Medium
       en-GB   : *EN
       en-US   : *EN
       en-CA   : *EN
@@ -21,7 +33,8 @@ header:
       ko      : &KO       아티클
       ko-KR   : *KO
       # @end locale config
-    url: /article.html
+    url: "https://medium.com/@jen052430s"
+
 
   - titles:
       # @start locale config
@@ -62,4 +75,5 @@ study-en:
         url:    2024/03/26/random_variables_en.html
       - title:  Biomial Distribution
         url:    2024/03/27/binomial_distribution_en.html
+
 
