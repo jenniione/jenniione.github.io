@@ -37,7 +37,7 @@ $$
 
 - $$ -1.5 \leq x \leq -1$$ 와 $$ 1 \leq x \leq 1.5$$
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_k=1(1).png"/>
+  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_k=1(1).png"/>
 </p>
 
 구간 $$ -1.5 \leq x \leq -1$$ 와 $$ 1 \leq x \leq 1.5$$ 의 확률 변수들을 제곱하면, 이것은 카이제곱 분포의 변량이 된다. 그리고, 제곱함으로써 그 확률값은 카이제곱 분포의 동일한 구간 $$ 1 \leq q \leq 2.25 $$ 에 누적된다. 같은 방식은 다양한 구간에서 반복해 보자.
@@ -45,13 +45,13 @@ $$
 - $$ -2.5 \leq x \leq 2 $$ 와 $$ 2 \leq x \leq 2.5 $$
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_k=1(2).png"/>
+  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_k=1(2).png"/>
 </p>
 
 - $$ -0.5 \leq x \leq 0 $$ 와 $$ 0 \leq x \leq 0.5 $$ 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_k=1(3).png"/>
+  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_k=1(3).png"/>
 </p>
 
 ### 자유도 $$k \geq 2$$
@@ -149,7 +149,7 @@ $$
 교차 분석은 우리가 다루는 엑셀 데이터처럼 범주형 변수가 여러개일 경우 활용하는 분석 방법이다. 목적은 범주들 간의 연관성이 있는지를 파악하는 것이다.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/crosstab(1).png"/>
+  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/crosstab(1).png"/>
 </p>
 
 성별과 선호 과목은 연관성이 있을까? 연관성이 없다고 가정하자.(귀무가설)
@@ -163,8 +163,10 @@ $$
 모든 셀의 기대빈도를 구하면 다음과 같다.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/crosstab(2).png"/>
+  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/crosstab(2).png"/>
 </p>
+
+관측된 오차의 카이제곱 통계량을 구하자.
 
 $$
 \chi^2 = \frac{(40-30)^2}{30} + \frac{(10-20)^2}{20} +
@@ -172,13 +174,17 @@ $$
 = 16.666
 $$
 
+이론적 통계량을 구해보자.
+
 자유도는 $$(2-1) \times (2-1) = 1 $$ 이고 p-value 0.05에 대한 통계량은
 
 $$
 \chi^2(1)_{0.95} = 3.841
 $$
 
-$$ 3.841 \leq 16.666 $$ 이므로 관측 통계량은 굉장히 발생 확률이 낮다고 할 수 있으므로, 두 변수 사이의 통계적으로 유의미한 연관성이 있을 가능성이 높다고 해석할 수 있다. 
+이다.
+
+따라서, $$ 3.841 \leq 16.666 $$ 이므로 <u>관측 통계량은 굉장히 발생 확률이 낮다고 할 수 있으므로, 두 변수 사이의 통계적으로 유의미한 연관성이 있을 가능성이 높다고 해석</u>할 수 있다. 
 
 
 

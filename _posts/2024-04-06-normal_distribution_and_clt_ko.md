@@ -12,7 +12,7 @@ mathjax_autoNumber: true
 ---
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/normal_distribution_cover.jpeg">
+  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/normal_distribution_cover.jpeg">
 </p>
 
 많은 통계적 검정과 모델링 방법론은 정규 분포를 가정으로 한다. 카이제곱분포, t-분포, F-분포 등 통계학에서 다뤄지는 중요한 분포들 역시 정규분포과 깊은 연관이 있으며, 이로 부터 파생되거나 그 성질을 활용하니, 정규 분포가 없는 통계학은 상상하기 어려울 지경이다.
@@ -22,12 +22,14 @@ mathjax_autoNumber: true
 
 정규 분포는 <u>'이항 분포의 근사'</u>로서 **Abraham de Moivre**에 의해 처음 발표되었다고 한다.
 
-<p align="center">
-  <img class="image image--md" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/Abraham_de_moivre.jpg"/>
+<p align = "center">
+  <img class="image image--md" src = "https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/Abraham_de_moivre.jpg">
   <br>
-  <a href="https://en.wikipedia.org/wiki/Abraham_de_Moivre" target="_blank">
-  <em>Wikipedia(Abraham de Moivre)</em></a>
-</p>{:.circle.shadow}
+  Abraham de Moivre
+  <br>
+  출처: <a href = "https://en.wikipedia.org/wiki/Abraham_de_Moivre">SWikipedia(Abraham de Moivre)</a>
+</p>
+{:.circle.shadow}
 
 Abraham de Moivres(드무아브르)는 이항 분포의 n이 아주 큰 경우 어떤 식에 가까워질 지를 연구하던 중, 다음과 같은 근사식을 찾았는데, 실제로 n이 100을 넘을 정도로 크지 않은 값이여도 비교적 잘 성립한다는 것을 발견했다.
 
@@ -37,12 +39,15 @@ $$
 
 이후 **Johann Carl Friedrich Gauss**(가우스)는 참값과 관측값 사이의 오차를 탐구하던 중 <u>오차들의 분포가 정규 분포를 이룬다</u>는 것을 발견했다.
 
-<p align="center">
-  <img class="image image--md" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/Carl_Friedrich_Gauss.jpeg"/>
+
+<p align = "center">
+  <img class="image image--md" src = "https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/Carl_Friedrich_Gauss.jpeg">
   <br>
-  <a href="https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss" target="_blank">
-  <em>Wikipedia(Johann Carl Friedrich Gaus)</em></a>
-</p>{:.circle.shadow}
+  Johann Carl Fredrich Gauss
+  <br>
+  출처: <a href = "https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss">Wikipedia(Johann Carl Friedrich Gaus)</a>
+</p>
+{:.circle.shadow}
 
 
 그는 관측치로 부터 참값을 추적하는 연구 중, 참값과 관측값의 차이인 오차들이 대칭성을 가진 특정한 분포를 나타낸다는 것을 알았다. 연구 진행을 위해 이 오차들의 분포를 정의할 필요가 있다고 판단하여 이 분포를 정의하게 되었다.
@@ -224,11 +229,12 @@ $$
 일반적으로 통계학자들은 표본의 크기가 30 이상일 때 안전하게 정규 분포를 따른다고 하지만, 이것은 경험적 규칙이다. 실제로는 모집단의 비대칭이 심한 경우 더 많은 표본이 필요할 수도 있다.
 **샘플의 규모**는 <u>개별 샘플의 정확도와 대표성을 보장</u>하고, 충분한 **샘플 수**는 <u>연구 전반의 신뢰도와 결과의 일반화 가능성</u>과 관련이 있다. 다음은 1부터 10까지의 정수에서 샘플들의 편균의 분포를 나타낸다.
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/normal_distribution_small_n_of_samples.png">
+<p align = "center">
+  <img src = "https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/normal_distribution_small_n_of_samples.png">
   <br>
-  <a href="https://demonstrations.wolfram.com/TheCentralLimitTheorem/#related-demonstrationss" target="_blank">
-  <em>Wolfram, The Central Limit Theorem(Chris Boucher)</em></a>
+  샘플의 규모와 샘플 수 시뮬레이션
+  <br>
+  출처: <a href = "https://demonstrations.wolfram.com/TheCentralLimitTheorem/#related-demonstrationss">Wolfram, The Central Limit Theorem(Chris Boucher)</a>
 </p>
 
 샘플 수가 지나체게 적다면, 아무리 샘플의 규모가 커도 모집단이 아니라 샘플의 분포를 누적할 뿐이다. 이 결과로 일반화가 가능한가에 대해서 심각하게 생각해 보아야 한다. 따라서 단순히 "표본의 크기가 크다면 정규 분포로 수렴!"이라고 생각하는 것은 주의할 필요가 있다.
@@ -238,7 +244,7 @@ $$
 ## 그래서, 정규 분포가 중요한 이유?
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/central limit theorem.webp">
+  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/central limit theorem.webp">
 </p>
 
 샘플링 기법에 기반한 추론적 통계에서, 표본 평균들의 분포를 이해하는 것은 모평균을 추적함에 있어 중요하다. 그런데 중심 극한 정리에 따르면 충분히 큰 샘플에서 샘플링이 이루어 진다면, 모평균에 대해 전혀 알지 못해도, 이 표본 평균들의 분포가 정규 분포로 수렴한다. 일반적으로 많은 상황에서 우리는 제한된 관측치를 가지고 모집단을 추정해 본다. 이때, 관측치들을 일정하게 샘플링해 얻은 평균값들의 분포를 통해 모집단의 분포를 추정하려는 시도는, 우리가 정규 분포를 필연적으로, 꽤나 자주 마주하게 만들 것이다.
