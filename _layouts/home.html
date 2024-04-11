@@ -33,26 +33,12 @@ articles:
   show_readmore: true
   show_info: true
 ---
+
 <div class="layout--home">
   {%- include paginator.html -%}
 </div>
 <script>
   {%- include scripts/home.js -%}
 </script>
-
-<div class="collections">
-  {% for collection in site.collections %}
-    {% assign collection_items = collection.docs %}
-    <div class="collection">
-      <h2>{{ collection.label | capitalize }}</h2>
-      {% for item in collection_items %}
-        <div class="item">
-          <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
-          <p>{{ item.excerpt | strip_html | truncatewords: 20 }}</p>
-        </div>
-      {% endfor %}
-    </div>
-  {% endfor %}
-</div>
 
 {{ content }}
