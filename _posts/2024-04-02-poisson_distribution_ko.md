@@ -80,24 +80,19 @@ $$
 결국 우리는 고정된 $$lambda$$가 주어졌을 때, n을 무한대로 보내는 이항 분포의 확률 밀도 함수를 도출해 냄으로써, 이항 분포의 파라미터로 설명하기 어려운 사건을 $$lambda$$라는 새로운 파라미터 하나로써 표현할 수 있게 되었다.
 
 ## 포아송 분포의 정의
-**정의**&nbsp;&nbsp; 포아송(Poisson Distribution)은 단위 시간 또는 공간에서 발생하는 사건의 수를 모델링하는 확률 분포이다. 
-{:.info}
 
-확률 변수 $$x$$가 포아송 분포를 따르는 경우 다음과 같이 표기하며,
+| DEFINITION |
+| ------ |
+| **포아송(Poisson Distribution)**은 단위 시간 또는 공간에서 발생하는 사건의 수를 모델링하는 확률 분포이다. 확률 변수 $$x$$가 포아송 분포를 따르는 경우 다음과 같이 표기하며, <br> <center> $$\begin{aligned} x \sim \text{Pois}(\lambda) \end{aligned} $$ </center> <br> 그 확률 질량 함수는 다음과 같다. <br> <center> $$\begin{aligned} P(x) = \frac{\lambda^{k} e^{-\lambda}}{k!} \quad \text{ for } k =0,1,2,\cdots \end{aligned} $$</center>
 
-$$
-\begin{aligned} 
-x \sim \text{Pois}(\lambda)
-\end{aligned}   
-$$
+|
 
-그 확률 질량 함수는 다음과 같다.
 
-$$
-\begin{aligned} 
-P(x) = \frac{\lambda^{k} e^{-\lambda}}{k!} \quad \text{ for } k =0,1,2,\cdots
-\end{aligned}
-$$
+
+
+
+
+
 
 
 

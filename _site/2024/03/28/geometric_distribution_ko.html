@@ -3,7 +3,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>기하 분포 - JenDS</title>
 
-<meta name="description" content="이항 분포에 대한 개념을 잘 이해했다면 기하 분포를 그리 어려운 개념은 아니다.이항 분포가 베르누이 시행에 따른 ‘성공’을 관찰하는 분포라면, 기하 분포는 ‘성공할 때까지의 시행횟수’ 혹은 ‘성공할 때까지의 실패 횟수’ 의 분포이다.기하 분포의 정의정의(1)   기하 분포(Geom...">
+<meta name="description" content="이항 분포에 대한 개념을 잘 이해했다면 기하 분포를 그리 어려운 개념은 아니다.이항 분포가 베르누이 시행에 따른 ‘성공’을 관찰하는 분포라면, 기하 분포는 ‘성공할 때까지의 시행횟수’ 혹은 ‘성공할 때까지의 실패 횟수’ 의 분포이다.기하 분포의 정의            DEFINI...">
 <link rel="canonical" href="http://localhost:4000/2024/03/28/geometric_distribution_ko.html"><link rel="alternate" type="application/rss+xml" title="JenDS" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
@@ -267,7 +267,7 @@
 
     <div class="grid page__grid">
 
-      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">언어</li><li class="toc-h2"><a href="/2024/03/26/random_variables_en.html">English(EN)</a></li><li class="toc-h1">확률/통계 기초</li><li class="toc-h2"><a href="/2024/03/26/random_variables_ko.html">확률 분포</a></li><li class="toc-h2"><a href="/2024/03/27/binomial_distribution_ko.html">이항 분포</a></li><li class="toc-h2 active"><a href="/2024/03/28/geometric_distribution_ko.html">기하 분포</a></li><li class="toc-h2"><a href="/2024/04/02/poisson_distribution_ko.html">포아송 분포</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">언어</li><li class="toc-h2"><a href="/2024/03/26/random_variables_en.html">English(EN)</a></li><li class="toc-h1">확률/통계 기초</li><li class="toc-h2"><a href="/2024/03/26/random_variables_ko.html">확률 분포</a></li><li class="toc-h2"><a href="/2024/03/27/binomial_distribution_ko.html">이항 분포</a></li><li class="toc-h2 active"><a href="/2024/03/28/geometric_distribution_ko.html">기하 분포</a></li><li class="toc-h2"><a href="/2024/04/02/poisson_distribution_ko.html">포아송 분포</a></li><li class="toc-h2"><a href="/2024/04/06/normal_distribution_and_clt_ko.html">정규 분포와 중심 극한 정리</a></li><li class="toc-h2"><a href="/2024/04/10/chi_squared_distribution_ko.html">카이제곱 분포와 검정</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -329,8 +329,32 @@ fill="#000000" stroke="none">
 이항 분포가 베르누이 시행에 따른 ‘성공’을 관찰하는 분포라면, 기하 분포는 <strong>‘성공할 때까지의 시행횟수’</strong> 혹은 <strong>‘성공할 때까지의 실패 횟수’</strong> 의 분포이다.</p>
 
 <h2 id="기하-분포의-정의">기하 분포의 정의</h2>
-<p class="info"><strong>정의(1)</strong>   기하 분포(Geometric Distribution)은 이항 분포와 같이 여러번의 베르누이 시행에서 처음 성공이 나타날 때까지의 시행 횟수 횟수를 모델링한 확률 분포이다.</p>
-<p class="info"><strong>정의(2)</strong>   기하 분포(Geometric Distribution)은 이항 분포와 같이 여러번의 베르누이 시행에서 첫 번째 성공이 나타날 때까지의 (실패)시행 횟수를 모델링한 확률 분포이다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>DEFINITION 1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>기하 분포(Geometric Distribution)</strong>은 이항 분포와 같이 여러번의 베르누이 시행에서 처음 성공이 나타날 때까지의 <u>시행 횟수</u>를 모델링한 확률 분포이다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>DEFINITION 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>기하 분포(Geometric Distribution)</strong>은 이항 분포와 같이 여러번의 베르누이 시행에서 첫 번째 성공이 나타날 때까지의 <u>실패 횟수</u>를 모델링한 확률 분포이다.</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>기하 분포는 성공하기까지의 시도 횟수를 모델링하는 데 사용되며, 이에 대한 두 가지 정의가 있다. 이 두 정의의 주요 차이는 성공을 달성하기까지의 시도 횟수에 대한 계산 방법에 있다. 정의 (1)는 첫 성공이 포함된 전체 시도 횟수를 사용하는 반면, 정의 (2)는 첫 성공을 달성하기 전까지의 시도 횟수만을 고려한다.</p>
 

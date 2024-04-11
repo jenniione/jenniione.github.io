@@ -303,30 +303,36 @@ fill="#000000" stroke="none">
 
 <!-- end custom main top snippet -->
 <article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>Home</h1></header><meta itemprop="headline" content="Home"><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2024/04/10/chi_squared_distribution_ko.html"><h2 itemprop="headline" class="item__header">카이제곱 분포</h2></a></header>
+          <header><a href="/2024/04/10/chi_squared_distribution_ko.html"><h2 itemprop="headline" class="item__header">카이제곱 분포와 검정</h2></a></header>
           <div class="item__description"><div class="article__content" itemprop="description articleBody">카이제곱 분포의 정의
-카이제곱 분포(Chi-Squared Distribution)은 $k$개의 서로 독립이며, 표준 정규 분포를 따르는 확률 변수 $X_1,\cdots, X_k$ 에 대하여, 각각의 확률 변수를 제곱한 다음 합하여 얻어지는 확률변수
 
-\[Q = \sum_{i=1}^{k} X_i^2\]
 
-의 분포이다. 즉, $Q \sim X_k^{2}$ 이다.
+  
+    
+      DEFINITION
+    
+  
+  
+    
+      카이제곱 분포(Chi-Squared Distribution)은 \(k\) 개의 서로 독립이며, 표준 정규 분포를 따르는 확률 변수 \(X_1,\cdots, X_k\) 에 대하여, 각각의 확률 변수를 제곱한 다음 합하여 얻어지는 확률변수 $$Q = \sum_{i=1}^{k} X_i^2$$의 분포이다. 즉,  $$Q \sim X_k^{2}$$ 이다. 이때, $k$를 자유도라고 한다.
+    
+  
 
-이때, $k$를 자유도라고 하며, 카이제곱 분포의 단일 파라미터가 된다.
 
 자유도가 $k$인 카이제곱 분포의 확률 밀도 함수(PDF)는 다음과 같다.
 
-\[f(x; k) = \frac{1}{2^{k/2}\Gamma(k/2)} x^{(k/2)-1} e^{-x/...</div><p><a href="/2024/04/10/chi_squared_distribution_ko.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+\[f(x; k) =\dfrac{1...</div><p><a href="/2024/04/10/chi_squared_distribution_ko.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive.html?tag=%ED%86%B5%EA%B3%84%ED%95%99">통계학</a>
             </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 10, 2024</span>
             </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-04-10T00:00:00+09:00">
     <meta itemprop="keywords" content="통계학"></div>
       </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2024/04/06/normal_distribution_ko.html"><h2 itemprop="headline" class="item__header">정규 분포와 중심 극한 정리</h2></a></header>
+          <header><a href="/2024/04/06/normal_distribution_and_clt_ko.html"><h2 itemprop="headline" class="item__header">정규 분포와 중심 극한 정리</h2></a></header>
           <div class="item__description"><div class="article__content" itemprop="description articleBody">많은 통계적 검정과 모델링 방법론은 정규 분포를 가정으로 한다. 카이제곱분포, t-분포, F-분포 등 통계학에서 다뤄지는 중요한 분포들 역시 정규분포과 깊은 연관이 있으며, 이로 부터 파생되거나 그 성질을 활용하니, 정규 분포가 없는 통계학은 상상하기 어려울 지경이다.
 
 정규 분포의 발견
-정규 분포는 가우스 분포 혹은 라플라스 분포라고도 불린다. 혹은 종모양이라고 해서 Bell Curve라고도 하는데, 여기서는 정규 분포(Normal Distribution)이라고 하겠다. 사실 이름이 어떻든 중요한 것은 당시대의 수학자들이 각자의 연구 과정에서 정규 분포를 관찰했다는 것이고, 이것이 이러한 분포를 정의할 필요성을 ...</div><p><a href="/2024/04/06/normal_distribution_ko.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+정규 분포는 가우스 분포 혹은 라플라스 분포라고도 불린다. 혹은 종모양이라고 해서 Bell Curve라고도 하는데, 여기서는 정규 분포(Normal Distribution)이라고 하겠다. 사실 이름이 어떻든 중요한 것은 당시대의 수학자들이 각자의 연구 과정에서 정규 분포를 관찰했다는 것이고, 이것이 이러한 분포를 정의할 필요성을 ...</div><p><a href="/2024/04/06/normal_distribution_and_clt_ko.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive.html?tag=%ED%86%B5%EA%B3%84%ED%95%99">통계학</a>
             </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 06, 2024</span>
@@ -350,8 +356,29 @@ fill="#000000" stroke="none">
 이항 분포가 베르누이 시행에 따른 ‘성공’을 관찰하는 분포라면, 기하 분포는 ‘성공할 때까지의 시행횟수’ 혹은 ‘성공할 때까지의 실패 횟수’ 의 분포이다.
 
 기하 분포의 정의
-정의(1)   기하 분포(Geometric Distribution)은 이항 분포와 같이 여러번의 베르누이 시행에서 처음 성공이 나타날 때까지의 시행 횟수 횟수를 모델링한 확률 분포이다.
-정의(2)   기하 분포(Geometric Distribution)은 이항 분포와 같이 여러번의 베르누이 시행에서 첫 번째 성공이 나타날 때까지의 (실패)시행 횟수를 모델링한 확률...</div><p><a href="/2024/03/28/geometric_distribution_ko.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+
+
+  
+    
+      DEFINITION 1
+    
+  
+  
+    
+      기하 분포(Geometric Distribution)은 이항 분포와 같이 여러번의 베르누이 시행에서 처음 성공이 나타날 때까지의 시행 횟수를 모델링한 확률 분포이다.
+    
+  
+
+
+
+  
+    
+      DEFINITION 2
+    
+  
+  
+    
+      ...</div><p><a href="/2024/03/28/geometric_distribution_ko.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive.html?tag=%ED%86%B5%EA%B3%84%ED%95%99">통계학</a>
             </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 28, 2024</span>
@@ -442,13 +469,13 @@ A Bernoulli experiment refers to a probability experiment where the outcome can 
         </div>
       
         <div class="item">
-          <h3><a href="/2024/04/06/normal_distribution_ko.html">정규 분포와 중심 극한 정리</a></h3>
+          <h3><a href="/2024/04/06/normal_distribution_and_clt_ko.html">정규 분포와 중심 극한 정리</a></h3>
           <p>많은 통계적 검정과 모델링 방법론은 정규 분포를 가정으로 한다. 카이제곱분포, t-분포, F-분포 등 통계학에서 다뤄지는 중요한 분포들 역시 정규분포과 깊은...</p>
         </div>
       
         <div class="item">
-          <h3><a href="/2024/04/10/chi_squared_distribution_ko.html">카이제곱 분포</a></h3>
-          <p>카이제곱 분포의 정의 카이제곱 분포(Chi-Squared Distribution)은 $k$개의 서로 독립이며, 표준 정규 분포를 따르는 확률 변수 $X_1,\cdots, X_k$ 에 대하여, 각각의...</p>
+          <h3><a href="/2024/04/10/chi_squared_distribution_ko.html">카이제곱 분포와 검정</a></h3>
+          <p>카이제곱 분포의 정의 DEFINITION 카이제곱 분포(Chi-Squared Distribution)은 \(k\) 개의 서로 독립이며, 표준 정규 분포를 따르는 확률 변수 \(X_1,\cdots, X_k\) 에...</p>
         </div>
       
     </div>

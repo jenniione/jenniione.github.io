@@ -79,9 +79,11 @@ Probability can be described as a measure where the total probability across the
 ### Definition of a Random Variable
 Noew, it's time to examine the definition of a random variable.
 
-**Definition&nbsp;&nbsp; A random variable $$x$$ is a function defined on the sample space $$\Omega$$. This function serves to transform an element of the probability space $$(\Omega, \mathcal{F}, P)$$ into an element of the Boral measurable space $$(\mathbb{R}, \mathcal{B})$$ 
+| DEFINITION |
+| ------ |
+| **A random variable** $$x$$ is a function defined on the sample space $$\Omega$$. This function serves to transform an element of the probability space $$(\Omega, \mathcal{F}, P)$$ into an element of the Boral measurable space $$(\mathbb{R}, \mathcal{B})$$ <br><br>Here, the space created by the set of real numbers is referred to as the BOrel measurable space, and the associated $$\sigma$$-field in this context is termed the Borel set. |
 
-Here, the space created by the set of real numbers is referred to as the BOrel measurable space, and the associated $$\sigma$$-field in this context is termed the Borel set.
+
 
 <details>
 <summary>Borel Measurable Space</summary>

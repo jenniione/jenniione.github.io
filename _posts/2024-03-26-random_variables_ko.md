@@ -89,10 +89,11 @@ $$
 ### 확률 변수의 정의
 이제 확률 변수의 정의를 살펴볼 시간이다.
 
-**정의**&nbsp;&nbsp; 확률 변수 $$x$$는 표본공간 $$\Omega$$ 에 정의된 함수를 의미한다. 이 함수는 확률공간$$(\Omega, \mathcal{F}, P)$$ 의 하나의 원소를 Borel 가측공간 $$(\mathbb{R}, \mathcal{B})$$ 의 원소로 변환하는 역할을 수행한다.<br/>
-{:.info}
+| DEFINITION |
+| ------ |
+| **확률 변수** $$x$$는 표본공간 $$\Omega$$ 에 정의된 함수를 의미한다. 이 함수는 확률공간$$(\Omega, \mathcal{F}, P)$$ 의 하나의 원소를 Borel 가측공간 $$(\mathbb{R}, \mathcal{B})$$ 의 원소로 변환하는 역할을 수행한다. <br><br>여기서, 실수들의 집합으로 만들어진 공간을 Borel 가측공간(Mesurable Space)라고 하며, 이 때 $$\sigma$$-field를 Borel set이라고 한다. |
 
-여기서, 실수들의 집합으로 만들어진 공간을 Borel 가측공간(Mesurable Space)라고 하며, 이 때 $$\sigma$$-field를 Borel set이라고 한다. 
+
 
 <details>
 <summary>Borel 가측공간</summary>

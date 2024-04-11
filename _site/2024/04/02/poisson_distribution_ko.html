@@ -267,7 +267,7 @@
 
     <div class="grid page__grid">
 
-      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">언어</li><li class="toc-h2"><a href="/2024/03/26/random_variables_en.html">English(EN)</a></li><li class="toc-h1">확률/통계 기초</li><li class="toc-h2"><a href="/2024/03/26/random_variables_ko.html">확률 분포</a></li><li class="toc-h2"><a href="/2024/03/27/binomial_distribution_ko.html">이항 분포</a></li><li class="toc-h2"><a href="/2024/03/28/geometric_distribution_ko.html">기하 분포</a></li><li class="toc-h2 active"><a href="/2024/04/02/poisson_distribution_ko.html">포아송 분포</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">언어</li><li class="toc-h2"><a href="/2024/03/26/random_variables_en.html">English(EN)</a></li><li class="toc-h1">확률/통계 기초</li><li class="toc-h2"><a href="/2024/03/26/random_variables_ko.html">확률 분포</a></li><li class="toc-h2"><a href="/2024/03/27/binomial_distribution_ko.html">이항 분포</a></li><li class="toc-h2"><a href="/2024/03/28/geometric_distribution_ko.html">기하 분포</a></li><li class="toc-h2 active"><a href="/2024/04/02/poisson_distribution_ko.html">포아송 분포</a></li><li class="toc-h2"><a href="/2024/04/06/normal_distribution_and_clt_ko.html">정규 분포와 중심 극한 정리</a></li><li class="toc-h2"><a href="/2024/04/10/chi_squared_distribution_ko.html">카이제곱 분포와 검정</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -377,19 +377,26 @@ fill="#000000" stroke="none">
 <p>결국 우리는 고정된 \(lambda\)가 주어졌을 때, n을 무한대로 보내는 이항 분포의 확률 밀도 함수를 도출해 냄으로써, 이항 분포의 파라미터로 설명하기 어려운 사건을 \(lambda\)라는 새로운 파라미터 하나로써 표현할 수 있게 되었다.</p>
 
 <h2 id="포아송-분포의-정의">포아송 분포의 정의</h2>
-<p class="info"><strong>정의</strong>   포아송(Poisson Distribution)은 단위 시간 또는 공간에서 발생하는 사건의 수를 모델링하는 확률 분포이다.</p>
 
-<p>확률 변수 \(x\)가 포아송 분포를 따르는 경우 다음과 같이 표기하며,</p>
+<table>
+  <thead>
+    <tr>
+      <th>DEFINITION</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>포아송(Poisson Distribution)</strong>은 단위 시간 또는 공간에서 발생하는 사건의 수를 모델링하는 확률 분포이다. 확률 변수 \(x\)가 포아송 분포를 따르는 경우 다음과 같이 표기하며, <br /> <center> $$\begin{aligned} x \sim \text{Pois}(\lambda) \end{aligned} $$ </center> <br /> 그 확률 질량 함수는 다음과 같다. <br /> <center> $$\begin{aligned} P(x) = \frac{\lambda^{k} e^{-\lambda}}{k!} \quad \text{ for } k =0,1,2,\cdots \end{aligned} $$</center></td>
+    </tr>
+  </tbody>
+</table>
 
-\[\begin{aligned} 
-x \sim \text{Pois}(\lambda)
-\end{aligned}\]
-
-<p>그 확률 질량 함수는 다음과 같다.</p>
-
-\[\begin{aligned} 
-P(x) = \frac{\lambda^{k} e^{-\lambda}}{k!} \quad \text{ for } k =0,1,2,\cdots
-\end{aligned}\]
+<table>
+  <tbody>
+    <tr>
+    </tr>
+  </tbody>
+</table>
 
 <h2 id="직관적-포아송-분포">직관적 포아송 분포</h2>
 <p>포아송 분포는 특정 시간 간격이나 공간에서 발생하는 드문 사건의 횟수를 모델링하는 사용된다. 다시 말해, <strong>시행 횟수가 굉장히 크지만 드물게 발생할 확률을 가진 이항적 사건에서, 평균값이 주어졌을 때, 특정 값이 발생할 확률을 효과적으로 계산</strong>할 수 있도록 한다. 이러한 확률 계산은 어떤 상황에서 중요하게 활용될 수 있을까?</p>
@@ -447,7 +454,7 @@ P(x) = \frac{\lambda^{k} e^{-\lambda}}{k!} \quad \text{ for } k =0,1,2,
       </a>
     </p>
   </div></div></footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>이전</span><a href="/2024/03/28/geometric_distribution_ko.html">기하 분포</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>이전</span><a href="/2024/03/28/geometric_distribution_ko.html">기하 분포</a></div><div class="next"><span>다음</span><a href="/2024/04/06/normal_distribution_and_clt_ko.html">정규 분포와 중심 극한 정리</a></div></div></div>
 
 </div>
 

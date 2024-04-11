@@ -267,7 +267,7 @@
 
     <div class="grid page__grid">
 
-      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">언어</li><li class="toc-h2"><a href="/2024/03/26/random_variables_en.html">English(EN)</a></li><li class="toc-h1">확률/통계 기초</li><li class="toc-h2"><a href="/2024/03/26/random_variables_ko.html">확률 분포</a></li><li class="toc-h2 active"><a href="/2024/03/27/binomial_distribution_ko.html">이항 분포</a></li><li class="toc-h2"><a href="/2024/03/28/geometric_distribution_ko.html">기하 분포</a></li><li class="toc-h2"><a href="/2024/04/02/poisson_distribution_ko.html">포아송 분포</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">언어</li><li class="toc-h2"><a href="/2024/03/26/random_variables_en.html">English(EN)</a></li><li class="toc-h1">확률/통계 기초</li><li class="toc-h2"><a href="/2024/03/26/random_variables_ko.html">확률 분포</a></li><li class="toc-h2 active"><a href="/2024/03/27/binomial_distribution_ko.html">이항 분포</a></li><li class="toc-h2"><a href="/2024/03/28/geometric_distribution_ko.html">기하 분포</a></li><li class="toc-h2"><a href="/2024/04/02/poisson_distribution_ko.html">포아송 분포</a></li><li class="toc-h2"><a href="/2024/04/06/normal_distribution_and_clt_ko.html">정규 분포와 중심 극한 정리</a></li><li class="toc-h2"><a href="/2024/04/10/chi_squared_distribution_ko.html">카이제곱 분포와 검정</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -360,7 +360,19 @@ p   &amp; \text{if }x=1, \\
 <p>여기서 주목해야 할 점은, 베르누이 분포는 <strong>한번의 시행</strong>에 대한 결과에서 <strong>성공 확률 \(p\)</strong>에 집중한 관찰 데이터라는 점이다. 이 점은 이항 분포가 베르누이 분포와 어떻게 다른지를 설명하게 된다.</p>
 
 <h2 id="이항-분포의-정의">이항 분포의 정의</h2>
-<p class="info"><strong>정의</strong>   이항 분포(Binomial Distribution)은 동일한 확률 \(p\) 로 성공하는 베르누이 시행을 고정된 수 \(n\) 번을 반복할 때의 성공 횟수를 모델링하는 확률 분포이다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>DEFINITION</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>이항 분포(Binomial Distribution)</strong>은 동일한 확률 \(p\) 로 성공하는 베르누이 시행을 고정된 수 \(n\) 번을 반복할 때의 성공 횟수를 모델링하는 확률 분포이다.</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>이항 분포는 베르누이 시행을 \(n\)번 반복하여 얻게된 확률 분포이다. 다시말해, <strong>이항분포는 베르누이 시행의 확장</strong>이라고 할 수 있다. 단 한 번의 베르누이 시행이 아닌, \(n\)번의 반복된 베르누이 시행에서 성공 횟수에 대한 확률 분포를 모델링한 것이 바로 이항 분포이다.
 동전 던지기의 예를 들어보자. 앞면이 나올 확률이 \(p=1/2\)인 동전 던지기를 한번 시행 했을때, 그 결과는 베르누이 분포를 따르게 된다. 하지만 동일한 동전을 10번 던지고 앞면이 나온 횟수를 관찰하는 경우, 이 시나리오는 이항 분포를 따르게 된다. 여기서 핵심은 10번 던지는 동안 <strong>각각의 던지기가 독립적이며, 각 시행의 성공 확률은 \(p\) 로 동일해야 한다</strong>는 점이다.(원래 베르누이 시행의 성공확률은 고정된 \(p\)를 갖는다.)</p>

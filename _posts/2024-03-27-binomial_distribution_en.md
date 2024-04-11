@@ -59,8 +59,10 @@ $$
 It is important to note that the Bernoulli distribution focuses on observational data from the result of **a single trial**, emphasizing the **probability of success $$p$$**. This aspect explains how the binomial distribution differs from the Bernoulli distribution.
 
 ## Definition of Binomial Distribution
-**Definition**&nbsp;&nbsp; The Binomial Distribution models the number of successes in a fixed number $$n$$ of repeated Bernoulli trials, each with the same success probability $$p$$.
-{:.info}
+
+| DEFINITION |
+| ------ |
+| **The Binomial Distribution** models the number of successes in a fixed number $$n$$ of repeated Bernoulli trials, each with the same success probability $$p$$. |
 
 The binomial distribution is the probability distribution obtained by repeating a Bernoulli trial $$n$$ times. In other words, **the binomial distribution is an extension of the Bernoulli trial**. It models the probability distribution of the number of successes in $$n$$ repeated Bernoulli trials, not just a single Bernoulli trial. 
 For example, consider the example of flipping a coin. When you perform a single coin toss with the probability of getting heads being $$p=1/2$$; the outcome follows a Bernoulli distribution. However, if the same coin is flipped 10 times, and the number of times heads appears is observed, this scenario follows a binomial distribution. The key here is that during the 10 flips, **each flip is independent, and the probability of success for each trial remains constant at $$p$$** (as is the case with a fixed $$p$$ in a Bernoulli trial).
