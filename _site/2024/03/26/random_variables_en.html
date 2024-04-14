@@ -3,7 +3,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Probability Distribution - JenDS</title>
 
-<meta name="description" content="A simple explanation of a random variable is that it connects the outcome of a random preocess to a number. A common example is flipping a coin. Flipping a c...">
+<meta name="description" content="Understanding a random variable can be simplified as linking the outcomes of a random process to numbers. A common example is flipping a coin. Consider flipp...">
 <link rel="canonical" href="http://localhost:4000/2024/03/26/random_variables_en.html"><link rel="alternate" type="application/rss+xml" title="JenDS" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
@@ -267,7 +267,7 @@
 
     <div class="grid page__grid">
 
-      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Language</li><li class="toc-h2"><a href="/2024/03/26/random_variables_ko.html">한국어(KR)</a></li><li class="toc-h1">Probability & Statistics Basics</li><li class="toc-h2 active"><a href="/2024/03/26/random_variables_en.html">Random Variables</a></li><li class="toc-h2"><a href="/2024/03/27/binomial_distribution_en.html">Biomial Distribution</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Language</li><li class="toc-h2"><a href="/2024/03/26/random_variables_ko.html">한국어(KR)</a></li><li class="toc-h1">Probability & Statistics Basics</li><li class="toc-h2 active"><a href="/2024/03/26/random_variables_en.html">Random Variables</a></li><li class="toc-h2"><a href="/2024/03/27/binomial_distribution_en.html">Biomial Distribution</a></li><li class="toc-h2"><a href="/2024/03/28/geometric_distribution_en.html">Geometric Distribution</a></li><li class="toc-h2"><a href="/2024/04/02/poisson_distribution_en.html">Poisson Distribution</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -325,33 +325,33 @@ fill="#000000" stroke="none">
     <meta itemprop="keywords" content="Statistics"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>A simple explanation of a random variable is that it connects <strong><u>the outcome</u> of <u>a random preocess</u> to a number</strong>. A common example is flipping a coin. Flipping a coin 5 times at random and the total number of heads obtained can be considered a random variable. Understanding that flipping a coin 5 times is a random process is not difficult, making it an intuitive concept. So, what does it mean to connect such results to a number?</p>
+<div class="article__content" itemprop="articleBody"><p>Understanding a random variable can be simplified as linking <strong><u>the outcomes of a random process</u> to numbers</strong>. A common example is flipping a coin. Consider flipping a coin five times; the total number of heads represents a random variable. This act of flipping the coin five times is a straightforward concept of a random process. What then does it mean to link such results numerically?</p>
 
-<p>To understand this, let’s discuss ‘magnitude or scale’ from a mathematical perspective. The outcome of random processes, like rolling dice, carries uncertainty. Can we mathematically express the ‘how much’ of this uncertainty? If the outcome is expressed numerically, it would allow for the most intuitive interpretation. What if it could even be operated on?… From this approach, we can appreciate the value of defining a random variable. In fact, this level of understanding might be sufficient. However, for those who wish to delve deeper into academic study, we can explore the concept of a random variable more mathematically.</p>
+<p>To grasp this, let’s discuss ‘magnitude or scale’ from a mathematical perspective. The outcome of random processes like rolling dice is uncertain. How can we mathematically express this ‘how much’ uncertainty? Clearly, if we can express results numerically, they are much easier to interpret. And what if these can also be manipulated mathematically? This insight underpins the value of defining random variables. Indeed, this level of understanding may suffice. However, for a more scholarly exploration, let’s delve into the mathematical concept of random variables.</p>
 
 <p><br /></p>
 <h2 id="mathematical-approach">Mathematical Approach</h2>
-<p>To delve into the concept of a random variable as defined in probability theory, it’s necessary to start with some foundational concepts. Although this requires a deep mathematical understanding, I will attempt to approach it in as intuitive a manner as possible. Let’s approach the mathematical definition of a random variable step by step</p>
+<p>Understanding random variables defined in probability theory requires grasping several prerequisite concepts. Although these concepts demand a profound understanding, let’s try to approach them intuitively step-by-step.</p>
 
 <h3 id="measure-theory">Measure Theory</h3>
-<p>To grasp the concept of measure, let’s first imagine <strong>“a scenario where a cap is filled with water”.</strong></p>
+<p>First, consider “a situation where a cup contains water”.</p>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/random_variables/water_glass.jpeg" />
 </p>
 
-<p><br />To answer the question “How much water is in the cup?”, we <u>define and measure 'volume'</u>. If we assign a ‘volume’ to a certain set, such as a three-dimentional object, it means we are <u>assigning a concept of 'size' to that set</u>. This concept is referred to as <strong>measure</strong> in mathematics. Measure theory deals with the generalized concept of measure, including size, area, volume, etc., and is a theory that measures and analyzes the size of sets and functions. This theory plays a crucial role, especially in probability theory and functional analysis, which explains why we frequently encounter sets in our study of probability. <strong>What’s important to note is that the ‘probability’ we discuss prepresents this concept of size as a ‘measure’.</strong> Therefore, we can only truly understand the definition of probability based on measure theory.</p>
+<p><br />To answer ‘how much water is there?’, we <u>define and measure 'volume'</u>. If we can assign ‘volume’ to a certain set, such as the three-dimensional object, we are essentially <u>attributing a 'size' to that set</u>. In mathematics, this is known as a <strong>measure</strong>. Measure theory deals with the generalized concepts of measure, such as size, area, and volume, analyzing and measuring the magnitude of sets and functions. This theory plays a crucial role in probability theory and functional analysis, explaining why we frequently encounter sets in our study of probability. <strong>Importantly, the ‘probability’ we discuss is a measure that represents this concept of magnitude</strong>. Thus, understanding probability based on measure theory is essential to grasping its definition.</p>
 
 <p><br /></p>
 <h3 id="probability">Probability</h3>
-<p>When we conduct an experiment to obtain results from a certain phenomenon, we achieve what are called realization. This term ‘realization’ might feel unfamiliar. If you think of it as the outcome which is the result of the experiment, it becomes easier to understand. Now, let’s delve into the concept of probability based on measure theory through the example of rolling dice, which is a type of random experiment.</p>
+<p>We conduct experiments to obtain results from phenomena and receive outcomes. The term ‘Realization’ might seem unfamiliar but simply refers to the outcome which is the result of an experiment. Let’s understand the concept of probability based on measure theory through a dice-rolling experiment.</p>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/random_variables/definition_random_variable_1.png" />
 </p>
 
 <p><br /> 
-In the sample space \(\Omega = \{1,2,3,4,5,6\}\), to mathematically discuss the magnitude of the event (\(\mathcal{F}\)) where a die lands on 2, we utilize a measure called probability, denoted by \(Pr(\cdot)\). Through this definition, we articulate that the probability of the event where the die shows a 2 is \(Pr(2) = \frac{1}{6}\).</p>
+In the sample space \(\Omega = \{1,2,3,4,5,6\}\), we use the measure known as probability to \(Pr(\cdot)\) to define the size of the event (\(\mathcal{F}\)) where the dice shows two, giving us an outcome of \(Pr(2) = \frac{1}{6}\).</p>
 
 \[\begin{equation} 
 \begin{aligned} 
@@ -359,10 +359,10 @@ In the sample space \(\Omega = \{1,2,3,4,5,6\}\), to mathematically discuss the 
 \end{aligned} 
 \end{equation}\]
 
-<p>In other words, <strong>“probability is a measure for the realization from a random experiment”</strong>, and by using the measure known as probability $Pr(\cdot)$$, we can obtain the measured realization of the size of elements within the space.</p>
+<p><strong>Thus, ‘probability’ is the measure for the realization(outcomes) in a random experiment</strong>, allowing us to measure the magnitude of elements within the space using the probability measure \(Pr(\cdot)\).</p>
 
 <h3 id="sigma-field-mathcalb">\(\sigma\)-field \(\mathcal{B}\)</h3>
-<p>To define probability without contradictions by introducing the concept of measure, it’s necessary to precisely define the objects of measurement. This is where the \(\sigma\)-field comes in. A \(\sigma\)-field is defined as a collection of sets that satisfies certain conditions.</p>
+<p>To define probability consistently using the concept of measure, we need a well-defined measurement target, known as the \(\sigma\)-field. The \(\sigma\)-field is a collection of sets defined as follows:</p>
 
 <p>(i) $\emptyset \in \mathcal{B}$  <br />
 (ii) $A \in \mathcal{B} \Rightarrow A^c \in \mathcal{B}$ <br />
@@ -370,10 +370,12 @@ In the sample space \(\Omega = \{1,2,3,4,5,6\}\), to mathematically discuss the 
 
 <p>(i) It includes the non-empty set, (ii) the complement, and (iii) is closed under countable unions and intersections of sets \(S\), defined as a collection of subsets. Given such a collection of sets, we can define a measurable space, which allows for the consistent definition of measure and probability.</p>
 
+<p>These are collections of subsets of a set \(S\) that is (i)<u>the non-empty set</u> and are (ii)<u>closed under complementation</u> and (iii)<u>countable unions and intersections</u>. Given such a set, we can define a measurable space, enabling consistent definitions of measure and probability.</p>
+
 <p><br /></p>
 <ul>
   <li><strong>Measure</strong><br />
-A measure \(\mu\) is a type of set function in a measurable space \((U, \mathcal{B})\) that assigns elements in \([0,\infty]\) to elements of the \(\sigma\)-field.
+A measure \(\mu\) is a set function from a \(\sigma\)-field to \([0,\infty]\) within a measurabel space \((U, \mathcal{B})\) :<br />
 \begin{equation} 
 \begin{aligned} 
 \mu : \mathcal{B} \rightarrow [0, \infty]
@@ -381,7 +383,7 @@ A measure \(\mu\) is a type of set function in a measurable space \((U, \mathcal
 \end{equation}
     <ul>
       <li>\(\mu(\emptyset) = 0\): The measure of the empty set is 0.<br /></li>
-      <li>For any sequence of mutually exclusive sets \(A_j\), \(A_j\), the measure of their union is equal to the sum of their measures : \(\mu(\cup_{i=1}^{\infty} A_i) = \sum_{i=1}^{\infty} \mu(A_i)\).</li>
+      <li>For disjoint sets \(A_i\), \(A_j\), \(\mu(\cup_{i=1}^{\infty} A_i) = \sum_{i=1}^{\infty} \mu(A_i)\) holds. : the measure of their union is equal to the sum of their measures.</li>
     </ul>
   </li>
 </ul>
@@ -389,15 +391,17 @@ A measure \(\mu\) is a type of set function in a measurable space \((U, \mathcal
 <p><br /></p>
 <ul>
   <li><strong>Probability</strong><br />
-Probability refers to a normalized measure on the extire set \(U\) such that \(\mu(U)=1\), indicating that the measure satisfies the condition of the total measure of the sample space being 1.</li>
+Probability is a normalized measure where the total measure of the universal set \(U\) is 1.</li>
 </ul>
 
-<p>Probability can be described as a measure where the total probability across the entire sample space equals 1.</p>
+<p><br /></p>
+
+<p>Probability thus represents the total measure of probability over the entire sample space as a measure equaling 1.</p>
 
 <hr />
 
 <h3 id="definition-of-a-random-variable">Definition of a Random Variable</h3>
-<p>Noew, it’s time to examine the definition of a random variable.</p>
+<p>Now, let’s examine the definition of a random variable.</p>
 
 <table>
   <thead>
@@ -407,7 +411,7 @@ Probability refers to a normalized measure on the extire set \(U\) such that \(\
   </thead>
   <tbody>
     <tr>
-      <td><strong>A random variable</strong> \(x\) is a function defined on the sample space \(\Omega\). This function serves to transform an element of the probability space \((\Omega, \mathcal{F}, P)\) into an element of the Boral measurable space \((\mathbb{R}, \mathcal{B})\) <br /><br />Here, the space created by the set of real numbers is referred to as the BOrel measurable space, and the associated \(\sigma\)-field in this context is termed the Borel set.</td>
+      <td><strong>A random variable</strong> \(x\) is defined as a function on the sample space  \(\Omega\). This function ransforms an element of the probability space \((\Omega, \mathcal{F}, P)\) into an element of the Borel measurable space \((\mathbb{R}, \mathcal{B})\) <br /><br />Here, the space formed by the set of real numbers is referred to as the Borel measurable space, and the \(σ\)-field is known as the Borel set.</td>
     </tr>
   </tbody>
 </table>
@@ -416,7 +420,7 @@ Probability refers to a normalized measure on the extire set \(U\) such that \(\
 <summary>Borel Measurable Space</summary>
 <div>
 
-    <p><strong>Borel Measurable Space</strong>: Consists of the set of real numbers \(\mathbb{R}\) and the Borel \(\sigma\) algebra \(\mathcall{B}\). The Borel \(\sigma\)-algebra includes open intervals on the real line and encompasses all sets that can be generated from these intervals. Essentially, this makes it possible to measure events in the commonly dealt with real number space.</p>
+    <p><strong>Borel Measurable Space</strong>: Composed of the real number set \(\mathbb{R}\) and the Borel \(\sigma\) algebra \(\mathcall{B}\). The Borel \(\sigma\)-algebra includes all sets that can be generated from open intervals on the real line, effectively making the commonly encountered real-world events measurable.</p>
 
   </div>
 </details>
@@ -426,21 +430,20 @@ Probability refers to a normalized measure on the extire set \(U\) such that \(\
 </p>
 
 <ul>
-  <li>\(\Omega\) : Known as the Space, this represents the entire set of possible elements or outcomes.</li>
-  <li>\(\mathcal{F}\) : Signifies the subsets of the sample space, referred to as Events.</li>
-  <li>\(Pr\) : Acts as the operator that performs measurement, assigning probabilites to elements of the sample space.</li>
+  <li>\(\Omega\) : Known as the sample space, representing the complete set of possible outcomes.</li>
+  <li>\(\mathcal{F}\) : Refers to the subsets of the sample space, known as events.</li>
+  <li>\(Pr\) : Acts as the operator performing the measurement, assigning probabilities to the elements of the sample space.</li>
 </ul>
 
-<p>Through these complex concepts, we conclude that a random variable is essentially a function that transforms an element of the sample space into a real number. By defining this, we become interested in practically applying the probability of a random variable \(x\), denoted as \(Pr(x)\)</p>
+<p>In essence, a random variable transforms an element of the sample space into a real number, further facilitating the practical use of the probabilities of random variables $Pr(x)$.</p>
 
 <h2 id="types-of-random-variables">Types of Random Variables</h2>
+<p>Random variables are broadly classified into discrete and continuous types. <strong>Discrete random variables</strong>, such as dice rolls or baseball game scores, have finite or countably infinite values. Their probability mass function (PMF) assigns clear probabilities to each value. Conversely, <strong>continuous random variables</strong>, like temperature or stock prices, span a continuous range of values. Their probability density function (PDF) cannot assign probabilities to specific values but can express probabilities over intervals.</p>
 
-<p>Random variables are broadly classified into discrete and continuous types. A random variable that can take on either a finite number of values or a countably infinite number of values, such as the outcome of rolling a dice or baseball game socres, is called a <strong>discrete random variables</strong>. The Probability Mass Function(PMF) of a discrete random variable can assign a clear probability to each value. On the other hand, a random variable that can take values in a continuous range, such as temperature, stock prices, duration, speed, or measurements of an object’s length, is called a <strong>continuous random variable</strong>. Although the Probability Density Function(PDF) of a continuous random variable cannot assign a probability to each specific value, it can express the probability over a range of values.</p>
-
-<p>Discrete probability distributions include, notably, the binomial distribution, Poisson distribution, and geometric distribution, while continuous probability distributions include the normal distribution, uniform distribution, and exponential distribution. The following outlines the relations among various probability distributions.</p>
+<p>Discrete distributions include the binomial, Poisson, and geometric distributions, while continuous distributions feature the normal, uniform, and exponential distributions. The following diagram illustrates the relationships among various probability distributions.</p>
 
 <p><br /><br />
-<strong>Reference</strong></p>
+<strong>References</strong></p>
 
 <p><a href="https://cims.nyu.edu/~cfgranda/pages/stuff/probability_stats_for_DS.pdf">Probability and Statistics for Data Science (Carlos Fernandez-Granda)</a><br />
 <a href="https://alida.tistory.com/84">ALIDA (Gyubeom Edward Im)</a><br />

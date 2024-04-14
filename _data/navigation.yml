@@ -79,5 +79,8 @@ study-en:
         url:    2024/03/26/random_variables_en.html
       - title:  Biomial Distribution
         url:    2024/03/27/binomial_distribution_en.html
-
+      - title:  Geometric Distribution
+        url:    2024/03/28/geometric_distribution_en.html
+      - title:  Poisson Distribution
+        url:    2024/04/02/poisson_distribution_en.html
 

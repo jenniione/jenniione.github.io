@@ -11,12 +11,10 @@ mathjax: true
 mathjax_autoNumber: true
 ---
 
-
-
-Before diving into the binomial distribution, let's briefly summarize the Bernoulli distribution and explore its relationship with the binomial distribution.
+Before discussing the binomial distribution, let's briefly review the Bernoulli distribution and explore how it relates to the binomial distribution.
 
 ## Bernoulli Distribution
-A Bernoulli experiment refers to a probability experiment where the outcome can either be a success or a failure. The probability distribution that represents the number of successes in a Bernoulli experiment, with a fixed success probability $$p$$, is known as the **Bernoulli distribution**. Therefore, the Bernoulli distribution is a probability distribution where the value of the random variable is either a success or a failure. Since **the outcome can only be one of two values, success or failure**, a Bernoulli random variable is classified as a **discrete random variable**.
+A Bernoulli experiment is one in which the outcome of a probability experiment is either success or failure. The probability distribution that represents the number of successes in a Bernoulli experiment with a fixed success probability $$p$$ is known as the **Bernoulli Distribution**. Thus, a Bernoulli distribution is a probability distribution where the random variable **takes only two possible values, success or failure**, making it a **discrete random variable**.
 
 one where the outcome can either be a success or a failure. The probability distribution that accounts for the number of successes in a Bernoulli experiment, with a fixed probability of success $$p$$, is the Bernoulli distribution.
 
@@ -30,7 +28,7 @@ $$
 \end{equation}
 $$
 
-If the random variable $$X$$ follows a Bernoulli distribution, it can be expressed as follows:
+If a random variable $$X$$ follows the Bernoulli distribution, it can be expressed as:
 
 $$
 \begin{equation} 
@@ -40,7 +38,7 @@ $$
 \end{equation}
 $$
 
-And its Probability Mass Function (PMF) can be represented by the following formula:
+The probability mass function (PMF) for the Bernoulli distribution is:
 
 $$
 \begin{split}
@@ -55,19 +53,20 @@ p   & \text{if }x=1, \\
 \end{split}
 $$
 
-
-It is important to note that the Bernoulli distribution focuses on observational data from the result of **a single trial**, emphasizing the **probability of success $$p$$**. This aspect explains how the binomial distribution differs from the Bernoulli distribution.
+The key point here is that the Bernoulli distribution focuses on the probability of success $$p$$ for **a single trial**. This characteristic differentiates it from the binomial distribution.
 
 ## Definition of Binomial Distribution
 
 | DEFINITION |
 | ------ |
-| **The Binomial Distribution** models the number of successes in a fixed number $$n$$ of repeated Bernoulli trials, each with the same success probability $$p$$. |
+| **The Binomial Distribution** models the number of successes in a fixed number $$n$$ of repeated Bernoulli trials, each with the same probability $$p$$ of success. |
 
-The binomial distribution is the probability distribution obtained by repeating a Bernoulli trial $$n$$ times. In other words, **the binomial distribution is an extension of the Bernoulli trial**. It models the probability distribution of the number of successes in $$n$$ repeated Bernoulli trials, not just a single Bernoulli trial. 
-For example, consider the example of flipping a coin. When you perform a single coin toss with the probability of getting heads being $$p=1/2$$; the outcome follows a Bernoulli distribution. However, if the same coin is flipped 10 times, and the number of times heads appears is observed, this scenario follows a binomial distribution. The key here is that during the 10 flips, **each flip is independent, and the probability of success for each trial remains constant at $$p$$** (as is the case with a fixed $$p$$ in a Bernoulli trial).
+The binomial distribution is essentially the result of repeating a Bernoulli trial $$n$$ times. In other words, **the binomial distribution is an extension of the Bernoulli trial**. Instead of just one Bernoulli trial, the binomial distribution models the probability distribution of the number of successes over $$n$$ repeated trials.
 
-The binomial distribution can be expressed as follows,
+For example, flipping a coin with a success probability of $$p=1/2$$ once follows a Bernoulli distribution. However, if you flip the same coin 10 times and observe the number of heads, this scenario follows a binomial distribution. The key is that **each flip is independent, and the success probability for each trial remains constant at $$p$$** .
+
+The binomial distribution is expressed as:
+
 $$
 \begin{equation} 
  \begin{aligned} 
@@ -76,7 +75,7 @@ x \sim \text{Bin}(n,p)
 \end{equation}
 $$
 
-ans its Probability Mass Function (PMF) is defined as follows.
+And its probability mass function (PMF) is defined as:
 
 $$
 \begin{equation} 
@@ -84,11 +83,9 @@ P_X(x) = \ _{n}C_{x} p^k (1-p)^{n-x} \quad \text{ for } x =0,1,\cdots,
 \end{equation}
 $$
 
-## Real Insights into the Binomial Distribution
-### Example of Flipping a Coin 10 Times
-
-To grasp the Probability Mass Function, let's calculate the probability of outcomes in the scenario of flipping a coin 10 times.
-Consider a success as the coin landing on heads, and let $$x$$ be the number of successes. Thus, $$x=0,1,2,⋯,10$$, representing the scenarios where the coin lands on heads 0 times, 1 time, 2 times, ... up to 10 times. Let's consider the probability when $$x=2$$, that is, the probability of the coin landing on heads 2 times in 10 flips.
+## Understanding the Binomial Distribution
+### 10 Coin Flips Example
+To understand the probability mass function, let's calculate the probability for the scenario of flipping a coin 10 times. Let's say success is when the coin shows heads, and $$x$$ is the number of successes, where $$x=0,1,2,⋯,10$$, representing the cases where heads appear 0, 1, 2, ..., up to 10 times. For instance, when $$x=2$$, i.e., two heads in 10 flips, the probability is given by:
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/coin k=2.png">
@@ -101,7 +98,7 @@ $$
 _{10}C_{2}\left(\frac{1}{2}\right)^2 \left(1-\frac{1}{2}\right)^{8} = 0.0439
 $$
 
-Using the same method, calculating the probabilities for all values of $$x$$ yields the following results:
+Similarly, you can calculate the probabilities for all values of 
 
 $$x=0 ;  \frac{10!}{1!\cdot9!}
 \left(\frac{1}{2}\right)^0 \left(1-\frac{1}{2}\right)^{10} = 0.0010
@@ -122,42 +119,41 @@ $$
 x=10 ; \frac{10!}{10! 0!}\left(\frac{1}{2}\right)^{10} \left(1-\frac{1}{2}\right)^{0} = 0.0010
 $$
 
-If represented as a histogram, it would appear as follows.
+Displayed as a histogram, this distribution would look as follows:
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/coin distribution.png">
 </p>
 
-### An Intuitive Look at Binomial Distribution
+### Intuitive Understanding of the Binomial Distribution
+The binomial distribution calculates the probability of obtaining certain outcomes from repeated trials, such as flipping a coin, where there are two possible results each time.
 
-The binomial distribution is used to calculate the probability of obtaining certain outcomes from repeating a probabilistic event, like flipping a coin, that has two possible results, multiple times.
-
-To understand how it can be applied in practice for a more intuitive comprehension, let's look into scenarios where the binomial distribution is considered.
+To understand how the binomial distribution is practically used, let’s explore some real-life applications.
 
 - Example 1<br/>
-Suppose a marketing team sends emails to 1,000 customers individually. Based on previous experience, let's assume the probability of receiving a reply is 0.5. What then is the probability of receiving replies from 50 customers out of the 1,000 emails sent?
+Suppose a marketing team sends emails to 1,000 customers. Based on previous experiences, assume the probability of receiving a reply is 0.5. What is the probability of receiving replies from exactly 50 customers? 
 
-This is a simple problem of calculating the binomial distribution probability $$P_X(50)$$ with $$n=1,000$$, $$p=0.5$$. The binomial distribution fundamentally **utilizes the number of trials and the fixed probability of success** to calculate the **probability of success occurring**.
+This is a straightforward calculation using the binomial distribution $$P_X(50)$$ where $$n=1000$$ and $$p=0.5$$ . The binomial distribution fundamentally calculates the **probability of achieving a certain number of successes** given **fixed trial counts and success probability**.
 
 Furthermore, the concept of the binomial distribution can be utilized in conducting A/B tests. Consider the example below.
 
 - Example 2<br/>
-Let's assume an A/B test is conducted to compare the effectiveness of two designs (A and B) in increasing the click-through rate on a website. Suppose design B was shown to 1,000 visitors to the website, and 150 clicked on it. We want to assess whether the click-through rate for design B is statistically significantly different from a 10% click-through rate for design A.
+Consider conducting an A/B test to compare the effectiveness of two website designs, A and B. Let's assume 1,000 visitors are shown design B, and 150 click on it. We want to assess whether the click rate for design B significantly differs from design A's expected click rate of 10%, assuming each visitor's click is an independent event.
 
-Assuming the independence of each visitor's click action, the action of clicking by each website visitor results in a binomial outcome of click (success) or no click (failure). With the success probability $$p$$ set to 10%, the number of trials $$n$$ to 1,000, and the number of successes to 150, we can perform a binomial test.
+In this scenario, each website visitor's action (click or no click) results in a binomial outcome. We can set the success probability (p) at 10%, the number of trials (n) at 1,000, and the number of successes at 150, and perform a binomial test.
 
-## Mean and Variance of Binomial Distribution
-For a random variable $$X$$ following a binomial distribution with a total number of trials $$n$$ and a success probability $$p$$, 
+## Mean and Variance of the Binomial Distribution
+For a binomially distributed random variable $$X$$ , with trial number $$n$$ and success probability $$p$$ :
 
-the mean are
+The expected value is:
 
 $$E(X) = np$$
 
-and the variance are
+The variance is:
 
 $$Var(X) = np(1-p)$$
 
-The proofs for each are as follows:
+These are demonstrated as follows:
 
 $$
 \begin{split}
@@ -186,18 +182,16 @@ $$
 \end{split}
 $$
 
+## Approximation of the Binomial Distribution to a Normal Distribution
+Let's observe how the binomial distribution changes by freely altering its parameters, easily verified through various online simulations, including the GeoGebra "Parameters of the Binomial Distribution (shanlee)" simulation.
 
-## The Normal Approximation to the Binomial Distribution
-As we adjust the parameters of the binomial distribution, let's explore the various shapes it can exhibit. There are numerous simulatiors accessible online for this purpose, such as the "Parameters of the Binomial Distribution" simulation by shanlee on GeoGebra.
-What transformation does the binomial distribution undergo as $$n$$, the number of trials, continues to increase?
-
+As the number of trials increases, what happens to the binomial distribution?
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/binomial distribution to normal distribution.png">
 </p>
 
-When conducting 50 coin flips, one can observe that the resulting distribution resembles the **bell shape** of a normal distribution. However, by operating the simulation directly, it's discernible that this approximation is **only feasible when the values of $$n$$ and $$p$$ are not extreme**. If $$n$$ is too small, or if $$n$$ is sufficiently large but $$p$$ is too small or too large, the shape deviates significantly from that of a normal distribution.
-
+ For example, after conducting 50 coin flips, we can see the distribution resembles a **bell-shaped** normal distribution. However, direct simulation shows this is **only feasible when values of $$n$$ and $$p$$ are not extreme**. If $$n$$ is too small, or $$n$$ is large but $$p$$ is very small or large, the shape diverges significantly from a normal distribution.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/small n.png">
@@ -211,9 +205,9 @@ When conducting 50 coin flips, one can observe that the resulting distribution r
   <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/huge p.png">
 </p>
 
-Mathetically, if the number of trials $$n$$ in a binomial distribution is sufficiently large such that $$np≥5$$ and $$np(1−p)≥5$$, then the binomial distribution can be approximated by a normal distribution with mean $$np$$ and variance $$np(1−p)$$. This can be intuitively understood through simulation. Directly operating the simulation reveals that the approximation to a normal distribution becomes **more accurate as $$n$$ increases, and as $$p$$ is not too close to 0 or 1 but closer to 0.5**.
+Mathematically, if the binomial distribution’s $$n$$ is large enough such that $$np≥5$$ and $$np(1−p)≥5$$, it approximates a normal distribution with mean $$np$$ and the variance $$np(1−p)$$ . This approximation becomes **more accurate as $$n$$ increases and $$p$$ is neither close to 0 nor 1 but closer to 0.5**.
 
-How many hits might a baseball player with a .300 batting average get in 100 at-bats? How many people might actually die if 100 people were infected with a disease with a 30% mortality rate? Many real-world events can be said to follow a binomial distribution. If the normal distribution can represent an approximation of the binomial distribution, then the normal distribution can also describe many events.
+Practically, many real-world events follow a binomial distribution. For instance, how many hits will a 0.3 hitter make in 100 at-bats? How many people might die from a disease with a 30% mortality rate among 100 infected individuals? If the normal distribution can approximate the binomial distribution, it also becomes a powerful tool for explaining a wide range of phenomena.
 
 <br/><br/>
 **References**

@@ -1,10 +1,10 @@
-<!DOCTYPE html><html lang="ko">
+<!DOCTYPE html><html lang="en">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>파이썬 - JenDS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Poisson Distribution - JenDS</title>
 
-<meta name="description" content="페이지 테스트 중 입니다.">
-<link rel="canonical" href="http://localhost:4000/project/python.html"><link rel="alternate" type="application/rss+xml" title="JenDS" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="The French mathematician Siméon Denis Poisson first introduced the Poisson distribution as a form of discrete probability distribution. Later, in 1898, the P...">
+<link rel="canonical" href="http://localhost:4000/2024/04/02/poisson_distribution_en.html"><link rel="alternate" type="application/rss+xml" title="JenDS" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
@@ -256,7 +256,18 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport cell cell--auto">
+      <div class="layout--page layout--page--sidebar clearfix js-page-root">
+  <div class="page__mask d-print-none js-page-mask js-sidebar-hide"></div>
+  <div class="page__viewport">
+    <div class="page__actions d-print-none">
+      <div class="button button--circle button--lg box-shadow-2 sidebar-button js-sidebar-show">
+        <i class="fas fa-bars icon--show"></i>
+      </div>
+    </div>
+
+    <div class="grid page__grid">
+
+      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Language</li><li class="toc-h2"><a href="/2024/03/26/random_variables_ko.html">한국어(KR)</a></li><li class="toc-h1">Probability & Statistics Basics</li><li class="toc-h2"><a href="/2024/03/26/random_variables_en.html">Random Variables</a></li><li class="toc-h2"><a href="/2024/03/27/binomial_distribution_en.html">Biomial Distribution</a></li><li class="toc-h2"><a href="/2024/03/28/geometric_distribution_en.html">Geometric Distribution</a></li><li class="toc-h2 active"><a href="/2024/04/02/poisson_distribution_en.html">Poisson Distribution</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -291,28 +302,160 @@ fill="#000000" stroke="none">
 </svg>
 <a title="JenDS by Jenny Won
 " href="/">JenDS</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
-        <ul><li class="navigation__item"><a href="/2024/03/26/random_variables_en.html">스터디 노트</a></li><li class="navigation__item"><a href="/project.html">프로젝트</a></li><li class="navigation__item"><a href="https://medium.com/@jen052430s">아티클</a></li><li class="navigation__item"><a href="/about.html">소개</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+        <ul><li class="navigation__item"><a href="/2024/03/26/random_variables_en.html">Study Note</a></li><li class="navigation__item"><a href="/project.html">Project</a></li><li class="navigation__item"><a href="https://medium.com/@jen052430s">Medium</a></li><li class="navigation__item"><a href="/about.html">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
       </nav></div>
   </header>
-</div><div class="page__content"><div class="article__header--overlay"><div class="hero hero--dark overlay" style="background-image:linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4)),url(/pics/project/test.jpg);background-color:#203028;"><div class="hero__content"><div class ="main"><div class="article__info clearfix"><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2024년 04월 14일</span>
-            </li></ul></div><div class="article__header"><header><h1>파이썬</h1></header></div><p class="overlay__excerpt">페이지 테스트 중 입니다.</p></div></div>
-              </div>
-            </div><div class ="main"><div class="grid grid--reverse">
+</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><meta itemprop="headline" content="파이썬"><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-04-14T14:55:03+09:00"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Poisson Distribution</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Edit on Github"
+            href="https://github.com/jenniione/jenniione.github.io/tree/master/_posts/2024-04-02-poisson_distribution_en.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Poisson Distribution"><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=Statistics">Statistics</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 02, 2024</span>
+            </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-04-02T00:00:00+09:00">
+    <meta itemprop="keywords" content="Statistics"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>페이지 테스트 중 입니다.</p>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-04-14T14:55:03+09:00"><!-- start custom article footer snippet -->
+<div class="article__content" itemprop="articleBody"><p align="center">
+  <img class="image image--md" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/poisson_distribution/Simeon Denis Poisson.jpg" />
+</p>
+
+<p>The French mathematician Siméon Denis Poisson first introduced the Poisson distribution as a form of discrete probability distribution. Later, in 1898, the Polish mathematician Ladislaus Bortkiewicz effectively modeled the frequency of accidental deaths from horse kicks in the Prussian army using the Poisson distribution, demonstrating its practical application.</p>
+
+<h2 id="transition-from-binomial-to-poisson-distribution">Transition from Binomial to Poisson Distribution</h2>
+<h3 id="poisson-cases">Poisson Cases</h3>
+<p>Earlier simulations of the <a href="https://jenniione.github.io/2024/03/27/binomial_distribution_ko.html#%EC%9D%B4%ED%95%AD-%EB%B6%84%ED%8F%AC%EC%9D%98-%EC%A0%95%EA%B7%9C-%EB%B6%84%ED%8F%AC-%EA%B7%BC%EC%82%AC">binomial distribution</a> revealed various forms it could take. Particularly, <strong>when the number of trials \(n\) is large but the probability of success \(p\) is extremely small</strong>, the distribution adopts a unique shape, as observed here:</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/small p.png" />
+</p>
+
+<p>Such cases are not ideally explained by the binomial distribution and are more suitably described by the Poisson distribution. Let’s delve deeper into events handled by the Poisson distribution.</p>
+
+<h3 id="limitations-of-the-binomial-distribution-for-poisson-cases">Limitations of the Binomial Distribution for Poisson Cases</h3>
+<p>Consider Ladislaus Bortkiewicz’s problem of the frequency of Prussian soldiers dying from horse kicks. Observing over 20 years, about 10 soldiers per year seemed to die from such incidents. How likely is it that only 5 soldiers would die in a year?</p>
+
+<p>If we only consider a binomial distribution where observing a soldier’s death is a success, setting \(n\) becomes ambiguous. Even if we consider one year as one trial, totaling 20 trials, binomial distribution struggles <strong>due to the randomness of annual death counts</strong>, despite an average of 10 per year. All 10 soldiers would show up in the first year, or in the second year… , it seems quite difficult to use the binomial distribution unless you are looking for the probability of it appearing at once every 20 years.</p>
+
+<h3 id="transition-to-poisson-distribution">Transition to Poisson Distribution</h3>
+<p>To address this, we need to move away from the binomial parameters \(n\) and \(p\) , and introduce a new parameter, \(\lambda\), representing the average number of events per unit time or space. Here, \(\lambda\) becomes a kind of expected value \(\lambda=np\) . With a constant \(\lambda\) like ‘average 10 years,’ as \(n\) approaches infinity, \(p\) approaches zero:</p>
+
+\[\lim_{n\rightarrow \infty}p=\lim_{n\rightarrow \infty}\frac{\lambda}{n} = 0\]
+
+<p>Let’s apply this to the probability density function of the binomial distribution and derive its limit:</p>
+
+\[\lim_{n \to \infty} B(k; n, p)\]
+
+\[= \lim_{n \to \infty}  { {n}\choose{k} }  p^k(1-p)^{n-k}\]
+
+\[= \lim_{n \to \infty}  \dfrac{n!}{k!(n-k)!}(\dfrac{\lambda}{n})^k  (1-\dfrac{\lambda}{n})^{n-k}\]
+
+\[= \lim_{n \to \infty}  {\left[  \dfrac{n!}{(n-k)!  n^k} \right]}  \left[  \dfrac{\lambda^k}{k!}  (1-\dfrac{\lambda}{n})^{n}  \right]  {\left[  (1-\dfrac{\lambda}{n})^{-k}\right]}\]
+
+\[= \lim_{n \to \infty}  {\left[  \dfrac{n(n-1)\dotsb(n-(k-1))}{n^k} \right]}  \left[  \dfrac{\lambda^k}{k!}  (1-\dfrac{\lambda}{n})^{n}  \right]  {\left[  (1-\dfrac{\lambda}{n})^{-k}\right]}\]
+
+\[= 1\left[  \dfrac{\lambda^k}{k!}  e^{-\lambda}\right] 1\]
+
+\[= (\frac{\lambda^k}{k!})e^{-\lambda}\\\]
+
+<p>Therefore,</p>
+
+<ul>
+  <li>(6) : As \(n\) approaches infinity, and since \(k\) is relatively small, the above limit is calculated.</li>
+</ul>
+
+\[Pr(K=k) = (\frac{\lambda^k}{k!})e^{-\lambda}\]
+
+<p>Ultimately, with a fixed \(\lambda\), we derived the probability density function of the binomial distribution as \(n\) approaches infinity, allowing us to express events difficult to describe with binomial parameters using just the single new parameter \(\lambda\) .</p>
+
+<h2 id="definition-of-the-poisson-distribution">Definition of the Poisson Distribution</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>DEFINITION</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>The <strong>Poisson Distribution</strong> models the number of events occurring in a fixed unit of time or space. When a random variabel \(x\) follows the Poisson distribution, it is denoted as <br /> <center> $$ \begin{aligned} x \sim \text{Pois}(\lambda) \end{aligned} $$ </center> <br /> with the probability mass function given by: <br /> <center> $$\begin{aligned} P(x) = \frac{\lambda^{k} e^{-\lambda}}{k!} \quad \text{ for } k =0,1,2,\cdots \end{aligned} $$</center></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="intuitive-understanding-of-the-poisson-distribution">Intuitive Understanding of the Poisson Distribution</h2>
+<p>The Poisson distribution models the frequency of rare events over a particular time interval or space, <strong>effectively calculating the probability of specific outcomes given an average value</strong>. How can this be practically important?</p>
+
+<ul>
+  <li>Example 1<br />
+Suppose a city typically experiences <u>two instances of Disease $$A$$ per month</u>. Public health officials want to know the probability of <u>zero occurrences</u> next month:</li>
+</ul>
+
+\[Pr(K=0)\]
+
+\[= \frac{e^{-2} \times 2^0} {0!}\]
+
+\[= 0.1353\]
+
+<p>This means there is <u>a 13% chance that the disease will not occur next month</u>, based on average observations.</p>
+
+<ul>
+  <li>Example 2<br />
+An e-commerce website processes an <u>average of 200 orders on a typical day</u> without special promotions or events. The operations team might want to know the probability of exactly <u>250 orders</u> to adjust delivery preparations or customer service staffing effectively:</li>
+</ul>
+
+\[P(X=250) = \frac{e^{-200} \times 200^{250}}{250!} = 0.000077\]
+
+<p>This low probability suggests that <u>days with significantly higher than expected order volumes are rare</u>, helping in planning resources efficiently for inventory, shipping</p>
+
+<p>이처럼 포아송 분포는 다양한 상황에서 중요한 정보를 해석하는 데 활용될 수 있다.</p>
+
+<h2 id="simulation-of-the-poisson-distribution">Simulation of the Poisson Distribution</h2>
+<p>The parameter of the Poisson distribution is \(\lambda\) .  Let’s explore how the Poisson distribution changes as \(\lambda\) varies.</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/poisson_distribution/poisson_distribution.png" />
+</p>
+
+<p>The graph above shows \(\lambda=1\), illustrating that when the value is very small, most probabilities are concentrated around 0 or 1.</p>
+
+<p>Also, for \(\lambda=10\) and \(\lambda=30\), <strong>as \(\lambda\) increases, the probability of events is more evenly distributed, and the shape of the graph approximates a normal distribution</strong>.</p>
+
+<p>In fact, <strong>as \(\lambda\) increases, the Poisson distribution approximates a normal distribution \(N(\lambda, \lambda^{2})\) .</strong></p>
+
+<p><br /><br />
+<strong>Referencess</strong></p>
+
+<p><a href="https://ko.wikipedia.org/wiki/%ED%91%B8%EC%95%84%EC%86%A1_%EB%B6%84%ED%8F%AC">Wikipedia, Poisson Distribution</a><br />
+<a href="https://angeloyeo.github.io/2021/04/26/Poisson_distribution.html">Angelo’s Math Notes(Angelo)</a></p>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-04-02T00:00:00+09:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
-</footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>이전</span><a href="/project/python/en.html">Python</a></div></div></div>
+<div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml">Subscribe</a></div>
+</div><div class="article__license"><div class="license">
+    <p>This work is licensed under a <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a> license.
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">
+        <img alt="Attribution-NonCommercial 4.0 International" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+      </a>
+    </p>
+  </div></div></footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2024/03/28/geometric_distribution_en.html">Geometric Distribution</a></div></div></div>
 
 </div>
 
@@ -361,7 +504,7 @@ fill="#000000" stroke="none">
   </div>
 </footer>
 </div></div>
-    </div><script>(function() {
+    </div></div></div><script>(function() {
   var SOURCES = window.TEXT_VARIABLES.sources;
   window.Lazyload.js(SOURCES.jquery, function() {
     var $body = $('body'), $window = $(window);
@@ -513,7 +656,7 @@ fill="#000000" stroke="none">
 })();
 </script><div class="search search--dark">
   <div class="main">
-    <div class="search__header">검색</div>
+    <div class="search__header">Search</div>
     <div class="search-bar">
       <div class="search-box js-search-box">
         <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
@@ -523,7 +666,7 @@ fill="#000000" stroke="none">
         </div>
       </div>
       <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
-        취소</button>
+        Cancel</button>
     </div>
     <div class="search-result js-search-result"></div>
   </div>
@@ -878,6 +1021,98 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $pageMask = $('.js-page-mask');
+    var $pageRoot = $('.js-page-root');
+    var $sidebarShow = $('.js-sidebar-show');
+    var $sidebarHide = $('.js-sidebar-hide');
+
+    function freeze(e) {
+      if (e.target === $pageMask[0]) {
+        e.preventDefault();
+      }
+    }
+    function stopBodyScrolling(bool) {
+      if (bool === true) {
+        window.addEventListener('touchmove', freeze, { passive: false });
+      } else {
+        window.removeEventListener('touchmove', freeze, { passive: false });
+      }
+    }
+
+    $sidebarShow.on('click', function() {
+      stopBodyScrolling(true); $pageRoot.addClass('show-sidebar');
+    });
+    $sidebarHide.on('click', function() {
+      stopBodyScrolling(false); $pageRoot.removeClass('show-sidebar');
+    });
+  });
+})();
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]
