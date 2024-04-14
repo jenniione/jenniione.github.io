@@ -46,7 +46,6 @@ $$
 p   & \text{if }x=1, \\
 1-p & \text{if }x=0
 \end{cases}
-\tag{8.2.2}
 \end{align}
 \end{split}
 $$

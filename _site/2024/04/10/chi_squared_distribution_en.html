@@ -1,10 +1,10 @@
-<!DOCTYPE html><html lang="ko">
+<!DOCTYPE html><html lang="en">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>이항 분포 - JenDS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Chi-squared test - JenDS</title>
 
-<meta name="description" content="이항 분포에 앞서, 베르누이 분포에 대해 간략히 정리하고, 이항 분포와 베르누이 분포가 어떤 관계가 있는지 알아보자.베르누이 분포확률 실험의 결과가 성공 혹은 실패로 나타나는 실험을 베르누이 실험(Bernoulli Experiment)라고 한다. 그리고 성공 확률이 \(p\)로 고...">
-<link rel="canonical" href="http://localhost:4000/2024/03/27/binomial_distribution_ko.html"><link rel="alternate" type="application/rss+xml" title="JenDS" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="Definition of Chi-Squared Distribution            DEFINITION                  Chi-Squared Distribution is defined for \(k\) independent random variables \(X_...">
+<link rel="canonical" href="http://localhost:4000/2024/04/10/chi_squared_distribution_en.html"><link rel="alternate" type="application/rss+xml" title="JenDS" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
@@ -267,7 +267,7 @@
 
     <div class="grid page__grid">
 
-      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">언어</li><li class="toc-h2"><a href="/2024/03/26/random_variables_en.html">English(EN)</a></li><li class="toc-h1">확률/통계 기초</li><li class="toc-h2"><a href="/2024/03/26/random_variables_ko.html">확률 분포</a></li><li class="toc-h2 active"><a href="/2024/03/27/binomial_distribution_ko.html">이항 분포</a></li><li class="toc-h2"><a href="/2024/03/28/geometric_distribution_ko.html">기하 분포</a></li><li class="toc-h2"><a href="/2024/04/02/poisson_distribution_ko.html">포아송 분포</a></li><li class="toc-h2"><a href="/2024/04/06/normal_distribution_and_clt_ko.html">정규 분포와 중심 극한 정리</a></li><li class="toc-h2"><a href="/2024/04/10/chi_squared_distribution_ko.html">카이제곱 분포와 검정</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Language</li><li class="toc-h2"><a href="/2024/03/26/random_variables_ko.html">한국어(KR)</a></li><li class="toc-h1">Probability & Statistics Basics</li><li class="toc-h2"><a href="/2024/03/26/random_variables_en.html">Random Variables</a></li><li class="toc-h2"><a href="/2024/03/27/binomial_distribution_en.html">Biomial Distribution</a></li><li class="toc-h2"><a href="/2024/03/28/geometric_distribution_en.html">Geometric Distribution</a></li><li class="toc-h2"><a href="/2024/04/02/poisson_distribution_en.html">Poisson Distribution</a></li><li class="toc-h2"><a href="/2024/04/06/normal_distribution_and_clt_en.html">Normal Distribution & Central Limit Theorem</a></li><li class="toc-h2 active"><a href="/2024/04/10/chi_squared_distribution_en.html">Chi-squared Distribution and Test</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -302,7 +302,7 @@ fill="#000000" stroke="none">
 </svg>
 <a title="JenDS by Jenny Won
 " href="/">JenDS</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
-        <ul><li class="navigation__item"><a href="/2024/03/26/random_variables_en.html">스터디 노트</a></li><li class="navigation__item"><a href="/project.html">프로젝트</a></li><li class="navigation__item"><a href="https://medium.com/@jen052430s">아티클</a></li><li class="navigation__item"><a href="/about.html">소개</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+        <ul><li class="navigation__item"><a href="/2024/03/26/random_variables_en.html">Study Note</a></li><li class="navigation__item"><a href="/project.html">Project</a></li><li class="navigation__item"><a href="https://medium.com/@jen052430s">Medium</a></li><li class="navigation__item"><a href="/about.html">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
       </nav></div>
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
@@ -313,52 +313,105 @@ fill="#000000" stroke="none">
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>이항 분포</h1></header><span class="split-space">&nbsp;</span>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Chi-squared test</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
-            title="Github에서 확인하기"
-            href="https://github.com/jenniione/jenniione.github.io/tree/master/_posts/2024-03-27-binomial_distribution_ko.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="이항 분포"><div class="article__info clearfix"><ul class="left-col menu"><li>
+            title="Edit on Github"
+            href="https://github.com/jenniione/jenniione.github.io/tree/master/_posts/2024-04-10-chi_squared_distribution_en.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Chi-squared test"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=%ED%86%B5%EA%B3%84%ED%95%99">통계학</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2024년 03월 27일</span>
-            </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-03-27T00:00:00+09:00">
-    <meta itemprop="keywords" content="통계학"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+                href="/archive.html?tag=Statistics">Statistics</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 10, 2024</span>
+            </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-04-10T00:00:00+09:00">
+    <meta itemprop="keywords" content="Statistics"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>이항 분포에 앞서, 베르누이 분포에 대해 간략히 정리하고, 이항 분포와 베르누이 분포가 어떤 관계가 있는지 알아보자.</p>
-<h2 id="베르누이-분포">베르누이 분포</h2>
-<p>확률 실험의 결과가 성공 혹은 실패로 나타나는 실험을 베르누이 실험(Bernoulli Experiment)라고 한다. 그리고 성공 확률이 \(p\)로 고정된 베르누이 실험에서 성공의 횟수를 나타내는 확률 분포가 바로 <strong>베르누이 분포</strong>이다. 즉, 베르누이 분포는 <strong>확률 변수의 값이 성공 혹은 실패로 나타나는 확률 분포</strong>이며, 그 결과가 성공 혹은 실패, 두 값 중 하나만 가지므로 베르누이 확률 변수는 <strong>이산 확률 변수</strong>라고 할 수 있다.</p>
+<div class="article__content" itemprop="articleBody"><h2 id="definition-of-chi-squared-distribution">Definition of Chi-Squared Distribution</h2>
 
-\[x  \{ \text{success, fail} \} \rightarrow \{0, 1\}\]
+<table>
+  <thead>
+    <tr>
+      <th><strong>DEFINITION</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Chi-Squared Distribution</strong> is defined for \(k\) independent random variables \(X_1,\cdots, X_k\) each following a standard normal distribution. The distribution of the random variable formed by summing the squares of these variables, <br /><center>$$Q = \sum_{i=1}^{k} X_i^2$$</center><br /> is called the chi-squared distribution. Hence,  <br /><center> $$Q \sim X_k^{2}$$</center><br /> where \(k\) is known as <strong>the degrees of freedom</strong>.</td>
+    </tr>
+  </tbody>
+</table>
 
-\[\begin{equation}
-\begin{aligned}
-&amp; P(x=0) = 1-p \\
-&amp; P(x=1) = p \\ \end{aligned}
-\end{equation}\]
+<p>The probability density function (PDF) for a chi-squared distribution with degrees of freedom \(k\) is given by:</p>
 
-<p>확률 변수 \(X\)가 베르누이 분포에 의해 발생된다면 다음과 같이 표현할 수 있다.</p>
+\[f(x; k) =\dfrac{1}{\Gamma (r/2) 2^{r/2}}x^{r/2-1}e^{-x/2}\]
 
-\[\begin{equation} 
- \begin{aligned} 
-&amp; x \sim \text{Bern}(p)
-\end{aligned}   
-\end{equation}\]
+<ul>
+  <li>$\Gamma(k/2)$  is the gamma function, which generalizes the factorial to \((k/2)\) .</li>
+</ul>
 
-<p>그리고 그 확률 질량 함수(PMF)는 다음과 같이 수식으로 나타낼 수 있다. 
-\(\begin{split}
-\begin{align}
-\text{Bern}(x; p) = 
-\begin{cases} 
-p   &amp; \text{if }x=1, \\
-1-p &amp; \text{if }x=0
-\end{cases}
-\end{align}
-\end{split}\)</p>
+<h2 id="understanding-the-chi-squared-distribution">Understanding the Chi-Squared Distribution</h2>
+<p>What are degrees of freedom, and why does the chi-squared distribution take such a form? Let’s look at how the chi-squared distribution is graphed.</p>
 
-<p>여기서 주목해야 할 점은, 베르누이 분포는 <strong>한번의 시행</strong>에 대한 결과에서 <strong>성공 확률 \(p\)</strong>에 집중한 관찰 데이터라는 점이다. 이 점은 이항 분포가 베르누이 분포와 어떻게 다른지를 설명하게 된다.</p>
+<h3 id="degrees-of-freedom-k1">Degrees of Freedom k=1</h3>
+<p>Let’s graph the chi-squared distribution for one standard normal random variable \(X\) .</p>
 
-<h2 id="이항-분포의-정의">이항 분포의 정의</h2>
+<p>With one random variable, the degrees of freedom for the chi-squared distribution can be said to be 1.</p>
+
+<ul>
+  <li>\(-1.5 \leq x \leq -1\) and \(1 \leq x \leq 1.5\)</li>
+</ul>
+<p align="center">
+  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_k=1(1).png" />
+</p>
+
+<p>Squaring the random variables in the intervals \(-1.5 \leq x \leq -1\) and \(1 \leq x \leq 1.5\) , these become variates of the chi-squared distribution. The probabilities are then accumulated in the chi-squared distribution interval \(1 \leq q \leq 2.25\) .  Repeat this for different intervals.</p>
+
+<ul>
+  <li>\(-2.5 \leq x \leq 2\) and \(2 \leq x \leq 2.5\)</li>
+</ul>
+
+<p align="center">
+  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_k=1(2).png" />
+</p>
+
+<ul>
+  <li>\(-0.5 \leq x \leq 0\) and \(0 \leq x \leq 0.5\)</li>
+</ul>
+
+<p align="center">
+  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_k=1(3).png" />
+</p>
+
+<h3 id="degrees-of-freedom-k-geq-2">Degrees of Freedom \(k \geq 2\)</h3>
+<p>Now note that the chi-squared distribution represents the ‘sum’ of squares.</p>
+
+<p>For one degree of freedom, we graphed the distribution of the square of one independent variable. However, with two or more independent variables, we start to graph the distribution of the ‘sum’ of squares.</p>
+
+<p>For independent random variables \(X_1, X_2\) , \(Q = X_1^2 + X_2^2\) accumulates greater values in the same interval.</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_k=2.png" />
+</p>
+
+<p>As the degrees of freedom increase to 3, 4, …, the chi-squared distribution changes like this:</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_diff.png" />
+</p>
+
+<p>More random variables being added means greater variance, and the most probable value range also increases, shifting the graph to the right.</p>
+
+<h2 id="uses-of-chi-squared-distribution">Uses of Chi-Squared Distribution</h2>
+<p>Why do we need to model the sum of squares of random variables?</p>
+
+<p>The sum of squares is <strong>commonly used in mathematics to handle errors or deviations</strong> - Although absolute values can also be used to eliminate direction, squaring is beneficial for differentiation. Let’s skip MSE and MAE discussions for now. - Up to this point, our understanding of the chi-squared distribution has discussed the distribution form of a new variable arising from the sum of squares of independent variables.  This understanding will later combine with concepts like p-value to expand further. For now, understanding that the sum of squares of independent variables forms such a distribution pattern is sufficient.</p>
+
+<p>However, to take a brief peek, let’s consider <strong>‘errors’ from a mathematical viewpoint</strong> to guess how the chi-squared distribution might be used. This could be quite interesting.</p>
+
+<p>Let’s think like Gauss and explore the ‘error’ between experimental measurements or observations and the true values. There might be numerous minute factors causing these errors, and let’s assume each error arises from the sum of these independent factors. By the central limit theorem, each of these errors would form a normal distribution. If scaled, these errors could be transformed into standard normal distributions. Then, a new random variable, which is the sum of the squares of these errors, would form a chi-squared distribution.</p>
+
+<p>Wow, if we have grasped this content, we are prepared to utilize the chi-squared distribution going forward.</p>
+
+<h2 id="pearson-chi-squared-statistic">(Pearson) Chi-Squared Statistic</h2>
 
 <table>
   <thead>
@@ -368,163 +421,125 @@ p   &amp; \text{if }x=1, \\
   </thead>
   <tbody>
     <tr>
-      <td><strong>이항 분포(Binomial Distribution)</strong>은 동일한 확률 \(p\) 로 성공하는 베르누이 시행을 고정된 수 \(n\) 번을 반복할 때의 성공 횟수를 모델링하는 확률 분포이다.</td>
+      <td>The following formula is known as the chi-squared statistic or Pearson chi-squared statistic. <br /> <center>$$ \chi^2 = \sum_i \frac{(O_i - E_i)^2}{E_i} $$ </center><br /> \(\chi^2\): chi-squared <br /> \(O\) : Observed values <br />\(E\) : Expected values</td>
     </tr>
   </tbody>
 </table>
 
-<p>이항 분포는 베르누이 시행을 \(n\)번 반복하여 얻게된 확률 분포이다. 다시말해, <strong>이항분포는 베르누이 시행의 확장</strong>이라고 할 수 있다. 단 한 번의 베르누이 시행이 아닌, \(n\)번의 반복된 베르누이 시행에서 성공 횟수에 대한 확률 분포를 모델링한 것이 바로 이항 분포이다.
-동전 던지기의 예를 들어보자. 앞면이 나올 확률이 \(p=1/2\)인 동전 던지기를 한번 시행 했을때, 그 결과는 베르누이 분포를 따르게 된다. 하지만 동일한 동전을 10번 던지고 앞면이 나온 횟수를 관찰하는 경우, 이 시나리오는 이항 분포를 따르게 된다. 여기서 핵심은 10번 던지는 동안 <strong>각각의 던지기가 독립적이며, 각 시행의 성공 확률은 \(p\) 로 동일해야 한다</strong>는 점이다.(원래 베르누이 시행의 성공확률은 고정된 \(p\)를 갖는다.)</p>
+<p>Although the definition and appearance of the chi-squared distribution might seem different, if we consider \(O_i - E_i\) as one random variable, the sum of their squares falls under the chi-squared statistic. Dividing by \(E\) standardizes the variance, adjusting the differences in each \(E_i\) ‘s variance.</p>
 
-<p>이항 분포는 다음과 같이 표현할 수 있으며,</p>
+<h2 id="chi-squared-test">Chi-Squared Test</h2>
+<p>The chi-squared test contrasts the theoretical chi-squared distribution with the chi-squared distribution based on actual observations. It is commonly used for goodness-of-fit tests and contingency analysis. This section will deeply explore the principles behind these tests, moving beyond mere calculations.</p>
 
-\[\begin{equation} 
- \begin{aligned} 
-x \sim \text{Bin}(n,p)
-\end{aligned}   
-\end{equation}\]
-
-<p>이항 분포의 확률 질량 함수(PMF)는 다음과 같이 정의된다.</p>
-
-\[\begin{equation} 
-P_X(x) = \ _{n}C_{x} p^k (1-p)^{n-x} \quad \text{ for } x =0,1,\cdots,n
-\end{equation}\]
-
-<h2 id="이항-분포의-이해">이항 분포의 이해</h2>
-<h3 id="10번의-동전-던지기-예시">10번의 동전 던지기 예시</h3>
-<p>확률 질량 함수를 이해하기 위해서, 앞선 10번의 동전 던지기의 확률을 직접 구해보자.
-앞면이 나오는 경우를 성공이라 하고, \(x\)를 성공 횟수라고 하자. 즉, \(x = 0, 1, 2, \cdots, 10\) 이고, 각각은 앞면이 0번, 1번, 2번, … 10번 나오는 경우를 의미할 것이다. \(x=2\)일 떄, 즉 10번의 시행 중 동전의 앞면이 2번 나오는 확률을 생각해 보자.</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/coin k=2.png" />
-</p>
-
-<p>그림과 같이 각각의 독립된 \((\frac{1}{2})^2(1-\frac{1}{2})^{8}\)의 확률이 \( _{10}C_{2}\)의 경우의 수로 출현할 수 있다. 이것은 다음과 같이 계산된다.</p>
-
-\[_{10}C_{2}\left(\frac{1}{2}\right)^2 \left(1-\frac{1}{2}\right)^{8} = 0.0439\]
-
-<p>같은 방법으로, 모든 x에 대해서 그 확률을 계산해 보면 다음과 같다.</p>
-
-\[x=0 ;  \frac{10!}{1!\cdot9!}
-\left(\frac{1}{2}\right)^0 \left(1-\frac{1}{2}\right)^{10} = 0.0010\]
-
-\[x=1 ;  \frac{10!}{1!\cdot9!}
-\left(\frac{1}{2}\right)^1 \left(1-\frac{1}{2}\right)^{9} = 0.0098\]
-
-\[x=2 ; \frac{10!}{2! 8!}\left(\frac{1}{2}\right)^2 \left(1-\frac{1}{2}\right)^{8} = 0.0439\]
-
-<center>⋮</center>
-
-\[x=10 ; \frac{10!}{10! 0!}\left(\frac{1}{2}\right)^{10} \left(1-\frac{1}{2}\right)^{0} = 0.0010\]
-
-<p>이것을 히스토그램으로 나타내면 다음과 같다.</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/coin distribution.png" />
-</p>
-
-<h3 id="직관적-이항-분포">직관적 이항 분포</h3>
-<p>이항 분포는 동전 던지기처럼 두 가지 결과가 있는 확률적 사건을 몇 번 반복했을 때, 어떤 결과를 얻을 확률을 구하기 위해 사용된다.</p>
-
-<p>실제로 어떻게 활용될 수 있는 지, 보다 직관적인 이해를 위해 실제로 이항 분포의 활용이 고려되는 알아보자.</p>
-
+<h3 id="goodness-of-fit-test">Goodness-of-Fit Test</h3>
 <ul>
-  <li>예시 1<br />
-마케팅 팀에서 1,000명의 고객에게 메일을 각각 발송했다. 이전의 경험을 토대로 회신을 받을 수 있는 확률이 0.5라고 가정하자. 자, 발송된 1,000개의 메일에 대해 50명의 고객으로 부터 회신을 받을 확률은 어떻게 될까?</li>
+  <li>Fairness test of a die
+Let’s test if a die is fair, i.e., if all numbers from 1 to 6 have an equal probability of appearing. For this purpose, let’s assume we roll the die 600 times and observe the following frequencies:</li>
 </ul>
 
-<p>아주 간단한 \(n=1,000\), \(p=0.5\)인 이항 분포의 확률 \(P_X(50)\)을 구하는 문제이다.
-이처럼 이항 분포는 기본적으로 <strong>시행 횟수와 성공 확률이 고정</strong>되었을 때, <strong>성공이 출현할 확률</strong>을 구할 때 활용될 수 있다.</p>
+<table>
+  <thead>
+    <tr>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>          95 times          </td>
+      <td>          105 times          </td>
+      <td>          110 times          </td>
+      <td>          85 times            </td>
+      <td>          105 times          </td>
+      <td>          100 times          </td>
+    </tr>
+  </tbody>
+</table>
 
-<p>또한, A/B테스를 진행하며 이항 분포의 개념이 활용될 수 있다. 아래 예시를 보자.</p>
-<ul>
-  <li>예시 2<br />
-웹사이트의 버튼 클릭률을 높이기 위해 두 가지 디자인(A와 B)의 효과를 비교하는 A/B테스트를 수행한다고 가정해 보자. 웹사이트 방문자 1,000명에게 B디자인을 노출시킨 후, 150명이 클릭했다. 우리는 디자인 B의 클릭률이 디자인 A의 클릭률 10%와 통계적으로 유의미하게 다른지를 평가하고자 한다.</li>
-</ul>
+<p>To determine fairness, let’s calculate the error between observed and true values using the differences squared. If the die were fair, the expected count for each number after 600 rolls would be \(600 / 6 = 100\) . The error calculation is as follows: (We use the sum of squares to handle the errors)</p>
 
-<p>방문자의 클릭 여부가 독립이라는 가정 하에, 각 웹사이트 방문자가 클릭하는 행위는 클릭(성공) 또는 비클릭(실패)의 이항 결과를 갖는다. 우리는 성공 확률 p를 10%, 시도 횟수 n은 1,000명, 성공 횟수 150명으로 설정하고 이항 검정을 수행할 수 있다.</p>
+\[\chi^2 = \sum \frac{(O_i - E_i)^2}{E_i} = \frac{(95 - 100)^2}{100} + \frac{(105 - 100)^2}{100} + \cdots + \frac{(100 - 100)^2}{100} = 4\]
 
-<h2 id="이항-분포의-평균과-분산">이항 분포의 평균과 분산</h2>
-<p>총 시행 횟수가 \(n\), 성공 확률이 \(p\)인 이항 분포를 따르는 확률 변수 X에 대해,</p>
+<p>Now, <strong>is this error likely under the assumption of a fair die?</strong></p>
 
-<p>기댓값은</p>
+<p>Next, let’s see how likely it is to observe an error sum of 4 under theoretical conditions.</p>
 
-\[E(X) = np\]
+<p>Forgetting the observed error, assume we know nothing about the error, and think backward. Suppose there’s a chi-squared distribution of 5 random error sums representing all possible probabilities.</p>
 
-<p>분산은</p>
+<p>What’s the probability that my actual observation of 5 error sums occurs? Is it likely enough?</p>
 
-\[Var(X) = np(1-p)\]
-
-<p>이다. 각각의 증명은 다음과 같다.</p>
-
-<p>\(\begin{split}
-\begin{align}
-\begin{aligned}
-\text{E}[X] 
-&amp;= \sum_{x_i \in \Omega} x_i p(x_i) \\
-&amp;= 1 \cdot \mu + 0 \cdot (1 - \mu) \\
-&amp;= \mu
-\end{aligned}
-\end{align}
-\end{split}\)
-<br /></p>
-
-\[\begin{split}
-\begin{align}
-\begin{aligned}
-\text{Var}[X] 
-&amp;= \sum_{x_i \in \Omega} (x_i - \mu)^2 p(x_i) \\
-&amp;= (1 - \mu)^2 \cdot \mu + (0 - \mu)^2 \cdot (1 - \mu) \\
-&amp;= \mu(1-\mu)
-\end{aligned}
-\end{align}
-\end{split}\]
-
-<h2 id="이항-분포의-정규-분포-근사">이항 분포의 정규 분포 근사</h2>
-<p>자, 그럼 이항 분포의 파라미터를 자유롭게 변경하며 이항 분포의 여러 모양을 관찰해 보자. 
-이러한 결과를 쉽게 확인할 수 있는 다양한 시뮬레이션이 온라인에 공개되어 있고, 그 중  GeoGebra에서 Parameters of the Binomial Distribution(shanlee) 시뮬레이션을 활용했다.
-n이 계속 증가한다면, 즉 시행을 많이 한다면 이항 분포는 어떻게 변할까?</p>
+<p><u>Set a standard</u> of <strong>5% (p-value)</strong>, which is considered extremely low, allowing us to decide if an observation is unusual. If the probability of observing the statistic is less than 5%, it’s difficult to view it as a typical error, suggesting <u>there's something unusual about my observed error</u>.</p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/binomial distribution to normal distribution.png" />
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/goodness_of_fit_test(1).png" />
 </p>
 
-<p>50번의 동전 던지기를 시행했을 때 <strong>종모양(bell shape)</strong>의 정규 분포와 유사한 형태를 띄는 것을 확인할 수 있다. 하지만 시뮬레이션을 직접 작동해보면, <strong>$n$ 과 $p$ 의 값이 극단적이지 않은 경우에만 가능</strong>하다는 것을 알 수 있다. $n$ 이 너무 작거나, $n$ 이 충분히 크지만 $p$ 가 너무 작거나 클 경우 정규 분포의 모양과 많이 벗어나게 된다.</p>
+<p>Now, we can use the chi-squared table to find \(\chi=x\) for a 95% probability when the degrees of freedom are 5.</p>
+
+\[\chi^2(5)_{0.95} = 11.07\]
+
+<p>In a chi-squared distribution with 5 degrees of freedom, the sum of errors at 11.07 marks the boundary between 95% on the left and 5% on the right.</p>
+
+<p>Let’s compare the actual error sum of 4 with the theoretical threshold of 11.07.</p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/small n.png" />
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/goodness_of_fit_test(2).png" />
 </p>
+
+<p>Since 4 is less than 11.07, it’s within the range of errors that could occur under the assumption of fairness. Thus, we <u>cannot claim the die is unfair based on our observations</u>.</p>
+
+<h3 id="contingency-analysis">Contingency Analysis</h3>
+<p>Contingency analysis is used when there are multiple categorical variables, like the data we often see in spreadsheets. The goal is to determine if there is an association between the categories.</p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/small p.png" />
+  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/crosstab(1)_en.png" />
 </p>
+
+<p>Is there a connection between gender and favorite subject? Let’s assume there isn’t (null hypothesis).</p>
+
+<p>Under the assumption of independence, we can calculate the expected frequency for each cell. For instance, the expected frequency of males preferring science is calculated as follows:</p>
+
+\[\frac{(totalfavoringscience) * (total males)} {total participants} = \frac{50 * 60} {100} = 30\]
+
+<p>After calculating the expected frequencies for all cells, they look like this:</p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/huge p.png" />
+  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/crosstab(2)_en.png" />
 </p>
 
-<p>수학적으로 이항 분포의 $n$ 이 충분히 커서 $np&gt;=5$, $np(1-p)&gt;=5$ 조건을 만족하면, 이항 분포의 평균이 $np$, 분산이 $np(1-p)$ 인 정규 분포에 근사할 수 있다고 한다. 이는 실제로 시뮬레이션을 통해 직관적으로 이해할 수 있다. 시뮬레이션을 직접 작동해 보면, <strong>$n$ 이 클수록, $p$ 가 0이나 1에 가깝지 않고, 0.5에 가까울수록 정규 분포로의 근사가 더욱 정확</strong>해지는 것을 확인할 수 있다.</p>
+<p>Now, let’s calculate the chi-squared statistic for the observed discrepancies.</p>
 
-<p>타율 3할인 타자가 100번 타석에 들어서면 안타를 얼마나 칠까? 사망률이 30%인 감염병에 100명이 걸렸을 때 실제로 얼마나 사망할까? 등 실제 많은 사건들 이항 분포를 따른다고 할 수 있다. 정규 분포가 이항 분포의 근사값으로 표현된다면 정규 분포 역시 많은 사건을 설명할 수 있는 분포가 될 것이다.</p>
+\[\chi^2 = \frac{(40-30)^2}{30} + \frac{(10-20)^2}{20} +
+ \frac{(20-30)^2}{30} + \frac{(30-20)^2}{20}
+= 16.666\]
+
+<p>Compute the theoretical statistic:</p>
+
+<p>With a degrees of freedom of \((2-1) \times (2-1) = 1\) and a p-value of 0.05, the statistic is</p>
+
+\[\chi^2(1)_{0.95} = 3.841\]
+
+<p>Therefore, since \(3.841 \leq 16.666\) , <u>the observed statistic is highly unlikely, suggesting a statistically significant association between the variables</u>.</p>
 
 <p><br /><br />
-<strong>참조</strong></p>
-
-<p><a href="https://www.geogebra.org/m/hGkW4vwJ">Parameters of the Binomial Distribution(shanlee)</a><br />
-<a href="https://datascienceschool.net/02%20mathematics/08.02%20%EB%B2%A0%EB%A5%B4%EB%88%84%EC%9D%B4%EB%B6%84%ED%8F%AC%EC%99%80%20%EC%9D%B4%ED%95%AD%EB%B6%84%ED%8F%AC.html">데이터 사이언스 스쿨</a><br />
-<a href="https://bookdown.org/mathemedicine/Stat_book/normal-distribution.html#-1">기초통계 개념정리(김진섭)</a><br /></p>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-03-27T00:00:00+09:00"><!-- start custom article footer snippet -->
+<strong>참조</strong><br />
+<a href="https://online.stat.psu.edu/stat414/lesson/15/15.9">Introduction to Probability Theory(STAT414, PennState Eberly College of Science)</a></p>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-04-10T00:00:00+09:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
-<div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml">구독하기</a></div>
+<div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml">Subscribe</a></div>
 </div><div class="article__license"><div class="license">
-    <p>이 글의 저작권은 <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a> 라이센스를 따릅니다.
+    <p>This work is licensed under a <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a> license.
       <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">
         <img alt="Attribution-NonCommercial 4.0 International" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
       </a>
     </p>
   </div></div></footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>이전</span><a href="/2024/03/26/random_variables_ko.html">확률 분포</a></div><div class="next"><span>다음</span><a href="/2024/03/28/geometric_distribution_ko.html">기하 분포</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2024/04/06/normal_distribution_and_clt_en.html">Normal Distribution & Central Limit Theorem</a></div></div></div>
 
 </div>
 
@@ -725,7 +740,7 @@ n이 계속 증가한다면, 즉 시행을 많이 한다면 이항 분포는 어
 })();
 </script><div class="search search--dark">
   <div class="main">
-    <div class="search__header">검색</div>
+    <div class="search__header">Search</div>
     <div class="search-bar">
       <div class="search-box js-search-box">
         <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
@@ -735,7 +750,7 @@ n이 계속 증가한다면, 즉 시행을 많이 한다면 이항 분포는 어
         </div>
       </div>
       <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
-        취소</button>
+        Cancel</button>
     </div>
     <div class="search-result js-search-result"></div>
   </div>

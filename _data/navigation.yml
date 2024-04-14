@@ -83,4 +83,7 @@ study-en:
         url:    2024/03/28/geometric_distribution_en.html
       - title:  Poisson Distribution
         url:    2024/04/02/poisson_distribution_en.html
-
+      - title:  Normal Distribution & Central Limit Theorem
+        url:    2024/04/06/normal_distribution_and_clt_en.html
+      - title:  Chi-squared Distribution and Test
+        url:    2024/04/10/chi_squared_distribution_en.html
