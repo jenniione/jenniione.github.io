@@ -118,7 +118,7 @@ Forgetting the observed error, assume we know nothing about the error, and think
 
 What's the probability that my actual observation of 5 error sums occurs? Is it likely enough?
 
-<u>Set a standard</u> of **5% (p-value)**, which is considered extremely low, allowing us to decide if an observation is unusual. If the probability of observing the statistic is less than 5%, it's difficult to view it as a typical error, suggesting <u>there's something unusual about my observed error</u>.
+<u>Set a standard</u> of **5% (significance level)**, which is considered extremely low, allowing us to decide if an observation is unusual. If the probability of observing the statistic is less than 5%, it's difficult to view it as a typical error, suggesting <u>there's something unusual about my observed error</u>.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/goodness_of_fit_test(1).png"/>

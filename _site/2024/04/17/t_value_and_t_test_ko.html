@@ -1,10 +1,10 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html><html lang="ko">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Python - JenDS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>t-분포와 t-검정 - JenDS</title>
 
-<meta name="description" content="Currently being worked on">
-<link rel="canonical" href="http://localhost:4000/project/python/en.html"><link rel="alternate" type="application/rss+xml" title="JenDS" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="앞서 카이제곱 분포에서 ‘오차’라는 개념을 접했다. 추론적 통계에 있어서 실제 모집단 값과 표본에서 관찰된 값 사이의 오차를 이해하는 것은 중요하다. 이 오차를 이해함으로써 우리는 표본을 통해 모집단의 실제 특성을 얼마나 정확하게 추론할 수 있는지, 그리고 그 추론에 얼마나 신뢰를...">
+<link rel="canonical" href="http://localhost:4000/2024/04/17/t_value_and_t_test_ko.html"><link rel="alternate" type="application/rss+xml" title="JenDS" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
@@ -256,7 +256,18 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport cell cell--auto">
+      <div class="layout--page layout--page--sidebar clearfix js-page-root">
+  <div class="page__mask d-print-none js-page-mask js-sidebar-hide"></div>
+  <div class="page__viewport">
+    <div class="page__actions d-print-none">
+      <div class="button button--circle button--lg box-shadow-2 sidebar-button js-sidebar-show">
+        <i class="fas fa-bars icon--show"></i>
+      </div>
+    </div>
+
+    <div class="grid page__grid">
+
+      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">언어</li><li class="toc-h2"><a href="/2024/03/26/random_variables_en.html">English(EN)</a></li><li class="toc-h1">확률/통계 기초</li><li class="toc-h2"><a href="/2024/03/26/random_variables_ko.html">확률 분포</a></li><li class="toc-h2"><a href="/2024/03/27/binomial_distribution_ko.html">이항 분포</a></li><li class="toc-h2"><a href="/2024/03/28/geometric_distribution_ko.html">기하 분포</a></li><li class="toc-h2"><a href="/2024/04/02/poisson_distribution_ko.html">포아송 분포</a></li><li class="toc-h2"><a href="/2024/04/06/normal_distribution_and_clt_ko.html">정규 분포와 중심 극한 정리</a></li><li class="toc-h2"><a href="/2024/04/10/chi_squared_distribution_ko.html">카이제곱 분포와 검정</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -291,28 +302,200 @@ fill="#000000" stroke="none">
 </svg>
 <a title="JenDS by Jenny Won
 " href="/">JenDS</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
-        <ul><li class="navigation__item"><a href="/2024/03/26/random_variables_en.html">Study Note</a></li><li class="navigation__item"><a href="/project.html">Project</a></li><li class="navigation__item"><a href="https://medium.com/@jen052430s">Medium</a></li><li class="navigation__item"><a href="/about.html">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+        <ul><li class="navigation__item"><a href="/2024/03/26/random_variables_en.html">스터디 노트</a></li><li class="navigation__item"><a href="/project.html">프로젝트</a></li><li class="navigation__item"><a href="https://medium.com/@jen052430s">아티클</a></li><li class="navigation__item"><a href="/about.html">소개</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
       </nav></div>
   </header>
-</div><div class="page__content"><div class="article__header--overlay"><div class="hero hero--dark overlay" style="background-image:linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4)),url(/pics/project/test.jpg);background-color:#203028;"><div class="hero__content"><div class ="main"><div class="article__info clearfix"><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 22, 2024</span>
-            </li></ul></div><div class="article__header"><header><h1>Python</h1></header></div><p class="overlay__excerpt">Currently being worked on</p></div></div>
-              </div>
-            </div><div class ="main"><div class="grid grid--reverse">
+</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><meta itemprop="headline" content="Python"><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-04-22T09:34:06+09:00"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>t-분포와 t-검정</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Github에서 확인하기"
+            href="https://github.com/jenniione/jenniione.github.io/tree/master/_posts/2024-04-17-t_value_and_t_test_ko.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="t-분포와 t-검정"><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=%ED%86%B5%EA%B3%84%ED%95%99">통계학</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2024년 04월 17일</span>
+            </li></ul></div><meta itemprop="author" content="Jenny Won (Dajeong Won)"/><meta itemprop="datePublished" content="2024-04-17T00:00:00+09:00">
+    <meta itemprop="keywords" content="통계학"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>Currently being worked on</p>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-04-22T09:34:06+09:00"><!-- start custom article footer snippet -->
+<div class="article__content" itemprop="articleBody"><p>앞서 카이제곱 분포에서 ‘오차’라는 개념을 접했다. 추론적 통계에 있어서 실제 모집단 값과 표본에서 관찰된 값 사이의 오차를 이해하는 것은 중요하다. 이 오차를 이해함으로써 우리는 표본을 통해 모집단의 실제 특성을 얼마나 정확하게 추론할 수 있는지, 그리고 그 추론에 얼마나 신뢰를 둘 수 있는지를 평가할 수 있다.</p>
+
+<p>이번 섹션에서는 <strong><u>신뢰성을 고려</u>한 ‘두 집단’간의 ‘평균 차이’</strong>를 통계적으로 분석하는 방법을 살펴보려고 한다. 특히, 작은 표본 크기에서의 분석에 관심을 두려한다.</p>
+
+<h2 id="정규-분포의-한계">정규 분포의 한계</h2>
+<p>우리는 앞서 <a href="https://jenniione.github.io/2024/04/06/normal_distribution_and_clt_ko.html#%EC%A4%91%EC%8B%AC-%EA%B7%B9%ED%95%9C-%EC%A0%95%EB%A6%AC%EC%9D%98-%EC%A7%81%EA%B4%80%EC%A0%81-%EC%9D%B4%ED%95%B4">중심 극한 정리</a>를 통해, 표본 평균들이 정규 분포를 이루며 모집단의 평균을 추정할 수 있음을 보았다. 그러나 이 이론은 이 이론은 샘플의 수가 충분히 커야한다. 이것은 다시 말해 <u>샘플의 수가 적다면 정규 분포를 이용한 추정 방식에 어려움</u>이 있다는 의미이기도 하다. 또한 z-분포를 이용한 모집단의 추정은 <u>모집단의 분산을 이용한다는 점에서도 한계</u>가 있다. 대부분의 실제 상황에서는 모집단 전체를 조사할 수도 없거니와, 모집단의 분산을 알지 못한다. t-분포는 이러한 문제점을 해결하기 위해 고안된 분포이다.</p>
+
+<h2 id="t-value의-논리">t-value의 논리</h2>
+<p>단 하나의 표본 밖에 구하지 못 했고, 이것을 통해 모집단을 추정한다고 해보자. 심지어 표본의 크기도 그리 크지 못하다. 꽤나 극단적으로 들릴지 모르지만, 실제로 빈번히 일어나는 상황이다. 다른 포스트에서도 언급했지만 표본도 크고 그 수도 많다면 최고의 시나리오겠지만, 현실은 그리 녹록지 않다. 그럼 이 하나의 표본에서 모집단을 추정함에 있어서 우리를 불안하게 하는 요소는 무엇일까? 이 작은 표본이 모집단을 정확히 대표하지 못할 가능성이다. 즉, 작은 표본으로 부터 얻은 평균이 모평균과 상당히 다를 수 있다. 그래서 우리는 이 작은 표본이 가지는 불확실성을 통계적으로 관리할 필요가 있다.</p>
+
+<p>예를 들어 주머니에서 숫자 공을 뽑는다고 해보자. 몇번을 뽑았는데 자꾸만 3이 적힌 공이 뽑힌다. 그럼 어느 순간 아마 주머니에 3이라는 공만 있는 건 아닌가 의심이 된다. 이것을 표본의 관측치를 이해하는 데 적용해 보자. 표본의 관측치들이 꽤나 하나의 값(표본 평균)에 모여있는 모양새를 보인다면, 우리는 모집단의 평균도 이 정도가 될 수 있을 거라고 추측할 수 있을 지 모른다. 반대로, 표본의 관측값이 들쭉날쭉 퍼져있다면 이것으로 모집단을 추정하는 것이 불안해질 지도 모른다. 이것을 통계적으로 이야기할 때, <strong>표본의 분산이 적으면 불확실도가 줄어든다</strong>고 한다.</p>
+
+<p>자 그럼 표본평균과 모평균이라는 두 값의 차이를 이해하는 데, 이러한 불확실도( \(SE\) )의 개념을 도입해보자.</p>
+
+\[t = \frac{\bar{X} - \mu}{SE}\]
+
+<ul>
+  <li>SE(Standard Error) : 표준 오차</li>
+</ul>
+
+<p>표준 오차에 대한 설명은 잠시 미뤄두고, 이러한 형태를 취함으로써 우리는 두 집단간의 차이를 그대로 받아들이는 지 않고, \(SE\)로 나눔으로써 조작된 차이값 t를 이용할 것이다.</p>
+
+<p>실제로 표준 오차 \(SE\)는 표본으로부터의 관측값이 표본 평균으로 부터 떨어진 정도를 의미하며, 다음과 같이 정의된다.</p>
+
+\[SE = \frac{s}{\sqrt{n}}\]
+
+<ul>
+  <li>s(Standard Deviation) : 표준 편차</li>
+</ul>
+
+<p>이것을 적용하면 수식 \((1)\) 은 다음과 같아진다.</p>
+
+\[t = \frac{\bar{X} - \mu}{\frac{s}{\sqrt{n}}}\]
+
+<p>즉, <strong>t-value는 표본의 분산이 크다면, 두 집단간의 차이값이 작아지도록 설계</strong>된 것이다.</p>
+
+<p align="center">
+  <img class="image image--md" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/t_distribution_and_t_test/t_value.png" />
+  <br />
+  출처: <a href="https://datatab.net/tutorial/t-test">DATAtab</a>
+</p>
+
+<h2 id="t-분포의-정의">t-분포의 정의</h2>
+<p>t-value의 모양은 z-score와 닮아있다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>t-value</th>
+      <th>z-score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><center> $$\begin{align*} &amp; t = \frac{\bar{X} - \mu}{\frac{s}{\sqrt{n}}} \end{align*}$$ </center></td>
+      <td><center> $$\begin{align*} &amp; Z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}} \end{align*} $$</center></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>그렇다면 t-value로 정규화한 분포를 그린다면 이것은 무슨 의미를 가질까?</p>
+
+<p>중심극한정리에 의해 각각의 표본 평균은 모집단 평균에 대해 정규 분포를 이루는 경향이 있다. 우리는 이 표본 평균들의 분포를 t-value를 이용해 정규화 할 수 있고, 그 분포는 작은 표본에 대한 불확실도가 가중된 모양을 띄게 될 것이다.</p>
+
+<p>각각의 t-value는 표본 평균이 모평균으로 부터 떨어진 거리(얼마나 다른지)를 표준화하여 나타낸다. 따라서 t-분포는 가능한 모든 표본 평균과 모평균 사이의 표준화된 차이의 분포를 제공할 것이다.</p>
+
+<p>표본 평균과 모집단을 단순히 “두 집단”으로 보고 일반화할 수 있다. t-분포는 이러한 두 집단 사이에서 하나의 집단에서 다른 집단과의 차이의 분포를 나타낸다.</p>
+
+<p>그럼 이론적으로 하나의 모집단에서 무작위로 추출된 많은 독립적인 표본에 대해 t-value를 이용해 표준화 하면 이 값들은 t-분포 형태를 띄게 된다.</p>
+
+<p>이때, 
+실제로 t-분포는 정규 분포와 유사한 종모양이지만, <strong>정규 분포보다 꼬리가 두꺼운 모양</strong>을 띄게 된다. 이것은 모분산 대신 표본의 분산을 적용함으로써, <u>작은 표본 크기에서 불확실성이 가중</u>되기 때문이다. \(s\)가 과소평가 되었을 때, t-값이 크게 나타날 수 있고 이는 t-분포의 꼬리 부분에서 더 높은 확률을 갖게 만든다.</p>
+
+<p align="center">
+  <img class="image image--md" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/t_distribution_and_t_test/t_vs_normal.jpeg" />
+  <br />
+  출처: <a href="https://analystprep.com/cfa-level-1-exam/quantitative-methods/t-distribution/">AnalystPREP</a>
+</p>
+
+<h2 id="t-test의-종류">t-test의 종류</h2>
+<p>표본과 모집단을 좀 더 일반화해서 어떤 두 집단간의 차이를 이해하는데 t-분포를 활용할 수도 있다. 각 상황에 따라 t-value는 약간의 차이가 있겠지만, 한 집단의 분산으로 그 차이를 조정한다는 원리는 유지된다. t-분포를 이용한 검정 시나리오를 살펴보자.</p>
+<h3 id="단일-표본-t-test">단일 표본 t-test</h3>
+<p>단일 표본 t-test는 주로 한 그룹의 평균이 특정 기준값이나 모집단의 평균과 다른지를 검정하는데 사용한다. 직작인의 평균 수면 시간이 권장 수면 시간과 다른지를 알아보는 단일 표본 t-test 를 생각해 보자.</p>
+
+<p class="warning">한 회사의 배터리 수명이 40시간 이상 지속된다는 주장을 테스트하려고 한다.15개 배터리의 단순 무작위 표본을 사용하여 평균 44.9시간, 표준 편차 8.9시간을 산출했다. 유의수준 0.05를 사용하여 이 주장을 테스트하자.</p>
+
+\[\begin{align*}
+&amp; H_0 : \mu = 40 \\
+&amp; H_a : \mu &gt; 40 \\
+\end{align*}\]
+
+<p>표본에서 관찰된 평균 수명이 44.9시간으로 나타났기 때문에, 대립가설을 \(\mu &gt; 40\) 으로 설정하였고, 이에 따라 단측검정(right-tailed test)를 진행하게 된다.</p>
+
+<p>우선 t-test의 논리를 설명하자면 다음과 같다.</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/t_distribution_and_t_test/t_test_one_sample(1).png" />
+</p>
+
+<p>모평균이 40이라는 가정하에, 주어진 자유도와 모평균를 이용해 t-분포를 그린다. 이 t-분포는 모평균으로 부터 관찰될 수 있는 모든 표본 평균들을 나타낸다. 이 분포는 표준정규 분포와 달리 둘 사이의 불확실성을 조정한 분포이다. 그리고 관찰된 표본 평균이 44.9시간이기 때문에 이 t-분포에서 표본 평균이 40시간 보다 클 수 있는 확률(p-value)을 계산한다. 그리고 이 확률이 우리가 설정한 기준(유의수준, 대체로 0.05) 보다 작다면, 가정 하에 발견되기 어려운 값으로 판단하여, 이 표본 평균은 모평균의 특성을 제대로 반영하지 않는 굉장히 유의미한 차이를 가진다는 결론을 내릴 것이다. 이러한 논리는 카이제곱 검정 원리와도 유사하니 참고하면 좋을 것 같다.</p>
+
+<p>그럼 t-test를 진행해보자.</p>
+
+\[\begin{align*}
+&amp; \mu=40, \bar{X}=44.9 , s=8.9, n=15, df = 15 - 1 =14 \\
+\end{align*}\]
+
+<p>주어진 조건에 따라 t-value를 계산하면 다음과 같다.</p>
+
+\[\begin{align*}
+&amp; t = \frac{44.9 - 40}{\frac{8.9}{\sqrt{15}}} = 2.13 \\
+\end{align*}\]
+
+<p>이때의 p-value 즉, 자유도가 14인 t-분포 하에 \(t = 2.13\) 일 확률을 구해보자. 이 계산은 t-분포표 혹은 컴퓨터를 이용한다.</p>
+
+\[p-value = P(t_{df=14} &gt; 2.13) = 0.026\]
+
+<p>이 p-value가 의미하는 것은 실제 관찰된 표본 평균(40시간 이상 혹은 44.9시간)이 발견될 확률이 2.6%라는 것이다. 이 값은 우리가 “발견되기 어려운 확률”로 설정한 5%라는 유의수준보다 작다.</p>
+
+\[p = 0.026 &lt; \alpha = 0.05\]
+
+<p>따라서, 우리가 관찰한 44.9라는 표본 평균이 나타날 확률은 “발견되기 어려운” 것이고, 귀무가설이었던 모평균이 40이라는 가설을 기각할 수 밖에 없는 두 집단 사이의 유의미한 차이가 있다고 결론을 내린다.</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/t_distribution_and_t_test/t_test_one_sample(2).png" />
+</p>
+
+<p>같은 모집단에서 추출된 샘플들을 가지고, 모집단의 평균으로 추정되는 값(\(\mu = c\))과 같은지 검정</p>
+
+<p>검정통계량
+\(t = \frac{\bar{X}-\mu}{s / \sqrt{n}}\)</p>
+
+<h3 id="독립-표본-t-test">독립 표본 t-test</h3>
+
+\[t = \frac{\bar{X}_1-\bar{X}_2-c}{S_{p}\sqrt{\frac{1}{n_{1}}+\frac{1}{n_{2}}}}\]
+
+\[S_{p} = \sqrt{\frac{(n_{1}-1)s^2_{X_{1}}+(n_{2}-1)s^2_{X_{2}}}{n_{1}+n_{2}-2}}\]
+
+<h3 id="대응-표본-t-test">대응 표본 t-test</h3>
+
+\[t=\frac{\bar{D}-d}{s/\sqrt{n}}\]
+
+<p>\(\bar{D}\) : 대응표본 차이의 평균 - 점수차이의 평균<br />
+\(d\) : 모평균 차이</p>
+
+<p>두 집단 사이의 차이를 알고 싶어서
+물론 평균이 그 차이를 보여줄 수도 있지만, 그 차이가 믿을 만한지 모르겠다.</p>
+
+<p>작은 표본으로부터의 추론
+알려지지 않은 모집단
+실제 적용의 높은 가능성</p>
+
+<p>정규분포처럼 생겼지만, 꼬리가 더 두껍 &gt; 불확실성이 더 커진다 / 분산이 커진다</p>
+
+<p><br /><br />
+<strong>참조</strong><br />
+<a href="https://blog.minitab.com/en/adventures-in-statistics-2/understanding-t-tests-t-values-and-t-distributions">Understanding t-Tests: t-values and t-distributions(Minitab Blog)</a>
+https://calcworkshop.com/hypothesis-test/one-sample-t-test/#chapter
+https://blog.naver.com/gdpresent/221138172138</p>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-04-17T00:00:00+09:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
-</footer>
-<div class="article__section-navigator clearfix"><div class="next"><span>NEXT</span><a href="/project/python.html">파이썬</a></div></div></div>
+<div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml">구독하기</a></div>
+</div><div class="article__license"><div class="license">
+    <p>이 글의 저작권은 <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a> 라이센스를 따릅니다.
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">
+        <img alt="Attribution-NonCommercial 4.0 International" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+      </a>
+    </p>
+  </div></div></footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>이전</span><a href="/2024/04/10/chi_squared_distribution_ko.html">카이제곱 분포와 검정</a></div></div></div>
 
 </div>
 
@@ -361,7 +544,7 @@ fill="#000000" stroke="none">
   </div>
 </footer>
 </div></div>
-    </div><script>(function() {
+    </div></div></div><script>(function() {
   var SOURCES = window.TEXT_VARIABLES.sources;
   window.Lazyload.js(SOURCES.jquery, function() {
     var $body = $('body'), $window = $(window);
@@ -799,6 +982,98 @@ window.Lazyload.js(SOURCES.jquery, function() {
 /*(function () {
 
 })();*/
+</script><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $pageMask = $('.js-page-mask');
+    var $pageRoot = $('.js-page-root');
+    var $sidebarShow = $('.js-sidebar-show');
+    var $sidebarHide = $('.js-sidebar-hide');
+
+    function freeze(e) {
+      if (e.target === $pageMask[0]) {
+        e.preventDefault();
+      }
+    }
+    function stopBodyScrolling(bool) {
+      if (bool === true) {
+        window.addEventListener('touchmove', freeze, { passive: false });
+      } else {
+        window.removeEventListener('touchmove', freeze, { passive: false });
+      }
+    }
+
+    $sidebarShow.on('click', function() {
+      stopBodyScrolling(true); $pageRoot.addClass('show-sidebar');
+    });
+    $sidebarHide.on('click', function() {
+      stopBodyScrolling(false); $pageRoot.removeClass('show-sidebar');
+    });
+  });
+})();
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]

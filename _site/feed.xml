@@ -1,207 +1,163 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-04-17T16:54:59+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JenDS</title><subtitle>JenDS by Jenny Won
-</subtitle><author><name>Jenny Won (Dajeong Won)</name></author><entry xml:lang="en"><title type="html">Chi-squared test</title><link href="http://localhost:4000/2024/04/10/chi_squared_distribution_en.html" rel="alternate" type="text/html" title="Chi-squared test" /><published>2024-04-10T00:00:00+09:00</published><updated>2024-04-10T00:00:00+09:00</updated><id>http://localhost:4000/2024/04/10/chi_squared_distribution_en</id><content type="html" xml:base="http://localhost:4000/2024/04/10/chi_squared_distribution_en.html"><![CDATA[<h2 id="definition-of-chi-squared-distribution">Definition of Chi-Squared Distribution</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-04-22T09:34:06+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JenDS</title><subtitle>JenDS by Jenny Won
+</subtitle><author><name>Jenny Won (Dajeong Won)</name></author><entry xml:lang="ko"><title type="html">t-분포와 t-검정</title><link href="http://localhost:4000/2024/04/17/t_value_and_t_test_ko.html" rel="alternate" type="text/html" title="t-분포와 t-검정" /><published>2024-04-17T00:00:00+09:00</published><updated>2024-04-17T00:00:00+09:00</updated><id>http://localhost:4000/2024/04/17/t_value_and_t_test_ko</id><content type="html" xml:base="http://localhost:4000/2024/04/17/t_value_and_t_test_ko.html"><![CDATA[<p>앞서 카이제곱 분포에서 ‘오차’라는 개념을 접했다. 추론적 통계에 있어서 실제 모집단 값과 표본에서 관찰된 값 사이의 오차를 이해하는 것은 중요하다. 이 오차를 이해함으로써 우리는 표본을 통해 모집단의 실제 특성을 얼마나 정확하게 추론할 수 있는지, 그리고 그 추론에 얼마나 신뢰를 둘 수 있는지를 평가할 수 있다.</p>
+
+<p>이번 섹션에서는 <strong><u>신뢰성을 고려</u>한 ‘두 집단’간의 ‘평균 차이’</strong>를 통계적으로 분석하는 방법을 살펴보려고 한다. 특히, 작은 표본 크기에서의 분석에 관심을 두려한다.</p>
+
+<h2 id="정규-분포의-한계">정규 분포의 한계</h2>
+<p>우리는 앞서 <a href="https://jenniione.github.io/2024/04/06/normal_distribution_and_clt_ko.html#%EC%A4%91%EC%8B%AC-%EA%B7%B9%ED%95%9C-%EC%A0%95%EB%A6%AC%EC%9D%98-%EC%A7%81%EA%B4%80%EC%A0%81-%EC%9D%B4%ED%95%B4">중심 극한 정리</a>를 통해, 표본 평균들이 정규 분포를 이루며 모집단의 평균을 추정할 수 있음을 보았다. 그러나 이 이론은 이 이론은 샘플의 수가 충분히 커야한다. 이것은 다시 말해 <u>샘플의 수가 적다면 정규 분포를 이용한 추정 방식에 어려움</u>이 있다는 의미이기도 하다. 또한 z-분포를 이용한 모집단의 추정은 <u>모집단의 분산을 이용한다는 점에서도 한계</u>가 있다. 대부분의 실제 상황에서는 모집단 전체를 조사할 수도 없거니와, 모집단의 분산을 알지 못한다. t-분포는 이러한 문제점을 해결하기 위해 고안된 분포이다.</p>
+
+<h2 id="t-value의-논리">t-value의 논리</h2>
+<p>단 하나의 표본 밖에 구하지 못 했고, 이것을 통해 모집단을 추정한다고 해보자. 심지어 표본의 크기도 그리 크지 못하다. 꽤나 극단적으로 들릴지 모르지만, 실제로 빈번히 일어나는 상황이다. 다른 포스트에서도 언급했지만 표본도 크고 그 수도 많다면 최고의 시나리오겠지만, 현실은 그리 녹록지 않다. 그럼 이 하나의 표본에서 모집단을 추정함에 있어서 우리를 불안하게 하는 요소는 무엇일까? 이 작은 표본이 모집단을 정확히 대표하지 못할 가능성이다. 즉, 작은 표본으로 부터 얻은 평균이 모평균과 상당히 다를 수 있다. 그래서 우리는 이 작은 표본이 가지는 불확실성을 통계적으로 관리할 필요가 있다.</p>
+
+<p>예를 들어 주머니에서 숫자 공을 뽑는다고 해보자. 몇번을 뽑았는데 자꾸만 3이 적힌 공이 뽑힌다. 그럼 어느 순간 아마 주머니에 3이라는 공만 있는 건 아닌가 의심이 된다. 이것을 표본의 관측치를 이해하는 데 적용해 보자. 표본의 관측치들이 꽤나 하나의 값(표본 평균)에 모여있는 모양새를 보인다면, 우리는 모집단의 평균도 이 정도가 될 수 있을 거라고 추측할 수 있을 지 모른다. 반대로, 표본의 관측값이 들쭉날쭉 퍼져있다면 이것으로 모집단을 추정하는 것이 불안해질 지도 모른다. 이것을 통계적으로 이야기할 때, <strong>표본의 분산이 적으면 불확실도가 줄어든다</strong>고 한다.</p>
+
+<p>자 그럼 표본평균과 모평균이라는 두 값의 차이를 이해하는 데, 이러한 불확실도( \(SE\) )의 개념을 도입해보자.</p>
+
+\[t = \frac{\bar{X} - \mu}{SE}\]
+
+<ul>
+  <li>SE(Standard Error) : 표준 오차</li>
+</ul>
+
+<p>표준 오차에 대한 설명은 잠시 미뤄두고, 이러한 형태를 취함으로써 우리는 두 집단간의 차이를 그대로 받아들이는 지 않고, \(SE\)로 나눔으로써 조작된 차이값 t를 이용할 것이다.</p>
+
+<p>실제로 표준 오차 \(SE\)는 표본으로부터의 관측값이 표본 평균으로 부터 떨어진 정도를 의미하며, 다음과 같이 정의된다.</p>
+
+\[SE = \frac{s}{\sqrt{n}}\]
+
+<ul>
+  <li>s(Standard Deviation) : 표준 편차</li>
+</ul>
+
+<p>이것을 적용하면 수식 \((1)\) 은 다음과 같아진다.</p>
+
+\[t = \frac{\bar{X} - \mu}{\frac{s}{\sqrt{n}}}\]
+
+<p>즉, <strong>t-value는 표본의 분산이 크다면, 두 집단간의 차이값이 작아지도록 설계</strong>된 것이다.</p>
+
+<p align="center">
+  <img class="image image--md" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/t_distribution_and_t_test/t_value.png" />
+  <br />
+  출처: <a href="https://datatab.net/tutorial/t-test">DATAtab</a>
+</p>
+
+<h2 id="t-분포의-정의">t-분포의 정의</h2>
+<p>t-value의 모양은 z-score와 닮아있다.</p>
 
 <table>
   <thead>
     <tr>
-      <th><strong>DEFINITION</strong></th>
+      <th>t-value</th>
+      <th>z-score</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>Chi-Squared Distribution</strong> is defined for \(k\) independent random variables \(X_1,\cdots, X_k\) each following a standard normal distribution. The distribution of the random variable formed by summing the squares of these variables, <br /><center>$$Q = \sum_{i=1}^{k} X_i^2$$</center><br /> is called the chi-squared distribution. Hence,  <br /><center> $$Q \sim X_k^{2}$$</center><br /> where \(k\) is known as <strong>the degrees of freedom</strong>.</td>
+      <td><center> $$\begin{align*} &amp; t = \frac{\bar{X} - \mu}{\frac{s}{\sqrt{n}}} \end{align*}$$ </center></td>
+      <td><center> $$\begin{align*} &amp; Z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}} \end{align*} $$</center></td>
     </tr>
   </tbody>
 </table>
 
-<p>The probability density function (PDF) for a chi-squared distribution with degrees of freedom \(k\) is given by:</p>
+<p>그렇다면 t-value로 정규화한 분포를 그린다면 이것은 무슨 의미를 가질까?</p>
 
-\[f(x; k) =\dfrac{1}{\Gamma (r/2) 2^{r/2}}x^{r/2-1}e^{-x/2}\]
+<p>중심극한정리에 의해 각각의 표본 평균은 모집단 평균에 대해 정규 분포를 이루는 경향이 있다. 우리는 이 표본 평균들의 분포를 t-value를 이용해 정규화 할 수 있고, 그 분포는 작은 표본에 대한 불확실도가 가중된 모양을 띄게 될 것이다.</p>
 
-<ul>
-  <li>$\Gamma(k/2)$  is the gamma function, which generalizes the factorial to \((k/2)\) .</li>
-</ul>
+<p>각각의 t-value는 표본 평균이 모평균으로 부터 떨어진 거리(얼마나 다른지)를 표준화하여 나타낸다. 따라서 t-분포는 가능한 모든 표본 평균과 모평균 사이의 표준화된 차이의 분포를 제공할 것이다.</p>
 
-<h2 id="understanding-the-chi-squared-distribution">Understanding the Chi-Squared Distribution</h2>
-<p>What are degrees of freedom, and why does the chi-squared distribution take such a form? Let’s look at how the chi-squared distribution is graphed.</p>
+<p>표본 평균과 모집단을 단순히 “두 집단”으로 보고 일반화할 수 있다. t-분포는 이러한 두 집단 사이에서 하나의 집단에서 다른 집단과의 차이의 분포를 나타낸다.</p>
 
-<h3 id="degrees-of-freedom-k1">Degrees of Freedom k=1</h3>
-<p>Let’s graph the chi-squared distribution for one standard normal random variable \(X\) .</p>
+<p>그럼 이론적으로 하나의 모집단에서 무작위로 추출된 많은 독립적인 표본에 대해 t-value를 이용해 표준화 하면 이 값들은 t-분포 형태를 띄게 된다.</p>
 
-<p>With one random variable, the degrees of freedom for the chi-squared distribution can be said to be 1.</p>
-
-<ul>
-  <li>\(-1.5 \leq x \leq -1\) and \(1 \leq x \leq 1.5\)</li>
-</ul>
-<p align="center">
-  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_k=1(1).png" />
-</p>
-
-<p>Squaring the random variables in the intervals \(-1.5 \leq x \leq -1\) and \(1 \leq x \leq 1.5\) , these become variates of the chi-squared distribution. The probabilities are then accumulated in the chi-squared distribution interval \(1 \leq q \leq 2.25\) .  Repeat this for different intervals.</p>
-
-<ul>
-  <li>\(-2.5 \leq x \leq 2\) and \(2 \leq x \leq 2.5\)</li>
-</ul>
+<p>이때, 
+실제로 t-분포는 정규 분포와 유사한 종모양이지만, <strong>정규 분포보다 꼬리가 두꺼운 모양</strong>을 띄게 된다. 이것은 모분산 대신 표본의 분산을 적용함으로써, <u>작은 표본 크기에서 불확실성이 가중</u>되기 때문이다. \(s\)가 과소평가 되었을 때, t-값이 크게 나타날 수 있고 이는 t-분포의 꼬리 부분에서 더 높은 확률을 갖게 만든다.</p>
 
 <p align="center">
-  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_k=1(2).png" />
+  <img class="image image--md" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/t_distribution_and_t_test/t_vs_normal.jpeg" />
+  <br />
+  출처: <a href="https://analystprep.com/cfa-level-1-exam/quantitative-methods/t-distribution/">AnalystPREP</a>
 </p>
 
-<ul>
-  <li>\(-0.5 \leq x \leq 0\) and \(0 \leq x \leq 0.5\)</li>
-</ul>
+<h2 id="t-test의-종류">t-test의 종류</h2>
+<p>표본과 모집단을 좀 더 일반화해서 어떤 두 집단간의 차이를 이해하는데 t-분포를 활용할 수도 있다. 각 상황에 따라 t-value는 약간의 차이가 있겠지만, 한 집단의 분산으로 그 차이를 조정한다는 원리는 유지된다. t-분포를 이용한 검정 시나리오를 살펴보자.</p>
+<h3 id="단일-표본-t-test">단일 표본 t-test</h3>
+<p>단일 표본 t-test는 주로 한 그룹의 평균이 특정 기준값이나 모집단의 평균과 다른지를 검정하는데 사용한다. 직작인의 평균 수면 시간이 권장 수면 시간과 다른지를 알아보는 단일 표본 t-test 를 생각해 보자.</p>
+
+<p class="warning">한 회사의 배터리 수명이 40시간 이상 지속된다는 주장을 테스트하려고 한다.15개 배터리의 단순 무작위 표본을 사용하여 평균 44.9시간, 표준 편차 8.9시간을 산출했다. 유의수준 0.05를 사용하여 이 주장을 테스트하자.</p>
+
+\[\begin{align*}
+&amp; H_0 : \mu = 40 \\
+&amp; H_a : \mu &gt; 40 \\
+\end{align*}\]
+
+<p>표본에서 관찰된 평균 수명이 44.9시간으로 나타났기 때문에, 대립가설을 \(\mu &gt; 40\) 으로 설정하였고, 이에 따라 단측검정(right-tailed test)를 진행하게 된다.</p>
+
+<p>우선 t-test의 논리를 설명하자면 다음과 같다.</p>
 
 <p align="center">
-  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_k=1(3).png" />
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/t_distribution_and_t_test/t_test_one_sample(1).png" />
 </p>
 
-<h3 id="degrees-of-freedom-k-geq-2">Degrees of Freedom \(k \geq 2\)</h3>
-<p>Now note that the chi-squared distribution represents the ‘sum’ of squares.</p>
+<p>모평균이 40이라는 가정하에, 주어진 자유도와 모평균를 이용해 t-분포를 그린다. 이 t-분포는 모평균으로 부터 관찰될 수 있는 모든 표본 평균들을 나타낸다. 이 분포는 표준정규 분포와 달리 둘 사이의 불확실성을 조정한 분포이다. 그리고 관찰된 표본 평균이 44.9시간이기 때문에 이 t-분포에서 표본 평균이 40시간 보다 클 수 있는 확률(p-value)을 계산한다. 그리고 이 확률이 우리가 설정한 기준(유의수준, 대체로 0.05) 보다 작다면, 가정 하에 발견되기 어려운 값으로 판단하여, 이 표본 평균은 모평균의 특성을 제대로 반영하지 않는 굉장히 유의미한 차이를 가진다는 결론을 내릴 것이다. 이러한 논리는 카이제곱 검정 원리와도 유사하니 참고하면 좋을 것 같다.</p>
 
-<p>For one degree of freedom, we graphed the distribution of the square of one independent variable. However, with two or more independent variables, we start to graph the distribution of the ‘sum’ of squares.</p>
+<p>그럼 t-test를 진행해보자.</p>
 
-<p>For independent random variables \(X_1, X_2\) , \(Q = X_1^2 + X_2^2\) accumulates greater values in the same interval.</p>
+\[\begin{align*}
+&amp; \mu=40, \bar{X}=44.9 , s=8.9, n=15, df = 15 - 1 =14 \\
+\end{align*}\]
+
+<p>주어진 조건에 따라 t-value를 계산하면 다음과 같다.</p>
+
+\[\begin{align*}
+&amp; t = \frac{44.9 - 40}{\frac{8.9}{\sqrt{15}}} = 2.13 \\
+\end{align*}\]
+
+<p>이때의 p-value 즉, 자유도가 14인 t-분포 하에 \(t = 2.13\) 일 확률을 구해보자. 이 계산은 t-분포표 혹은 컴퓨터를 이용한다.</p>
+
+\[p-value = P(t_{df=14} &gt; 2.13) = 0.026\]
+
+<p>이 p-value가 의미하는 것은 실제 관찰된 표본 평균(40시간 이상 혹은 44.9시간)이 발견될 확률이 2.6%라는 것이다. 이 값은 우리가 “발견되기 어려운 확률”로 설정한 5%라는 유의수준보다 작다.</p>
+
+\[p = 0.026 &lt; \alpha = 0.05\]
+
+<p>따라서, 우리가 관찰한 44.9라는 표본 평균이 나타날 확률은 “발견되기 어려운” 것이고, 귀무가설이었던 모평균이 40이라는 가설을 기각할 수 밖에 없는 두 집단 사이의 유의미한 차이가 있다고 결론을 내린다.</p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_k=2.png" />
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/t_distribution_and_t_test/t_test_one_sample(2).png" />
 </p>
 
-<p>As the degrees of freedom increase to 3, 4, …, the chi-squared distribution changes like this:</p>
+<p>같은 모집단에서 추출된 샘플들을 가지고, 모집단의 평균으로 추정되는 값(\(\mu = c\))과 같은지 검정</p>
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_diff.png" />
-</p>
+<p>검정통계량
+\(t = \frac{\bar{X}-\mu}{s / \sqrt{n}}\)</p>
 
-<p>More random variables being added means greater variance, and the most probable value range also increases, shifting the graph to the right.</p>
+<h3 id="독립-표본-t-test">독립 표본 t-test</h3>
 
-<h2 id="uses-of-chi-squared-distribution">Uses of Chi-Squared Distribution</h2>
-<p>Why do we need to model the sum of squares of random variables?</p>
+\[t = \frac{\bar{X}_1-\bar{X}_2-c}{S_{p}\sqrt{\frac{1}{n_{1}}+\frac{1}{n_{2}}}}\]
 
-<p>The sum of squares is <strong>commonly used in mathematics to handle errors or deviations</strong> - Although absolute values can also be used to eliminate direction, squaring is beneficial for differentiation. Let’s skip MSE and MAE discussions for now. - Up to this point, our understanding of the chi-squared distribution has discussed the distribution form of a new variable arising from the sum of squares of independent variables.  This understanding will later combine with concepts like p-value to expand further. For now, understanding that the sum of squares of independent variables forms such a distribution pattern is sufficient.</p>
+\[S_{p} = \sqrt{\frac{(n_{1}-1)s^2_{X_{1}}+(n_{2}-1)s^2_{X_{2}}}{n_{1}+n_{2}-2}}\]
 
-<p>However, to take a brief peek, let’s consider <strong>‘errors’ from a mathematical viewpoint</strong> to guess how the chi-squared distribution might be used. This could be quite interesting.</p>
+<h3 id="대응-표본-t-test">대응 표본 t-test</h3>
 
-<p>Let’s think like Gauss and explore the ‘error’ between experimental measurements or observations and the true values. There might be numerous minute factors causing these errors, and let’s assume each error arises from the sum of these independent factors. By the central limit theorem, each of these errors would form a normal distribution. If scaled, these errors could be transformed into standard normal distributions. Then, a new random variable, which is the sum of the squares of these errors, would form a chi-squared distribution.</p>
+\[t=\frac{\bar{D}-d}{s/\sqrt{n}}\]
 
-<p>Wow, if we have grasped this content, we are prepared to utilize the chi-squared distribution going forward.</p>
+<p>\(\bar{D}\) : 대응표본 차이의 평균 - 점수차이의 평균<br />
+\(d\) : 모평균 차이</p>
 
-<h2 id="pearson-chi-squared-statistic">(Pearson) Chi-Squared Statistic</h2>
+<p>두 집단 사이의 차이를 알고 싶어서
+물론 평균이 그 차이를 보여줄 수도 있지만, 그 차이가 믿을 만한지 모르겠다.</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>DEFINITION</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>The following formula is known as the chi-squared statistic or Pearson chi-squared statistic. <br /> <center>$$ \chi^2 = \sum_i \frac{(O_i - E_i)^2}{E_i} $$ </center><br /> \(\chi^2\): chi-squared <br /> \(O\) : Observed values <br />\(E\) : Expected values</td>
-    </tr>
-  </tbody>
-</table>
+<p>작은 표본으로부터의 추론
+알려지지 않은 모집단
+실제 적용의 높은 가능성</p>
 
-<p>Although the definition and appearance of the chi-squared distribution might seem different, if we consider \(O_i - E_i\) as one random variable, the sum of their squares falls under the chi-squared statistic. Dividing by \(E\) standardizes the variance, adjusting the differences in each \(E_i\) ‘s variance.</p>
-
-<h2 id="chi-squared-test">Chi-Squared Test</h2>
-<p>The chi-squared test contrasts the theoretical chi-squared distribution with the chi-squared distribution based on actual observations. It is commonly used for goodness-of-fit tests and contingency analysis. This section will deeply explore the principles behind these tests, moving beyond mere calculations.</p>
-
-<h3 id="goodness-of-fit-test">Goodness-of-Fit Test</h3>
-<ul>
-  <li>Fairness test of a die
-Let’s test if a die is fair, i.e., if all numbers from 1 to 6 have an equal probability of appearing. For this purpose, let’s assume we roll the die 600 times and observe the following frequencies:</li>
-</ul>
-
-<table>
-  <thead>
-    <tr>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
-      <th>5</th>
-      <th>6</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>          95 times          </td>
-      <td>          105 times          </td>
-      <td>          110 times          </td>
-      <td>          85 times            </td>
-      <td>          105 times          </td>
-      <td>          100 times          </td>
-    </tr>
-  </tbody>
-</table>
-
-<p>To determine fairness, let’s calculate the error between observed and true values using the differences squared. If the die were fair, the expected count for each number after 600 rolls would be \(600 / 6 = 100\) . The error calculation is as follows: (We use the sum of squares to handle the errors)</p>
-
-\[\chi^2 = \sum \frac{(O_i - E_i)^2}{E_i} = \frac{(95 - 100)^2}{100} + \frac{(105 - 100)^2}{100} + \cdots + \frac{(100 - 100)^2}{100} = 4\]
-
-<p>Now, <strong>is this error likely under the assumption of a fair die?</strong></p>
-
-<p>Next, let’s see how likely it is to observe an error sum of 4 under theoretical conditions.</p>
-
-<p>Forgetting the observed error, assume we know nothing about the error, and think backward. Suppose there’s a chi-squared distribution of 5 random error sums representing all possible probabilities.</p>
-
-<p>What’s the probability that my actual observation of 5 error sums occurs? Is it likely enough?</p>
-
-<p><u>Set a standard</u> of <strong>5% (p-value)</strong>, which is considered extremely low, allowing us to decide if an observation is unusual. If the probability of observing the statistic is less than 5%, it’s difficult to view it as a typical error, suggesting <u>there's something unusual about my observed error</u>.</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/goodness_of_fit_test(1).png" />
-</p>
-
-<p>Now, we can use the chi-squared table to find \(\chi=x\) for a 95% probability when the degrees of freedom are 5.</p>
-
-\[\chi^2(5)_{0.95} = 11.07\]
-
-<p>In a chi-squared distribution with 5 degrees of freedom, the sum of errors at 11.07 marks the boundary between 95% on the left and 5% on the right.</p>
-
-<p>Let’s compare the actual error sum of 4 with the theoretical threshold of 11.07.</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/goodness_of_fit_test(2).png" />
-</p>
-
-<p>Since 4 is less than 11.07, it’s within the range of errors that could occur under the assumption of fairness. Thus, we <u>cannot claim the die is unfair based on our observations</u>.</p>
-
-<h3 id="contingency-analysis">Contingency Analysis</h3>
-<p>Contingency analysis is used when there are multiple categorical variables, like the data we often see in spreadsheets. The goal is to determine if there is an association between the categories.</p>
-
-<p align="center">
-  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/crosstab(1)_en.png" />
-</p>
-
-<p>Is there a connection between gender and favorite subject? Let’s assume there isn’t (null hypothesis).</p>
-
-<p>Under the assumption of independence, we can calculate the expected frequency for each cell. For instance, the expected frequency of males preferring science is calculated as follows:</p>
-
-\[\frac{(totalfavoringscience) * (total males)} {total participants} = \frac{50 * 60} {100} = 30\]
-
-<p>After calculating the expected frequencies for all cells, they look like this:</p>
-
-<p align="center">
-  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/crosstab(2)_en.png" />
-</p>
-
-<p>Now, let’s calculate the chi-squared statistic for the observed discrepancies.</p>
-
-\[\chi^2 = \frac{(40-30)^2}{30} + \frac{(10-20)^2}{20} +
- \frac{(20-30)^2}{30} + \frac{(30-20)^2}{20}
-= 16.666\]
-
-<p>Compute the theoretical statistic:</p>
-
-<p>With a degrees of freedom of \((2-1) \times (2-1) = 1\) and a p-value of 0.05, the statistic is</p>
-
-\[\chi^2(1)_{0.95} = 3.841\]
-
-<p>Therefore, since \(3.841 \leq 16.666\) , <u>the observed statistic is highly unlikely, suggesting a statistically significant association between the variables</u>.</p>
+<p>정규분포처럼 생겼지만, 꼬리가 더 두껍 &gt; 불확실성이 더 커진다 / 분산이 커진다</p>
 
 <p><br /><br />
 <strong>참조</strong><br />
-<a href="https://online.stat.psu.edu/stat414/lesson/15/15.9">Introduction to Probability Theory(STAT414, PennState Eberly College of Science)</a></p>]]></content><author><name>Jenny Won (Dajeong Won)</name></author><category term="Statistics" /><summary type="html"><![CDATA[Definition of Chi-Squared Distribution DEFINITION Chi-Squared Distribution is defined for \(k\) independent random variables \(X_1,\cdots, X_k\) each following a standard normal distribution. The distribution of the random variable formed by summing the squares of these variables, $$Q = \sum_{i=1}^{k} X_i^2$$ is called the chi-squared distribution. Hence, $$Q \sim X_k^{2}$$ where \(k\) is known as the degrees of freedom. The probability density function (PDF) for a chi-squared distribution with degrees of freedom \(k\) is given by: \[f(x; k) =\dfrac{1}{\Gamma (r/2) 2^{r/2}}x^{r/2-1}e^{-x/2}\] $\Gamma(k/2)$ is the gamma function, which generalizes the factorial to \((k/2)\) . Understanding the Chi-Squared Distribution What are degrees of freedom, and why does the chi-squared distribution take such a form? Let’s look at how the chi-squared distribution is graphed. Degrees of Freedom k=1 Let’s graph the chi-squared distribution for one standard normal random variable \(X\) . With one random variable, the degrees of freedom for the chi-squared distribution can be said to be 1. \(-1.5 \leq x \leq -1\) and \(1 \leq x \leq 1.5\) Squaring the random variables in the intervals \(-1.5 \leq x \leq -1\) and \(1 \leq x \leq 1.5\) , these become variates of the chi-squared distribution. The probabilities are then accumulated in the chi-squared distribution interval \(1 \leq q \leq 2.25\) . Repeat this for different intervals. \(-2.5 \leq x \leq 2\) and \(2 \leq x \leq 2.5\) \(-0.5 \leq x \leq 0\) and \(0 \leq x \leq 0.5\) Degrees of Freedom \(k \geq 2\) Now note that the chi-squared distribution represents the ‘sum’ of squares. For one degree of freedom, we graphed the distribution of the square of one independent variable. However, with two or more independent variables, we start to graph the distribution of the ‘sum’ of squares. For independent random variables \(X_1, X_2\) , \(Q = X_1^2 + X_2^2\) accumulates greater values in the same interval. As the degrees of freedom increase to 3, 4, …, the chi-squared distribution changes like this: More random variables being added means greater variance, and the most probable value range also increases, shifting the graph to the right. Uses of Chi-Squared Distribution Why do we need to model the sum of squares of random variables? The sum of squares is commonly used in mathematics to handle errors or deviations - Although absolute values can also be used to eliminate direction, squaring is beneficial for differentiation. Let’s skip MSE and MAE discussions for now. - Up to this point, our understanding of the chi-squared distribution has discussed the distribution form of a new variable arising from the sum of squares of independent variables. This understanding will later combine with concepts like p-value to expand further. For now, understanding that the sum of squares of independent variables forms such a distribution pattern is sufficient. However, to take a brief peek, let’s consider ‘errors’ from a mathematical viewpoint to guess how the chi-squared distribution might be used. This could be quite interesting. Let’s think like Gauss and explore the ‘error’ between experimental measurements or observations and the true values. There might be numerous minute factors causing these errors, and let’s assume each error arises from the sum of these independent factors. By the central limit theorem, each of these errors would form a normal distribution. If scaled, these errors could be transformed into standard normal distributions. Then, a new random variable, which is the sum of the squares of these errors, would form a chi-squared distribution. Wow, if we have grasped this content, we are prepared to utilize the chi-squared distribution going forward. (Pearson) Chi-Squared Statistic DEFINITION The following formula is known as the chi-squared statistic or Pearson chi-squared statistic. $$ \chi^2 = \sum_i \frac{(O_i - E_i)^2}{E_i} $$ \(\chi^2\): chi-squared \(O\) : Observed values \(E\) : Expected values Although the definition and appearance of the chi-squared distribution might seem different, if we consider \(O_i - E_i\) as one random variable, the sum of their squares falls under the chi-squared statistic. Dividing by \(E\) standardizes the variance, adjusting the differences in each \(E_i\) ‘s variance. Chi-Squared Test The chi-squared test contrasts the theoretical chi-squared distribution with the chi-squared distribution based on actual observations. It is commonly used for goodness-of-fit tests and contingency analysis. This section will deeply explore the principles behind these tests, moving beyond mere calculations. Goodness-of-Fit Test Fairness test of a die Let’s test if a die is fair, i.e., if all numbers from 1 to 6 have an equal probability of appearing. For this purpose, let’s assume we roll the die 600 times and observe the following frequencies: 1 2 3 4 5 6           95 times                     105 times                     110 times                     85 times                       105 times                     100 times           To determine fairness, let’s calculate the error between observed and true values using the differences squared. If the die were fair, the expected count for each number after 600 rolls would be \(600 / 6 = 100\) . The error calculation is as follows: (We use the sum of squares to handle the errors) \[\chi^2 = \sum \frac{(O_i - E_i)^2}{E_i} = \frac{(95 - 100)^2}{100} + \frac{(105 - 100)^2}{100} + \cdots + \frac{(100 - 100)^2}{100} = 4\] Now, is this error likely under the assumption of a fair die? Next, let’s see how likely it is to observe an error sum of 4 under theoretical conditions. Forgetting the observed error, assume we know nothing about the error, and think backward. Suppose there’s a chi-squared distribution of 5 random error sums representing all possible probabilities. What’s the probability that my actual observation of 5 error sums occurs? Is it likely enough? Set a standard of 5% (p-value), which is considered extremely low, allowing us to decide if an observation is unusual. If the probability of observing the statistic is less than 5%, it’s difficult to view it as a typical error, suggesting there's something unusual about my observed error. Now, we can use the chi-squared table to find \(\chi=x\) for a 95% probability when the degrees of freedom are 5. \[\chi^2(5)_{0.95} = 11.07\] In a chi-squared distribution with 5 degrees of freedom, the sum of errors at 11.07 marks the boundary between 95% on the left and 5% on the right. Let’s compare the actual error sum of 4 with the theoretical threshold of 11.07. Since 4 is less than 11.07, it’s within the range of errors that could occur under the assumption of fairness. Thus, we cannot claim the die is unfair based on our observations. Contingency Analysis Contingency analysis is used when there are multiple categorical variables, like the data we often see in spreadsheets. The goal is to determine if there is an association between the categories. Is there a connection between gender and favorite subject? Let’s assume there isn’t (null hypothesis). Under the assumption of independence, we can calculate the expected frequency for each cell. For instance, the expected frequency of males preferring science is calculated as follows: \[\frac{(totalfavoringscience) * (total males)} {total participants} = \frac{50 * 60} {100} = 30\] After calculating the expected frequencies for all cells, they look like this: Now, let’s calculate the chi-squared statistic for the observed discrepancies. \[\chi^2 = \frac{(40-30)^2}{30} + \frac{(10-20)^2}{20} + \frac{(20-30)^2}{30} + \frac{(30-20)^2}{20} = 16.666\] Compute the theoretical statistic: With a degrees of freedom of \((2-1) \times (2-1) = 1\) and a p-value of 0.05, the statistic is \[\chi^2(1)_{0.95} = 3.841\] Therefore, since \(3.841 \leq 16.666\) , the observed statistic is highly unlikely, suggesting a statistically significant association between the variables. 참조 Introduction to Probability Theory(STAT414, PennState Eberly College of Science)]]></summary></entry><entry xml:lang="ko"><title type="html">카이제곱 분포와 검정</title><link href="http://localhost:4000/2024/04/10/chi_squared_distribution_ko.html" rel="alternate" type="text/html" title="카이제곱 분포와 검정" /><published>2024-04-10T00:00:00+09:00</published><updated>2024-04-10T00:00:00+09:00</updated><id>http://localhost:4000/2024/04/10/chi_squared_distribution_ko</id><content type="html" xml:base="http://localhost:4000/2024/04/10/chi_squared_distribution_ko.html"><![CDATA[<h2 id="카이제곱-분포의-정의">카이제곱 분포의 정의</h2>
+<a href="https://blog.minitab.com/en/adventures-in-statistics-2/understanding-t-tests-t-values-and-t-distributions">Understanding t-Tests: t-values and t-distributions(Minitab Blog)</a>
+https://calcworkshop.com/hypothesis-test/one-sample-t-test/#chapter
+https://blog.naver.com/gdpresent/221138172138</p>]]></content><author><name>Jenny Won (Dajeong Won)</name></author><category term="통계학" /><summary type="html"><![CDATA[앞서 카이제곱 분포에서 ‘오차’라는 개념을 접했다. 추론적 통계에 있어서 실제 모집단 값과 표본에서 관찰된 값 사이의 오차를 이해하는 것은 중요하다. 이 오차를 이해함으로써 우리는 표본을 통해 모집단의 실제 특성을 얼마나 정확하게 추론할 수 있는지, 그리고 그 추론에 얼마나 신뢰를 둘 수 있는지를 평가할 수 있다. 이번 섹션에서는 신뢰성을 고려한 ‘두 집단’간의 ‘평균 차이’를 통계적으로 분석하는 방법을 살펴보려고 한다. 특히, 작은 표본 크기에서의 분석에 관심을 두려한다. 정규 분포의 한계 우리는 앞서 중심 극한 정리를 통해, 표본 평균들이 정규 분포를 이루며 모집단의 평균을 추정할 수 있음을 보았다. 그러나 이 이론은 이 이론은 샘플의 수가 충분히 커야한다. 이것은 다시 말해 샘플의 수가 적다면 정규 분포를 이용한 추정 방식에 어려움이 있다는 의미이기도 하다. 또한 z-분포를 이용한 모집단의 추정은 모집단의 분산을 이용한다는 점에서도 한계가 있다. 대부분의 실제 상황에서는 모집단 전체를 조사할 수도 없거니와, 모집단의 분산을 알지 못한다. t-분포는 이러한 문제점을 해결하기 위해 고안된 분포이다. t-value의 논리 단 하나의 표본 밖에 구하지 못 했고, 이것을 통해 모집단을 추정한다고 해보자. 심지어 표본의 크기도 그리 크지 못하다. 꽤나 극단적으로 들릴지 모르지만, 실제로 빈번히 일어나는 상황이다. 다른 포스트에서도 언급했지만 표본도 크고 그 수도 많다면 최고의 시나리오겠지만, 현실은 그리 녹록지 않다. 그럼 이 하나의 표본에서 모집단을 추정함에 있어서 우리를 불안하게 하는 요소는 무엇일까? 이 작은 표본이 모집단을 정확히 대표하지 못할 가능성이다. 즉, 작은 표본으로 부터 얻은 평균이 모평균과 상당히 다를 수 있다. 그래서 우리는 이 작은 표본이 가지는 불확실성을 통계적으로 관리할 필요가 있다. 예를 들어 주머니에서 숫자 공을 뽑는다고 해보자. 몇번을 뽑았는데 자꾸만 3이 적힌 공이 뽑힌다. 그럼 어느 순간 아마 주머니에 3이라는 공만 있는 건 아닌가 의심이 된다. 이것을 표본의 관측치를 이해하는 데 적용해 보자. 표본의 관측치들이 꽤나 하나의 값(표본 평균)에 모여있는 모양새를 보인다면, 우리는 모집단의 평균도 이 정도가 될 수 있을 거라고 추측할 수 있을 지 모른다. 반대로, 표본의 관측값이 들쭉날쭉 퍼져있다면 이것으로 모집단을 추정하는 것이 불안해질 지도 모른다. 이것을 통계적으로 이야기할 때, 표본의 분산이 적으면 불확실도가 줄어든다고 한다. 자 그럼 표본평균과 모평균이라는 두 값의 차이를 이해하는 데, 이러한 불확실도( \(SE\) )의 개념을 도입해보자. \[t = \frac{\bar{X} - \mu}{SE}\] SE(Standard Error) : 표준 오차 표준 오차에 대한 설명은 잠시 미뤄두고, 이러한 형태를 취함으로써 우리는 두 집단간의 차이를 그대로 받아들이는 지 않고, \(SE\)로 나눔으로써 조작된 차이값 t를 이용할 것이다. 실제로 표준 오차 \(SE\)는 표본으로부터의 관측값이 표본 평균으로 부터 떨어진 정도를 의미하며, 다음과 같이 정의된다. \[SE = \frac{s}{\sqrt{n}}\] s(Standard Deviation) : 표준 편차 이것을 적용하면 수식 \((1)\) 은 다음과 같아진다. \[t = \frac{\bar{X} - \mu}{\frac{s}{\sqrt{n}}}\] 즉, t-value는 표본의 분산이 크다면, 두 집단간의 차이값이 작아지도록 설계된 것이다. 출처: DATAtab t-분포의 정의 t-value의 모양은 z-score와 닮아있다. t-value z-score $$\begin{align*} &amp; t = \frac{\bar{X} - \mu}{\frac{s}{\sqrt{n}}} \end{align*}$$ $$\begin{align*} &amp; Z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}} \end{align*} $$ 그렇다면 t-value로 정규화한 분포를 그린다면 이것은 무슨 의미를 가질까? 중심극한정리에 의해 각각의 표본 평균은 모집단 평균에 대해 정규 분포를 이루는 경향이 있다. 우리는 이 표본 평균들의 분포를 t-value를 이용해 정규화 할 수 있고, 그 분포는 작은 표본에 대한 불확실도가 가중된 모양을 띄게 될 것이다. 각각의 t-value는 표본 평균이 모평균으로 부터 떨어진 거리(얼마나 다른지)를 표준화하여 나타낸다. 따라서 t-분포는 가능한 모든 표본 평균과 모평균 사이의 표준화된 차이의 분포를 제공할 것이다. 표본 평균과 모집단을 단순히 “두 집단”으로 보고 일반화할 수 있다. t-분포는 이러한 두 집단 사이에서 하나의 집단에서 다른 집단과의 차이의 분포를 나타낸다. 그럼 이론적으로 하나의 모집단에서 무작위로 추출된 많은 독립적인 표본에 대해 t-value를 이용해 표준화 하면 이 값들은 t-분포 형태를 띄게 된다. 이때, 실제로 t-분포는 정규 분포와 유사한 종모양이지만, 정규 분포보다 꼬리가 두꺼운 모양을 띄게 된다. 이것은 모분산 대신 표본의 분산을 적용함으로써, 작은 표본 크기에서 불확실성이 가중되기 때문이다. \(s\)가 과소평가 되었을 때, t-값이 크게 나타날 수 있고 이는 t-분포의 꼬리 부분에서 더 높은 확률을 갖게 만든다. 출처: AnalystPREP t-test의 종류 표본과 모집단을 좀 더 일반화해서 어떤 두 집단간의 차이를 이해하는데 t-분포를 활용할 수도 있다. 각 상황에 따라 t-value는 약간의 차이가 있겠지만, 한 집단의 분산으로 그 차이를 조정한다는 원리는 유지된다. t-분포를 이용한 검정 시나리오를 살펴보자. 단일 표본 t-test 단일 표본 t-test는 주로 한 그룹의 평균이 특정 기준값이나 모집단의 평균과 다른지를 검정하는데 사용한다. 직작인의 평균 수면 시간이 권장 수면 시간과 다른지를 알아보는 단일 표본 t-test 를 생각해 보자. 한 회사의 배터리 수명이 40시간 이상 지속된다는 주장을 테스트하려고 한다.15개 배터리의 단순 무작위 표본을 사용하여 평균 44.9시간, 표준 편차 8.9시간을 산출했다. 유의수준 0.05를 사용하여 이 주장을 테스트하자. \[\begin{align*} &amp; H_0 : \mu = 40 \\ &amp; H_a : \mu &gt; 40 \\ \end{align*}\] 표본에서 관찰된 평균 수명이 44.9시간으로 나타났기 때문에, 대립가설을 \(\mu &gt; 40\) 으로 설정하였고, 이에 따라 단측검정(right-tailed test)를 진행하게 된다. 우선 t-test의 논리를 설명하자면 다음과 같다. 모평균이 40이라는 가정하에, 주어진 자유도와 모평균를 이용해 t-분포를 그린다. 이 t-분포는 모평균으로 부터 관찰될 수 있는 모든 표본 평균들을 나타낸다. 이 분포는 표준정규 분포와 달리 둘 사이의 불확실성을 조정한 분포이다. 그리고 관찰된 표본 평균이 44.9시간이기 때문에 이 t-분포에서 표본 평균이 40시간 보다 클 수 있는 확률(p-value)을 계산한다. 그리고 이 확률이 우리가 설정한 기준(유의수준, 대체로 0.05) 보다 작다면, 가정 하에 발견되기 어려운 값으로 판단하여, 이 표본 평균은 모평균의 특성을 제대로 반영하지 않는 굉장히 유의미한 차이를 가진다는 결론을 내릴 것이다. 이러한 논리는 카이제곱 검정 원리와도 유사하니 참고하면 좋을 것 같다. 그럼 t-test를 진행해보자. \[\begin{align*} &amp; \mu=40, \bar{X}=44.9 , s=8.9, n=15, df = 15 - 1 =14 \\ \end{align*}\] 주어진 조건에 따라 t-value를 계산하면 다음과 같다. \[\begin{align*} &amp; t = \frac{44.9 - 40}{\frac{8.9}{\sqrt{15}}} = 2.13 \\ \end{align*}\] 이때의 p-value 즉, 자유도가 14인 t-분포 하에 \(t = 2.13\) 일 확률을 구해보자. 이 계산은 t-분포표 혹은 컴퓨터를 이용한다. \[p-value = P(t_{df=14} &gt; 2.13) = 0.026\] 이 p-value가 의미하는 것은 실제 관찰된 표본 평균(40시간 이상 혹은 44.9시간)이 발견될 확률이 2.6%라는 것이다. 이 값은 우리가 “발견되기 어려운 확률”로 설정한 5%라는 유의수준보다 작다. \[p = 0.026 &lt; \alpha = 0.05\] 따라서, 우리가 관찰한 44.9라는 표본 평균이 나타날 확률은 “발견되기 어려운” 것이고, 귀무가설이었던 모평균이 40이라는 가설을 기각할 수 밖에 없는 두 집단 사이의 유의미한 차이가 있다고 결론을 내린다. 같은 모집단에서 추출된 샘플들을 가지고, 모집단의 평균으로 추정되는 값(\(\mu = c\))과 같은지 검정 검정통계량 \(t = \frac{\bar{X}-\mu}{s / \sqrt{n}}\) 독립 표본 t-test \[t = \frac{\bar{X}_1-\bar{X}_2-c}{S_{p}\sqrt{\frac{1}{n_{1}}+\frac{1}{n_{2}}}}\] \[S_{p} = \sqrt{\frac{(n_{1}-1)s^2_{X_{1}}+(n_{2}-1)s^2_{X_{2}}}{n_{1}+n_{2}-2}}\] 대응 표본 t-test \[t=\frac{\bar{D}-d}{s/\sqrt{n}}\] \(\bar{D}\) : 대응표본 차이의 평균 - 점수차이의 평균 \(d\) : 모평균 차이 두 집단 사이의 차이를 알고 싶어서 물론 평균이 그 차이를 보여줄 수도 있지만, 그 차이가 믿을 만한지 모르겠다. 작은 표본으로부터의 추론 알려지지 않은 모집단 실제 적용의 높은 가능성 정규분포처럼 생겼지만, 꼬리가 더 두껍 &gt; 불확실성이 더 커진다 / 분산이 커진다 참조 Understanding t-Tests: t-values and t-distributions(Minitab Blog) https://calcworkshop.com/hypothesis-test/one-sample-t-test/#chapter https://blog.naver.com/gdpresent/221138172138]]></summary></entry><entry xml:lang="ko"><title type="html">카이제곱 분포와 검정</title><link href="http://localhost:4000/2024/04/10/chi_squared_distribution_ko.html" rel="alternate" type="text/html" title="카이제곱 분포와 검정" /><published>2024-04-10T00:00:00+09:00</published><updated>2024-04-10T00:00:00+09:00</updated><id>http://localhost:4000/2024/04/10/chi_squared_distribution_ko</id><content type="html" xml:base="http://localhost:4000/2024/04/10/chi_squared_distribution_ko.html"><![CDATA[<h2 id="카이제곱-분포의-정의">카이제곱 분포의 정의</h2>
 
 <table>
   <thead>
@@ -348,7 +304,7 @@ Let’s test if a die is fair, i.e., if all numbers from 1 to 6 have an equal pr
 
 <p>그럼 이 그래프에서 내가 실제로 관찰한 5개의 오차 합이 나타날 확률은 어떻게 될까? 충분히 발생할 수 있는 오차일까?</p>
 
-<p>그래서 이런 오차의 합이 나타나는 건 어려워 혹은 가능해라고 판단할 수 있는 <u>기준을 설정</u>할 것이다.  <strong>5%(p-value)</strong>도 드물다고 말해도 되는 굉장히 작은 확률이라고 생각한다. 그래서 관측치가 나타날 확률이 5%보다 적다면, 이건 일반적인 오차라고 보기 어렵다, 즉 내가 <u>관측한 오차에 뭔가 문제가 있다</u>고 판단할 것이다.</p>
+<p>그래서 이런 오차의 합이 나타나는 건 어려워 혹은 가능해라고 판단할 수 있는 <u>기준을 설정</u>할 것이다.  <strong>5%(유의수준)</strong>도 드물다고 말해도 되는 굉장히 작은 확률이라고 생각한다. 그래서 관측치가 나타날 확률이 5%보다 적다면, 이건 일반적인 오차라고 보기 어렵다, 즉 내가 <u>관측한 오차에 뭔가 문제가 있다</u>고 판단할 것이다.</p>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/goodness_of_fit_test(1).png" />
@@ -409,7 +365,209 @@ Let’s test if a die is fair, i.e., if all numbers from 1 to 6 have an equal pr
 
 <p><br /><br />
 <strong>참조</strong><br />
-<a href="https://online.stat.psu.edu/stat414/lesson/15/15.9">Introduction to Probability Theory(STAT414, PennState Eberly College of Science)</a></p>]]></content><author><name>Jenny Won (Dajeong Won)</name></author><category term="통계학" /><summary type="html"><![CDATA[카이제곱 분포의 정의 DEFINITION 카이제곱 분포(Chi-Squared Distribution)은 \(k\) 개의 서로 독립이며, 표준 정규 분포를 따르는 확률 변수 \(X_1,\cdots, X_k\) 에 대하여, 각각의 확률 변수를 제곱한 다음 합하여 얻어지는 확률변수 $$Q = \sum_{i=1}^{k} X_i^2$$의 분포이다. 즉, $$Q \sim X_k^{2}$$ 이다. 이때, $k$를 자유도라고 한다. 자유도가 $k$인 카이제곱 분포의 확률 밀도 함수(PDF)는 다음과 같다. \[f(x; k) =\dfrac{1}{\Gamma (r/2) 2^{r/2}}x^{r/2-1}e^{-x/2}\] $\Gamma(k/2)$ 는 감마 함수로, $(k/2)$ 의 인자(factorial)에 대한 일반화된 형태이다. 카이제곱 분포의 이해 자유도는 무엇이고, 카이제곱 분포는 왜 저런 모양을 띄는 걸까? 이를 이해해 보기 위해, 카이제곱 분포가 어떻게 그려지는 지 보자. 자유도 k=1 표준 정규 분포를 따르는 하나의 확률 변수 \(X\)에 대한 카이제곱 분포를 그려보자. 하나의 확률 변수이므로 카이제곱 분포의 자유도는 1이라고 할 수 있다. \(-1.5 \leq x \leq -1\) 와 \(1 \leq x \leq 1.5\) 구간 \(-1.5 \leq x \leq -1\) 와 \(1 \leq x \leq 1.5\) 의 확률 변수들을 제곱하면, 이것은 카이제곱 분포의 변량이 된다. 그리고, 제곱함으로써 그 확률값은 카이제곱 분포의 동일한 구간 \(1 \leq q \leq 2.25\) 에 누적된다. 같은 방식은 다양한 구간에서 반복해 보자. \(-2.5 \leq x \leq 2\) 와 \(2 \leq x \leq 2.5\) \(-0.5 \leq x \leq 0\) 와 \(0 \leq x \leq 0.5\) 자유도 \(k \geq 2\) 이제부터 카이제곱 분포가 제곱의 ‘합’임을 주목하자. 자유도가 1일 때는, 하나의 독립 변수를 제곱한 분포를 그렸다. 하지만, 독립 변수가 2개 이상일 때는 본격적으로 제곱의 ‘합’의 분포를 그리게 된다. 각각의 독립적인 확률변수 \(X_1, X_2\) 에 대해 \(Q = X_1^2 + X_2^2\) 은 다음과 같이 같은 구간에서 더 큰 값을 누적하게 된다. 자유도가 3, 4, … 로 점점 커질 때, 카이제곱 분포는 다음과 같이 변화한다. 더 많은 확률 변수를 합한다는 것은 분산이 커지고, 가장 큰 확률 값을 갖는 구간 역시 커진다는 것을 의미하며, 그래프가 오른쪽으로 이동한다. 카이제곱 분포의 활용 그럼 굳이 확률 변수들의 제곱의 합을 분포로 나타낼 필요성은 무엇일까? 제곱의 합은 사실 수학에서 오차나 편차 등 ‘차이’를 다루기 위해 많이 사용된다. - 물론, 방향성을 없애기 위해 절댓값을 활용할 수도 있지만 제곱이 미분에 유리하다. MSE 와 MAE 에 대한 이야기는 넘어가자.- 사실 지금까지의 카이제곱의 이해는 독립 변수들의 제곱의 합으로 발생하는 새로운 변수의 분포 형태를 이야기한 것이다. 이것이 이후의 p-value 등의 개념과 결합하여 확장되니, 우선은 서로 독립인 변수들의 제곱의 합이 이러한 분포 형태를 띈다라는 것을 이해하고 넘어가는 것으로 충분하다. 그렇지만 조금 아쉬우니 잠깐 엿보기를 위해, 수학적 시각에서 ‘오차’를 바라보며 카이제곱 분포의 쓰임을 짐작해 보려고 한다. 꽤나 흥미로운 이야기가 될 것 같다. 자, 우리는 가우스처럼 어떤 실험적 측정이나 관측에서 참값과의 차이, 측 ‘오차’를 탐구해 보려고 한다. 오차가 발생하는 수많은 미세한 요인들이 있을 것이고, 각각의 오차들이 이런 독립적 요인들의 합으로 발생했다고 하자. 그렇다면 중심 극한 정리에 의해 각각의 오차들은 정규 분포가 될 것이다. 정규 분포라면 물론 스케일링을 통해 표준 정규 분포로 변환할 수 있다. 각각의 오차들은 표준 정규 분포가 되었다. 그렇다면 이 각각의 오차들의 제곱의 합이라는 새로운 확률 변수는 카이제곱 분포의 형태가 될 것이다. 와우, 이 내용을 이해했다면 우리는 앞으로 카이제곱 분포를 활용하기 위한 준비가 되었다. (피어슨) 카이제곱 통계량 DEFINITION 다음과 같은 공식을 카이제곱 통계량 혹은 피어슨 카이제곱 통계량이라고 한다. $$ \chi^2 = \sum_i \frac{(O_i - E_i)^2}{E_i} $$ \(\chi^2\): 카이제곱 \(O\) : 관측값 \(E\) : 기댓값 앞선 카이제곱 분포의 정의와 모양이 조금 달라보이지만, \(O_i - E_i\) 를 하나의 확률 변수로 보면, 확률 변수들의 제곱의 합이므로 카이제곱 통계량이고 할 수 있다. 여기서 \(E\) 로 나누는 행위는 분산의 정규화를 의미한다. 각각의 \(E_i\) 의 (분산의) 차이를 조정한다고 생각할 수 있다. 카이제곱 검정 카이제곱 검정은 이론상의 카이제곱 분포와 실제 관측에 따른 카이제곱 분포의 차이를 대조 검증하는 것이라고 할 수 있다. 대표적인 적합도 검정과 교차 분석을 해보려고 한다. 이 부분의 이해는 통계하면 들어봤을 법한 t-value, p-value로 확장되니 원리를 정확히 이해할 필요가 있다고 생각한다. 하지만 단순 계산을 넘어 검정의 원리를 설명하는 글들을 많지 않았던 것 같아 적합도 검정에서는 그 원리를 정말 자세하게 다뤄보려고 한다. 적합도 검정 주사위의 공정성 검정 주사위 던지를 했는데, 1부텉 6까지의 모든 숫자가 나올 확률이 동일할까? 즉, 이 주사위가 공정할까?에 대한 답을 해보려고 한다. 그래서 실제로 이 주사위를 가지고 600번 던지기를 했다. 그리고 다음과 같은 관측 빈도를 확인 했다. 1 2 3 4 5 6           95회                     105회                     110회                     85회                       105회                     100회           그럼 공정한지를 판단하기 위해 참값과 관측값 사이의 오차를 이용해 보려고 한다. 만약 이 주사위가 공정했다면 600번의 던지기에서 각 숫자들이 나올 기대 횟수는 \(600 / 6 = 100\) 회 일 것이다. 그럼 그 오차들은 다음과 같이 계산해 볼 수 있다. (우리는 오차를 다루기 위해 제곱합을 이용하는 것이다.) \[\chi^2 = \sum \frac{(O_i - E_i)^2}{E_i} = \frac{(95 - 100)^2}{100} + \frac{(105 - 100)^2}{100} + \cdots + \frac{(100 - 100)^2}{100} = 4\] 자, 관측에 따른 오차(합)는 4가 된다. 그럼 이 오차가 주사위가 공정하다는 가정하에 관측될 법한 오차일까? 이제, 이론 상으로 오차(합)가 4가 나오는 것이 얼마나 가능한 일인지 판단할 것이다. 앞서 관측된 오차는 잊자. 그리고 오차에 대한 아무런 정보가 없다고 생각하고, 거꾸로 추적해 보자. 어떤 5개의 오차들의 합인 어떤 카이제곱 분포가 있다. 이 카이제곱 분포는 5개의 임의의 오차들의 합으로 가능한 모든 확률값들을 나타내고 있다. 그럼 이 그래프에서 내가 실제로 관찰한 5개의 오차 합이 나타날 확률은 어떻게 될까? 충분히 발생할 수 있는 오차일까? 그래서 이런 오차의 합이 나타나는 건 어려워 혹은 가능해라고 판단할 수 있는 기준을 설정할 것이다. 5%(p-value)도 드물다고 말해도 되는 굉장히 작은 확률이라고 생각한다. 그래서 관측치가 나타날 확률이 5%보다 적다면, 이건 일반적인 오차라고 보기 어렵다, 즉 내가 관측한 오차에 뭔가 문제가 있다고 판단할 것이다. 그럼 우리는 카이제곱 표를 이용해 자유도가 5일때, 95% 확률을 나타내는 \(\chi=x\)을 찾을 수 있다. \[\chi^2(5)_{0.95} = 11.07\] 자유도가 5인 카이제곱 분포에서 오차의 합 11.07을 기준으로 왼쪽은 95%, 오른쪽은 5%가 된다. 그럼 관측치의 오차의 합인 4와 이론상의 기준인 11.07을 비교해 보자. 4는 11.07보다 작으므로, 충분히 나타날 수 있는 오차의 범위 내에 있다고 할 수 있다. 즉, 주사위가 공정하다고 가정했을 때, 충분히 발생할 수 있는 오차의 범위에 있다. 따라서 우리는 주사위가 공정하지 않다고 말할 근거가 없다. 가끔 로또를 보며 각각의 번호가 공정한 확률로 나오는 걸까? 궁금할 때가 있다. 자유도가 크고, 관측값 계산이 복잡하겠지만 같은 원리로 적용해 볼 수 있지 않을까? 교차 분석 교차 분석은 우리가 다루는 엑셀 데이터처럼 범주형 변수가 여러개일 경우 활용하는 분석 방법이다. 목적은 범주들 간의 연관성이 있는지를 파악하는 것이다. 성별과 선호 과목은 연관성이 있을까? 연관성이 없다고 가정하자.(귀무가설) 두 범주가 독립이라는 가정하에 각각의 기대빈도를 구할 수 있다. 예를 들어 과학을 선호하는 남성의 기대 빈도는 다음과 같이 계산된다. \[\frac{(총 과학 선호하는 사람) * (총 남성수)} {총 사람 수} = \frac{50 * 60} {100} = 30\] 모든 셀의 기대빈도를 구하면 다음과 같다. 관측된 오차의 카이제곱 통계량을 구하자. \[\chi^2 = \frac{(40-30)^2}{30} + \frac{(10-20)^2}{20} + \frac{(20-30)^2}{30} + \frac{(30-20)^2}{20} = 16.666\] 이론적 통계량을 구해보자. 자유도는 \((2-1) \times (2-1) = 1\) 이고 p-value 0.05에 대한 통계량은 \[\chi^2(1)_{0.95} = 3.841\] 이다. 따라서, \(3.841 \leq 16.666\) 이므로 관측 통계량은 굉장히 발생 확률이 낮다고 할 수 있으므로, 두 변수 사이의 통계적으로 유의미한 연관성이 있을 가능성이 높다고 해석할 수 있다. 참조 Introduction to Probability Theory(STAT414, PennState Eberly College of Science)]]></summary></entry><entry xml:lang="ko"><title type="html">정규 분포와 중심 극한 정리</title><link href="http://localhost:4000/2024/04/06/normal_distribution_and_clt_ko.html" rel="alternate" type="text/html" title="정규 분포와 중심 극한 정리" /><published>2024-04-06T00:00:00+09:00</published><updated>2024-04-06T00:00:00+09:00</updated><id>http://localhost:4000/2024/04/06/normal_distribution_and_clt_ko</id><content type="html" xml:base="http://localhost:4000/2024/04/06/normal_distribution_and_clt_ko.html"><![CDATA[<p align="center">
+<a href="https://online.stat.psu.edu/stat414/lesson/15/15.9">Introduction to Probability Theory(STAT414, PennState Eberly College of Science)</a></p>]]></content><author><name>Jenny Won (Dajeong Won)</name></author><category term="통계학" /><summary type="html"><![CDATA[카이제곱 분포의 정의 DEFINITION 카이제곱 분포(Chi-Squared Distribution)은 \(k\) 개의 서로 독립이며, 표준 정규 분포를 따르는 확률 변수 \(X_1,\cdots, X_k\) 에 대하여, 각각의 확률 변수를 제곱한 다음 합하여 얻어지는 확률변수 $$Q = \sum_{i=1}^{k} X_i^2$$의 분포이다. 즉, $$Q \sim X_k^{2}$$ 이다. 이때, $k$를 자유도라고 한다. 자유도가 $k$인 카이제곱 분포의 확률 밀도 함수(PDF)는 다음과 같다. \[f(x; k) =\dfrac{1}{\Gamma (r/2) 2^{r/2}}x^{r/2-1}e^{-x/2}\] $\Gamma(k/2)$ 는 감마 함수로, $(k/2)$ 의 인자(factorial)에 대한 일반화된 형태이다. 카이제곱 분포의 이해 자유도는 무엇이고, 카이제곱 분포는 왜 저런 모양을 띄는 걸까? 이를 이해해 보기 위해, 카이제곱 분포가 어떻게 그려지는 지 보자. 자유도 k=1 표준 정규 분포를 따르는 하나의 확률 변수 \(X\)에 대한 카이제곱 분포를 그려보자. 하나의 확률 변수이므로 카이제곱 분포의 자유도는 1이라고 할 수 있다. \(-1.5 \leq x \leq -1\) 와 \(1 \leq x \leq 1.5\) 구간 \(-1.5 \leq x \leq -1\) 와 \(1 \leq x \leq 1.5\) 의 확률 변수들을 제곱하면, 이것은 카이제곱 분포의 변량이 된다. 그리고, 제곱함으로써 그 확률값은 카이제곱 분포의 동일한 구간 \(1 \leq q \leq 2.25\) 에 누적된다. 같은 방식은 다양한 구간에서 반복해 보자. \(-2.5 \leq x \leq 2\) 와 \(2 \leq x \leq 2.5\) \(-0.5 \leq x \leq 0\) 와 \(0 \leq x \leq 0.5\) 자유도 \(k \geq 2\) 이제부터 카이제곱 분포가 제곱의 ‘합’임을 주목하자. 자유도가 1일 때는, 하나의 독립 변수를 제곱한 분포를 그렸다. 하지만, 독립 변수가 2개 이상일 때는 본격적으로 제곱의 ‘합’의 분포를 그리게 된다. 각각의 독립적인 확률변수 \(X_1, X_2\) 에 대해 \(Q = X_1^2 + X_2^2\) 은 다음과 같이 같은 구간에서 더 큰 값을 누적하게 된다. 자유도가 3, 4, … 로 점점 커질 때, 카이제곱 분포는 다음과 같이 변화한다. 더 많은 확률 변수를 합한다는 것은 분산이 커지고, 가장 큰 확률 값을 갖는 구간 역시 커진다는 것을 의미하며, 그래프가 오른쪽으로 이동한다. 카이제곱 분포의 활용 그럼 굳이 확률 변수들의 제곱의 합을 분포로 나타낼 필요성은 무엇일까? 제곱의 합은 사실 수학에서 오차나 편차 등 ‘차이’를 다루기 위해 많이 사용된다. - 물론, 방향성을 없애기 위해 절댓값을 활용할 수도 있지만 제곱이 미분에 유리하다. MSE 와 MAE 에 대한 이야기는 넘어가자.- 사실 지금까지의 카이제곱의 이해는 독립 변수들의 제곱의 합으로 발생하는 새로운 변수의 분포 형태를 이야기한 것이다. 이것이 이후의 p-value 등의 개념과 결합하여 확장되니, 우선은 서로 독립인 변수들의 제곱의 합이 이러한 분포 형태를 띈다라는 것을 이해하고 넘어가는 것으로 충분하다. 그렇지만 조금 아쉬우니 잠깐 엿보기를 위해, 수학적 시각에서 ‘오차’를 바라보며 카이제곱 분포의 쓰임을 짐작해 보려고 한다. 꽤나 흥미로운 이야기가 될 것 같다. 자, 우리는 가우스처럼 어떤 실험적 측정이나 관측에서 참값과의 차이, 측 ‘오차’를 탐구해 보려고 한다. 오차가 발생하는 수많은 미세한 요인들이 있을 것이고, 각각의 오차들이 이런 독립적 요인들의 합으로 발생했다고 하자. 그렇다면 중심 극한 정리에 의해 각각의 오차들은 정규 분포가 될 것이다. 정규 분포라면 물론 스케일링을 통해 표준 정규 분포로 변환할 수 있다. 각각의 오차들은 표준 정규 분포가 되었다. 그렇다면 이 각각의 오차들의 제곱의 합이라는 새로운 확률 변수는 카이제곱 분포의 형태가 될 것이다. 와우, 이 내용을 이해했다면 우리는 앞으로 카이제곱 분포를 활용하기 위한 준비가 되었다. (피어슨) 카이제곱 통계량 DEFINITION 다음과 같은 공식을 카이제곱 통계량 혹은 피어슨 카이제곱 통계량이라고 한다. $$ \chi^2 = \sum_i \frac{(O_i - E_i)^2}{E_i} $$ \(\chi^2\): 카이제곱 \(O\) : 관측값 \(E\) : 기댓값 앞선 카이제곱 분포의 정의와 모양이 조금 달라보이지만, \(O_i - E_i\) 를 하나의 확률 변수로 보면, 확률 변수들의 제곱의 합이므로 카이제곱 통계량이고 할 수 있다. 여기서 \(E\) 로 나누는 행위는 분산의 정규화를 의미한다. 각각의 \(E_i\) 의 (분산의) 차이를 조정한다고 생각할 수 있다. 카이제곱 검정 카이제곱 검정은 이론상의 카이제곱 분포와 실제 관측에 따른 카이제곱 분포의 차이를 대조 검증하는 것이라고 할 수 있다. 대표적인 적합도 검정과 교차 분석을 해보려고 한다. 이 부분의 이해는 통계하면 들어봤을 법한 t-value, p-value로 확장되니 원리를 정확히 이해할 필요가 있다고 생각한다. 하지만 단순 계산을 넘어 검정의 원리를 설명하는 글들을 많지 않았던 것 같아 적합도 검정에서는 그 원리를 정말 자세하게 다뤄보려고 한다. 적합도 검정 주사위의 공정성 검정 주사위 던지를 했는데, 1부텉 6까지의 모든 숫자가 나올 확률이 동일할까? 즉, 이 주사위가 공정할까?에 대한 답을 해보려고 한다. 그래서 실제로 이 주사위를 가지고 600번 던지기를 했다. 그리고 다음과 같은 관측 빈도를 확인 했다. 1 2 3 4 5 6           95회                     105회                     110회                     85회                       105회                     100회           그럼 공정한지를 판단하기 위해 참값과 관측값 사이의 오차를 이용해 보려고 한다. 만약 이 주사위가 공정했다면 600번의 던지기에서 각 숫자들이 나올 기대 횟수는 \(600 / 6 = 100\) 회 일 것이다. 그럼 그 오차들은 다음과 같이 계산해 볼 수 있다. (우리는 오차를 다루기 위해 제곱합을 이용하는 것이다.) \[\chi^2 = \sum \frac{(O_i - E_i)^2}{E_i} = \frac{(95 - 100)^2}{100} + \frac{(105 - 100)^2}{100} + \cdots + \frac{(100 - 100)^2}{100} = 4\] 자, 관측에 따른 오차(합)는 4가 된다. 그럼 이 오차가 주사위가 공정하다는 가정하에 관측될 법한 오차일까? 이제, 이론 상으로 오차(합)가 4가 나오는 것이 얼마나 가능한 일인지 판단할 것이다. 앞서 관측된 오차는 잊자. 그리고 오차에 대한 아무런 정보가 없다고 생각하고, 거꾸로 추적해 보자. 어떤 5개의 오차들의 합인 어떤 카이제곱 분포가 있다. 이 카이제곱 분포는 5개의 임의의 오차들의 합으로 가능한 모든 확률값들을 나타내고 있다. 그럼 이 그래프에서 내가 실제로 관찰한 5개의 오차 합이 나타날 확률은 어떻게 될까? 충분히 발생할 수 있는 오차일까? 그래서 이런 오차의 합이 나타나는 건 어려워 혹은 가능해라고 판단할 수 있는 기준을 설정할 것이다. 5%(유의수준)도 드물다고 말해도 되는 굉장히 작은 확률이라고 생각한다. 그래서 관측치가 나타날 확률이 5%보다 적다면, 이건 일반적인 오차라고 보기 어렵다, 즉 내가 관측한 오차에 뭔가 문제가 있다고 판단할 것이다. 그럼 우리는 카이제곱 표를 이용해 자유도가 5일때, 95% 확률을 나타내는 \(\chi=x\)을 찾을 수 있다. \[\chi^2(5)_{0.95} = 11.07\] 자유도가 5인 카이제곱 분포에서 오차의 합 11.07을 기준으로 왼쪽은 95%, 오른쪽은 5%가 된다. 그럼 관측치의 오차의 합인 4와 이론상의 기준인 11.07을 비교해 보자. 4는 11.07보다 작으므로, 충분히 나타날 수 있는 오차의 범위 내에 있다고 할 수 있다. 즉, 주사위가 공정하다고 가정했을 때, 충분히 발생할 수 있는 오차의 범위에 있다. 따라서 우리는 주사위가 공정하지 않다고 말할 근거가 없다. 가끔 로또를 보며 각각의 번호가 공정한 확률로 나오는 걸까? 궁금할 때가 있다. 자유도가 크고, 관측값 계산이 복잡하겠지만 같은 원리로 적용해 볼 수 있지 않을까? 교차 분석 교차 분석은 우리가 다루는 엑셀 데이터처럼 범주형 변수가 여러개일 경우 활용하는 분석 방법이다. 목적은 범주들 간의 연관성이 있는지를 파악하는 것이다. 성별과 선호 과목은 연관성이 있을까? 연관성이 없다고 가정하자.(귀무가설) 두 범주가 독립이라는 가정하에 각각의 기대빈도를 구할 수 있다. 예를 들어 과학을 선호하는 남성의 기대 빈도는 다음과 같이 계산된다. \[\frac{(총 과학 선호하는 사람) * (총 남성수)} {총 사람 수} = \frac{50 * 60} {100} = 30\] 모든 셀의 기대빈도를 구하면 다음과 같다. 관측된 오차의 카이제곱 통계량을 구하자. \[\chi^2 = \frac{(40-30)^2}{30} + \frac{(10-20)^2}{20} + \frac{(20-30)^2}{30} + \frac{(30-20)^2}{20} = 16.666\] 이론적 통계량을 구해보자. 자유도는 \((2-1) \times (2-1) = 1\) 이고 p-value 0.05에 대한 통계량은 \[\chi^2(1)_{0.95} = 3.841\] 이다. 따라서, \(3.841 \leq 16.666\) 이므로 관측 통계량은 굉장히 발생 확률이 낮다고 할 수 있으므로, 두 변수 사이의 통계적으로 유의미한 연관성이 있을 가능성이 높다고 해석할 수 있다. 참조 Introduction to Probability Theory(STAT414, PennState Eberly College of Science)]]></summary></entry><entry xml:lang="en"><title type="html">Chi-squared test</title><link href="http://localhost:4000/2024/04/10/chi_squared_distribution_en.html" rel="alternate" type="text/html" title="Chi-squared test" /><published>2024-04-10T00:00:00+09:00</published><updated>2024-04-10T00:00:00+09:00</updated><id>http://localhost:4000/2024/04/10/chi_squared_distribution_en</id><content type="html" xml:base="http://localhost:4000/2024/04/10/chi_squared_distribution_en.html"><![CDATA[<h2 id="definition-of-chi-squared-distribution">Definition of Chi-Squared Distribution</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>DEFINITION</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Chi-Squared Distribution</strong> is defined for \(k\) independent random variables \(X_1,\cdots, X_k\) each following a standard normal distribution. The distribution of the random variable formed by summing the squares of these variables, <br /><center>$$Q = \sum_{i=1}^{k} X_i^2$$</center><br /> is called the chi-squared distribution. Hence,  <br /><center> $$Q \sim X_k^{2}$$</center><br /> where \(k\) is known as <strong>the degrees of freedom</strong>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The probability density function (PDF) for a chi-squared distribution with degrees of freedom \(k\) is given by:</p>
+
+\[f(x; k) =\dfrac{1}{\Gamma (r/2) 2^{r/2}}x^{r/2-1}e^{-x/2}\]
+
+<ul>
+  <li>$\Gamma(k/2)$  is the gamma function, which generalizes the factorial to \((k/2)\) .</li>
+</ul>
+
+<h2 id="understanding-the-chi-squared-distribution">Understanding the Chi-Squared Distribution</h2>
+<p>What are degrees of freedom, and why does the chi-squared distribution take such a form? Let’s look at how the chi-squared distribution is graphed.</p>
+
+<h3 id="degrees-of-freedom-k1">Degrees of Freedom k=1</h3>
+<p>Let’s graph the chi-squared distribution for one standard normal random variable \(X\) .</p>
+
+<p>With one random variable, the degrees of freedom for the chi-squared distribution can be said to be 1.</p>
+
+<ul>
+  <li>\(-1.5 \leq x \leq -1\) and \(1 \leq x \leq 1.5\)</li>
+</ul>
+<p align="center">
+  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_k=1(1).png" />
+</p>
+
+<p>Squaring the random variables in the intervals \(-1.5 \leq x \leq -1\) and \(1 \leq x \leq 1.5\) , these become variates of the chi-squared distribution. The probabilities are then accumulated in the chi-squared distribution interval \(1 \leq q \leq 2.25\) .  Repeat this for different intervals.</p>
+
+<ul>
+  <li>\(-2.5 \leq x \leq 2\) and \(2 \leq x \leq 2.5\)</li>
+</ul>
+
+<p align="center">
+  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_k=1(2).png" />
+</p>
+
+<ul>
+  <li>\(-0.5 \leq x \leq 0\) and \(0 \leq x \leq 0.5\)</li>
+</ul>
+
+<p align="center">
+  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_k=1(3).png" />
+</p>
+
+<h3 id="degrees-of-freedom-k-geq-2">Degrees of Freedom \(k \geq 2\)</h3>
+<p>Now note that the chi-squared distribution represents the ‘sum’ of squares.</p>
+
+<p>For one degree of freedom, we graphed the distribution of the square of one independent variable. However, with two or more independent variables, we start to graph the distribution of the ‘sum’ of squares.</p>
+
+<p>For independent random variables \(X_1, X_2\) , \(Q = X_1^2 + X_2^2\) accumulates greater values in the same interval.</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_k=2.png" />
+</p>
+
+<p>As the degrees of freedom increase to 3, 4, …, the chi-squared distribution changes like this:</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/chi_squared_distribution_diff.png" />
+</p>
+
+<p>More random variables being added means greater variance, and the most probable value range also increases, shifting the graph to the right.</p>
+
+<h2 id="uses-of-chi-squared-distribution">Uses of Chi-Squared Distribution</h2>
+<p>Why do we need to model the sum of squares of random variables?</p>
+
+<p>The sum of squares is <strong>commonly used in mathematics to handle errors or deviations</strong> - Although absolute values can also be used to eliminate direction, squaring is beneficial for differentiation. Let’s skip MSE and MAE discussions for now. - Up to this point, our understanding of the chi-squared distribution has discussed the distribution form of a new variable arising from the sum of squares of independent variables.  This understanding will later combine with concepts like p-value to expand further. For now, understanding that the sum of squares of independent variables forms such a distribution pattern is sufficient.</p>
+
+<p>However, to take a brief peek, let’s consider <strong>‘errors’ from a mathematical viewpoint</strong> to guess how the chi-squared distribution might be used. This could be quite interesting.</p>
+
+<p>Let’s think like Gauss and explore the ‘error’ between experimental measurements or observations and the true values. There might be numerous minute factors causing these errors, and let’s assume each error arises from the sum of these independent factors. By the central limit theorem, each of these errors would form a normal distribution. If scaled, these errors could be transformed into standard normal distributions. Then, a new random variable, which is the sum of the squares of these errors, would form a chi-squared distribution.</p>
+
+<p>Wow, if we have grasped this content, we are prepared to utilize the chi-squared distribution going forward.</p>
+
+<h2 id="pearson-chi-squared-statistic">(Pearson) Chi-Squared Statistic</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>DEFINITION</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>The following formula is known as the chi-squared statistic or Pearson chi-squared statistic. <br /> <center>$$ \chi^2 = \sum_i \frac{(O_i - E_i)^2}{E_i} $$ </center><br /> \(\chi^2\): chi-squared <br /> \(O\) : Observed values <br />\(E\) : Expected values</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Although the definition and appearance of the chi-squared distribution might seem different, if we consider \(O_i - E_i\) as one random variable, the sum of their squares falls under the chi-squared statistic. Dividing by \(E\) standardizes the variance, adjusting the differences in each \(E_i\) ‘s variance.</p>
+
+<h2 id="chi-squared-test">Chi-Squared Test</h2>
+<p>The chi-squared test contrasts the theoretical chi-squared distribution with the chi-squared distribution based on actual observations. It is commonly used for goodness-of-fit tests and contingency analysis. This section will deeply explore the principles behind these tests, moving beyond mere calculations.</p>
+
+<h3 id="goodness-of-fit-test">Goodness-of-Fit Test</h3>
+<ul>
+  <li>Fairness test of a die
+Let’s test if a die is fair, i.e., if all numbers from 1 to 6 have an equal probability of appearing. For this purpose, let’s assume we roll the die 600 times and observe the following frequencies:</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>          95 times          </td>
+      <td>          105 times          </td>
+      <td>          110 times          </td>
+      <td>          85 times            </td>
+      <td>          105 times          </td>
+      <td>          100 times          </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>To determine fairness, let’s calculate the error between observed and true values using the differences squared. If the die were fair, the expected count for each number after 600 rolls would be \(600 / 6 = 100\) . The error calculation is as follows: (We use the sum of squares to handle the errors)</p>
+
+\[\chi^2 = \sum \frac{(O_i - E_i)^2}{E_i} = \frac{(95 - 100)^2}{100} + \frac{(105 - 100)^2}{100} + \cdots + \frac{(100 - 100)^2}{100} = 4\]
+
+<p>Now, <strong>is this error likely under the assumption of a fair die?</strong></p>
+
+<p>Next, let’s see how likely it is to observe an error sum of 4 under theoretical conditions.</p>
+
+<p>Forgetting the observed error, assume we know nothing about the error, and think backward. Suppose there’s a chi-squared distribution of 5 random error sums representing all possible probabilities.</p>
+
+<p>What’s the probability that my actual observation of 5 error sums occurs? Is it likely enough?</p>
+
+<p><u>Set a standard</u> of <strong>5% (significance level)</strong>, which is considered extremely low, allowing us to decide if an observation is unusual. If the probability of observing the statistic is less than 5%, it’s difficult to view it as a typical error, suggesting <u>there's something unusual about my observed error</u>.</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/goodness_of_fit_test(1).png" />
+</p>
+
+<p>Now, we can use the chi-squared table to find \(\chi=x\) for a 95% probability when the degrees of freedom are 5.</p>
+
+\[\chi^2(5)_{0.95} = 11.07\]
+
+<p>In a chi-squared distribution with 5 degrees of freedom, the sum of errors at 11.07 marks the boundary between 95% on the left and 5% on the right.</p>
+
+<p>Let’s compare the actual error sum of 4 with the theoretical threshold of 11.07.</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/goodness_of_fit_test(2).png" />
+</p>
+
+<p>Since 4 is less than 11.07, it’s within the range of errors that could occur under the assumption of fairness. Thus, we <u>cannot claim the die is unfair based on our observations</u>.</p>
+
+<h3 id="contingency-analysis">Contingency Analysis</h3>
+<p>Contingency analysis is used when there are multiple categorical variables, like the data we often see in spreadsheets. The goal is to determine if there is an association between the categories.</p>
+
+<p align="center">
+  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/crosstab(1)_en.png" />
+</p>
+
+<p>Is there a connection between gender and favorite subject? Let’s assume there isn’t (null hypothesis).</p>
+
+<p>Under the assumption of independence, we can calculate the expected frequency for each cell. For instance, the expected frequency of males preferring science is calculated as follows:</p>
+
+\[\frac{(totalfavoringscience) * (total males)} {total participants} = \frac{50 * 60} {100} = 30\]
+
+<p>After calculating the expected frequencies for all cells, they look like this:</p>
+
+<p align="center">
+  <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/chi_squared_distribution/crosstab(2)_en.png" />
+</p>
+
+<p>Now, let’s calculate the chi-squared statistic for the observed discrepancies.</p>
+
+\[\chi^2 = \frac{(40-30)^2}{30} + \frac{(10-20)^2}{20} +
+ \frac{(20-30)^2}{30} + \frac{(30-20)^2}{20}
+= 16.666\]
+
+<p>Compute the theoretical statistic:</p>
+
+<p>With a degrees of freedom of \((2-1) \times (2-1) = 1\) and a p-value of 0.05, the statistic is</p>
+
+\[\chi^2(1)_{0.95} = 3.841\]
+
+<p>Therefore, since \(3.841 \leq 16.666\) , <u>the observed statistic is highly unlikely, suggesting a statistically significant association between the variables</u>.</p>
+
+<p><br /><br />
+<strong>참조</strong><br />
+<a href="https://online.stat.psu.edu/stat414/lesson/15/15.9">Introduction to Probability Theory(STAT414, PennState Eberly College of Science)</a></p>]]></content><author><name>Jenny Won (Dajeong Won)</name></author><category term="Statistics" /><summary type="html"><![CDATA[Definition of Chi-Squared Distribution DEFINITION Chi-Squared Distribution is defined for \(k\) independent random variables \(X_1,\cdots, X_k\) each following a standard normal distribution. The distribution of the random variable formed by summing the squares of these variables, $$Q = \sum_{i=1}^{k} X_i^2$$ is called the chi-squared distribution. Hence, $$Q \sim X_k^{2}$$ where \(k\) is known as the degrees of freedom. The probability density function (PDF) for a chi-squared distribution with degrees of freedom \(k\) is given by: \[f(x; k) =\dfrac{1}{\Gamma (r/2) 2^{r/2}}x^{r/2-1}e^{-x/2}\] $\Gamma(k/2)$ is the gamma function, which generalizes the factorial to \((k/2)\) . Understanding the Chi-Squared Distribution What are degrees of freedom, and why does the chi-squared distribution take such a form? Let’s look at how the chi-squared distribution is graphed. Degrees of Freedom k=1 Let’s graph the chi-squared distribution for one standard normal random variable \(X\) . With one random variable, the degrees of freedom for the chi-squared distribution can be said to be 1. \(-1.5 \leq x \leq -1\) and \(1 \leq x \leq 1.5\) Squaring the random variables in the intervals \(-1.5 \leq x \leq -1\) and \(1 \leq x \leq 1.5\) , these become variates of the chi-squared distribution. The probabilities are then accumulated in the chi-squared distribution interval \(1 \leq q \leq 2.25\) . Repeat this for different intervals. \(-2.5 \leq x \leq 2\) and \(2 \leq x \leq 2.5\) \(-0.5 \leq x \leq 0\) and \(0 \leq x \leq 0.5\) Degrees of Freedom \(k \geq 2\) Now note that the chi-squared distribution represents the ‘sum’ of squares. For one degree of freedom, we graphed the distribution of the square of one independent variable. However, with two or more independent variables, we start to graph the distribution of the ‘sum’ of squares. For independent random variables \(X_1, X_2\) , \(Q = X_1^2 + X_2^2\) accumulates greater values in the same interval. As the degrees of freedom increase to 3, 4, …, the chi-squared distribution changes like this: More random variables being added means greater variance, and the most probable value range also increases, shifting the graph to the right. Uses of Chi-Squared Distribution Why do we need to model the sum of squares of random variables? The sum of squares is commonly used in mathematics to handle errors or deviations - Although absolute values can also be used to eliminate direction, squaring is beneficial for differentiation. Let’s skip MSE and MAE discussions for now. - Up to this point, our understanding of the chi-squared distribution has discussed the distribution form of a new variable arising from the sum of squares of independent variables. This understanding will later combine with concepts like p-value to expand further. For now, understanding that the sum of squares of independent variables forms such a distribution pattern is sufficient. However, to take a brief peek, let’s consider ‘errors’ from a mathematical viewpoint to guess how the chi-squared distribution might be used. This could be quite interesting. Let’s think like Gauss and explore the ‘error’ between experimental measurements or observations and the true values. There might be numerous minute factors causing these errors, and let’s assume each error arises from the sum of these independent factors. By the central limit theorem, each of these errors would form a normal distribution. If scaled, these errors could be transformed into standard normal distributions. Then, a new random variable, which is the sum of the squares of these errors, would form a chi-squared distribution. Wow, if we have grasped this content, we are prepared to utilize the chi-squared distribution going forward. (Pearson) Chi-Squared Statistic DEFINITION The following formula is known as the chi-squared statistic or Pearson chi-squared statistic. $$ \chi^2 = \sum_i \frac{(O_i - E_i)^2}{E_i} $$ \(\chi^2\): chi-squared \(O\) : Observed values \(E\) : Expected values Although the definition and appearance of the chi-squared distribution might seem different, if we consider \(O_i - E_i\) as one random variable, the sum of their squares falls under the chi-squared statistic. Dividing by \(E\) standardizes the variance, adjusting the differences in each \(E_i\) ‘s variance. Chi-Squared Test The chi-squared test contrasts the theoretical chi-squared distribution with the chi-squared distribution based on actual observations. It is commonly used for goodness-of-fit tests and contingency analysis. This section will deeply explore the principles behind these tests, moving beyond mere calculations. Goodness-of-Fit Test Fairness test of a die Let’s test if a die is fair, i.e., if all numbers from 1 to 6 have an equal probability of appearing. For this purpose, let’s assume we roll the die 600 times and observe the following frequencies: 1 2 3 4 5 6           95 times                     105 times                     110 times                     85 times                       105 times                     100 times           To determine fairness, let’s calculate the error between observed and true values using the differences squared. If the die were fair, the expected count for each number after 600 rolls would be \(600 / 6 = 100\) . The error calculation is as follows: (We use the sum of squares to handle the errors) \[\chi^2 = \sum \frac{(O_i - E_i)^2}{E_i} = \frac{(95 - 100)^2}{100} + \frac{(105 - 100)^2}{100} + \cdots + \frac{(100 - 100)^2}{100} = 4\] Now, is this error likely under the assumption of a fair die? Next, let’s see how likely it is to observe an error sum of 4 under theoretical conditions. Forgetting the observed error, assume we know nothing about the error, and think backward. Suppose there’s a chi-squared distribution of 5 random error sums representing all possible probabilities. What’s the probability that my actual observation of 5 error sums occurs? Is it likely enough? Set a standard of 5% (significance level), which is considered extremely low, allowing us to decide if an observation is unusual. If the probability of observing the statistic is less than 5%, it’s difficult to view it as a typical error, suggesting there's something unusual about my observed error. Now, we can use the chi-squared table to find \(\chi=x\) for a 95% probability when the degrees of freedom are 5. \[\chi^2(5)_{0.95} = 11.07\] In a chi-squared distribution with 5 degrees of freedom, the sum of errors at 11.07 marks the boundary between 95% on the left and 5% on the right. Let’s compare the actual error sum of 4 with the theoretical threshold of 11.07. Since 4 is less than 11.07, it’s within the range of errors that could occur under the assumption of fairness. Thus, we cannot claim the die is unfair based on our observations. Contingency Analysis Contingency analysis is used when there are multiple categorical variables, like the data we often see in spreadsheets. The goal is to determine if there is an association between the categories. Is there a connection between gender and favorite subject? Let’s assume there isn’t (null hypothesis). Under the assumption of independence, we can calculate the expected frequency for each cell. For instance, the expected frequency of males preferring science is calculated as follows: \[\frac{(totalfavoringscience) * (total males)} {total participants} = \frac{50 * 60} {100} = 30\] After calculating the expected frequencies for all cells, they look like this: Now, let’s calculate the chi-squared statistic for the observed discrepancies. \[\chi^2 = \frac{(40-30)^2}{30} + \frac{(10-20)^2}{20} + \frac{(20-30)^2}{30} + \frac{(30-20)^2}{20} = 16.666\] Compute the theoretical statistic: With a degrees of freedom of \((2-1) \times (2-1) = 1\) and a p-value of 0.05, the statistic is \[\chi^2(1)_{0.95} = 3.841\] Therefore, since \(3.841 \leq 16.666\) , the observed statistic is highly unlikely, suggesting a statistically significant association between the variables. 참조 Introduction to Probability Theory(STAT414, PennState Eberly College of Science)]]></summary></entry><entry xml:lang="ko"><title type="html">정규 분포와 중심 극한 정리</title><link href="http://localhost:4000/2024/04/06/normal_distribution_and_clt_ko.html" rel="alternate" type="text/html" title="정규 분포와 중심 극한 정리" /><published>2024-04-06T00:00:00+09:00</published><updated>2024-04-06T00:00:00+09:00</updated><id>http://localhost:4000/2024/04/06/normal_distribution_and_clt_ko</id><content type="html" xml:base="http://localhost:4000/2024/04/06/normal_distribution_and_clt_ko.html"><![CDATA[<p align="center">
   <img class="image image--xl" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/normal_distribution/normal_distribution_cover.jpeg" />
 </p>
 
@@ -877,7 +1035,124 @@ For the sum of \(n\) independent \($Z_i\), the characteristic function for \(S_n
 <a href="https://medium.com/@amanatulla1606/python-implementation-of-central-limit-theorem-exploring-sample-data-to-infer-population-595e39e0c98e">“Python Implementation of Central Limit Theorem: Exploring Sample Data to Infer Population Parameters”(Amanatullah)</a><br />
 <a href="https://colah.github.io/posts/2014-07-Understanding-Convolutions/">Understanding Convolutions(colah’s blog)</a><br />
 <a href="https://sas.uwaterloo.ca/~dlmcleis/s901/chapt6.pdf">Characteristic Functions and the Central Limit Theorem(University of Waterloo)</a><br />
-<a href="https://portal.eller.arizona.edu/sampling/">Sampling Distribution of the Mean Simulation</a><br /></p>]]></content><author><name>Jenny Won (Dajeong Won)</name></author><category term="Statistics" /><summary type="html"><![CDATA[Statistical testing and modeling methodologies often assume a normal distribution. Other important distributions in statistics, such as the chi-squared, t-distribution, and F-distribution, are also deeply connected to the normal distribution, deriving from it or utilizing its properties. It’s hard to imagine statistics without the normal distribution. Discovery of the Normal Distribution Also known as the Gaussian distribution or the Laplace distribution, it is often referred to as the bell curve. Regardless of the name, what matters is that mathematicians of the time observed the normal distribution through their research, highlighting the need to define such a distribution. Let’s briefly explore how some mathematicians discovered the normal distribution. The normal distribution was first presented as an 'approximation of the binomial distribution' by Abraham de Moivre. Abraham de Moivre 출처: SWikipedia(Abraham de Moivre) Abraham de Moivre studied how close the binomial distribution \(B(n,p)\) came to a certain formula when \(n\) was very large. He discovered that the approximation held relatively well even when \(n\) was not significantly large, such as over 100. \[_{n}C_{k} p^k q^{n-k} \approx {\frac{1}{\sqrt{2 \pi npq}} e}^{-\frac{(k-np)^2}{2npq}}\] Later, Johann Carl Friedrich Gauss discovered that the distribution of errors between observed values and true values followed a normal distribution. Johann Carl Fredrich Gauss 출처: Wikipedia(Johann Carl Friedrich Gaus) While studying how observed values deviated from true values, Gauss realized that these errors formed a distribution with a specific symmetry. He defined this distribution to aid in his research. Definition of the Normal Distribution The normal distribution is entirely defined by two parameters: mean \(\mu\) and standard deviation \(\sigma\) . DEFINITION The normal distribution can be expressed as $$ X\sim N(\mu ,{ \sigma }^{ 2 }) $$ The continuous random variable \(X\) follows this probability density function (PDF): $$ \begin{equation} \begin{aligned} f(x; \mu, \sigma) = \frac{1}{\sqrt{2\pi \cdot \sigma^{2}}} e^{-\frac{1}{2} \left(\frac{x-\mu}{\sigma}\right)^{2}} \end{aligned} \end{equation} $$ Simulation of the Normal Distribution The normal distribution is symmetric around the mean. Check out how the normal distribution changes as the mean and variance vary using the Geogebra simulation (Normal Distribution by Joseph Manthey). The mean is the center of the bell curve. As the mean changes, the normal distribution shifts left or right. Let’s also examine how variance changes. Variance indicates how spread out the distribution is around the mean. A larger variance spreads the curve wider, while a smaller variance makes it sharper. Central Limit Theorem (CLT) Throughout this learning note, I’ve continually marveled at the beauty of the bell-shaped curve and pondered why the normal distribution is so crucial. This leads me to the Central Limit Theorem (CLT). Essentially, this post could well be about the Central Limit Theorem masquerading as a discussion on the normal distribution. The CLT is integral to the importance of the normal distribution, explaining why it’s more than just “Look, it becomes a normal distribution.” There’s also a common misconception that the theorem simply states, “Any distribution will become normal if its trials are repeated enough,” which merits further exploration. Definition   The Central Limit Theorem (CLT) states that for a population with a fixed distribution, the distribution of the sample means (or their sum), when sampled independently and repeatedly, becomes increasingly normal as the sample size increases. Let’s examine each aspect in detail: Population with a fixed distribution : The shape of the distribution doesn’t matter, but sampling from a population with a totally different distribution is not allowed. In other words, the Central Limit Theorem applies regardless of the specific distribution followed by the population. Independent random sampling : As the name implies, each sampling must be independent and random. If the sample size is large: This is often misunderstood as needing a high number of samples. However, it actually means ‘the larger the size of each sample, the better’. Distribution of the averages follows a normal distribution: A common misunderstanding is thinking “if there are many samplings, the distribution becomes normal,” but it’s crucial to understand that it’s the distribution of the ‘averages’ that follows the normal distribution. This means the distribution of the averages obtained from each sampling follows a normal distribution. In summary, even if a population follows a specific distribution, if samples are drawn from it in an independent and random manner, especially if the samples drawn are large, the distribution of the averages obtained from these samples will follow a normal distribution. Intuitive Understanding of the Central Limit Theorem Imagine gathering averages from multiple samples drawn from a population. The larger each sample is, the more accurately those averages will reflect the characteristics of the population. This isn’t difficult to grasp. Consider opinion polls as an example. We generally trust a survey of 1,000 people more than one of 100 people because we believe the larger sample more accurately reflects the views of the entire population. Even without discussing reliability in detail, it’s evident why we think this way: larger samples tend to provide a better approximation of the population's true average. For an extreme scenario, imagine a sample as large as the population itself. The averages obtained from several such samples would likely be very close to the actual population average. Although not every single average would exactly match the population mean, large deviations would be rare, and smaller errors would occur more frequently. This demonstrates that larger samples more accurately estimate the population mean, with a distribution of errors that is symmetric and tends to be normal. This intuitive understanding makes the Central Limit Theorem seem almost obvious. “Error” was mentioned earlier, and Gauss had discovered that the errors between observed values and true values follow a normal distribution, which led him to define this distribution. From here, we can speculate on how the normal distribution might be utilized in the future. Mathematical Definition To define the Central Limit Theorem mathematically: Let’s redefine the Central Limit Theorem from a mathematical perspective as previously understood intuitively. DEFINITION The Central Limit Theorem (CLT) states that as the size of a randomly drawn sample increases, the distribution of the sample means approaches a normal distribution, regardless of the population’s initial distribution. Given random variables that are independent and identically distributed (i.i.d)*, with a valid mean \(\mu\) and variance \(\frac{\sigma}{\sqrt{n}}\), the mean \(N(\mu, \frac{\sigma^2}{n})\) converges to a normal distribution with mean \(\mu\) and standard deviation : $$\sqrt{n}((\frac{1}{n} \sum_{i=1}^{n}X_i) - \mu) \rightarrow N(0, \sigma^2)$$ * i.i.d : Independent and Identically Distributed random variables If the sample mean \(\overline{X}\) is standardized to \(Z= \frac{\overline{X}-\mu}{\sigma/\sqrt{n}}\) , this statistic \(Z\) approximates a standard normal distribution according to the Central Limit Theorem. Proof of the Central Limit Theorem There are several methods to prove the Central Limit Theorem. The initial form by Laplace focused on the approximation of the binomial distribution to a normal distribution, and today the most common method involves using properties of moment-generating functions through the Lindeberg-Lévy CLT. However, this section opts for a more intuitive approach using characteristic functions and convolution, rather than the traditional method. Previously, it was stated that the Central Limit Theorem implies that the distribution of the 'averages' or the 'sum' of the samples converges to a normal distribution. The proposition we are proving here is the convergence of the ‘sum’ of variables, so take care not to lose your way in the proof. Proposition   The ‘sum’ of independent and identically distributed (i.i.d.) random variables converges to a normal distribution when properly normalized. The proof can be quite complex, so subtitles are added to follow the critical ideas more easily. Definition of the Convolution of Random Variables First, let’s understand how convolution applies to probability variables. Suppose random variables $X$ and $Y$ are independent. The probability of a new random variable \(Z = X + Y\) can be defined as follows: \[P(Z) = \sum_{k=-\infty}^{\infty}{P(X)P(Y)}\] If this concept is unclear, think of \(X\) as the event of getting heads in a coin toss, \(Y\) as the event of getting an even number in a dice roll, and \(Z\) as the event of getting both heads in the coin toss and an even number in the dice roll in one go. Essentially, you’re calculating the probability of \(Z\) by multiplying the probabilities of \(X\) and \(Y\). For a deeper understanding, this blog explains convolution beautifully. If \(X\) and \(Y\) have probability density functions \(f(x)\) and \(g(x)\), respectively, the probability density function for \(Z=X+Y\) is the convolution of \(f\) and \(g\), denoted as: \[(f*g)(z) = \int_{-\infty}^{\infty}f(z-y)g(y)dy = \int_{-\infty}^{\infty}g(z-x)f(x)dx\] Note how the sum turns into a product through convolution. This property will be utilized by defining the characteristic function of the random variables. Definition of the Characteristic Function The characteristic function for any probability density function \(f_X(x)\) is defined as (where \(t\) is a real number): \[\phi_X(t) = E[e^{itX}] = \int_{-\infty}^{\infty}e^{jtx}f_X(x)dx\] From this definition, it’s clear that the absolute value of the complex exponential function \(e^{itX}\) is always 1: \[|e^{itx}| = |\cos(tx) + i\sin(tx)| = \sqrt{\cos^2(tx) + \sin^2(tx)} = 1\] This characteristic function definition has a significant advantage over other transformations like Laplace transforms, as the integral exists for all probability distributions. McLaurin Series Expansion Using the McLaurin series expansion, \(e^{jtx}\) can be expanded as follow \[e^{jtx}=\sum_{k=1}^{\infty}\frac{(jtx)^k}{k!}=1+jtx+\frac{(jtx)^2}{2!}+\frac{(jtx)^3}{3!}+\cdots = 1+jtx+\frac{(jtx)^2}{2!}+O(t^2)\] \(O(t^2)\) represents the terms from the fourth term onwards grouped together. This expansion can be applied to the characteristic function: \[\phi_X(t) = \int_{-\infty}^{\infty}e^{jtx}f_Y(t)dy=\int_{-\infty}^{\infty}\left\{1+jtx-\frac{t^2}{2}x^2+O(t^2)\right\}f_X(x)dy\notag\] \[=\int_{-\infty}^{\infty}f_X(x)dy + \int_{-\infty}^{\infty}xf_X(x)dy - \frac{t^2}{2}\int_{-\infty}^{\infty}x^2f_X(x)dy+O(t^2)\notag\] \[=1+jtE\left[x\right]-\frac{t^2}{2}E\left[x^2\right]+O(t^2)\] 이 된다. Characteristic Function for Normalized Random Variable \(Z_i\) Let’s consider a normalized random variable \(Z_i = \frac{X_i - \mu}{\sigma}\), where \(E(x)=0\) and \(Var[x]=1\) . The characteristic function for \(Z_i\) simplifies as follows: \[\phi_Z(t) = E\left[e^{jtz}\right]=\int_{-\infty}^{\infty}e^{jtz}f_Z(z)dx\] \[=1+jtE\left[z\right]-\frac{t^2}{2}E\left[z^2\right]+O(t^2)\] \[= 1+0-\frac{t^2}{2}+O(t^2)\] \[= 1-\frac{t^2}{2}+O(t^2)\] Characteristic Function for the Sum of $n$ \(Z_i\) For the sum of \(n\) independent \($Z_i\), the characteristic function for \(S_n = \sum_{i=1}^{n} Z_i = Z_1 + Z_2 + \cdots + Z_n\) is: \[\phi_{S_n}(t) = \left( \phi_{Z}(t) \right)^n\] Applying the expansion of the characteristic function of the standardized variable \(Z\), we get: \[\phi_{S_n}(t) = \left( \phi_{Z}(t) \right)^n = [1-\frac{t^2}{2N}+O\left(\frac{t^2}{N}\right)]^N\] When \(n\) approaches infinity, \(O(\frac{t^2}{N})\) converges to zero faster than \(\frac{t^2}{2N}\) , and therefore, the limit value converges as follows: \[\lim_{N\rightarrow \infty}\phi_{S_N}(t) = \lim_{N\rightarrow\infty}\left[1-\frac{t^2}{2N}\right]^N=e^{-t^2/2}\] Sample Size and Number of Samples Statisticians typically say that a sample size of 30 or more is sufficient for a distribution to safely follow a normal distribution, but this is just a rule of thumb. In reality, more samples may be needed if the population distribution is highly asymmetric. Sample size guarantees the accuracy and representativeness of individual samples, and a sufficient number of samples relates to the reliability of the entire study and the generalizability of the results. The following represents the distribution of averages from samples of integers from 1 to 10. Simulation of Sample Size and Number of Samples 출처: Wolfram, The Central Limit Theorem(Chris Boucher) If the number of samples is excessively low, no matter how large the sample size, it merely accumulates the distribution of the samples, not the population. This result should be seriously considered for generalizability. Therefore, simply thinking “if the sample size is large, it converges to a normal distribution!” needs caution. Ideally, both a large sample size and a high number of samples would be the best scenario. So, why Is the Normal Distribution Important? In inferential statistics based on sampling techniques, understanding the distribution of sample means is crucial for tracking the population mean. According to the Central Limit Theorem, if sampling is conducted from sufficiently large samples, even without knowing anything about the population mean, the distribution of these sample means will converge to a normal distribution. Typically, in many scenarios, we try to estimate the population distribution based on the distribution of average values obtained from consistently sampled observations. This attempt ensures that we frequently encounter the normal distribution inevitably. 참조 Normal Distribution: An Introductory Guide to PDF and CDF(Teena Mary) 가우시안(Gaussian)-정규분포(Normal Distribution).너란 분포 정말(친절한 데이터 사이언스 강좌) “Python Implementation of Central Limit Theorem: Exploring Sample Data to Infer Population Parameters”(Amanatullah) Understanding Convolutions(colah’s blog) Characteristic Functions and the Central Limit Theorem(University of Waterloo) Sampling Distribution of the Mean Simulation]]></summary></entry><entry xml:lang="en"><title type="html">Poisson Distribution</title><link href="http://localhost:4000/2024/04/02/poisson_distribution_en.html" rel="alternate" type="text/html" title="Poisson Distribution" /><published>2024-04-02T00:00:00+09:00</published><updated>2024-04-02T00:00:00+09:00</updated><id>http://localhost:4000/2024/04/02/poisson_distribution_en</id><content type="html" xml:base="http://localhost:4000/2024/04/02/poisson_distribution_en.html"><![CDATA[<p align="center">
+<a href="https://portal.eller.arizona.edu/sampling/">Sampling Distribution of the Mean Simulation</a><br /></p>]]></content><author><name>Jenny Won (Dajeong Won)</name></author><category term="Statistics" /><summary type="html"><![CDATA[Statistical testing and modeling methodologies often assume a normal distribution. Other important distributions in statistics, such as the chi-squared, t-distribution, and F-distribution, are also deeply connected to the normal distribution, deriving from it or utilizing its properties. It’s hard to imagine statistics without the normal distribution. Discovery of the Normal Distribution Also known as the Gaussian distribution or the Laplace distribution, it is often referred to as the bell curve. Regardless of the name, what matters is that mathematicians of the time observed the normal distribution through their research, highlighting the need to define such a distribution. Let’s briefly explore how some mathematicians discovered the normal distribution. The normal distribution was first presented as an 'approximation of the binomial distribution' by Abraham de Moivre. Abraham de Moivre 출처: SWikipedia(Abraham de Moivre) Abraham de Moivre studied how close the binomial distribution \(B(n,p)\) came to a certain formula when \(n\) was very large. He discovered that the approximation held relatively well even when \(n\) was not significantly large, such as over 100. \[_{n}C_{k} p^k q^{n-k} \approx {\frac{1}{\sqrt{2 \pi npq}} e}^{-\frac{(k-np)^2}{2npq}}\] Later, Johann Carl Friedrich Gauss discovered that the distribution of errors between observed values and true values followed a normal distribution. Johann Carl Fredrich Gauss 출처: Wikipedia(Johann Carl Friedrich Gaus) While studying how observed values deviated from true values, Gauss realized that these errors formed a distribution with a specific symmetry. He defined this distribution to aid in his research. Definition of the Normal Distribution The normal distribution is entirely defined by two parameters: mean \(\mu\) and standard deviation \(\sigma\) . DEFINITION The normal distribution can be expressed as $$ X\sim N(\mu ,{ \sigma }^{ 2 }) $$ The continuous random variable \(X\) follows this probability density function (PDF): $$ \begin{equation} \begin{aligned} f(x; \mu, \sigma) = \frac{1}{\sqrt{2\pi \cdot \sigma^{2}}} e^{-\frac{1}{2} \left(\frac{x-\mu}{\sigma}\right)^{2}} \end{aligned} \end{equation} $$ Simulation of the Normal Distribution The normal distribution is symmetric around the mean. Check out how the normal distribution changes as the mean and variance vary using the Geogebra simulation (Normal Distribution by Joseph Manthey). The mean is the center of the bell curve. As the mean changes, the normal distribution shifts left or right. Let’s also examine how variance changes. Variance indicates how spread out the distribution is around the mean. A larger variance spreads the curve wider, while a smaller variance makes it sharper. Central Limit Theorem (CLT) Throughout this learning note, I’ve continually marveled at the beauty of the bell-shaped curve and pondered why the normal distribution is so crucial. This leads me to the Central Limit Theorem (CLT). Essentially, this post could well be about the Central Limit Theorem masquerading as a discussion on the normal distribution. The CLT is integral to the importance of the normal distribution, explaining why it’s more than just “Look, it becomes a normal distribution.” There’s also a common misconception that the theorem simply states, “Any distribution will become normal if its trials are repeated enough,” which merits further exploration. Definition   The Central Limit Theorem (CLT) states that for a population with a fixed distribution, the distribution of the sample means (or their sum), when sampled independently and repeatedly, becomes increasingly normal as the sample size increases. Let’s examine each aspect in detail: Population with a fixed distribution : The shape of the distribution doesn’t matter, but sampling from a population with a totally different distribution is not allowed. In other words, the Central Limit Theorem applies regardless of the specific distribution followed by the population. Independent random sampling : As the name implies, each sampling must be independent and random. If the sample size is large: This is often misunderstood as needing a high number of samples. However, it actually means ‘the larger the size of each sample, the better’. Distribution of the averages follows a normal distribution: A common misunderstanding is thinking “if there are many samplings, the distribution becomes normal,” but it’s crucial to understand that it’s the distribution of the ‘averages’ that follows the normal distribution. This means the distribution of the averages obtained from each sampling follows a normal distribution. In summary, even if a population follows a specific distribution, if samples are drawn from it in an independent and random manner, especially if the samples drawn are large, the distribution of the averages obtained from these samples will follow a normal distribution. Intuitive Understanding of the Central Limit Theorem Imagine gathering averages from multiple samples drawn from a population. The larger each sample is, the more accurately those averages will reflect the characteristics of the population. This isn’t difficult to grasp. Consider opinion polls as an example. We generally trust a survey of 1,000 people more than one of 100 people because we believe the larger sample more accurately reflects the views of the entire population. Even without discussing reliability in detail, it’s evident why we think this way: larger samples tend to provide a better approximation of the population's true average. For an extreme scenario, imagine a sample as large as the population itself. The averages obtained from several such samples would likely be very close to the actual population average. Although not every single average would exactly match the population mean, large deviations would be rare, and smaller errors would occur more frequently. This demonstrates that larger samples more accurately estimate the population mean, with a distribution of errors that is symmetric and tends to be normal. This intuitive understanding makes the Central Limit Theorem seem almost obvious. “Error” was mentioned earlier, and Gauss had discovered that the errors between observed values and true values follow a normal distribution, which led him to define this distribution. From here, we can speculate on how the normal distribution might be utilized in the future. Mathematical Definition To define the Central Limit Theorem mathematically: Let’s redefine the Central Limit Theorem from a mathematical perspective as previously understood intuitively. DEFINITION The Central Limit Theorem (CLT) states that as the size of a randomly drawn sample increases, the distribution of the sample means approaches a normal distribution, regardless of the population’s initial distribution. Given random variables that are independent and identically distributed (i.i.d)*, with a valid mean \(\mu\) and variance \(\frac{\sigma}{\sqrt{n}}\), the mean \(N(\mu, \frac{\sigma^2}{n})\) converges to a normal distribution with mean \(\mu\) and standard deviation : $$\sqrt{n}((\frac{1}{n} \sum_{i=1}^{n}X_i) - \mu) \rightarrow N(0, \sigma^2)$$ * i.i.d : Independent and Identically Distributed random variables If the sample mean \(\overline{X}\) is standardized to \(Z= \frac{\overline{X}-\mu}{\sigma/\sqrt{n}}\) , this statistic \(Z\) approximates a standard normal distribution according to the Central Limit Theorem. Proof of the Central Limit Theorem There are several methods to prove the Central Limit Theorem. The initial form by Laplace focused on the approximation of the binomial distribution to a normal distribution, and today the most common method involves using properties of moment-generating functions through the Lindeberg-Lévy CLT. However, this section opts for a more intuitive approach using characteristic functions and convolution, rather than the traditional method. Previously, it was stated that the Central Limit Theorem implies that the distribution of the 'averages' or the 'sum' of the samples converges to a normal distribution. The proposition we are proving here is the convergence of the ‘sum’ of variables, so take care not to lose your way in the proof. Proposition   The ‘sum’ of independent and identically distributed (i.i.d.) random variables converges to a normal distribution when properly normalized. The proof can be quite complex, so subtitles are added to follow the critical ideas more easily. Definition of the Convolution of Random Variables First, let’s understand how convolution applies to probability variables. Suppose random variables $X$ and $Y$ are independent. The probability of a new random variable \(Z = X + Y\) can be defined as follows: \[P(Z) = \sum_{k=-\infty}^{\infty}{P(X)P(Y)}\] If this concept is unclear, think of \(X\) as the event of getting heads in a coin toss, \(Y\) as the event of getting an even number in a dice roll, and \(Z\) as the event of getting both heads in the coin toss and an even number in the dice roll in one go. Essentially, you’re calculating the probability of \(Z\) by multiplying the probabilities of \(X\) and \(Y\). For a deeper understanding, this blog explains convolution beautifully. If \(X\) and \(Y\) have probability density functions \(f(x)\) and \(g(x)\), respectively, the probability density function for \(Z=X+Y\) is the convolution of \(f\) and \(g\), denoted as: \[(f*g)(z) = \int_{-\infty}^{\infty}f(z-y)g(y)dy = \int_{-\infty}^{\infty}g(z-x)f(x)dx\] Note how the sum turns into a product through convolution. This property will be utilized by defining the characteristic function of the random variables. Definition of the Characteristic Function The characteristic function for any probability density function \(f_X(x)\) is defined as (where \(t\) is a real number): \[\phi_X(t) = E[e^{itX}] = \int_{-\infty}^{\infty}e^{jtx}f_X(x)dx\] From this definition, it’s clear that the absolute value of the complex exponential function \(e^{itX}\) is always 1: \[|e^{itx}| = |\cos(tx) + i\sin(tx)| = \sqrt{\cos^2(tx) + \sin^2(tx)} = 1\] This characteristic function definition has a significant advantage over other transformations like Laplace transforms, as the integral exists for all probability distributions. McLaurin Series Expansion Using the McLaurin series expansion, \(e^{jtx}\) can be expanded as follow \[e^{jtx}=\sum_{k=1}^{\infty}\frac{(jtx)^k}{k!}=1+jtx+\frac{(jtx)^2}{2!}+\frac{(jtx)^3}{3!}+\cdots = 1+jtx+\frac{(jtx)^2}{2!}+O(t^2)\] \(O(t^2)\) represents the terms from the fourth term onwards grouped together. This expansion can be applied to the characteristic function: \[\phi_X(t) = \int_{-\infty}^{\infty}e^{jtx}f_Y(t)dy=\int_{-\infty}^{\infty}\left\{1+jtx-\frac{t^2}{2}x^2+O(t^2)\right\}f_X(x)dy\notag\] \[=\int_{-\infty}^{\infty}f_X(x)dy + \int_{-\infty}^{\infty}xf_X(x)dy - \frac{t^2}{2}\int_{-\infty}^{\infty}x^2f_X(x)dy+O(t^2)\notag\] \[=1+jtE\left[x\right]-\frac{t^2}{2}E\left[x^2\right]+O(t^2)\] 이 된다. Characteristic Function for Normalized Random Variable \(Z_i\) Let’s consider a normalized random variable \(Z_i = \frac{X_i - \mu}{\sigma}\), where \(E(x)=0\) and \(Var[x]=1\) . The characteristic function for \(Z_i\) simplifies as follows: \[\phi_Z(t) = E\left[e^{jtz}\right]=\int_{-\infty}^{\infty}e^{jtz}f_Z(z)dx\] \[=1+jtE\left[z\right]-\frac{t^2}{2}E\left[z^2\right]+O(t^2)\] \[= 1+0-\frac{t^2}{2}+O(t^2)\] \[= 1-\frac{t^2}{2}+O(t^2)\] Characteristic Function for the Sum of $n$ \(Z_i\) For the sum of \(n\) independent \($Z_i\), the characteristic function for \(S_n = \sum_{i=1}^{n} Z_i = Z_1 + Z_2 + \cdots + Z_n\) is: \[\phi_{S_n}(t) = \left( \phi_{Z}(t) \right)^n\] Applying the expansion of the characteristic function of the standardized variable \(Z\), we get: \[\phi_{S_n}(t) = \left( \phi_{Z}(t) \right)^n = [1-\frac{t^2}{2N}+O\left(\frac{t^2}{N}\right)]^N\] When \(n\) approaches infinity, \(O(\frac{t^2}{N})\) converges to zero faster than \(\frac{t^2}{2N}\) , and therefore, the limit value converges as follows: \[\lim_{N\rightarrow \infty}\phi_{S_N}(t) = \lim_{N\rightarrow\infty}\left[1-\frac{t^2}{2N}\right]^N=e^{-t^2/2}\] Sample Size and Number of Samples Statisticians typically say that a sample size of 30 or more is sufficient for a distribution to safely follow a normal distribution, but this is just a rule of thumb. In reality, more samples may be needed if the population distribution is highly asymmetric. Sample size guarantees the accuracy and representativeness of individual samples, and a sufficient number of samples relates to the reliability of the entire study and the generalizability of the results. The following represents the distribution of averages from samples of integers from 1 to 10. Simulation of Sample Size and Number of Samples 출처: Wolfram, The Central Limit Theorem(Chris Boucher) If the number of samples is excessively low, no matter how large the sample size, it merely accumulates the distribution of the samples, not the population. This result should be seriously considered for generalizability. Therefore, simply thinking “if the sample size is large, it converges to a normal distribution!” needs caution. Ideally, both a large sample size and a high number of samples would be the best scenario. So, why Is the Normal Distribution Important? In inferential statistics based on sampling techniques, understanding the distribution of sample means is crucial for tracking the population mean. According to the Central Limit Theorem, if sampling is conducted from sufficiently large samples, even without knowing anything about the population mean, the distribution of these sample means will converge to a normal distribution. Typically, in many scenarios, we try to estimate the population distribution based on the distribution of average values obtained from consistently sampled observations. This attempt ensures that we frequently encounter the normal distribution inevitably. 참조 Normal Distribution: An Introductory Guide to PDF and CDF(Teena Mary) 가우시안(Gaussian)-정규분포(Normal Distribution).너란 분포 정말(친절한 데이터 사이언스 강좌) “Python Implementation of Central Limit Theorem: Exploring Sample Data to Infer Population Parameters”(Amanatullah) Understanding Convolutions(colah’s blog) Characteristic Functions and the Central Limit Theorem(University of Waterloo) Sampling Distribution of the Mean Simulation]]></summary></entry><entry xml:lang="ko"><title type="html">포아송 분포</title><link href="http://localhost:4000/2024/04/02/poisson_distribution_ko.html" rel="alternate" type="text/html" title="포아송 분포" /><published>2024-04-02T00:00:00+09:00</published><updated>2024-04-02T00:00:00+09:00</updated><id>http://localhost:4000/2024/04/02/poisson_distribution_ko</id><content type="html" xml:base="http://localhost:4000/2024/04/02/poisson_distribution_ko.html"><![CDATA[<p align="center">
+  <img class="image image--md" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/poisson_distribution/Simeon Denis Poisson.jpg" />
+</p>
+
+<p>프랑스의 수학자 Siméon Denis Poisson는 이산 확률 분포의 한 형태로 포아송 분포를 처음 소개하였다. 이후 1898년 폴란드계 수학자 Ladislaus Bortkiewicz가 프로이센 군대의 군인들이 말차기로 우연히 죽는 빈도를 포아송 분포로 잘 모델링해 보임으로써 포아송 분포의 실제 적용이 이루어졌다.</p>
+
+<h2 id="이항-분포의-포아송-분포로의-전환">이항 분포의 포아송 분포로의 전환</h2>
+<h3 id="포아송-케이스">포아송 케이스</h3>
+<p>앞서 <a href="https://jenniione.github.io/2024/03/27/binomial_distribution_ko.html#%EC%9D%B4%ED%95%AD-%EB%B6%84%ED%8F%AC%EC%9D%98-%EC%A0%95%EA%B7%9C-%EB%B6%84%ED%8F%AC-%EA%B7%BC%EC%82%AC">이항 분포의 시뮬레이션</a>을 통해, 다양한 경우의 이항 분포 형태를 확인할 수 있었다. 그 중 극단적인 n(시행횟수), p(성공확률)의 값에 대한 이항 분포는 정규 분포로의 근사와는 다른 독특한 분포 형태를 취했다. 특히 <strong>시행 횟수인 n이 충분히 큼에도 불구하고 성공 확률 p값이 지나치게 작을 경우</strong>, 다음과 같은 분포를 보인다는 것을 보았다.</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/small p.png" />
+</p>
+
+<p>이러한 사건은 사실 이항 분포로 설명되는 대부분의 사건들과는 다른 특별한 케이스로, 이항 분포로 설명하기에 최적화되었다고 말하기 어렵다. 포아송 분포는 이러한 특별한 사건을 집중적으로 설명하기 위해 소개된 분포라고 할 수 있다. 포아송 분포가 다루는 사건에 대해 보다 자세히 살펴보자.</p>
+
+<h3 id="포아송-케이스에-대한-이항-분포의-한계">포아송 케이스에 대한 이항 분포의 한계</h3>
+<p>포아송 분포의 실제 적용에 기여한  Ladislaus Bortkiewicz의 ‘프로이센 군대의 군인들이 말차기로 우연히 죽는 빈도’ 문제를 생각해 보자. 어느날 프로이센의 군대를 관찰하던 중 군인들이 말차기로 우연히 죽는다는 것을 발견했다. 20년동안 매년 10명 정도의 군인이 말에 치여 사망하는 것 같다. 한해에 5명의 군인만이 말에 차여 사망할 확률을 알 수 있을까?
+이 문제를 해결하기 위해 군인이 죽는지(성공)를 관찰하는 이항 분포만을 고려한다고 가정해 보자. 동전 던지기처럼 군인의 죽음을 관찰하는 n번의 시행이 이루어진다고 했을 때, n을 설정한다는 것은 꽤나 모호하다. 그럼에도 1년을 한번의 시행으로 쳐서 20번의 시행이 이루어졌다고 접근하여도 10명 군인이 1년째에 모두 나타거나, 2년째, …, 20년째에 한번에 나타나는 확률을 구하지 않는 이상 이항 분포의 활용은 꽤나 어려워 보인다. 이는 매년 평균적으로 10명이 죽는다고 해도, 시간을 기준으로 관찰시 <strong>매년 죽은 군인 수라는 사건 발생의 무작위성 때문</strong>이다.</p>
+
+<h3 id="포아송-분포로의-접근과-유도">포아송 분포로의 접근과 유도</h3>
+<p>우리는 이 문제를 해결하기 위해 n과 p라는 이항분포의 파라미터에서 벗어나서, ‘매년 10명’이라는 새로운 파라미터로 문제를 접근할 필요가 있다. 이를 \(\lambda\) 라고 하자. 즉 <u>$\lambda$ 는 단위 시간/공간 당 평균 발생 횟수</u>가 된다. 이는 이항 분포의 맥락에서 일종의 기댓값으로 \(\lambda = np\) 가 된다. ‘평균 10년’이라는 일정한 \(\lambda\) 이 주어졌을 때, 시간(시행)의 연속성을 적용하여 \(n\) 을 무한대로 보내면 \(p\) 는 0으로 접근한다고 볼 수 있다.</p>
+
+\[\lim_{n\rightarrow \infty}p=\lim_{n\rightarrow \infty}\frac{\lambda}{n} = 0\]
+
+<p>그럼, 이항 분포의 확률 밀도 함수에 이를 적용하여 그 극한값을 도출해 보자.</p>
+
+\[\lim_{n \to \infty} B(k; n, p)\]
+
+\[= \lim_{n \to \infty}  { {n}\choose{k} }  p^k(1-p)^{n-k}\]
+
+\[= \lim_{n \to \infty}  \dfrac{n!}{k!(n-k)!}(\dfrac{\lambda}{n})^k  (1-\dfrac{\lambda}{n})^{n-k}\]
+
+\[= \lim_{n \to \infty}  {\left[  \dfrac{n!}{(n-k)!  n^k} \right]}  \left[  \dfrac{\lambda^k}{k!}  (1-\dfrac{\lambda}{n})^{n}  \right]  {\left[  (1-\dfrac{\lambda}{n})^{-k}\right]}\]
+
+\[= \lim_{n \to \infty}  {\left[  \dfrac{n(n-1)\dotsb(n-(k-1))}{n^k} \right]}  \left[  \dfrac{\lambda^k}{k!}  (1-\dfrac{\lambda}{n})^{n}  \right]  {\left[  (1-\dfrac{\lambda}{n})^{-k}\right]}\]
+
+\[= 1\left[  \dfrac{\lambda^k}{k!}  e^{-\lambda}\right] 1\]
+
+\[= (\frac{\lambda^k}{k!})e^{-\lambda}\\\]
+
+<p>따라서,</p>
+
+<ul>
+  <li>(6) : \(n\) 이 무한대로 갈때, \(k\)는 상대적으로 작은 상수이므로 위와 같은 극한값이 계산된다.</li>
+</ul>
+
+\[Pr(K=k) = (\frac{\lambda^k}{k!})e^{-\lambda}\]
+
+<p>결국 우리는 고정된 \(lambda\)가 주어졌을 때, n을 무한대로 보내는 이항 분포의 확률 밀도 함수를 도출해 냄으로써, 이항 분포의 파라미터로 설명하기 어려운 사건을 \(lambda\)라는 새로운 파라미터 하나로써 표현할 수 있게 되었다.</p>
+
+<h2 id="포아송-분포의-정의">포아송 분포의 정의</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>DEFINITION</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>포아송(Poisson Distribution)</strong>은 단위 시간 또는 공간에서 발생하는 사건의 수를 모델링하는 확률 분포이다. 확률 변수 \(x\)가 포아송 분포를 따르는 경우 다음과 같이 표기하며, <br /> <center> $$\begin{aligned} x \sim \text{Pois}(\lambda) \end{aligned} $$ </center> <br /> 그 확률 질량 함수는 다음과 같다. <br /> <center> $$\begin{aligned} P(x) = \frac{\lambda^{k} e^{-\lambda}}{k!} \quad \text{ for } k =0,1,2,\cdots \end{aligned} $$</center></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="직관적-포아송-분포">직관적 포아송 분포</h2>
+<p>포아송 분포는 특정 시간 간격이나 공간에서 발생하는 드문 사건의 횟수를 모델링하는 사용된다. 다시 말해, <strong>시행 횟수가 굉장히 크지만 드물게 발생할 확률을 가진 이항적 사건에서, 평균값이 주어졌을 때, 특정 값이 발생할 확률을 효과적으로 계산</strong>할 수 있도록 한다. 이러한 확률 계산은 어떤 상황에서 중요하게 활용될 수 있을까?</p>
+
+<ul>
+  <li>예시 1<br />
+어떤 도시에서 $A$라는 질병이 <u>평균적으로 한 달에 2회</u> 발생한다. 보건 당국은 자원 할당과 질병 대응 준비를 위해 다음 달에 이 질병이 <u>발생하지 않을</u> 수 있을지 알고 싶다.</li>
+</ul>
+
+\[Pr(K=0)\]
+
+\[= \frac{e^{-2} \times 2^0} {0!}\]
+
+\[= 0.1353\]
+
+<p>질병이 평균적으로 관찰되는 수치를 기반해 보았을 때, <u>다음 달에 이 질병이 발생하지 않을 확률은 13%</u>라고 할 수 있다.</p>
+
+<ul>
+  <li>예시 2<br />
+이커머스 웹사이트가 특정 마케팅 캠페인이나 이벤트가 없는 일반적인 날을 기준으로 <u>평균적으로 하루 200건</u>의 주문을 처리한다. 운영팀은 예상 주문량에 따라 배송 준비나 고객 서비스 인력을 조정하는 등 효율적인 관리를 수행하기 위해, 현재 어느 정도의 주문 처리 능력을 보유하고 있는 것인지 알고 싶다. 정확히 &lt;/u&gt;250건&lt;/u&gt;을 처리할 수 있는 확률은 어떻게 될까?</li>
+</ul>
+
+\[P(X=250) = \frac{e^{-200} \times 200^{250}}{250!} = 0.000077\]
+
+<p>이는 웹사이트 운영에 있어서 <u>특정 일의 주문량이 예상치를 초과할 확률이 얼마나 낮은지</u>를 보여준다. 특별히 높은 주문량을 처리할 준비를 해야할 날이 드물다는 정보를 통해, 재고, 배송, 고객 서비스 등의 자원 배치를 효과적으로 계획할 수 있다.</p>
+
+<p>이처럼 포아송 분포는 다양한 상황에서 중요한 정보를 해석하는 데 활용될 수 있다.</p>
+
+<h2 id="포아송-분포의-시뮬레이션">포아송 분포의 시뮬레이션</h2>
+<p>포아송 분포의 파라미터는 \(\lambda\) 하나이다. 그렇다면 \(\lambda\) 값이 변함에 따라 포아송 분포는 어떻게 변화하는 지 살펴보자.</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/poisson_distribution/poisson_distribution.png" />
+</p>
+
+<p>위 그래프는 \(\lambda = 1\)로, 그 값이 매우 작을 때, 대부분의 확률이 0 또는 1로 집중되어 있다는 것을 보여준다.</p>
+
+<p>또한 \(\lambda = 10\), \(\lambda = 30\) 일 때를 보면, <strong>\(\lambda\)값이 커질 수록, 사건 발생 확률이 더 넓고 고르게 분포하며 그래프의 모양이 정규분포에 근사</strong>할 수 있음을 시각적으로 보여준다.</p>
+
+<p>실제로 포아송 분포는 <strong>\(\lambda\) 가 커지면 정규분포 \(N(\lambda, \lambda^{2})\) 에 근사</strong>한다.</p>
+
+<p><br /><br />
+<strong>참조</strong></p>
+
+<p><a href="https://ko.wikipedia.org/wiki/%ED%91%B8%EC%95%84%EC%86%A1_%EB%B6%84%ED%8F%AC">Wikipedia, Poisson Distribution</a><br />
+<a href="https://angeloyeo.github.io/2021/04/26/Poisson_distribution.html">Angelo’s Math Notes(Angelo)</a></p>]]></content><author><name>Jenny Won (Dajeong Won)</name></author><category term="통계학" /><summary type="html"><![CDATA[프랑스의 수학자 Siméon Denis Poisson는 이산 확률 분포의 한 형태로 포아송 분포를 처음 소개하였다. 이후 1898년 폴란드계 수학자 Ladislaus Bortkiewicz가 프로이센 군대의 군인들이 말차기로 우연히 죽는 빈도를 포아송 분포로 잘 모델링해 보임으로써 포아송 분포의 실제 적용이 이루어졌다. 이항 분포의 포아송 분포로의 전환 포아송 케이스 앞서 이항 분포의 시뮬레이션을 통해, 다양한 경우의 이항 분포 형태를 확인할 수 있었다. 그 중 극단적인 n(시행횟수), p(성공확률)의 값에 대한 이항 분포는 정규 분포로의 근사와는 다른 독특한 분포 형태를 취했다. 특히 시행 횟수인 n이 충분히 큼에도 불구하고 성공 확률 p값이 지나치게 작을 경우, 다음과 같은 분포를 보인다는 것을 보았다. 이러한 사건은 사실 이항 분포로 설명되는 대부분의 사건들과는 다른 특별한 케이스로, 이항 분포로 설명하기에 최적화되었다고 말하기 어렵다. 포아송 분포는 이러한 특별한 사건을 집중적으로 설명하기 위해 소개된 분포라고 할 수 있다. 포아송 분포가 다루는 사건에 대해 보다 자세히 살펴보자. 포아송 케이스에 대한 이항 분포의 한계 포아송 분포의 실제 적용에 기여한 Ladislaus Bortkiewicz의 ‘프로이센 군대의 군인들이 말차기로 우연히 죽는 빈도’ 문제를 생각해 보자. 어느날 프로이센의 군대를 관찰하던 중 군인들이 말차기로 우연히 죽는다는 것을 발견했다. 20년동안 매년 10명 정도의 군인이 말에 치여 사망하는 것 같다. 한해에 5명의 군인만이 말에 차여 사망할 확률을 알 수 있을까? 이 문제를 해결하기 위해 군인이 죽는지(성공)를 관찰하는 이항 분포만을 고려한다고 가정해 보자. 동전 던지기처럼 군인의 죽음을 관찰하는 n번의 시행이 이루어진다고 했을 때, n을 설정한다는 것은 꽤나 모호하다. 그럼에도 1년을 한번의 시행으로 쳐서 20번의 시행이 이루어졌다고 접근하여도 10명 군인이 1년째에 모두 나타거나, 2년째, …, 20년째에 한번에 나타나는 확률을 구하지 않는 이상 이항 분포의 활용은 꽤나 어려워 보인다. 이는 매년 평균적으로 10명이 죽는다고 해도, 시간을 기준으로 관찰시 매년 죽은 군인 수라는 사건 발생의 무작위성 때문이다. 포아송 분포로의 접근과 유도 우리는 이 문제를 해결하기 위해 n과 p라는 이항분포의 파라미터에서 벗어나서, ‘매년 10명’이라는 새로운 파라미터로 문제를 접근할 필요가 있다. 이를 \(\lambda\) 라고 하자. 즉 $\lambda$ 는 단위 시간/공간 당 평균 발생 횟수가 된다. 이는 이항 분포의 맥락에서 일종의 기댓값으로 \(\lambda = np\) 가 된다. ‘평균 10년’이라는 일정한 \(\lambda\) 이 주어졌을 때, 시간(시행)의 연속성을 적용하여 \(n\) 을 무한대로 보내면 \(p\) 는 0으로 접근한다고 볼 수 있다. \[\lim_{n\rightarrow \infty}p=\lim_{n\rightarrow \infty}\frac{\lambda}{n} = 0\] 그럼, 이항 분포의 확률 밀도 함수에 이를 적용하여 그 극한값을 도출해 보자. \[\lim_{n \to \infty} B(k; n, p)\] \[= \lim_{n \to \infty} { {n}\choose{k} } p^k(1-p)^{n-k}\] \[= \lim_{n \to \infty} \dfrac{n!}{k!(n-k)!}(\dfrac{\lambda}{n})^k (1-\dfrac{\lambda}{n})^{n-k}\] \[= \lim_{n \to \infty} {\left[ \dfrac{n!}{(n-k)! n^k} \right]} \left[ \dfrac{\lambda^k}{k!} (1-\dfrac{\lambda}{n})^{n} \right] {\left[ (1-\dfrac{\lambda}{n})^{-k}\right]}\] \[= \lim_{n \to \infty} {\left[ \dfrac{n(n-1)\dotsb(n-(k-1))}{n^k} \right]} \left[ \dfrac{\lambda^k}{k!} (1-\dfrac{\lambda}{n})^{n} \right] {\left[ (1-\dfrac{\lambda}{n})^{-k}\right]}\] \[= 1\left[ \dfrac{\lambda^k}{k!} e^{-\lambda}\right] 1\] \[= (\frac{\lambda^k}{k!})e^{-\lambda}\\\] 따라서, (6) : \(n\) 이 무한대로 갈때, \(k\)는 상대적으로 작은 상수이므로 위와 같은 극한값이 계산된다. \[Pr(K=k) = (\frac{\lambda^k}{k!})e^{-\lambda}\] 결국 우리는 고정된 \(lambda\)가 주어졌을 때, n을 무한대로 보내는 이항 분포의 확률 밀도 함수를 도출해 냄으로써, 이항 분포의 파라미터로 설명하기 어려운 사건을 \(lambda\)라는 새로운 파라미터 하나로써 표현할 수 있게 되었다. 포아송 분포의 정의 DEFINITION 포아송(Poisson Distribution)은 단위 시간 또는 공간에서 발생하는 사건의 수를 모델링하는 확률 분포이다. 확률 변수 \(x\)가 포아송 분포를 따르는 경우 다음과 같이 표기하며, $$\begin{aligned} x \sim \text{Pois}(\lambda) \end{aligned} $$ 그 확률 질량 함수는 다음과 같다. $$\begin{aligned} P(x) = \frac{\lambda^{k} e^{-\lambda}}{k!} \quad \text{ for } k =0,1,2,\cdots \end{aligned} $$ 직관적 포아송 분포 포아송 분포는 특정 시간 간격이나 공간에서 발생하는 드문 사건의 횟수를 모델링하는 사용된다. 다시 말해, 시행 횟수가 굉장히 크지만 드물게 발생할 확률을 가진 이항적 사건에서, 평균값이 주어졌을 때, 특정 값이 발생할 확률을 효과적으로 계산할 수 있도록 한다. 이러한 확률 계산은 어떤 상황에서 중요하게 활용될 수 있을까? 예시 1 어떤 도시에서 $A$라는 질병이 평균적으로 한 달에 2회 발생한다. 보건 당국은 자원 할당과 질병 대응 준비를 위해 다음 달에 이 질병이 발생하지 않을 수 있을지 알고 싶다. \[Pr(K=0)\] \[= \frac{e^{-2} \times 2^0} {0!}\] \[= 0.1353\] 질병이 평균적으로 관찰되는 수치를 기반해 보았을 때, 다음 달에 이 질병이 발생하지 않을 확률은 13%라고 할 수 있다. 예시 2 이커머스 웹사이트가 특정 마케팅 캠페인이나 이벤트가 없는 일반적인 날을 기준으로 평균적으로 하루 200건의 주문을 처리한다. 운영팀은 예상 주문량에 따라 배송 준비나 고객 서비스 인력을 조정하는 등 효율적인 관리를 수행하기 위해, 현재 어느 정도의 주문 처리 능력을 보유하고 있는 것인지 알고 싶다. 정확히 &lt;/u&gt;250건&lt;/u&gt;을 처리할 수 있는 확률은 어떻게 될까? \[P(X=250) = \frac{e^{-200} \times 200^{250}}{250!} = 0.000077\] 이는 웹사이트 운영에 있어서 특정 일의 주문량이 예상치를 초과할 확률이 얼마나 낮은지를 보여준다. 특별히 높은 주문량을 처리할 준비를 해야할 날이 드물다는 정보를 통해, 재고, 배송, 고객 서비스 등의 자원 배치를 효과적으로 계획할 수 있다. 이처럼 포아송 분포는 다양한 상황에서 중요한 정보를 해석하는 데 활용될 수 있다. 포아송 분포의 시뮬레이션 포아송 분포의 파라미터는 \(\lambda\) 하나이다. 그렇다면 \(\lambda\) 값이 변함에 따라 포아송 분포는 어떻게 변화하는 지 살펴보자. 위 그래프는 \(\lambda = 1\)로, 그 값이 매우 작을 때, 대부분의 확률이 0 또는 1로 집중되어 있다는 것을 보여준다. 또한 \(\lambda = 10\), \(\lambda = 30\) 일 때를 보면, \(\lambda\)값이 커질 수록, 사건 발생 확률이 더 넓고 고르게 분포하며 그래프의 모양이 정규분포에 근사할 수 있음을 시각적으로 보여준다. 실제로 포아송 분포는 \(\lambda\) 가 커지면 정규분포 \(N(\lambda, \lambda^{2})\) 에 근사한다. 참조 Wikipedia, Poisson Distribution Angelo’s Math Notes(Angelo)]]></summary></entry><entry xml:lang="en"><title type="html">Poisson Distribution</title><link href="http://localhost:4000/2024/04/02/poisson_distribution_en.html" rel="alternate" type="text/html" title="Poisson Distribution" /><published>2024-04-02T00:00:00+09:00</published><updated>2024-04-02T00:00:00+09:00</updated><id>http://localhost:4000/2024/04/02/poisson_distribution_en</id><content type="html" xml:base="http://localhost:4000/2024/04/02/poisson_distribution_en.html"><![CDATA[<p align="center">
   <img class="image image--md" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/poisson_distribution/Simeon Denis Poisson.jpg" />
 </p>
 
@@ -995,192 +1270,7 @@ An e-commerce website processes an <u>average of 200 orders on a typical day</u>
 <strong>Referencess</strong></p>
 
 <p><a href="https://ko.wikipedia.org/wiki/%ED%91%B8%EC%95%84%EC%86%A1_%EB%B6%84%ED%8F%AC">Wikipedia, Poisson Distribution</a><br />
-<a href="https://angeloyeo.github.io/2021/04/26/Poisson_distribution.html">Angelo’s Math Notes(Angelo)</a></p>]]></content><author><name>Jenny Won (Dajeong Won)</name></author><category term="Statistics" /><summary type="html"><![CDATA[The French mathematician Siméon Denis Poisson first introduced the Poisson distribution as a form of discrete probability distribution. Later, in 1898, the Polish mathematician Ladislaus Bortkiewicz effectively modeled the frequency of accidental deaths from horse kicks in the Prussian army using the Poisson distribution, demonstrating its practical application. Transition from Binomial to Poisson Distribution Poisson Cases Earlier simulations of the binomial distribution revealed various forms it could take. Particularly, when the number of trials \(n\) is large but the probability of success \(p\) is extremely small, the distribution adopts a unique shape, as observed here: Such cases are not ideally explained by the binomial distribution and are more suitably described by the Poisson distribution. Let’s delve deeper into events handled by the Poisson distribution. Limitations of the Binomial Distribution for Poisson Cases Consider Ladislaus Bortkiewicz’s problem of the frequency of Prussian soldiers dying from horse kicks. Observing over 20 years, about 10 soldiers per year seemed to die from such incidents. How likely is it that only 5 soldiers would die in a year? If we only consider a binomial distribution where observing a soldier’s death is a success, setting \(n\) becomes ambiguous. Even if we consider one year as one trial, totaling 20 trials, binomial distribution struggles due to the randomness of annual death counts, despite an average of 10 per year. All 10 soldiers would show up in the first year, or in the second year… , it seems quite difficult to use the binomial distribution unless you are looking for the probability of it appearing at once every 20 years. Transition to Poisson Distribution To address this, we need to move away from the binomial parameters \(n\) and \(p\) , and introduce a new parameter, \(\lambda\), representing the average number of events per unit time or space. Here, \(\lambda\) becomes a kind of expected value \(\lambda=np\) . With a constant \(\lambda\) like ‘average 10 years,’ as \(n\) approaches infinity, \(p\) approaches zero: \[\lim_{n\rightarrow \infty}p=\lim_{n\rightarrow \infty}\frac{\lambda}{n} = 0\] Let’s apply this to the probability density function of the binomial distribution and derive its limit: \[\lim_{n \to \infty} B(k; n, p)\] \[= \lim_{n \to \infty} { {n}\choose{k} } p^k(1-p)^{n-k}\] \[= \lim_{n \to \infty} \dfrac{n!}{k!(n-k)!}(\dfrac{\lambda}{n})^k (1-\dfrac{\lambda}{n})^{n-k}\] \[= \lim_{n \to \infty} {\left[ \dfrac{n!}{(n-k)! n^k} \right]} \left[ \dfrac{\lambda^k}{k!} (1-\dfrac{\lambda}{n})^{n} \right] {\left[ (1-\dfrac{\lambda}{n})^{-k}\right]}\] \[= \lim_{n \to \infty} {\left[ \dfrac{n(n-1)\dotsb(n-(k-1))}{n^k} \right]} \left[ \dfrac{\lambda^k}{k!} (1-\dfrac{\lambda}{n})^{n} \right] {\left[ (1-\dfrac{\lambda}{n})^{-k}\right]}\] \[= 1\left[ \dfrac{\lambda^k}{k!} e^{-\lambda}\right] 1\] \[= (\frac{\lambda^k}{k!})e^{-\lambda}\\\] Therefore, (6) : As \(n\) approaches infinity, and since \(k\) is relatively small, the above limit is calculated. \[Pr(K=k) = (\frac{\lambda^k}{k!})e^{-\lambda}\] Ultimately, with a fixed \(\lambda\), we derived the probability density function of the binomial distribution as \(n\) approaches infinity, allowing us to express events difficult to describe with binomial parameters using just the single new parameter \(\lambda\) . Definition of the Poisson Distribution DEFINITION The Poisson Distribution models the number of events occurring in a fixed unit of time or space. When a random variabel \(x\) follows the Poisson distribution, it is denoted as $$ \begin{aligned} x \sim \text{Pois}(\lambda) \end{aligned} $$ with the probability mass function given by: $$\begin{aligned} P(x) = \frac{\lambda^{k} e^{-\lambda}}{k!} \quad \text{ for } k =0,1,2,\cdots \end{aligned} $$ Intuitive Understanding of the Poisson Distribution The Poisson distribution models the frequency of rare events over a particular time interval or space, effectively calculating the probability of specific outcomes given an average value. How can this be practically important? Example 1 Suppose a city typically experiences two instances of Disease $$A$$ per month. Public health officials want to know the probability of zero occurrences next month: \[Pr(K=0)\] \[= \frac{e^{-2} \times 2^0} {0!}\] \[= 0.1353\] This means there is a 13% chance that the disease will not occur next month, based on average observations. Example 2 An e-commerce website processes an average of 200 orders on a typical day without special promotions or events. The operations team might want to know the probability of exactly 250 orders to adjust delivery preparations or customer service staffing effectively: \[P(X=250) = \frac{e^{-200} \times 200^{250}}{250!} = 0.000077\] This low probability suggests that days with significantly higher than expected order volumes are rare, helping in planning resources efficiently for inventory, shipping 이처럼 포아송 분포는 다양한 상황에서 중요한 정보를 해석하는 데 활용될 수 있다. Simulation of the Poisson Distribution The parameter of the Poisson distribution is \(\lambda\) . Let’s explore how the Poisson distribution changes as \(\lambda\) varies. The graph above shows \(\lambda=1\), illustrating that when the value is very small, most probabilities are concentrated around 0 or 1. Also, for \(\lambda=10\) and \(\lambda=30\), as \(\lambda\) increases, the probability of events is more evenly distributed, and the shape of the graph approximates a normal distribution. In fact, as \(\lambda\) increases, the Poisson distribution approximates a normal distribution \(N(\lambda, \lambda^{2})\) . Referencess Wikipedia, Poisson Distribution Angelo’s Math Notes(Angelo)]]></summary></entry><entry xml:lang="ko"><title type="html">포아송 분포</title><link href="http://localhost:4000/2024/04/02/poisson_distribution_ko.html" rel="alternate" type="text/html" title="포아송 분포" /><published>2024-04-02T00:00:00+09:00</published><updated>2024-04-02T00:00:00+09:00</updated><id>http://localhost:4000/2024/04/02/poisson_distribution_ko</id><content type="html" xml:base="http://localhost:4000/2024/04/02/poisson_distribution_ko.html"><![CDATA[<p align="center">
-  <img class="image image--md" src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/poisson_distribution/Simeon Denis Poisson.jpg" />
-</p>
-
-<p>프랑스의 수학자 Siméon Denis Poisson는 이산 확률 분포의 한 형태로 포아송 분포를 처음 소개하였다. 이후 1898년 폴란드계 수학자 Ladislaus Bortkiewicz가 프로이센 군대의 군인들이 말차기로 우연히 죽는 빈도를 포아송 분포로 잘 모델링해 보임으로써 포아송 분포의 실제 적용이 이루어졌다.</p>
-
-<h2 id="이항-분포의-포아송-분포로의-전환">이항 분포의 포아송 분포로의 전환</h2>
-<h3 id="포아송-케이스">포아송 케이스</h3>
-<p>앞서 <a href="https://jenniione.github.io/2024/03/27/binomial_distribution_ko.html#%EC%9D%B4%ED%95%AD-%EB%B6%84%ED%8F%AC%EC%9D%98-%EC%A0%95%EA%B7%9C-%EB%B6%84%ED%8F%AC-%EA%B7%BC%EC%82%AC">이항 분포의 시뮬레이션</a>을 통해, 다양한 경우의 이항 분포 형태를 확인할 수 있었다. 그 중 극단적인 n(시행횟수), p(성공확률)의 값에 대한 이항 분포는 정규 분포로의 근사와는 다른 독특한 분포 형태를 취했다. 특히 <strong>시행 횟수인 n이 충분히 큼에도 불구하고 성공 확률 p값이 지나치게 작을 경우</strong>, 다음과 같은 분포를 보인다는 것을 보았다.</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/small p.png" />
-</p>
-
-<p>이러한 사건은 사실 이항 분포로 설명되는 대부분의 사건들과는 다른 특별한 케이스로, 이항 분포로 설명하기에 최적화되었다고 말하기 어렵다. 포아송 분포는 이러한 특별한 사건을 집중적으로 설명하기 위해 소개된 분포라고 할 수 있다. 포아송 분포가 다루는 사건에 대해 보다 자세히 살펴보자.</p>
-
-<h3 id="포아송-케이스에-대한-이항-분포의-한계">포아송 케이스에 대한 이항 분포의 한계</h3>
-<p>포아송 분포의 실제 적용에 기여한  Ladislaus Bortkiewicz의 ‘프로이센 군대의 군인들이 말차기로 우연히 죽는 빈도’ 문제를 생각해 보자. 어느날 프로이센의 군대를 관찰하던 중 군인들이 말차기로 우연히 죽는다는 것을 발견했다. 20년동안 매년 10명 정도의 군인이 말에 치여 사망하는 것 같다. 한해에 5명의 군인만이 말에 차여 사망할 확률을 알 수 있을까?
-이 문제를 해결하기 위해 군인이 죽는지(성공)를 관찰하는 이항 분포만을 고려한다고 가정해 보자. 동전 던지기처럼 군인의 죽음을 관찰하는 n번의 시행이 이루어진다고 했을 때, n을 설정한다는 것은 꽤나 모호하다. 그럼에도 1년을 한번의 시행으로 쳐서 20번의 시행이 이루어졌다고 접근하여도 10명 군인이 1년째에 모두 나타거나, 2년째, …, 20년째에 한번에 나타나는 확률을 구하지 않는 이상 이항 분포의 활용은 꽤나 어려워 보인다. 이는 매년 평균적으로 10명이 죽는다고 해도, 시간을 기준으로 관찰시 <strong>매년 죽은 군인 수라는 사건 발생의 무작위성 때문</strong>이다.</p>
-
-<h3 id="포아송-분포로의-접근과-유도">포아송 분포로의 접근과 유도</h3>
-<p>우리는 이 문제를 해결하기 위해 n과 p라는 이항분포의 파라미터에서 벗어나서, ‘매년 10명’이라는 새로운 파라미터로 문제를 접근할 필요가 있다. 이를 \(\lambda\) 라고 하자. 즉 <u>$\lambda$ 는 단위 시간/공간 당 평균 발생 횟수</u>가 된다. 이는 이항 분포의 맥락에서 일종의 기댓값으로 \(\lambda = np\) 가 된다. ‘평균 10년’이라는 일정한 \(\lambda\) 이 주어졌을 때, 시간(시행)의 연속성을 적용하여 \(n\) 을 무한대로 보내면 \(p\) 는 0으로 접근한다고 볼 수 있다.</p>
-
-\[\lim_{n\rightarrow \infty}p=\lim_{n\rightarrow \infty}\frac{\lambda}{n} = 0\]
-
-<p>그럼, 이항 분포의 확률 밀도 함수에 이를 적용하여 그 극한값을 도출해 보자.</p>
-
-\[\lim_{n \to \infty} B(k; n, p)\]
-
-\[= \lim_{n \to \infty}  { {n}\choose{k} }  p^k(1-p)^{n-k}\]
-
-\[= \lim_{n \to \infty}  \dfrac{n!}{k!(n-k)!}(\dfrac{\lambda}{n})^k  (1-\dfrac{\lambda}{n})^{n-k}\]
-
-\[= \lim_{n \to \infty}  {\left[  \dfrac{n!}{(n-k)!  n^k} \right]}  \left[  \dfrac{\lambda^k}{k!}  (1-\dfrac{\lambda}{n})^{n}  \right]  {\left[  (1-\dfrac{\lambda}{n})^{-k}\right]}\]
-
-\[= \lim_{n \to \infty}  {\left[  \dfrac{n(n-1)\dotsb(n-(k-1))}{n^k} \right]}  \left[  \dfrac{\lambda^k}{k!}  (1-\dfrac{\lambda}{n})^{n}  \right]  {\left[  (1-\dfrac{\lambda}{n})^{-k}\right]}\]
-
-\[= 1\left[  \dfrac{\lambda^k}{k!}  e^{-\lambda}\right] 1\]
-
-\[= (\frac{\lambda^k}{k!})e^{-\lambda}\\\]
-
-<p>따라서,</p>
-
-<ul>
-  <li>(6) : \(n\) 이 무한대로 갈때, \(k\)는 상대적으로 작은 상수이므로 위와 같은 극한값이 계산된다.</li>
-</ul>
-
-\[Pr(K=k) = (\frac{\lambda^k}{k!})e^{-\lambda}\]
-
-<p>결국 우리는 고정된 \(lambda\)가 주어졌을 때, n을 무한대로 보내는 이항 분포의 확률 밀도 함수를 도출해 냄으로써, 이항 분포의 파라미터로 설명하기 어려운 사건을 \(lambda\)라는 새로운 파라미터 하나로써 표현할 수 있게 되었다.</p>
-
-<h2 id="포아송-분포의-정의">포아송 분포의 정의</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>DEFINITION</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>포아송(Poisson Distribution)</strong>은 단위 시간 또는 공간에서 발생하는 사건의 수를 모델링하는 확률 분포이다. 확률 변수 \(x\)가 포아송 분포를 따르는 경우 다음과 같이 표기하며, <br /> <center> $$\begin{aligned} x \sim \text{Pois}(\lambda) \end{aligned} $$ </center> <br /> 그 확률 질량 함수는 다음과 같다. <br /> <center> $$\begin{aligned} P(x) = \frac{\lambda^{k} e^{-\lambda}}{k!} \quad \text{ for } k =0,1,2,\cdots \end{aligned} $$</center></td>
-    </tr>
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="직관적-포아송-분포">직관적 포아송 분포</h2>
-<p>포아송 분포는 특정 시간 간격이나 공간에서 발생하는 드문 사건의 횟수를 모델링하는 사용된다. 다시 말해, <strong>시행 횟수가 굉장히 크지만 드물게 발생할 확률을 가진 이항적 사건에서, 평균값이 주어졌을 때, 특정 값이 발생할 확률을 효과적으로 계산</strong>할 수 있도록 한다. 이러한 확률 계산은 어떤 상황에서 중요하게 활용될 수 있을까?</p>
-
-<ul>
-  <li>예시 1<br />
-어떤 도시에서 $A$라는 질병이 <u>평균적으로 한 달에 2회</u> 발생한다. 보건 당국은 자원 할당과 질병 대응 준비를 위해 다음 달에 이 질병이 <u>발생하지 않을</u> 수 있을지 알고 싶다.</li>
-</ul>
-
-\[Pr(K=0)\]
-
-\[= \frac{e^{-2} \times 2^0} {0!}\]
-
-\[= 0.1353\]
-
-<p>질병이 평균적으로 관찰되는 수치를 기반해 보았을 때, <u>다음 달에 이 질병이 발생하지 않을 확률은 13%</u>라고 할 수 있다.</p>
-
-<ul>
-  <li>예시 2<br />
-이커머스 웹사이트가 특정 마케팅 캠페인이나 이벤트가 없는 일반적인 날을 기준으로 <u>평균적으로 하루 200건</u>의 주문을 처리한다. 운영팀은 예상 주문량에 따라 배송 준비나 고객 서비스 인력을 조정하는 등 효율적인 관리를 수행하기 위해, 현재 어느 정도의 주문 처리 능력을 보유하고 있는 것인지 알고 싶다. 정확히 &lt;/u&gt;250건&lt;/u&gt;을 처리할 수 있는 확률은 어떻게 될까?</li>
-</ul>
-
-\[P(X=250) = \frac{e^{-200} \times 200^{250}}{250!} = 0.000077\]
-
-<p>이는 웹사이트 운영에 있어서 <u>특정 일의 주문량이 예상치를 초과할 확률이 얼마나 낮은지</u>를 보여준다. 특별히 높은 주문량을 처리할 준비를 해야할 날이 드물다는 정보를 통해, 재고, 배송, 고객 서비스 등의 자원 배치를 효과적으로 계획할 수 있다.</p>
-
-<p>이처럼 포아송 분포는 다양한 상황에서 중요한 정보를 해석하는 데 활용될 수 있다.</p>
-
-<h2 id="포아송-분포의-시뮬레이션">포아송 분포의 시뮬레이션</h2>
-<p>포아송 분포의 파라미터는 \(\lambda\) 하나이다. 그렇다면 \(\lambda\) 값이 변함에 따라 포아송 분포는 어떻게 변화하는 지 살펴보자.</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/poisson_distribution/poisson_distribution.png" />
-</p>
-
-<p>위 그래프는 \(\lambda = 1\)로, 그 값이 매우 작을 때, 대부분의 확률이 0 또는 1로 집중되어 있다는 것을 보여준다.</p>
-
-<p>또한 \(\lambda = 10\), \(\lambda = 30\) 일 때를 보면, <strong>\(\lambda\)값이 커질 수록, 사건 발생 확률이 더 넓고 고르게 분포하며 그래프의 모양이 정규분포에 근사</strong>할 수 있음을 시각적으로 보여준다.</p>
-
-<p>실제로 포아송 분포는 <strong>\(\lambda\) 가 커지면 정규분포 \(N(\lambda, \lambda^{2})\) 에 근사</strong>한다.</p>
-
-<p><br /><br />
-<strong>참조</strong></p>
-
-<p><a href="https://ko.wikipedia.org/wiki/%ED%91%B8%EC%95%84%EC%86%A1_%EB%B6%84%ED%8F%AC">Wikipedia, Poisson Distribution</a><br />
-<a href="https://angeloyeo.github.io/2021/04/26/Poisson_distribution.html">Angelo’s Math Notes(Angelo)</a></p>]]></content><author><name>Jenny Won (Dajeong Won)</name></author><category term="통계학" /><summary type="html"><![CDATA[프랑스의 수학자 Siméon Denis Poisson는 이산 확률 분포의 한 형태로 포아송 분포를 처음 소개하였다. 이후 1898년 폴란드계 수학자 Ladislaus Bortkiewicz가 프로이센 군대의 군인들이 말차기로 우연히 죽는 빈도를 포아송 분포로 잘 모델링해 보임으로써 포아송 분포의 실제 적용이 이루어졌다. 이항 분포의 포아송 분포로의 전환 포아송 케이스 앞서 이항 분포의 시뮬레이션을 통해, 다양한 경우의 이항 분포 형태를 확인할 수 있었다. 그 중 극단적인 n(시행횟수), p(성공확률)의 값에 대한 이항 분포는 정규 분포로의 근사와는 다른 독특한 분포 형태를 취했다. 특히 시행 횟수인 n이 충분히 큼에도 불구하고 성공 확률 p값이 지나치게 작을 경우, 다음과 같은 분포를 보인다는 것을 보았다. 이러한 사건은 사실 이항 분포로 설명되는 대부분의 사건들과는 다른 특별한 케이스로, 이항 분포로 설명하기에 최적화되었다고 말하기 어렵다. 포아송 분포는 이러한 특별한 사건을 집중적으로 설명하기 위해 소개된 분포라고 할 수 있다. 포아송 분포가 다루는 사건에 대해 보다 자세히 살펴보자. 포아송 케이스에 대한 이항 분포의 한계 포아송 분포의 실제 적용에 기여한 Ladislaus Bortkiewicz의 ‘프로이센 군대의 군인들이 말차기로 우연히 죽는 빈도’ 문제를 생각해 보자. 어느날 프로이센의 군대를 관찰하던 중 군인들이 말차기로 우연히 죽는다는 것을 발견했다. 20년동안 매년 10명 정도의 군인이 말에 치여 사망하는 것 같다. 한해에 5명의 군인만이 말에 차여 사망할 확률을 알 수 있을까? 이 문제를 해결하기 위해 군인이 죽는지(성공)를 관찰하는 이항 분포만을 고려한다고 가정해 보자. 동전 던지기처럼 군인의 죽음을 관찰하는 n번의 시행이 이루어진다고 했을 때, n을 설정한다는 것은 꽤나 모호하다. 그럼에도 1년을 한번의 시행으로 쳐서 20번의 시행이 이루어졌다고 접근하여도 10명 군인이 1년째에 모두 나타거나, 2년째, …, 20년째에 한번에 나타나는 확률을 구하지 않는 이상 이항 분포의 활용은 꽤나 어려워 보인다. 이는 매년 평균적으로 10명이 죽는다고 해도, 시간을 기준으로 관찰시 매년 죽은 군인 수라는 사건 발생의 무작위성 때문이다. 포아송 분포로의 접근과 유도 우리는 이 문제를 해결하기 위해 n과 p라는 이항분포의 파라미터에서 벗어나서, ‘매년 10명’이라는 새로운 파라미터로 문제를 접근할 필요가 있다. 이를 \(\lambda\) 라고 하자. 즉 $\lambda$ 는 단위 시간/공간 당 평균 발생 횟수가 된다. 이는 이항 분포의 맥락에서 일종의 기댓값으로 \(\lambda = np\) 가 된다. ‘평균 10년’이라는 일정한 \(\lambda\) 이 주어졌을 때, 시간(시행)의 연속성을 적용하여 \(n\) 을 무한대로 보내면 \(p\) 는 0으로 접근한다고 볼 수 있다. \[\lim_{n\rightarrow \infty}p=\lim_{n\rightarrow \infty}\frac{\lambda}{n} = 0\] 그럼, 이항 분포의 확률 밀도 함수에 이를 적용하여 그 극한값을 도출해 보자. \[\lim_{n \to \infty} B(k; n, p)\] \[= \lim_{n \to \infty} { {n}\choose{k} } p^k(1-p)^{n-k}\] \[= \lim_{n \to \infty} \dfrac{n!}{k!(n-k)!}(\dfrac{\lambda}{n})^k (1-\dfrac{\lambda}{n})^{n-k}\] \[= \lim_{n \to \infty} {\left[ \dfrac{n!}{(n-k)! n^k} \right]} \left[ \dfrac{\lambda^k}{k!} (1-\dfrac{\lambda}{n})^{n} \right] {\left[ (1-\dfrac{\lambda}{n})^{-k}\right]}\] \[= \lim_{n \to \infty} {\left[ \dfrac{n(n-1)\dotsb(n-(k-1))}{n^k} \right]} \left[ \dfrac{\lambda^k}{k!} (1-\dfrac{\lambda}{n})^{n} \right] {\left[ (1-\dfrac{\lambda}{n})^{-k}\right]}\] \[= 1\left[ \dfrac{\lambda^k}{k!} e^{-\lambda}\right] 1\] \[= (\frac{\lambda^k}{k!})e^{-\lambda}\\\] 따라서, (6) : \(n\) 이 무한대로 갈때, \(k\)는 상대적으로 작은 상수이므로 위와 같은 극한값이 계산된다. \[Pr(K=k) = (\frac{\lambda^k}{k!})e^{-\lambda}\] 결국 우리는 고정된 \(lambda\)가 주어졌을 때, n을 무한대로 보내는 이항 분포의 확률 밀도 함수를 도출해 냄으로써, 이항 분포의 파라미터로 설명하기 어려운 사건을 \(lambda\)라는 새로운 파라미터 하나로써 표현할 수 있게 되었다. 포아송 분포의 정의 DEFINITION 포아송(Poisson Distribution)은 단위 시간 또는 공간에서 발생하는 사건의 수를 모델링하는 확률 분포이다. 확률 변수 \(x\)가 포아송 분포를 따르는 경우 다음과 같이 표기하며, $$\begin{aligned} x \sim \text{Pois}(\lambda) \end{aligned} $$ 그 확률 질량 함수는 다음과 같다. $$\begin{aligned} P(x) = \frac{\lambda^{k} e^{-\lambda}}{k!} \quad \text{ for } k =0,1,2,\cdots \end{aligned} $$ 직관적 포아송 분포 포아송 분포는 특정 시간 간격이나 공간에서 발생하는 드문 사건의 횟수를 모델링하는 사용된다. 다시 말해, 시행 횟수가 굉장히 크지만 드물게 발생할 확률을 가진 이항적 사건에서, 평균값이 주어졌을 때, 특정 값이 발생할 확률을 효과적으로 계산할 수 있도록 한다. 이러한 확률 계산은 어떤 상황에서 중요하게 활용될 수 있을까? 예시 1 어떤 도시에서 $A$라는 질병이 평균적으로 한 달에 2회 발생한다. 보건 당국은 자원 할당과 질병 대응 준비를 위해 다음 달에 이 질병이 발생하지 않을 수 있을지 알고 싶다. \[Pr(K=0)\] \[= \frac{e^{-2} \times 2^0} {0!}\] \[= 0.1353\] 질병이 평균적으로 관찰되는 수치를 기반해 보았을 때, 다음 달에 이 질병이 발생하지 않을 확률은 13%라고 할 수 있다. 예시 2 이커머스 웹사이트가 특정 마케팅 캠페인이나 이벤트가 없는 일반적인 날을 기준으로 평균적으로 하루 200건의 주문을 처리한다. 운영팀은 예상 주문량에 따라 배송 준비나 고객 서비스 인력을 조정하는 등 효율적인 관리를 수행하기 위해, 현재 어느 정도의 주문 처리 능력을 보유하고 있는 것인지 알고 싶다. 정확히 &lt;/u&gt;250건&lt;/u&gt;을 처리할 수 있는 확률은 어떻게 될까? \[P(X=250) = \frac{e^{-200} \times 200^{250}}{250!} = 0.000077\] 이는 웹사이트 운영에 있어서 특정 일의 주문량이 예상치를 초과할 확률이 얼마나 낮은지를 보여준다. 특별히 높은 주문량을 처리할 준비를 해야할 날이 드물다는 정보를 통해, 재고, 배송, 고객 서비스 등의 자원 배치를 효과적으로 계획할 수 있다. 이처럼 포아송 분포는 다양한 상황에서 중요한 정보를 해석하는 데 활용될 수 있다. 포아송 분포의 시뮬레이션 포아송 분포의 파라미터는 \(\lambda\) 하나이다. 그렇다면 \(\lambda\) 값이 변함에 따라 포아송 분포는 어떻게 변화하는 지 살펴보자. 위 그래프는 \(\lambda = 1\)로, 그 값이 매우 작을 때, 대부분의 확률이 0 또는 1로 집중되어 있다는 것을 보여준다. 또한 \(\lambda = 10\), \(\lambda = 30\) 일 때를 보면, \(\lambda\)값이 커질 수록, 사건 발생 확률이 더 넓고 고르게 분포하며 그래프의 모양이 정규분포에 근사할 수 있음을 시각적으로 보여준다. 실제로 포아송 분포는 \(\lambda\) 가 커지면 정규분포 \(N(\lambda, \lambda^{2})\) 에 근사한다. 참조 Wikipedia, Poisson Distribution Angelo’s Math Notes(Angelo)]]></summary></entry><entry xml:lang="en"><title type="html">Geometric Distribution</title><link href="http://localhost:4000/2024/03/28/geometric_distribution_en.html" rel="alternate" type="text/html" title="Geometric Distribution" /><published>2024-03-28T00:00:00+09:00</published><updated>2024-03-28T00:00:00+09:00</updated><id>http://localhost:4000/2024/03/28/geometric_distribution_en</id><content type="html" xml:base="http://localhost:4000/2024/03/28/geometric_distribution_en.html"><![CDATA[<p>If you understand the <a href="https://jenniione.github.io/2024/03/27/binomial_distribution_ko.html">binomial distribution</a>, the geometric distribution is not a difficult concept. While the binomial distribution models the number of successes in a series of Bernoulli trials, the geometric distribution measures <strong>the number of trials until the first success</strong> or <strong>the number of failures before the first success</strong>.</p>
-
-<h2 id="definition-of-the-geometric-distribution">Definition of the Geometric Distribution</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>DEFINITION 1</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>The <strong>Geometric Distribution</strong> models the number of trials until the first success in a series of Bernoulli trials.             </td>
-    </tr>
-  </tbody>
-</table>
-
-<table>
-  <thead>
-    <tr>
-      <th>DEFINITION 2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>The <strong>Geometric Distribution</strong> models the number of failures before the first success in a series of Bernoulli trials.     </td>
-    </tr>
-  </tbody>
-</table>
-
-<p>The geometric distribution is used to model the number of trials until success, with two definitions available. The primary difference between these definitions is whether the count of trials includes the first success. Definition 1 counts all trials including the first success, whereas Definition 2 only considers the trials before the first success.</p>
-
-<p>For example, in coin tossing where a head is defined as success, assume the sequence ‘tail-tail-tail-head’ occurs. According to Definition 1, the number of trials until success, $X$, is 4. Under Definition 2, it considers only the failures before the first success, so $X$ would be 3. This distinction is crucial for interpreting the geometric distribution as it shows a difference of one trial depending on whether the success is included.</p>
-
-<p>The geometric distribution is denoted as:</p>
-
-\[\begin{equation} 
- \begin{aligned} 
-x \sim \text{Geom}(p)
-\end{aligned}   
-\end{equation}\]
-
-<p>And its probability mass function (PMF) is:</p>
-
-\[\begin{equation} 
-\begin{aligned} 
-P(x) = (1-p)^{k-1} p \quad \text{ for } k =1,2,\cdots
-\end{aligned} 
-\end{equation}\]
-
-<h2 id="understanding-the-geometric-distribution">Understanding the Geometric Distribution</h2>
-<p>To illustrate, consider the example of tossing a coin 10 times. Let’s define success as getting a head and $X=x$ as the number of trials until success. When $x=3$, the probability is the product of two failures and one success, calculated as $(1-\frac{1}{2})^2(\frac{1}{2})=0.125$ .</p>
-
-<h2 id="memorylessness-of-the-geometric-distribution">Memorylessness of the Geometric Distribution</h2>
-<p>A key property of the geometric distribution is its memorylessness, expressed mathematically as:</p>
-
-\[P(X &gt; s + t | X &gt; s) = P(X &gt; t)\]
-
-<p>This implies that past outcomes do not influence future probabilities. For instance, even if six tails have already occurred in coin tossing, the probability of a head in the next toss remains \(1/2\) . The fact that six tosses have occurred does not affect the trials going forward. Essentially, even if starting from scratch, the expected number of trials until the first success remains unchanged.</p>
-
-<p>This property of the geometric distribution is particularly useful in network traffic analysis, queuing theory, and more. For instance, if the arrival time of web server requests follows a geometric distribution, the expected time until the next request does not change regardless of how much time has already passed. This can play a crucial role in optimizing wait times, system throughput, and resource allocation strategies.</p>
-
-<h2 id="practical-applications-of-the-geometric-distribution">Practical Applications of the Geometric Distribution</h2>
-<p>The geometric distribution is essentially about observing outcomes until the first success. This characteristic can be used to analyze how many page visits are needed before a user makes their first purchase on a website, or to calculate the probability that a product or service continues without failure over a specific period. It can also assess the efficiency of specific strategies in A/B testing by analyzing the number of trials until a strategy succeeds.</p>
-
-<p><br /><br />
-<strong>References</strong></p>
-
-<p><a href="https://www.geogebra.org/m/twbv2tmk">binomial and geometric distribution(pthao_nguyen, Zoran)</a></p>]]></content><author><name>Jenny Won (Dajeong Won)</name></author><category term="Statistics" /><summary type="html"><![CDATA[If you understand the binomial distribution, the geometric distribution is not a difficult concept. While the binomial distribution models the number of successes in a series of Bernoulli trials, the geometric distribution measures the number of trials until the first success or the number of failures before the first success. Definition of the Geometric Distribution DEFINITION 1 The Geometric Distribution models the number of trials until the first success in a series of Bernoulli trials.              DEFINITION 2 The Geometric Distribution models the number of failures before the first success in a series of Bernoulli trials.      The geometric distribution is used to model the number of trials until success, with two definitions available. The primary difference between these definitions is whether the count of trials includes the first success. Definition 1 counts all trials including the first success, whereas Definition 2 only considers the trials before the first success. For example, in coin tossing where a head is defined as success, assume the sequence ‘tail-tail-tail-head’ occurs. According to Definition 1, the number of trials until success, $X$, is 4. Under Definition 2, it considers only the failures before the first success, so $X$ would be 3. This distinction is crucial for interpreting the geometric distribution as it shows a difference of one trial depending on whether the success is included. The geometric distribution is denoted as: \[\begin{equation}   \begin{aligned}  x \sim \text{Geom}(p) \end{aligned}    \end{equation}\] And its probability mass function (PMF) is: \[\begin{equation}  \begin{aligned}  P(x) = (1-p)^{k-1} p \quad \text{ for } k =1,2,\cdots \end{aligned}  \end{equation}\] Understanding the Geometric Distribution To illustrate, consider the example of tossing a coin 10 times. Let’s define success as getting a head and $X=x$ as the number of trials until success. When $x=3$, the probability is the product of two failures and one success, calculated as $(1-\frac{1}{2})^2(\frac{1}{2})=0.125$ . Memorylessness of the Geometric Distribution A key property of the geometric distribution is its memorylessness, expressed mathematically as: \[P(X &gt; s + t | X &gt; s) = P(X &gt; t)\] This implies that past outcomes do not influence future probabilities. For instance, even if six tails have already occurred in coin tossing, the probability of a head in the next toss remains \(1/2\) . The fact that six tosses have occurred does not affect the trials going forward. Essentially, even if starting from scratch, the expected number of trials until the first success remains unchanged. This property of the geometric distribution is particularly useful in network traffic analysis, queuing theory, and more. For instance, if the arrival time of web server requests follows a geometric distribution, the expected time until the next request does not change regardless of how much time has already passed. This can play a crucial role in optimizing wait times, system throughput, and resource allocation strategies. Practical Applications of the Geometric Distribution The geometric distribution is essentially about observing outcomes until the first success. This characteristic can be used to analyze how many page visits are needed before a user makes their first purchase on a website, or to calculate the probability that a product or service continues without failure over a specific period. It can also assess the efficiency of specific strategies in A/B testing by analyzing the number of trials until a strategy succeeds. References binomial and geometric distribution(pthao_nguyen, Zoran)]]></summary></entry><entry xml:lang="ko"><title type="html">기하 분포</title><link href="http://localhost:4000/2024/03/28/geometric_distribution_ko.html" rel="alternate" type="text/html" title="기하 분포" /><published>2024-03-28T00:00:00+09:00</published><updated>2024-03-28T00:00:00+09:00</updated><id>http://localhost:4000/2024/03/28/geometric_distribution_ko</id><content type="html" xml:base="http://localhost:4000/2024/03/28/geometric_distribution_ko.html"><![CDATA[<p><a href="https://jenniione.github.io/2024/03/27/binomial_distribution_ko.html">이항 분포</a>에 대한 개념을 잘 이해했다면 기하 분포를 그리 어려운 개념은 아니다.
+<a href="https://angeloyeo.github.io/2021/04/26/Poisson_distribution.html">Angelo’s Math Notes(Angelo)</a></p>]]></content><author><name>Jenny Won (Dajeong Won)</name></author><category term="Statistics" /><summary type="html"><![CDATA[The French mathematician Siméon Denis Poisson first introduced the Poisson distribution as a form of discrete probability distribution. Later, in 1898, the Polish mathematician Ladislaus Bortkiewicz effectively modeled the frequency of accidental deaths from horse kicks in the Prussian army using the Poisson distribution, demonstrating its practical application. Transition from Binomial to Poisson Distribution Poisson Cases Earlier simulations of the binomial distribution revealed various forms it could take. Particularly, when the number of trials \(n\) is large but the probability of success \(p\) is extremely small, the distribution adopts a unique shape, as observed here: Such cases are not ideally explained by the binomial distribution and are more suitably described by the Poisson distribution. Let’s delve deeper into events handled by the Poisson distribution. Limitations of the Binomial Distribution for Poisson Cases Consider Ladislaus Bortkiewicz’s problem of the frequency of Prussian soldiers dying from horse kicks. Observing over 20 years, about 10 soldiers per year seemed to die from such incidents. How likely is it that only 5 soldiers would die in a year? If we only consider a binomial distribution where observing a soldier’s death is a success, setting \(n\) becomes ambiguous. Even if we consider one year as one trial, totaling 20 trials, binomial distribution struggles due to the randomness of annual death counts, despite an average of 10 per year. All 10 soldiers would show up in the first year, or in the second year… , it seems quite difficult to use the binomial distribution unless you are looking for the probability of it appearing at once every 20 years. Transition to Poisson Distribution To address this, we need to move away from the binomial parameters \(n\) and \(p\) , and introduce a new parameter, \(\lambda\), representing the average number of events per unit time or space. Here, \(\lambda\) becomes a kind of expected value \(\lambda=np\) . With a constant \(\lambda\) like ‘average 10 years,’ as \(n\) approaches infinity, \(p\) approaches zero: \[\lim_{n\rightarrow \infty}p=\lim_{n\rightarrow \infty}\frac{\lambda}{n} = 0\] Let’s apply this to the probability density function of the binomial distribution and derive its limit: \[\lim_{n \to \infty} B(k; n, p)\] \[= \lim_{n \to \infty} { {n}\choose{k} } p^k(1-p)^{n-k}\] \[= \lim_{n \to \infty} \dfrac{n!}{k!(n-k)!}(\dfrac{\lambda}{n})^k (1-\dfrac{\lambda}{n})^{n-k}\] \[= \lim_{n \to \infty} {\left[ \dfrac{n!}{(n-k)! n^k} \right]} \left[ \dfrac{\lambda^k}{k!} (1-\dfrac{\lambda}{n})^{n} \right] {\left[ (1-\dfrac{\lambda}{n})^{-k}\right]}\] \[= \lim_{n \to \infty} {\left[ \dfrac{n(n-1)\dotsb(n-(k-1))}{n^k} \right]} \left[ \dfrac{\lambda^k}{k!} (1-\dfrac{\lambda}{n})^{n} \right] {\left[ (1-\dfrac{\lambda}{n})^{-k}\right]}\] \[= 1\left[ \dfrac{\lambda^k}{k!} e^{-\lambda}\right] 1\] \[= (\frac{\lambda^k}{k!})e^{-\lambda}\\\] Therefore, (6) : As \(n\) approaches infinity, and since \(k\) is relatively small, the above limit is calculated. \[Pr(K=k) = (\frac{\lambda^k}{k!})e^{-\lambda}\] Ultimately, with a fixed \(\lambda\), we derived the probability density function of the binomial distribution as \(n\) approaches infinity, allowing us to express events difficult to describe with binomial parameters using just the single new parameter \(\lambda\) . Definition of the Poisson Distribution DEFINITION The Poisson Distribution models the number of events occurring in a fixed unit of time or space. When a random variabel \(x\) follows the Poisson distribution, it is denoted as $$ \begin{aligned} x \sim \text{Pois}(\lambda) \end{aligned} $$ with the probability mass function given by: $$\begin{aligned} P(x) = \frac{\lambda^{k} e^{-\lambda}}{k!} \quad \text{ for } k =0,1,2,\cdots \end{aligned} $$ Intuitive Understanding of the Poisson Distribution The Poisson distribution models the frequency of rare events over a particular time interval or space, effectively calculating the probability of specific outcomes given an average value. How can this be practically important? Example 1 Suppose a city typically experiences two instances of Disease $$A$$ per month. Public health officials want to know the probability of zero occurrences next month: \[Pr(K=0)\] \[= \frac{e^{-2} \times 2^0} {0!}\] \[= 0.1353\] This means there is a 13% chance that the disease will not occur next month, based on average observations. Example 2 An e-commerce website processes an average of 200 orders on a typical day without special promotions or events. The operations team might want to know the probability of exactly 250 orders to adjust delivery preparations or customer service staffing effectively: \[P(X=250) = \frac{e^{-200} \times 200^{250}}{250!} = 0.000077\] This low probability suggests that days with significantly higher than expected order volumes are rare, helping in planning resources efficiently for inventory, shipping 이처럼 포아송 분포는 다양한 상황에서 중요한 정보를 해석하는 데 활용될 수 있다. Simulation of the Poisson Distribution The parameter of the Poisson distribution is \(\lambda\) . Let’s explore how the Poisson distribution changes as \(\lambda\) varies. The graph above shows \(\lambda=1\), illustrating that when the value is very small, most probabilities are concentrated around 0 or 1. Also, for \(\lambda=10\) and \(\lambda=30\), as \(\lambda\) increases, the probability of events is more evenly distributed, and the shape of the graph approximates a normal distribution. In fact, as \(\lambda\) increases, the Poisson distribution approximates a normal distribution \(N(\lambda, \lambda^{2})\) . Referencess Wikipedia, Poisson Distribution Angelo’s Math Notes(Angelo)]]></summary></entry><entry xml:lang="ko"><title type="html">기하 분포</title><link href="http://localhost:4000/2024/03/28/geometric_distribution_ko.html" rel="alternate" type="text/html" title="기하 분포" /><published>2024-03-28T00:00:00+09:00</published><updated>2024-03-28T00:00:00+09:00</updated><id>http://localhost:4000/2024/03/28/geometric_distribution_ko</id><content type="html" xml:base="http://localhost:4000/2024/03/28/geometric_distribution_ko.html"><![CDATA[<p><a href="https://jenniione.github.io/2024/03/27/binomial_distribution_ko.html">이항 분포</a>에 대한 개념을 잘 이해했다면 기하 분포를 그리 어려운 개념은 아니다.
 이항 분포가 베르누이 시행에 따른 ‘성공’을 관찰하는 분포라면, 기하 분포는 <strong>‘성공할 때까지의 시행횟수’</strong> 혹은 <strong>‘성공할 때까지의 실패 횟수’</strong> 의 분포이다.</p>
 
 <h2 id="기하-분포의-정의">기하 분포의 정의</h2>
@@ -1249,198 +1339,75 @@ P(x) = (1-p)^{k-1} p \quad \text{ for } k =1,2,\cdots
 <p><br /><br />
 <strong>참조</strong></p>
 
-<p><a href="https://www.geogebra.org/m/twbv2tmk">binomial and geometric distribution(pthao_nguyen, Zoran)</a></p>]]></content><author><name>Jenny Won (Dajeong Won)</name></author><category term="통계학" /><summary type="html"><![CDATA[이항 분포에 대한 개념을 잘 이해했다면 기하 분포를 그리 어려운 개념은 아니다. 이항 분포가 베르누이 시행에 따른 ‘성공’을 관찰하는 분포라면, 기하 분포는 ‘성공할 때까지의 시행횟수’ 혹은 ‘성공할 때까지의 실패 횟수’ 의 분포이다. 기하 분포의 정의 DEFINITION 1 기하 분포(Geometric Distribution)은 이항 분포와 같이 여러번의 베르누이 시행에서 처음 성공이 나타날 때까지의 시행 횟수를 모델링한 확률 분포이다. DEFINITION 2 기하 분포(Geometric Distribution)은 이항 분포와 같이 여러번의 베르누이 시행에서 첫 번째 성공이 나타날 때까지의 실패 횟수를 모델링한 확률 분포이다. 기하 분포는 성공하기까지의 시도 횟수를 모델링하는 데 사용되며, 이에 대한 두 가지 정의가 있다. 이 두 정의의 주요 차이는 성공을 달성하기까지의 시도 횟수에 대한 계산 방법에 있다. 정의 (1)는 첫 성공이 포함된 전체 시도 횟수를 사용하는 반면, 정의 (2)는 첫 성공을 달성하기 전까지의 시도 횟수만을 고려한다. 동전 던지기를 예로 들면, 성공을 앞면이 나오는 경우로 정의할 때, ‘뒷면-뒷면-뒷면-앞면’이라는 결과가 나왔다고 가정하자. 이 상황에서 정의 (1)은 성공까지의 시도 횟수 $X$는 $4$가 된다. 반면에 정의 (2)를 적용하면, 첫 성공을 달성하기 전까지의 시도 횟수, 즉 3이 X의 값으로 사용된다. 이렇게 두 정의는 성공을 포함하는지 여부에 따라 1만큼의 차이를 보이며, 이는 기하 분포를 해석할 때 중요한 고려 사항이 된다. 기하 분포는 다음과 같이 표기하며, \[\begin{equation}   \begin{aligned}  x \sim \text{Geom}(p) \end{aligned}    \end{equation}\] 그 확률 질량 함수(PMF)는 다음과 같다. \[\begin{equation}  \begin{aligned}  P(x) = (1-p)^{k-1} p \quad \text{ for } k =1,2,\cdots \end{aligned}  \end{equation}\] 기하 분포의 이해 확률 함수를 이해하기 위해, 10번의 동전 던지기 예시를 다시 보자. ‘성공’이라는 앞면이 나올 때까지 시행 횟수는 \(X=x\)라고 하자. \(x=3\)일 때, 그 확률은 (실패 확률) $\cdot$ (실패 확률) $\cdot$ (성공 확률), 즉 \((1-\frac{1}{2})^2(\frac{1}{2})=0.125\)이 된다. 기하 분포의 무기억성 기하 분포의 특징에는 무기억성이 있다. 수학적으로는 다음과 같이 표현할 수 있다. \[P(X &gt; s + t | X &gt; s) = P(X &gt; t)\] 이것은 과거의 결과가 미래의 확률에 영향을 주지 않는다는 것을 의미한다. 동전 던지기를 통해 이미 6번의 뒷면이 나왔다고 하여도, 다음 동전 던지기의 앞면이 나올 확률은 여전히 \(1/2\)이다. 또한 7번째 던지기에서 이전에 6번을 던졌다는 사실은 영향을 미치지 않는다. 다시 처음부터 시작해도 첫 성공까지의 기대 시도 횟수는 변하지 않는다는 것이다. 이러한 기하 분포의 무기억성은 네트워크 트래픽 분석, 대기열 이론 등에 유용하게 활용될 수 있다. 웹 서버 요청이 도착하는 시간 간격이 기하 분포를 따른다고 가정할 때, 이미 어느 정도 시간이 지났다 하여도 다음 요청이 도착할 때까지의 기대 시간은 변하지 않는다. 이는 대기 시간, 시스템의 처리량, 자원 할당 전략을 최적화하는데 중요한 역할을 한다. 직관적 기하 분포 기하 분포는 ‘성공’이 발생할 때까지 기다리는 관찰에 따른 결과이다. 이러한 특징은 웹사이트에서 사용자가 처음으로 구매를 하는데 필요한 페이지 방문 횟수, 즉, 실패 횟수를 분석하거나, 어떤 제품이나 서비스가 특정 기간 동안 실패하지 않고 지속될 확률을 계산하는 데에도 사용될 수 있다. 또한 A/B테스팅에서 특정 전략이 성공을 보이기까지의 시도 횟수를 분석하고 그 적략의 효율성을 평가할 수도 있다. 참조 binomial and geometric distribution(pthao_nguyen, Zoran)]]></summary></entry><entry xml:lang="ko"><title type="html">Binomial Distribution</title><link href="http://localhost:4000/2024/03/27/binomial_distribution_en.html" rel="alternate" type="text/html" title="Binomial Distribution" /><published>2024-03-27T00:00:00+09:00</published><updated>2024-03-27T00:00:00+09:00</updated><id>http://localhost:4000/2024/03/27/binomial_distribution_en</id><content type="html" xml:base="http://localhost:4000/2024/03/27/binomial_distribution_en.html"><![CDATA[<p>Before discussing the binomial distribution, let’s briefly review the Bernoulli distribution and explore how it relates to the binomial distribution.</p>
+<p><a href="https://www.geogebra.org/m/twbv2tmk">binomial and geometric distribution(pthao_nguyen, Zoran)</a></p>]]></content><author><name>Jenny Won (Dajeong Won)</name></author><category term="통계학" /><summary type="html"><![CDATA[이항 분포에 대한 개념을 잘 이해했다면 기하 분포를 그리 어려운 개념은 아니다. 이항 분포가 베르누이 시행에 따른 ‘성공’을 관찰하는 분포라면, 기하 분포는 ‘성공할 때까지의 시행횟수’ 혹은 ‘성공할 때까지의 실패 횟수’ 의 분포이다. 기하 분포의 정의 DEFINITION 1 기하 분포(Geometric Distribution)은 이항 분포와 같이 여러번의 베르누이 시행에서 처음 성공이 나타날 때까지의 시행 횟수를 모델링한 확률 분포이다. DEFINITION 2 기하 분포(Geometric Distribution)은 이항 분포와 같이 여러번의 베르누이 시행에서 첫 번째 성공이 나타날 때까지의 실패 횟수를 모델링한 확률 분포이다. 기하 분포는 성공하기까지의 시도 횟수를 모델링하는 데 사용되며, 이에 대한 두 가지 정의가 있다. 이 두 정의의 주요 차이는 성공을 달성하기까지의 시도 횟수에 대한 계산 방법에 있다. 정의 (1)는 첫 성공이 포함된 전체 시도 횟수를 사용하는 반면, 정의 (2)는 첫 성공을 달성하기 전까지의 시도 횟수만을 고려한다. 동전 던지기를 예로 들면, 성공을 앞면이 나오는 경우로 정의할 때, ‘뒷면-뒷면-뒷면-앞면’이라는 결과가 나왔다고 가정하자. 이 상황에서 정의 (1)은 성공까지의 시도 횟수 $X$는 $4$가 된다. 반면에 정의 (2)를 적용하면, 첫 성공을 달성하기 전까지의 시도 횟수, 즉 3이 X의 값으로 사용된다. 이렇게 두 정의는 성공을 포함하는지 여부에 따라 1만큼의 차이를 보이며, 이는 기하 분포를 해석할 때 중요한 고려 사항이 된다. 기하 분포는 다음과 같이 표기하며, \[\begin{equation}   \begin{aligned}  x \sim \text{Geom}(p) \end{aligned}    \end{equation}\] 그 확률 질량 함수(PMF)는 다음과 같다. \[\begin{equation}  \begin{aligned}  P(x) = (1-p)^{k-1} p \quad \text{ for } k =1,2,\cdots \end{aligned}  \end{equation}\] 기하 분포의 이해 확률 함수를 이해하기 위해, 10번의 동전 던지기 예시를 다시 보자. ‘성공’이라는 앞면이 나올 때까지 시행 횟수는 \(X=x\)라고 하자. \(x=3\)일 때, 그 확률은 (실패 확률) $\cdot$ (실패 확률) $\cdot$ (성공 확률), 즉 \((1-\frac{1}{2})^2(\frac{1}{2})=0.125\)이 된다. 기하 분포의 무기억성 기하 분포의 특징에는 무기억성이 있다. 수학적으로는 다음과 같이 표현할 수 있다. \[P(X &gt; s + t | X &gt; s) = P(X &gt; t)\] 이것은 과거의 결과가 미래의 확률에 영향을 주지 않는다는 것을 의미한다. 동전 던지기를 통해 이미 6번의 뒷면이 나왔다고 하여도, 다음 동전 던지기의 앞면이 나올 확률은 여전히 \(1/2\)이다. 또한 7번째 던지기에서 이전에 6번을 던졌다는 사실은 영향을 미치지 않는다. 다시 처음부터 시작해도 첫 성공까지의 기대 시도 횟수는 변하지 않는다는 것이다. 이러한 기하 분포의 무기억성은 네트워크 트래픽 분석, 대기열 이론 등에 유용하게 활용될 수 있다. 웹 서버 요청이 도착하는 시간 간격이 기하 분포를 따른다고 가정할 때, 이미 어느 정도 시간이 지났다 하여도 다음 요청이 도착할 때까지의 기대 시간은 변하지 않는다. 이는 대기 시간, 시스템의 처리량, 자원 할당 전략을 최적화하는데 중요한 역할을 한다. 직관적 기하 분포 기하 분포는 ‘성공’이 발생할 때까지 기다리는 관찰에 따른 결과이다. 이러한 특징은 웹사이트에서 사용자가 처음으로 구매를 하는데 필요한 페이지 방문 횟수, 즉, 실패 횟수를 분석하거나, 어떤 제품이나 서비스가 특정 기간 동안 실패하지 않고 지속될 확률을 계산하는 데에도 사용될 수 있다. 또한 A/B테스팅에서 특정 전략이 성공을 보이기까지의 시도 횟수를 분석하고 그 적략의 효율성을 평가할 수도 있다. 참조 binomial and geometric distribution(pthao_nguyen, Zoran)]]></summary></entry><entry xml:lang="en"><title type="html">Geometric Distribution</title><link href="http://localhost:4000/2024/03/28/geometric_distribution_en.html" rel="alternate" type="text/html" title="Geometric Distribution" /><published>2024-03-28T00:00:00+09:00</published><updated>2024-03-28T00:00:00+09:00</updated><id>http://localhost:4000/2024/03/28/geometric_distribution_en</id><content type="html" xml:base="http://localhost:4000/2024/03/28/geometric_distribution_en.html"><![CDATA[<p>If you understand the <a href="https://jenniione.github.io/2024/03/27/binomial_distribution_ko.html">binomial distribution</a>, the geometric distribution is not a difficult concept. While the binomial distribution models the number of successes in a series of Bernoulli trials, the geometric distribution measures <strong>the number of trials until the first success</strong> or <strong>the number of failures before the first success</strong>.</p>
 
-<h2 id="bernoulli-distribution">Bernoulli Distribution</h2>
-<p>A Bernoulli experiment is one in which the outcome of a probability experiment is either success or failure. The probability distribution that represents the number of successes in a Bernoulli experiment with a fixed success probability \(p\) is known as the <strong>Bernoulli Distribution</strong>. Thus, a Bernoulli distribution is a probability distribution where the random variable <strong>takes only two possible values, success or failure</strong>, making it a <strong>discrete random variable</strong>.</p>
-
-<p>one where the outcome can either be a success or a failure. The probability distribution that accounts for the number of successes in a Bernoulli experiment, with a fixed probability of success \(p\), is the Bernoulli distribution.</p>
-
-\[x  \{ \text{success, fail} \} \rightarrow \{0, 1\}\]
-
-\[\begin{equation}
-\begin{aligned}
-&amp; P(x=0) = 1-p \\
-&amp; P(x=1) = p \\ \end{aligned}
-\end{equation}\]
-
-<p>If a random variable \(X\) follows the Bernoulli distribution, it can be expressed as:</p>
-
-\[\begin{equation} 
- \begin{aligned} 
-&amp; x \sim \text{Bern}(p)
-\end{aligned}   
-\end{equation}\]
-
-<p>The probability mass function (PMF) for the Bernoulli distribution is:</p>
-
-\[\begin{split}
-\begin{align}
-\text{Bern}(x; p) = 
-\begin{cases} 
-p   &amp; \text{if }x=1, \\
-1-p &amp; \text{if }x=0
-\end{cases}
-\end{align}
-\end{split}\]
-
-<p>The key point here is that the Bernoulli distribution focuses on the probability of success \(p\) for <strong>a single trial</strong>. This characteristic differentiates it from the binomial distribution.</p>
-
-<h2 id="definition-of-binomial-distribution">Definition of Binomial Distribution</h2>
+<h2 id="definition-of-the-geometric-distribution">Definition of the Geometric Distribution</h2>
 
 <table>
   <thead>
     <tr>
-      <th>DEFINITION</th>
+      <th>DEFINITION 1</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>The Binomial Distribution</strong> models the number of successes in a fixed number \(n\) of repeated Bernoulli trials, each with the same probability \(p\) of success.</td>
+      <td>The <strong>Geometric Distribution</strong> models the number of trials until the first success in a series of Bernoulli trials.             </td>
     </tr>
   </tbody>
 </table>
 
-<p>The binomial distribution is essentially the result of repeating a Bernoulli trial \(n\) times. In other words, <strong>the binomial distribution is an extension of the Bernoulli trial</strong>. Instead of just one Bernoulli trial, the binomial distribution models the probability distribution of the number of successes over \(n\) repeated trials.</p>
+<table>
+  <thead>
+    <tr>
+      <th>DEFINITION 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>The <strong>Geometric Distribution</strong> models the number of failures before the first success in a series of Bernoulli trials.     </td>
+    </tr>
+  </tbody>
+</table>
 
-<p>For example, flipping a coin with a success probability of \(p=1/2\) once follows a Bernoulli distribution. However, if you flip the same coin 10 times and observe the number of heads, this scenario follows a binomial distribution. The key is that <strong>each flip is independent, and the success probability for each trial remains constant at \(p\)</strong> .</p>
+<p>The geometric distribution is used to model the number of trials until success, with two definitions available. The primary difference between these definitions is whether the count of trials includes the first success. Definition 1 counts all trials including the first success, whereas Definition 2 only considers the trials before the first success.</p>
 
-<p>The binomial distribution is expressed as:</p>
+<p>For example, in coin tossing where a head is defined as success, assume the sequence ‘tail-tail-tail-head’ occurs. According to Definition 1, the number of trials until success, $X$, is 4. Under Definition 2, it considers only the failures before the first success, so $X$ would be 3. This distinction is crucial for interpreting the geometric distribution as it shows a difference of one trial depending on whether the success is included.</p>
+
+<p>The geometric distribution is denoted as:</p>
 
 \[\begin{equation} 
  \begin{aligned} 
-x \sim \text{Bin}(n,p)
+x \sim \text{Geom}(p)
 \end{aligned}   
 \end{equation}\]
 
-<p>And its probability mass function (PMF) is defined as:</p>
+<p>And its probability mass function (PMF) is:</p>
 
 \[\begin{equation} 
-P_X(x) = \ _{n}C_{x} p^k (1-p)^{n-x} \quad \text{ for } x =0,1,\cdots,n
+\begin{aligned} 
+P(x) = (1-p)^{k-1} p \quad \text{ for } k =1,2,\cdots
+\end{aligned} 
 \end{equation}\]
 
-<h2 id="understanding-the-binomial-distribution">Understanding the Binomial Distribution</h2>
-<h3 id="10-coin-flips-example">10 Coin Flips Example</h3>
-<p>To understand the probability mass function, let’s calculate the probability for the scenario of flipping a coin 10 times. Let’s say success is when the coin shows heads, and \(x\) is the number of successes, where \(x=0,1,2,⋯,10\), representing the cases where heads appear 0, 1, 2, …, up to 10 times. For instance, when \(x=2\), i.e., two heads in 10 flips, the probability is given by:</p>
+<h2 id="understanding-the-geometric-distribution">Understanding the Geometric Distribution</h2>
+<p>To illustrate, consider the example of tossing a coin 10 times. Let’s define success as getting a head and $X=x$ as the number of trials until success. When $x=3$, the probability is the product of two failures and one success, calculated as $(1-\frac{1}{2})^2(\frac{1}{2})=0.125$ .</p>
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/coin k=2.png" />
-</p>
+<h2 id="memorylessness-of-the-geometric-distribution">Memorylessness of the Geometric Distribution</h2>
+<p>A key property of the geometric distribution is its memorylessness, expressed mathematically as:</p>
 
-<p>As illustrated, each independent event of the coin landing on heads 2 times out of 10 flips has a probability of \((\frac{1}{2})^2(1-\frac{1}{2})^{8}\). This can occur in \(_{10}C_{2}\) different ways. The calculation is as follows:</p>
+\[P(X &gt; s + t | X &gt; s) = P(X &gt; t)\]
 
-\[_{10}C_{2}\left(\frac{1}{2}\right)^2 \left(1-\frac{1}{2}\right)^{8} = 0.0439\]
+<p>This implies that past outcomes do not influence future probabilities. For instance, even if six tails have already occurred in coin tossing, the probability of a head in the next toss remains \(1/2\) . The fact that six tosses have occurred does not affect the trials going forward. Essentially, even if starting from scratch, the expected number of trials until the first success remains unchanged.</p>
 
-<p>Similarly, you can calculate the probabilities for all values of</p>
+<p>This property of the geometric distribution is particularly useful in network traffic analysis, queuing theory, and more. For instance, if the arrival time of web server requests follows a geometric distribution, the expected time until the next request does not change regardless of how much time has already passed. This can play a crucial role in optimizing wait times, system throughput, and resource allocation strategies.</p>
 
-\[x=0 ;  \frac{10!}{1!\cdot9!}
-\left(\frac{1}{2}\right)^0 \left(1-\frac{1}{2}\right)^{10} = 0.0010\]
-
-\[x=1 ;  \frac{10!}{1!\cdot9!}
-\left(\frac{1}{2}\right)^1 \left(1-\frac{1}{2}\right)^{9} = 0.0098\]
-
-\[x=2 ; \frac{10!}{2! 8!}\left(\frac{1}{2}\right)^2 \left(1-\frac{1}{2}\right)^{8} = 0.0439\]
-
-<center>⋮</center>
-
-\[x=10 ; \frac{10!}{10! 0!}\left(\frac{1}{2}\right)^{10} \left(1-\frac{1}{2}\right)^{0} = 0.0010\]
-
-<p>Displayed as a histogram, this distribution would look as follows:</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/coin distribution.png" />
-</p>
-
-<h3 id="intuitive-understanding-of-the-binomial-distribution">Intuitive Understanding of the Binomial Distribution</h3>
-<p>The binomial distribution calculates the probability of obtaining certain outcomes from repeated trials, such as flipping a coin, where there are two possible results each time.</p>
-
-<p>To understand how the binomial distribution is practically used, let’s explore some real-life applications.</p>
-
-<ul>
-  <li>Example 1<br />
-Suppose a marketing team sends emails to 1,000 customers. Based on previous experiences, assume the probability of receiving a reply is 0.5. What is the probability of receiving replies from exactly 50 customers?</li>
-</ul>
-
-<p>This is a straightforward calculation using the binomial distribution \(P_X(50)\) where \(n=1000\) and \(p=0.5\) . The binomial distribution fundamentally calculates the <strong>probability of achieving a certain number of successes</strong> given <strong>fixed trial counts and success probability</strong>.</p>
-
-<p>Furthermore, the concept of the binomial distribution can be utilized in conducting A/B tests. Consider the example below.</p>
-
-<ul>
-  <li>Example 2<br />
-Consider conducting an A/B test to compare the effectiveness of two website designs, A and B. Let’s assume 1,000 visitors are shown design B, and 150 click on it. We want to assess whether the click rate for design B significantly differs from design A’s expected click rate of 10%, assuming each visitor’s click is an independent event.</li>
-</ul>
-
-<p>In this scenario, each website visitor’s action (click or no click) results in a binomial outcome. We can set the success probability (p) at 10%, the number of trials (n) at 1,000, and the number of successes at 150, and perform a binomial test.</p>
-
-<h2 id="mean-and-variance-of-the-binomial-distribution">Mean and Variance of the Binomial Distribution</h2>
-<p>For a binomially distributed random variable \(X\) , with trial number \(n\) and success probability \(p\) :</p>
-
-<p>The expected value is:</p>
-
-\[E(X) = np\]
-
-<p>The variance is:</p>
-
-\[Var(X) = np(1-p)\]
-
-<p>These are demonstrated as follows:</p>
-
-<p>\(\begin{split}
-\begin{align}
-\begin{aligned}
-\text{E}[X] 
-&amp;= \sum_{x_i \in \Omega} x_i p(x_i) \\
-&amp;= 1 \cdot \mu + 0 \cdot (1 - \mu) \\
-&amp;= \mu
-\end{aligned}
-\end{align}
-\end{split}\)
-<br /></p>
-
-\[\begin{split}
-\begin{align}
-\begin{aligned}
-\text{Var}[X] 
-&amp;= \sum_{x_i \in \Omega} (x_i - \mu)^2 p(x_i) \\
-&amp;= (1 - \mu)^2 \cdot \mu + (0 - \mu)^2 \cdot (1 - \mu) \\
-&amp;= \mu(1-\mu)
-\end{aligned}
-\end{align}
-\end{split}\]
-
-<h2 id="approximation-of-the-binomial-distribution-to-a-normal-distribution">Approximation of the Binomial Distribution to a Normal Distribution</h2>
-<p>Let’s observe how the binomial distribution changes by freely altering its parameters, easily verified through various online simulations, including the GeoGebra “Parameters of the Binomial Distribution (shanlee)” simulation.</p>
-
-<p>As the number of trials increases, what happens to the binomial distribution?</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/binomial distribution to normal distribution.png" />
-</p>
-
-<p>For example, after conducting 50 coin flips, we can see the distribution resembles a <strong>bell-shaped</strong> normal distribution. However, direct simulation shows this is <strong>only feasible when values of \(n\) and \(p\) are not extreme</strong>. If \(n\) is too small, or \(n\) is large but \(p\) is very small or large, the shape diverges significantly from a normal distribution.</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/small n.png" />
-</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/small p.png" />
-</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jenniione/jenniione.github.io/master/pics/binomial_distribution/huge p.png" />
-</p>
-
-<p>Mathematically, if the binomial distribution’s \(n\) is large enough such that \(np≥5\) and \(np(1−p)≥5\), it approximates a normal distribution with mean \(np\) and the variance \(np(1−p)\) . This approximation becomes <strong>more accurate as \(n\) increases and \(p\) is neither close to 0 nor 1 but closer to 0.5</strong>.</p>
-
-<p>Practically, many real-world events follow a binomial distribution. For instance, how many hits will a 0.3 hitter make in 100 at-bats? How many people might die from a disease with a 30% mortality rate among 100 infected individuals? If the normal distribution can approximate the binomial distribution, it also becomes a powerful tool for explaining a wide range of phenomena.</p>
+<h2 id="practical-applications-of-the-geometric-distribution">Practical Applications of the Geometric Distribution</h2>
+<p>The geometric distribution is essentially about observing outcomes until the first success. This characteristic can be used to analyze how many page visits are needed before a user makes their first purchase on a website, or to calculate the probability that a product or service continues without failure over a specific period. It can also assess the efficiency of specific strategies in A/B testing by analyzing the number of trials until a strategy succeeds.</p>
 
 <p><br /><br />
 <strong>References</strong></p>
 
-<p><a href="https://www.geogebra.org/m/hGkW4vwJ">Parameters of the Binomial Distribution(shanlee)</a><br />
-<a href="https://datascienceschool.net/02%20mathematics/08.02%20%EB%B2%A0%EB%A5%B4%EB%88%84%EC%9D%B4%EB%B6%84%ED%8F%AC%EC%99%80%20%EC%9D%B4%ED%95%AD%EB%B6%84%ED%8F%AC.html">데이터 사이언스 스쿨</a><br />
-<a href="https://bookdown.org/mathemedicine/Stat_book/normal-distribution.html#-1">기초통계 개념정리(김진섭)</a><br /></p>]]></content><author><name>Jenny Won (Dajeong Won)</name></author><category term="Statistics" /><summary type="html"><![CDATA[Before discussing the binomial distribution, let’s briefly review the Bernoulli distribution and explore how it relates to the binomial distribution. Bernoulli Distribution A Bernoulli experiment is one in which the outcome of a probability experiment is either success or failure. The probability distribution that represents the number of successes in a Bernoulli experiment with a fixed success probability \(p\) is known as the Bernoulli Distribution. Thus, a Bernoulli distribution is a probability distribution where the random variable takes only two possible values, success or failure, making it a discrete random variable. one where the outcome can either be a success or a failure. The probability distribution that accounts for the number of successes in a Bernoulli experiment, with a fixed probability of success \(p\), is the Bernoulli distribution. \[x  \{ \text{success, fail} \} \rightarrow \{0, 1\}\] \[\begin{equation} \begin{aligned} &amp; P(x=0) = 1-p \\ &amp; P(x=1) = p \\ \end{aligned} \end{equation}\] If a random variable \(X\) follows the Bernoulli distribution, it can be expressed as: \[\begin{equation}   \begin{aligned}  &amp; x \sim \text{Bern}(p) \end{aligned}    \end{equation}\] The probability mass function (PMF) for the Bernoulli distribution is: \[\begin{split} \begin{align} \text{Bern}(x; p) = \begin{cases} p &amp; \text{if }x=1, \\ 1-p &amp; \text{if }x=0 \end{cases} \end{align} \end{split}\] The key point here is that the Bernoulli distribution focuses on the probability of success \(p\) for a single trial. This characteristic differentiates it from the binomial distribution. Definition of Binomial Distribution DEFINITION The Binomial Distribution models the number of successes in a fixed number \(n\) of repeated Bernoulli trials, each with the same probability \(p\) of success. The binomial distribution is essentially the result of repeating a Bernoulli trial \(n\) times. In other words, the binomial distribution is an extension of the Bernoulli trial. Instead of just one Bernoulli trial, the binomial distribution models the probability distribution of the number of successes over \(n\) repeated trials. For example, flipping a coin with a success probability of \(p=1/2\) once follows a Bernoulli distribution. However, if you flip the same coin 10 times and observe the number of heads, this scenario follows a binomial distribution. The key is that each flip is independent, and the success probability for each trial remains constant at \(p\) . The binomial distribution is expressed as: \[\begin{equation}   \begin{aligned}  x \sim \text{Bin}(n,p) \end{aligned}    \end{equation}\] And its probability mass function (PMF) is defined as: \[\begin{equation}  P_X(x) = \ _{n}C_{x} p^k (1-p)^{n-x} \quad \text{ for } x =0,1,\cdots,n \end{equation}\] Understanding the Binomial Distribution 10 Coin Flips Example To understand the probability mass function, let’s calculate the probability for the scenario of flipping a coin 10 times. Let’s say success is when the coin shows heads, and \(x\) is the number of successes, where \(x=0,1,2,⋯,10\), representing the cases where heads appear 0, 1, 2, …, up to 10 times. For instance, when \(x=2\), i.e., two heads in 10 flips, the probability is given by: As illustrated, each independent event of the coin landing on heads 2 times out of 10 flips has a probability of \((\frac{1}{2})^2(1-\frac{1}{2})^{8}\). This can occur in \(_{10}C_{2}\) different ways. The calculation is as follows: \[_{10}C_{2}\left(\frac{1}{2}\right)^2 \left(1-\frac{1}{2}\right)^{8} = 0.0439\] Similarly, you can calculate the probabilities for all values of \[x=0 ; \frac{10!}{1!\cdot9!} \left(\frac{1}{2}\right)^0 \left(1-\frac{1}{2}\right)^{10} = 0.0010\] \[x=1 ; \frac{10!}{1!\cdot9!} \left(\frac{1}{2}\right)^1 \left(1-\frac{1}{2}\right)^{9} = 0.0098\] \[x=2 ; \frac{10!}{2! 8!}\left(\frac{1}{2}\right)^2 \left(1-\frac{1}{2}\right)^{8} = 0.0439\] ⋮ \[x=10 ; \frac{10!}{10! 0!}\left(\frac{1}{2}\right)^{10} \left(1-\frac{1}{2}\right)^{0} = 0.0010\] Displayed as a histogram, this distribution would look as follows: Intuitive Understanding of the Binomial Distribution The binomial distribution calculates the probability of obtaining certain outcomes from repeated trials, such as flipping a coin, where there are two possible results each time. To understand how the binomial distribution is practically used, let’s explore some real-life applications. Example 1 Suppose a marketing team sends emails to 1,000 customers. Based on previous experiences, assume the probability of receiving a reply is 0.5. What is the probability of receiving replies from exactly 50 customers? This is a straightforward calculation using the binomial distribution \(P_X(50)\) where \(n=1000\) and \(p=0.5\) . The binomial distribution fundamentally calculates the probability of achieving a certain number of successes given fixed trial counts and success probability. Furthermore, the concept of the binomial distribution can be utilized in conducting A/B tests. Consider the example below. Example 2 Consider conducting an A/B test to compare the effectiveness of two website designs, A and B. Let’s assume 1,000 visitors are shown design B, and 150 click on it. We want to assess whether the click rate for design B significantly differs from design A’s expected click rate of 10%, assuming each visitor’s click is an independent event. In this scenario, each website visitor’s action (click or no click) results in a binomial outcome. We can set the success probability (p) at 10%, the number of trials (n) at 1,000, and the number of successes at 150, and perform a binomial test. Mean and Variance of the Binomial Distribution For a binomially distributed random variable \(X\) , with trial number \(n\) and success probability \(p\) : The expected value is: \[E(X) = np\] The variance is: \[Var(X) = np(1-p)\] These are demonstrated as follows: \(\begin{split} \begin{align} \begin{aligned} \text{E}[X] &amp;= \sum_{x_i \in \Omega} x_i p(x_i) \\ &amp;= 1 \cdot \mu + 0 \cdot (1 - \mu) \\ &amp;= \mu \end{aligned} \end{align} \end{split}\) \[\begin{split} \begin{align} \begin{aligned} \text{Var}[X] &amp;= \sum_{x_i \in \Omega} (x_i - \mu)^2 p(x_i) \\ &amp;= (1 - \mu)^2 \cdot \mu + (0 - \mu)^2 \cdot (1 - \mu) \\ &amp;= \mu(1-\mu) \end{aligned} \end{align} \end{split}\] Approximation of the Binomial Distribution to a Normal Distribution Let’s observe how the binomial distribution changes by freely altering its parameters, easily verified through various online simulations, including the GeoGebra “Parameters of the Binomial Distribution (shanlee)” simulation. As the number of trials increases, what happens to the binomial distribution? For example, after conducting 50 coin flips, we can see the distribution resembles a bell-shaped normal distribution. However, direct simulation shows this is only feasible when values of \(n\) and \(p\) are not extreme. If \(n\) is too small, or \(n\) is large but \(p\) is very small or large, the shape diverges significantly from a normal distribution. Mathematically, if the binomial distribution’s \(n\) is large enough such that \(np≥5\) and \(np(1−p)≥5\), it approximates a normal distribution with mean \(np\) and the variance \(np(1−p)\) . This approximation becomes more accurate as \(n\) increases and \(p\) is neither close to 0 nor 1 but closer to 0.5. Practically, many real-world events follow a binomial distribution. For instance, how many hits will a 0.3 hitter make in 100 at-bats? How many people might die from a disease with a 30% mortality rate among 100 infected individuals? If the normal distribution can approximate the binomial distribution, it also becomes a powerful tool for explaining a wide range of phenomena. References Parameters of the Binomial Distribution(shanlee) 데이터 사이언스 스쿨 기초통계 개념정리(김진섭)]]></summary></entry><entry xml:lang="ko"><title type="html">이항 분포</title><link href="http://localhost:4000/2024/03/27/binomial_distribution_ko.html" rel="alternate" type="text/html" title="이항 분포" /><published>2024-03-27T00:00:00+09:00</published><updated>2024-03-27T00:00:00+09:00</updated><id>http://localhost:4000/2024/03/27/binomial_distribution_ko</id><content type="html" xml:base="http://localhost:4000/2024/03/27/binomial_distribution_ko.html"><![CDATA[<p>이항 분포에 앞서, 베르누이 분포에 대해 간략히 정리하고, 이항 분포와 베르누이 분포가 어떤 관계가 있는지 알아보자.</p>
+<p><a href="https://www.geogebra.org/m/twbv2tmk">binomial and geometric distribution(pthao_nguyen, Zoran)</a></p>]]></content><author><name>Jenny Won (Dajeong Won)</name></author><category term="Statistics" /><summary type="html"><![CDATA[If you understand the binomial distribution, the geometric distribution is not a difficult concept. While the binomial distribution models the number of successes in a series of Bernoulli trials, the geometric distribution measures the number of trials until the first success or the number of failures before the first success. Definition of the Geometric Distribution DEFINITION 1 The Geometric Distribution models the number of trials until the first success in a series of Bernoulli trials.              DEFINITION 2 The Geometric Distribution models the number of failures before the first success in a series of Bernoulli trials.      The geometric distribution is used to model the number of trials until success, with two definitions available. The primary difference between these definitions is whether the count of trials includes the first success. Definition 1 counts all trials including the first success, whereas Definition 2 only considers the trials before the first success. For example, in coin tossing where a head is defined as success, assume the sequence ‘tail-tail-tail-head’ occurs. According to Definition 1, the number of trials until success, $X$, is 4. Under Definition 2, it considers only the failures before the first success, so $X$ would be 3. This distinction is crucial for interpreting the geometric distribution as it shows a difference of one trial depending on whether the success is included. The geometric distribution is denoted as: \[\begin{equation}   \begin{aligned}  x \sim \text{Geom}(p) \end{aligned}    \end{equation}\] And its probability mass function (PMF) is: \[\begin{equation}  \begin{aligned}  P(x) = (1-p)^{k-1} p \quad \text{ for } k =1,2,\cdots \end{aligned}  \end{equation}\] Understanding the Geometric Distribution To illustrate, consider the example of tossing a coin 10 times. Let’s define success as getting a head and $X=x$ as the number of trials until success. When $x=3$, the probability is the product of two failures and one success, calculated as $(1-\frac{1}{2})^2(\frac{1}{2})=0.125$ . Memorylessness of the Geometric Distribution A key property of the geometric distribution is its memorylessness, expressed mathematically as: \[P(X &gt; s + t | X &gt; s) = P(X &gt; t)\] This implies that past outcomes do not influence future probabilities. For instance, even if six tails have already occurred in coin tossing, the probability of a head in the next toss remains \(1/2\) . The fact that six tosses have occurred does not affect the trials going forward. Essentially, even if starting from scratch, the expected number of trials until the first success remains unchanged. This property of the geometric distribution is particularly useful in network traffic analysis, queuing theory, and more. For instance, if the arrival time of web server requests follows a geometric distribution, the expected time until the next request does not change regardless of how much time has already passed. This can play a crucial role in optimizing wait times, system throughput, and resource allocation strategies. Practical Applications of the Geometric Distribution The geometric distribution is essentially about observing outcomes until the first success. This characteristic can be used to analyze how many page visits are needed before a user makes their first purchase on a website, or to calculate the probability that a product or service continues without failure over a specific period. It can also assess the efficiency of specific strategies in A/B testing by analyzing the number of trials until a strategy succeeds. References binomial and geometric distribution(pthao_nguyen, Zoran)]]></summary></entry><entry xml:lang="ko"><title type="html">이항 분포</title><link href="http://localhost:4000/2024/03/27/binomial_distribution_ko.html" rel="alternate" type="text/html" title="이항 분포" /><published>2024-03-27T00:00:00+09:00</published><updated>2024-03-27T00:00:00+09:00</updated><id>http://localhost:4000/2024/03/27/binomial_distribution_ko</id><content type="html" xml:base="http://localhost:4000/2024/03/27/binomial_distribution_ko.html"><![CDATA[<p>이항 분포에 앞서, 베르누이 분포에 대해 간략히 정리하고, 이항 분포와 베르누이 분포가 어떤 관계가 있는지 알아보자.</p>
 <h2 id="베르누이-분포">베르누이 분포</h2>
 <p>확률 실험의 결과가 성공 혹은 실패로 나타나는 실험을 베르누이 실험(Bernoulli Experiment)라고 한다. 그리고 성공 확률이 \(p\)로 고정된 베르누이 실험에서 성공의 횟수를 나타내는 확률 분포가 바로 <strong>베르누이 분포</strong>이다. 즉, 베르누이 분포는 <strong>확률 변수의 값이 성공 혹은 실패로 나타나는 확률 분포</strong>이며, 그 결과가 성공 혹은 실패, 두 값 중 하나만 가지므로 베르누이 확률 변수는 <strong>이산 확률 변수</strong>라고 할 수 있다.</p>
 

@@ -163,7 +163,7 @@ search:
 
   ## Google Custom Search Engine
   google:
-    custom_search_engine_id: "2Zs8hycJ1kHw9JMa0AY4fwtAHDyo9xbJIscAb0T_rCQ"
+    custom_search_engine_id: 2Zs8hycJ1kHw9JMa0AY4fwtAHDyo9xbJIscAb0T_rCQ
     # Google Custom Search Engine ID
 
 
