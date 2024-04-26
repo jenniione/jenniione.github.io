@@ -53,7 +53,7 @@ study-ko:
     children:   
       - title:  English(EN)
         url:    2024/03/26/random_variables_en.html
-  - title:      확률/통계 기초
+  - title:      확률/통계
     children:   
       - title:  확률 분포
         url:    2024/03/26/random_variables_ko.html 
@@ -67,7 +67,8 @@ study-ko:
         url:    2024/04/06/normal_distribution_and_clt_ko.html
       - title:  카이제곱 분포와 검정
         url:    2024/04/10/chi_squared_distribution_ko.html
-
+      - title:  t-value와 검정(t-test)
+        url:    2024/04/17/t_value_and_t_test_ko.html
 study-en:
   - title:      Language
     children:   
